@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings:
     _location: 0
-    path: SaveFile.es3
+    path: SaveData.txt
     encryptionType: 0
     compressionType: 0
     encryptionPassword: password
@@ -30,9 +30,10 @@ MonoBehaviour:
     referenceMode: 2
     serializationDepthLimit: 64
     assemblyNames:
-    - Assembly-CSharp-firstpass
     - Assembly-CSharp
-    showAdvancedSettings: 0
+    - Assembly-CSharp-firstpass
+    - Polyperfect.Common
+    showAdvancedSettings: 1
   addMgrToSceneAutomatically: 0
   autoUpdateReferences: 1
   addAllPrefabsToManager: 1
