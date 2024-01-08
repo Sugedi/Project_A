@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     bool fDown; // 공격 입력 여부
 
     bool isDodge;
+    //bool isDamage;
 
     GunController gunController;
     Rigidbody rigid;
@@ -161,6 +162,19 @@ public class Player : MonoBehaviour
             // 파괴하는 거
             Destroy(item.gameObject);
         }
+
+        /*
+        else if (other.tag == "EnemyBullet")
+        {
+            if (!isDamage)
+            {
+                Bullet enemyBullet = other.GetComponent<Bullet>();
+                health -= enemyBullet.damage;
+                StartCoroutine(OnDamage());
+            }
+        }
+       */
+
         else if (other.tag == "Weapon")
         {
             if (nearObject != null && !isDodge)
@@ -176,7 +190,25 @@ public class Player : MonoBehaviour
             }
         }
     }
+    /*
+ 
+    IEnumerator OnDamage()
+    {
+        isDamage = true;
+        foreach (MeshRenderer mesh in meshs)
+        {
+            mesh.material.color = Color.yellow;
+        }
 
+        yield return new WaitForSeconds(1f);
+
+        isDamage = false;
+        foreach (MeshRenderer mesh in meshs)
+        {
+            mesh.material.color = Color.white;
+        }
+    }
+    */
 
 
     // 트리거에 머무를 때 호출되는 함수
