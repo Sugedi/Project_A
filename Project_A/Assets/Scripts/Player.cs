@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     public GameObject[] weapons; // 무기 배열
     public bool[] hasWeapons; // 보유한 무기 여부 배열
 
+    public Camera playerCamera; // 메인 카메라
+
     public int ammo; // 현재 총알 수량
     public int health; // 현재 체력
 
@@ -71,33 +73,39 @@ public class Player : MonoBehaviour
     }
     void Move()
     {
-        moveVec = new Vector3(hAxis, 0, vAxis).normalized; // 입력값으로 이동 벡터 설정
-                                                           // normalized는 대각선으로 이동 시에도 같은 속도를 내기 위해 작성
-     
-        /*if(isSwap) // 움직이면서 무기 스왑을 못 하게 설정할 때 사용
-        {
-            moveVec = Vector3.zero;
-        }
-        */
+        // Get the camera's forward and right vectors
+        Vector3 cameraForward = playerCamera.transform.forward;
+        Vector3 cameraRight = playerCamera.transform.right;
+
+        // Project the camera vectors onto the horizontal plane
+        cameraForward.y = 0f;
+        cameraRight.y = 0f;
+
+        // Normalize the vectors
+        cameraForward.Normalize();
+        cameraRight.Normalize();
+
+        // Calculate the movement direction based on camera orientation
+        moveVec = (cameraForward * vAxis) + (cameraRight * hAxis);
+
         if (isDodge)
-            moveVec = dodgeVec; // 회피하면서 동시에 방향 못 바꾸게 함
+            moveVec = dodgeVec; // Dodge overrides the movement direction
 
-        rigid.MovePosition(rigid.position + moveVec);
+        // Move the player using Rigidbody
+        rigid.MovePosition(rigid.position + moveVec * speed * Time.deltaTime);
 
-     
-        if (wDown) // 걷기 속도 조절 (뛰는거랑 걷는거랑 속도 차이 없으면 안되니까)
-            transform.position += moveVec * speed * 0.3f * Time.deltaTime; // 걷기 중인 경우 속도 감소
-        else
+        // Set the player's rotation to face the movement direction
+        if (moveVec != Vector3.zero)
         {
-            transform.position += moveVec * speed * Time.deltaTime; // 걷기가 아닌 경우 정상 속도로 이동
+            Quaternion dirQuat = Quaternion.LookRotation(moveVec);
+            Quaternion moveQuat = Quaternion.Slerp(rigid.rotation, dirQuat, 0.3f);
+            rigid.MoveRotation(moveQuat);
         }
 
-        anim.SetBool("isRun", moveVec != Vector3.zero); // 달리는 상태 애니메이션 설정
-        anim.SetBool("isWalk", wDown); // 걷기 상태 애니메이션 설정
-
-        // LookAt : 지정된 벡터를 향해서 회전시켜주는 함수
-        transform.LookAt(transform.position + moveVec); // 우리가 나아가는 방향으로 바라보게 만들기 (현재 위치+가는 방향)
+        anim.SetBool("isRun", moveVec != Vector3.zero);
+        anim.SetBool("isWalk", wDown);
     }
+
     void Dodge()
     {
         if (jDown && moveVec != Vector3.zero && !isDodge)
