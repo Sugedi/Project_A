@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9807,11 +9807,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joy: {fileID: 577199560}
-  speed: 5
+  moveSpeed: 5
   weapons:
   - {fileID: 106888671}
   - {fileID: 1813538403}
   hasWeapons: 0000
+  playerCamera: {fileID: 1949724474}
   ammo: 0
   health: 0
   maxAmmo: 240
