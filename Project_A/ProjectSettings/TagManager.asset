@@ -9,6 +9,9 @@ TagManager:
   - RedTag
   - Enemy
   - NPC
+  - EnemyBullet
+  - FxTemporaire
+  - Floor
   layers:
   - Default
   - TransparentFX
@@ -17,9 +20,9 @@ TagManager:
   - Water
   - UI
   - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - EnemyBullet
   - 
   - 
   - 

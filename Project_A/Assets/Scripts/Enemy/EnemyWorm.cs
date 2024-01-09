@@ -4,8 +4,10 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyRat : MonoBehaviour
+public class EnemyWorm : MonoBehaviour
 {
+    // public float moveSpeed = 3f;
+    // public float attackRange = 5f;
     public enum Type { A, B, C };
     public Type enemyType; // 적 종류
     public int maxHealth; // 최대 체력
@@ -44,6 +46,8 @@ public class EnemyRat : MonoBehaviour
         {
             nav.SetDestination(target.position);
             nav.isStopped = !isChase;
+            transform.LookAt(target);
+            // transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
         }
     }
 
@@ -65,8 +69,8 @@ public class EnemyRat : MonoBehaviour
         switch (enemyType)
         {
             case Type.A:
-                targetRadius = 3f;
-                targetRange = 0.7f;
+                targetRadius = 0.5f;
+                targetRange = 0.5f;
                 break;
             case Type.B:
                 targetRadius = 1f;
@@ -133,7 +137,7 @@ public class EnemyRat : MonoBehaviour
                 rigidBullet.velocity = transform.forward * 20;
 
                 // 2초 대기
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(1f);
                 break;
         }
 

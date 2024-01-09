@@ -133,7 +133,7 @@ public class Enemy : MonoBehaviour
                 rigidBullet.velocity = transform.forward * 20;
 
                 // 2√  ¥Î±‚
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(1.8f);
                 break;
         }
 
