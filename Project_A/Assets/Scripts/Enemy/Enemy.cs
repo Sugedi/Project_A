@@ -65,8 +65,8 @@ public class Enemy : MonoBehaviour
         switch (enemyType)
         {
             case Type.A:
-                targetRadius = 0.8f;
-                targetRange = 0.8f;
+                targetRadius = 0.5f;
+                targetRange = 0.5f;
                 break;
             case Type.B:
                 targetRadius = 1f;
@@ -101,7 +101,7 @@ public class Enemy : MonoBehaviour
         {
             case Type.A:
                 // 0.2초 대기 후 근접 공격 범위 활성화
-                yield return new WaitForSeconds(0.01f);
+                yield return new WaitForSeconds(0f);
                 meleeArea.enabled = true;
 
                 // 1초 후 근접 공격 범위 비활성화

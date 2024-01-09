@@ -26,18 +26,24 @@ public class Player : MonoBehaviour
     bool fDown; // 공격 입력 여부
 
     bool isDodge;
-    //bool isDamage;
+    bool isDamage;
 
     GunController gunController;
     Rigidbody rigid;
     Animator anim;
+    SkinnedMeshRenderer[] meshs;
 
     Vector3 moveVec;
     Vector3 dodgeVec;
 
     GameObject nearObject; // 주변 오브젝트
-    
-    
+
+    void Awake()
+    {
+        rigid = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
+        meshs = GetComponents<SkinnedMeshRenderer>();
+    }
 
     void Start()
     {
@@ -163,7 +169,6 @@ public class Player : MonoBehaviour
             Destroy(item.gameObject);
         }
 
-        /*
         else if (other.tag == "EnemyBullet")
         {
             if (!isDamage)
@@ -173,7 +178,6 @@ public class Player : MonoBehaviour
                 StartCoroutine(OnDamage());
             }
         }
-       */
 
         else if (other.tag == "Weapon")
         {
@@ -190,12 +194,11 @@ public class Player : MonoBehaviour
             }
         }
     }
-    /*
  
     IEnumerator OnDamage()
     {
         isDamage = true;
-        foreach (MeshRenderer mesh in meshs)
+        foreach(SkinnedMeshRenderer mesh in meshs)
         {
             mesh.material.color = Color.yellow;
         }
@@ -203,12 +206,11 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         isDamage = false;
-        foreach (MeshRenderer mesh in meshs)
+        foreach(SkinnedMeshRenderer mesh in meshs)
         {
             mesh.material.color = Color.white;
         }
     }
-    */
 
 
     // 트리거에 머무를 때 호출되는 함수
@@ -226,6 +228,4 @@ public class Player : MonoBehaviour
         if (other.tag == "Weapon")
             nearObject = null;
     }
-
-
 }
