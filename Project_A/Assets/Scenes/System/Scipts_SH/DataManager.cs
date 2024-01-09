@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 이제 데이터 저장한 걸, 플레이어한테 연결하는 기능 해야함
+
 // 스테이지 1 내부의 저장해야할 데이터를 담은 스크립트
 
 // 구현 목표
@@ -75,6 +77,8 @@ public class Datas
 
     //나중에 다 합치면 엄청 길어질 듯? 스테이지별로 쪼개거나 방법을 생각해야겠는데??
     //저장 중 원형 슬라이더 넣으면 좋을 것 같다. 로딩창처럼
+
+    // 이제 데이터 저장한 걸, 플레이어한테 연결하는 기능 해야함
 }
 
 public class DataManager : MonoBehaviour

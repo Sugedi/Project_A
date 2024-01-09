@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -549,7 +549,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 689607990}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.19250757, y: 0.95160484, z: -0.094757475}
+  m_LocalPosition: {x: -0.19250757, y: 0.95160484, z: -3.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1132,7 +1132,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 934258737}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.0987525, y: 0.47856933, z: -0.09875244}
+  m_LocalPosition: {x: 0.467, y: 0.47856933, z: -0.09875244}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1659,11 +1659,8 @@ MonoBehaviour:
     skill_1LV: 1
     skill_2LV: 0
     skill_3LV: 0
-    skill_4LV: 0
-    skill_5LV: 0
     stage1ItemBox1: 0
     stage1ItemBox2: 0
-    stage1ItemBox3: 0
     stage1Quest1Pro: 0
     stage1Quest2Pro: 0
     stage1Puzzle1: 0
