@@ -11,7 +11,7 @@ public class ObjectInteraction : MonoBehaviour
     // 아래 2줄은 GPT 대답에서는 없는 애들인데 일단 놔둬봄
     // 이유: Sphere Collider 영역(인지 범위) 내에 플레이어가 진입할 시 <<가 조건이니까 조건 내용이 있어야하지 않을까?
     // public float interactionRange = 2f; // 상호작용 가능한 범위
-    private bool isPlayerInRange = false; // 플레이어가 상호작용 범위 내에 있는지 여부
+    public bool isPlayerInRange = false; // 플레이어가 상호작용 범위 내에 있는지 여부
 
     void OnTriggerEnter(Collider other) // 오브젝트가 트리거에 진입할 때 호출되는 함수
     {
