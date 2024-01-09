@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// 왜 안 움직이는 거야?
+// 미치겠네 ㅅㅂ가ㅜㅁㄴ이ㅓㅎ롬니;어룰미;ㄴ어ㅜㅍ
+// 제발 움직여줘
+
 public class Move_SH : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float interactionDistance = 2f;
-
 
     void Update()
     {

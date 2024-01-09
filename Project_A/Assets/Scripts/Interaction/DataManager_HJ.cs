@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 
 
-public class DataManager_ : MonoBehaviour
+public class DataManager_HJ : MonoBehaviour
 {
 
     // =============================================================================================================
