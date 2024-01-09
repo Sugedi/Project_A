@@ -7,6 +7,8 @@ TagManager:
   - Weapon
   - Item
   - RedTag
+  - Enemy
+  - NPC
   layers:
   - Default
   - TransparentFX
