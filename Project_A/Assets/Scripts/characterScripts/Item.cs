@@ -4,7 +4,30 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    public enum Type { Ammo, Heart, Weapon }; // 변수가 아닌 하나의 타입이기 때문에 변수는 아래에 따로 생성
-    public Type type; // 이 변수는 어떤 유형 또는 종류를 나타낸다. 예를 들어, 아이템의 유형을 나타내거나 다양한 종류의 정보를 담을 수 있다.
-    public int value;
+    public enum Type { Ammo, Coin, Grenade, Heart, Weapon }; // 아이템 유형 열거형
+    public Type type; // 아이템 유형
+    public int value; // 아이템 값
+
+    Rigidbody rigid; // Rigidbody 컴포넌트
+    SphereCollider sphereCollider; // SphereCollider 컴포넌트
+
+    void Awake()
+    {
+        rigid = GetComponent<Rigidbody>(); // Rigidbody 컴포넌트 할당
+        sphereCollider = GetComponent<SphereCollider>(); // SphereCollider 컴포넌트 할당
+    }
+
+    void Update()
+    {
+        transform.Rotate(Vector3.up * 20 * Time.deltaTime); // 아이템 회전
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Floor") // 충돌한 오브젝트의 태그가 "Floor"일 때
+        {
+            rigid.isKinematic = true; // 물리적인 영향을 받지 않도록 Kinematic 활성화
+            sphereCollider.enabled = false; // SphereCollider 비활성화
+        }
+    }
 }
