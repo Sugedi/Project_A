@@ -21,9 +21,20 @@ using UnityEngine;
 // 8. 보스 최초 처치 여부 -> 스테이지 오픈과도 연결
 // 9. 튜토리얼 완료 여부
 
+
+// 씬 전환했을 때 연구
+// 서로 씬을 불러왔을 때 뭐가 달라지는지?
+// 가면 씬에서 다시 불러오는 게 있어야 할텐데.
+// 어떻게 불러올까?
+
+
+
 [System.Serializable]
 public class Datas
 {
+    // 플레이어에서 게임 오브젝트 찾아와야 됨
+    // sceneInfo = Save
+
     // 재화
     public int Soul;
 
@@ -41,15 +52,12 @@ public class Datas
     public int skill_1LV = 0; // 0은 미획득, 1~3은 스킬 레벨 // 레벨 구현되지 않으면, 0 ~ 1로 bool처럼 써도 됨
     public int skill_2LV = 0; 
     public int skill_3LV = 0; 
-    public int skill_4LV = 0; 
-    public int skill_5LV = 0; 
 
 
     // 여기부터는 스테이지 1만 적용
     // 귀속 아이템 획득 여부 - true값이 되면, 상자를 열린 이미지로 바꾸거나, 오브젝트 삭제
     public bool stage1ItemBox1 = false; // 심장(최대체력 증가)
     public bool stage1ItemBox2 = false; // 전시장 아이템 - true가 되면 
-    public bool stage1ItemBox3 = false;
 
     // 퀘스트 진행 상황
     public int stage1Quest1Pro = 0; // 0은 미수주, 1은 미완, 2는 완료/보상미수령 3은 보상수령

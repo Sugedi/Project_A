@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
+
 
 public class Btn : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -29,6 +31,9 @@ public class Btn : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 break;
             case ButtonType.Continue:
                 Debug.Log("이어 하기");
+                Debug.Log("여기서 씬 전환을 줘야 할 것 같은데");
+                SceneManager.LoadScene("SaveTest");
+
                 break;
             case ButtonType.Option:
                 CanvasGroupOn(optionGroup);
