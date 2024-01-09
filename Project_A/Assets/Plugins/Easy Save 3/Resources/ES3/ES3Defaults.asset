@@ -15,8 +15,8 @@ MonoBehaviour:
   settings:
     _location: 0
     path: SaveData.txt
-    encryptionType: 0
-    compressionType: 0
+    encryptionType: 1
+    compressionType: 1
     encryptionPassword: password
     directory: 0
     format: 0

@@ -103,8 +103,8 @@ namespace ES3Editor
                         searchTerm = GUILayout.TextField(searchTerm, GUI.skin.FindStyle("ToolbarSearchTextField"));
                         if (GUILayout.Button("", GUI.skin.FindStyle("ToolbarSearchCancelButton")))
 #else
-                        searchTerm = GUILayout.TextField(searchTerm, GUI.skin.FindStyle("ToolbarSeachTextField"));
-                        if (GUILayout.Button("", GUI.skin.FindStyle("ToolbarSeachCancelButton")))
+                        searchTerm = GUILayout.TextField(searchTerm, GUI.skin.FindStyle("ToolbarSearchTextField"));
+                        if (GUILayout.Button("", GUI.skin.FindStyle("ToolbarSearchCancelButton")))
 #endif
                         {
                             // Remove focus if cleared
