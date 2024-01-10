@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public int damage; // 총알의 공격력
+    public float damage; // 총알의 공격력
     public bool isMelee; // 근접 공격인지 여부를 나타내는 플래그
+
+    
 
     // 충돌 시 호출되는 메서드
     void OnCollisionEnter(Collision collision)

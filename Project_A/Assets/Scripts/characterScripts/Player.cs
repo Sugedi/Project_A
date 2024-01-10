@@ -8,13 +8,15 @@ public class Player : MonoBehaviour
 
     public float speed; // 이동 속도
     public GameObject[] weapons; // 무기 배열
-    public bool[] hasWeapons; // 보유한 무기 여부 배열
+    public bool[] hasWeapons; // 보유한 무기 여부 배열    
     public Camera followCamera; // 카메라
     public int ammo; // 현재 총알 수량    
     public int health; // 현재 체력
     public int maxAmmo; // 최대 총알 수량    
     public int maxHealth; // 최대 체력
-    
+
+    // 플레이어 스킬 저장
+    public List<Skill> activeSkills; // 활성화된 스킬들을 저장하는 리스트   
 
     // 투입 변수
 
@@ -53,7 +55,7 @@ public class Player : MonoBehaviour
 
     // 초기화 시키는 거
     void Awake()
-    {
+    {              
         rigid = GetComponent<Rigidbody>(); // Rigidbody 컴포넌트 가져오기
         anim = GetComponentInChildren<Animator>(); // Animator 컴포넌트 가져오기
         meshs = GetComponentsInChildren<MeshRenderer>(); // MeshRenderer 배열 가져오기
@@ -71,7 +73,7 @@ public class Player : MonoBehaviour
         Dodge();
         
     }
-
+    
     void GetInput()
     {
         hAxis = Input.GetAxisRaw("Horizontal"); // 가로 축 입력값 받기
@@ -140,14 +142,18 @@ public class Player : MonoBehaviour
     // 플레이어 공격 처리
     void Attack()
     {
+        // 현재 장착된 무기가 없으면 공격을 수행하지 않습니다.
         if (equipWeapon == null)
             return;
 
+        // 공격 딜레이를 증가시킵니다.
         fireDelay += Time.deltaTime;
-        isFireReady = equipWeapon.rate < fireDelay; // 공격 딜레이 체크
+
+        // 현재 딜레이가 공격 속도를 넘었는지 확인합니다. 넘었다면 공격할 준비가 된 것입니다.
+        isFireReady = (1f / (equipWeapon.baseAttackSpeed * equipWeapon.attackSpeedMultiplier)) < fireDelay; // 공격 딜레이 체크
 
         if (fDown && isFireReady && !isDodge)
-        {
+        {            
             equipWeapon.Use(); // 무기 사용
             anim.SetTrigger(equipWeapon.type == Weapon.Type.Melee ? "doSwing" : "doShot"); // 무기 종류에 따라 애니메이션 설정
             fireDelay = 0; // 딜레이 초기화
@@ -225,8 +231,6 @@ public class Player : MonoBehaviour
         StopToWall();
     }
 
-
-
     // 트리거와 충돌했을 때 호출되는 함수
     private void OnTriggerEnter(Collider other)
     {
@@ -240,6 +244,8 @@ public class Player : MonoBehaviour
                 case Item.Type.Ammo:
                     // 총알 아이템인 경우, 총알 수량 증가
                     ammo += item.value;
+
+                    // 총알 수가 최대치를 넘지 않도록 합니다.
                     if (ammo > maxAmmo)
                         ammo = maxAmmo;
                     break;               
@@ -252,8 +258,10 @@ public class Player : MonoBehaviour
         {
             Item item = other.GetComponent<Item>();
             int weaponIndex = item.value;
+            // 무기 습득 처리를 합니다.
             hasWeapons[weaponIndex] = true; // 무기 획득 처리
 
+            // 이미 장착된 무기가 있다면 비활성화합니다.
             if (equipWeapon != null)
             {
                 equipWeapon.gameObject.SetActive(false);
@@ -262,6 +270,8 @@ public class Player : MonoBehaviour
             equipWeapon = weapons[weaponIndex].GetComponent<Weapon>();
             equipWeapon.gameObject.SetActive(true);
             equipWeaponIndex = weaponIndex;
+
+            ApplySkills(); // 무기를 장착했으므로, 스킬을 적용합니다.
 
             Destroy(other.gameObject); // 주변 오브젝트 파괴
         }
@@ -302,6 +312,49 @@ public class Player : MonoBehaviour
         {
             mesh.material.color = Color.white;
         }
+    }
+
+    // 스킬을 적용하는 메서드입니다.
+    public void ApplySkills()
+    {
+        // 장착된 무기가 없거나, 활성화된 스킬이 없는 경우 스킬을 적용하지 않습니다.
+        if (equipWeapon == null || activeSkills == null || activeSkills.Count == 0)
+        {
+            return;
+        }
+
+        // 데미지와 공격 속도 배율을 기본 1로 설정합니다.
+        float totalDamageMultiplier = 1f;
+        float totalAttackSpeedMultiplier = 1f;
+
+        // 활성화된 스킬들을 순회하며 데미지 및 공격 속도 배율을 계산합니다.
+        foreach (var skill in activeSkills)
+        {
+            if (skill != null)
+            {
+                totalDamageMultiplier *= skill.damageMultiplier;
+                totalAttackSpeedMultiplier *= skill.attackSpeedMultiplier;
+            }
+        }
+
+        // 계산된 배율을 장착된 무기에 적용합니다.
+        equipWeapon.damageMultiplier = totalDamageMultiplier;
+        equipWeapon.attackSpeedMultiplier = totalAttackSpeedMultiplier;
+    }
+
+    // 새로운 스킬을 추가하는 메서드입니다.
+    public void AddSkill(Skill newSkill)
+    {
+        activeSkills.Add(newSkill); // 스킬 리스트에 새 스킬을 추가합니다.
+        ApplySkills(); // 스킬 추가 후 스킬을 적용합니다.
+
+    }
+
+    // 스킬을 제거하는 메서드입니다.
+    public void RemoveSkill(Skill skillToRemove)
+    {
+        activeSkills.Remove(skillToRemove); // 스킬 리스트에서 지정된 스킬을 제거합니다.
+        ApplySkills(); // 스킬 제거 후 스킬을 다시 적용합니다.
     }
 
     // 트리거에 머무를 때 호출되는 함수
