@@ -86,8 +86,8 @@ public class Player : MonoBehaviour
 
     void GetInput()
     {
-        hAxis = Input.GetAxisRaw("JangJungMi"); // 가로 축 입력값 받기
-        vAxis = Input.GetAxisRaw("Gang"); // 세로 축 입력값 받기
+        hAxis = Input.GetAxisRaw("Horizontal"); // 가로 축 입력값 받기
+        vAxis = Input.GetAxisRaw("Vertical"); // 세로 축 입력값 받기
         wDown = Input.GetButton("Walk"); // 걷기 입력 여부 받기
         jDown = Input.GetButtonDown("Jump"); // 점프 입력 여부 받기
         fDown = Input.GetButton("Fire1"); // 공격 입력 여부 받기
@@ -345,7 +345,7 @@ public class Player : MonoBehaviour
             if (!isDamage)
             {
                 // 적 총알에 맞았을 때 체력 감소 및 총알 파괴
-                Bullet enemyBullet = other.GetComponent<Bullet>();
+                EnemyBullet enemyBullet = other.GetComponent<EnemyBullet>();
                 health -= enemyBullet.damage;
                 if (other.GetComponent<Rigidbody>() != null)
                     Destroy(other.gameObject);

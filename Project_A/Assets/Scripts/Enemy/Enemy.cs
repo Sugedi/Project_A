@@ -8,8 +8,8 @@ public class Enemy : MonoBehaviour
 {
     public enum Type { A, B, C };
     public Type enemyType; // 적 종류
-    public int maxHealth; // 최대 체력
-    public int curHealth; // 현재 체력
+    public float maxHealth; // 최대 체력
+    public float curHealth; // 현재 체력
     public Transform target; // 플레이어의 Transform
     public BoxCollider meleeArea; // 근접 공격 범위 Collider
     public GameObject bullet; // 원거리 공격에 사용되는 총알
@@ -40,11 +40,11 @@ public class Enemy : MonoBehaviour
     }
     void Update()
     {
-        if(nav.enabled)
-        {
-            nav.SetDestination(target.position);
-            nav.isStopped = !isChase;
-        }
+        //if(nav.enabled)
+        //{
+        //    nav.SetDestination(target.position);
+        //    nav.isStopped = !isChase;
+        //}
     }
 
     void FreezeVelocity()

@@ -6,7 +6,7 @@ public class Weapon : MonoBehaviour
 {
     public enum Type { Melee, Range }; // 무기 유형: 근접 또는 원거리
     public Type type; // 현재 무기의 유형
-    public int damage; // 무기의 공격력
+    public float damage; // 무기의 공격력
     public float rate; // 무기의 공격 속도
     public int maxAmmo; // 최대 탄약 수
     public int curAmmo; // 현재 탄약 수
