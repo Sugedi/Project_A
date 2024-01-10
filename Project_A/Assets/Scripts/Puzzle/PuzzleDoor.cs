@@ -18,11 +18,17 @@ public class PuzzleDoor : MonoBehaviour
     public bool yellowMatched = false;
     public bool blueMatched = false;
 
+    // 열리는 애니메이션, 닫히는 애니메이션 칸, 
+    public AnimationClip doorOpenAnimation;
+    public AnimationClip doorCloseAnimation;
+    private Animation doorAnimation;
+
 
     // Start is called before the first frame update
     void Start()
     {
         redRock.target = redTile;
+        doorAnimation = GetComponentInParent<Animation>();
         //yellowRock.target = yellowTile;
         //blueRock.target = blueTile;
     }
@@ -30,7 +36,7 @@ public class PuzzleDoor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        doorAnimation = GetComponent<Animation>();
     }
 
     public void ChangeBool(MatchingPuzzle gameObject)
@@ -77,11 +83,11 @@ public class PuzzleDoor : MonoBehaviour
     {
         if(redMatched && yellowMatched && blueMatched)
         {
-            gameObject.SetActive(false);
+            doorAnimation.Play(doorOpenAnimation.name);
         }
         else
         {
-            gameObject.SetActive(true);
+            doorAnimation.Play(doorCloseAnimation.name);
         }
     }
     
