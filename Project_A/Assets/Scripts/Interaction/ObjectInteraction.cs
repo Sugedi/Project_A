@@ -1,17 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ObjectInteraction : MonoBehaviour
 {
-    public GameObject attackButton; // (기본)공격 버튼 변수를 선언
-    public GameObject interactionButton; // (변경)상호작용 버튼 변수를 선언
+    //public GameObject attackButton; // (기본)공격 버튼 변수를 선언
+    //public GameObject interactionButton; // (변경)상호작용 버튼 변수를 선언
+
+    public int talkId;
+
+    DialogueManager dialogueManager;
 
     // 아래 2줄은 GPT 대답에서는 없는 애들인데 일단 놔둬봄
     // 이유: Sphere Collider 영역(인지 범위) 내에 플레이어가 진입할 시 <<가 조건이니까 조건 내용이 있어야하지 않을까?
     // public float interactionRange = 2f; // 상호작용 가능한 범위
     public bool isPlayerInRange = false; // 플레이어가 상호작용 범위 내에 있는지 여부
+
+
+
+    private void OnEnable()
+    {
+        if (dialogueManager == null)
+        {
+            dialogueManager = FindObjectOfType<DialogueManager>();
+        }
+    }
+
 
     void OnTriggerEnter(Collider other) // 오브젝트가 트리거에 진입할 때 호출되는 함수
     {
@@ -24,8 +40,9 @@ public class ObjectInteraction : MonoBehaviour
             // ChangeButtonsState(false, true); // 공격 버튼을 비활성화하고, 상호작용 버튼을 활성화
             // 아래 2줄은 준혁이가 알려준대로 자료형을 GameObject로 변경해주고, SetActive 기능 사용한 것
             // 기록해 놔야 내가 나중에 저 위의 방법이 불편하다는 것을 알고 다른 방법으로 바꿀 수 있어서 적어놓음
-            attackButton.SetActive(false);
-            interactionButton.SetActive(true);
+            dialogueManager.CangeTalkId(talkId);
+            dialogueManager.SettingUI(true);
+            
         }
     }
 
@@ -37,8 +54,7 @@ public class ObjectInteraction : MonoBehaviour
 
             //ChangeButtonsState(true, false); // 공격 버튼을 활성화하고, 상호작용 버튼을 비활성화 => 위와 같은 이유로 삭제
 
-            attackButton.SetActive(true);
-            interactionButton.SetActive(false);
+            dialogueManager.SettingUI(false);
 
         }
     }
