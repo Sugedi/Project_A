@@ -20,6 +20,9 @@ public class Move_SH : MonoBehaviour
 
     private string KeyName = "Datas";
 
+    //public GameObject skillUI;
+    //public GameObject mainUI;
+
     private void Awake()
     {
         ES3.LoadInto(KeyName, datas);
@@ -31,6 +34,7 @@ public class Move_SH : MonoBehaviour
     {
         // 변수에 이걸 넣으면 되겠다. 지렸다. 나는 천재일까? 핫핫핫핫
         // 안 되쥬? ㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+        // ㅋㅋ 되죠?
         maxHP = datas.maxHP;
         attackDamage = datas.attackDamage;
         Debug.Log(datas.maxHP);
@@ -88,6 +92,25 @@ public class Move_SH : MonoBehaviour
                 // "enemy" 태그를 가진 오브젝트와 상호작용하는 코드 추가
                 //SceneManager.LoadScene("Title");
 
+            }
+
+            if (collider.CompareTag("NPC"))
+            {
+                Debug.Log("여기까지1");
+
+                // 비활성화된 게임 오브젝트 찾아오기 왤케 어려움?
+                GameObject.Find("Skill").transform.Find("SkillCanvas").gameObject.SetActive(true);
+                Debug.Log("여기까지2");
+
+                // 이거 비활성화 말고, 메인 메뉴에서 썼던 캔버스 그룹으로 껐다 켜는 게 나을 듯 하다.
+                // 웬만하면 비활성화 안 시키는 게 좋을지도..?
+                // 아직 잘 모르겠네
+                // + UI 창 켜졌을 때, 키마는 움직일 수 있게 되어있음. 모바일은 걱정 없겠지만...
+                // UI 뜨면 유저 이동, 공격 등 못하도록 하는 게 좋을 듯
+
+                GameObject mainUI = GameObject.Find("SaveCanvas");
+                mainUI.gameObject.SetActive(false);
+                Debug.Log("여기까지3");
             }
         }
     }

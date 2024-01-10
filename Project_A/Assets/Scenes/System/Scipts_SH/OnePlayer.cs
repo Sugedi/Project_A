@@ -13,20 +13,20 @@ using UnityEngine;
 
 public class OnePlayer : MonoBehaviour
 {
-    public static bool PlayerGet = false;
-    public GameObject Player;
+    public static bool playerGet = false;
+    public GameObject player;
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerGet == false)
+        if (playerGet == false)
         {
-            PlayerGet = true;
+            playerGet = true;
             Debug.Log("처음이니까 캐릭터를 소환");
         }
 
         else
         {
-            Player.gameObject.SetActive(false);
+            player.gameObject.SetActive(false);
             Debug.Log("이미 나왔으니까 캐릭터 그만 소환");
         }
         
