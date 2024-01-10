@@ -14,6 +14,16 @@ public enum ButtonType
     Back,
     Quit
 }
+/*
+public enum StageName
+{
+    BackStage,
+    Stage1,
+    Stage2,
+    Stage3,
+    Stage4 
+}
+*/
 public class MainUI : MonoBehaviour
 {
 
