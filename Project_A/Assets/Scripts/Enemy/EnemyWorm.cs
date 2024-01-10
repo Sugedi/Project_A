@@ -6,8 +6,8 @@ using UnityEngine.AI;
 
 public class EnemyWorm : MonoBehaviour
 {
-    // public float moveSpeed = 3f;
-    // public float attackRange = 5f;
+    // public float moveSpeed;
+    // public float attackRange;
     public enum Type { A, B, C };
     public Type enemyType; // 적 종류
     public float maxHealth; // 최대 체력
