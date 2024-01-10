@@ -12,6 +12,8 @@ TagManager:
   - EnemyBullet
   - FxTemporaire
   - Floor
+  - Wall
+  - Bullet
   layers:
   - Default
   - TransparentFX

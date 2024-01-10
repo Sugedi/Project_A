@@ -9,38 +9,27 @@ public class Player : MonoBehaviour
     public float speed; // 이동 속도
     public GameObject[] weapons; // 무기 배열
     public bool[] hasWeapons; // 보유한 무기 여부 배열
-    public GameObject[] grenades; // 수류탄 배열
-    public int hasGrenade; // 보유한 수류탄 개수
     public Camera followCamera; // 카메라
-
-    public int ammo; // 현재 총알 수량
-    public int coin; // 현재 코인 수량
+    public int ammo; // 현재 총알 수량    
     public int health; // 현재 체력
-
-    public int maxAmmo; // 최대 총알 수량
-    public int maxCoin; // 최대 코인 수량
+    public int maxAmmo; // 최대 총알 수량    
     public int maxHealth; // 최대 체력
-    public int maxHasGrenade; // 최대 수류탄 개수
+    
 
     // 투입 변수
 
     float hAxis; // 가로 축 입력값
     float vAxis; // 세로 축 입력값
-
     bool wDown; // 걷기 입력 여부
     bool jDown; // 점프 입력 여부
     bool fDown; // 공격 입력 여부
     bool rDown; // 재장전 입력 여부
-    bool iDown; // 상호작용 입력 여부
-    bool sDown1; // 무기 스왑1 입력 여부
-    bool sDown2; // 무기 스왑2 입력 여부
-    bool sDown3; // 무기 스왑3 입력 여부
+        
 
     // 상태 변수
 
-    bool isJump; // 점프 상태 여부
-    bool isDodge; // 회피 상태 여부
-    bool isSwap; // 무기 스왑 상태 여부
+    
+    bool isDodge; // 회피 상태 여부    
     bool isReload; // 재장전 상태 여부
     bool isFireReady = true; // 공격 가능 여부
     bool isBorder; // 벽과 충돌 여부
@@ -80,8 +69,7 @@ public class Player : MonoBehaviour
         Attack();
         Reload();
         Dodge();
-        Swap();
-        Interation();
+        
     }
 
     void GetInput()
@@ -91,11 +79,7 @@ public class Player : MonoBehaviour
         wDown = Input.GetButton("Walk"); // 걷기 입력 여부 받기
         jDown = Input.GetButtonDown("Jump"); // 점프 입력 여부 받기
         fDown = Input.GetButton("Fire1"); // 공격 입력 여부 받기
-        rDown = Input.GetButtonDown("Reload"); // 재장전 입력 여부 받기
-        iDown = Input.GetButtonDown("Interation"); // 상호작용 입력 여부 받기
-        sDown1 = Input.GetButtonDown("Swap1"); // 무기 스왑1 입력 여부 받기
-        sDown2 = Input.GetButtonDown("Swap2"); // 무기 스왑2 입력 여부 받기
-        sDown3 = Input.GetButtonDown("Swap3"); // 무기 스왑3 입력 여부 받기
+        rDown = Input.GetButtonDown("Reload"); // 재장전 입력 여부 받기                
     }
 
     // 플레이어 이동
@@ -115,7 +99,7 @@ public class Player : MonoBehaviour
         if (isDodge)
             moveVec = dodgeVec; // 회피 중이면 이동 벡터를 회피 벡터로 설정
 
-        if (isSwap || isReload || !isFireReady)
+        if (isReload || !isFireReady)
             moveVec = Vector3.zero; // 무기 스왑, 재장전, 공격 불가 상태일 때 이동 멈춤
 
         if (!isBorder)
@@ -153,8 +137,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    // 점핑 예~ 점핑 예~
-
     // 플레이어 공격 처리
     void Attack()
     {
@@ -164,7 +146,7 @@ public class Player : MonoBehaviour
         fireDelay += Time.deltaTime;
         isFireReady = equipWeapon.rate < fireDelay; // 공격 딜레이 체크
 
-        if (fDown && isFireReady && !isDodge && !isSwap)
+        if (fDown && isFireReady && !isDodge)
         {
             equipWeapon.Use(); // 무기 사용
             anim.SetTrigger(equipWeapon.type == Weapon.Type.Melee ? "doSwing" : "doShot"); // 무기 종류에 따라 애니메이션 설정
@@ -184,9 +166,8 @@ public class Player : MonoBehaviour
         if (ammo == 0)
             return;
 
-        if (rDown && !isJump && !isDodge && !isSwap && isFireReady)
-        {
-            anim.SetTrigger("doReload"); // 재장전 애니메이션 활성화
+        if (rDown && !isDodge && isFireReady)
+        {            
             isReload = true; // 재장전 중 상태 설정
 
             Invoke("ReloadOut", 3f); // 3초 후 재장전 완료 처리
@@ -205,7 +186,7 @@ public class Player : MonoBehaviour
     // 회피 구현
     void Dodge()
     {
-        if (jDown && moveVec != Vector3.zero && !isJump && !isDodge && !isSwap)
+        if (jDown && moveVec != Vector3.zero && !isDodge)
         {
             dodgeVec = moveVec; // 회피 방향 설정
             speed *= 2; // 이동 속도 증가
@@ -221,61 +202,7 @@ public class Player : MonoBehaviour
     {
         speed *= 0.5f; // 이동 속도 원래대로 감소
         isDodge = false; // 회피 완료 후 상태 설정
-    }
-
-    // 무기 스왑
-    void Swap()
-    {
-        if (sDown1 && (!hasWeapons[0] || equipWeaponIndex == 0))
-            return;
-        if (sDown2 && (!hasWeapons[1] || equipWeaponIndex == 1))
-            return;
-        if (sDown3 && (!hasWeapons[2] || equipWeaponIndex == 2))
-            return;
-
-        int weaponIndex = -1;
-        if (sDown1) weaponIndex = 0;
-        if (sDown2) weaponIndex = 1;
-        if (sDown3) weaponIndex = 2;
-
-        if ((sDown1 || sDown2 || sDown3) && !isJump && !isDodge)
-        {
-            if (equipWeapon != null)
-                equipWeapon.gameObject.SetActive(false); // 현재 장착된 무기 비활성화
-
-            equipWeaponIndex = weaponIndex;
-            equipWeapon = weapons[weaponIndex].GetComponent<Weapon>(); // 새로운 무기 장착
-            equipWeapon.gameObject.SetActive(true); // 새로운 무기 활성화
-
-            anim.SetTrigger("doSwap"); // 무기 스왑 애니메이션 활성화
-
-            isSwap = true; // 무기 스왑 중 상태 설정
-
-            Invoke("SwapOut", 0.4f); // 0.4초 후 무기 스왑 완료 처리
-        }
-    }
-
-    // 스왑 완료
-    void SwapOut()
-    {
-        isSwap = false; // 무기 스왑 완료 후 상태 설정
-    }
-
-    // 무기 상호작용
-    void Interation()
-    {
-        if (iDown && nearObject != null && !isJump && !isDodge)
-        {
-            if (nearObject.tag == "Weapon")
-            {
-                Item item = nearObject.GetComponent<Item>();
-                int weaponIndex = item.value;
-                hasWeapons[weaponIndex] = true; // 무기 획득 처리
-
-                Destroy(nearObject); // 주변 오브젝트 파괴
-            }
-        }
-    }
+    }   
 
     // 회전 고정 함수
     void FreezeRotation()
@@ -315,30 +242,30 @@ public class Player : MonoBehaviour
                     ammo += item.value;
                     if (ammo > maxAmmo)
                         ammo = maxAmmo;
-                    break;
-                case Item.Type.Coin:
-                    // 코인 아이템인 경우, 코인 수량 증가
-                    coin += item.value;
-                    if (coin > maxCoin)
-                        coin = maxCoin;
-                    break;
-                case Item.Type.Heart:
-                    // 하트 아이템인 경우, 체력 증가
-                    health += item.value;
-                    if (health > maxHealth)
-                        health = maxHealth;
-                    break;
-                case Item.Type.Grenade:
-                    // 수류탄 아이템인 경우, 수류탄 수량 증가
-                    grenades[hasGrenade].SetActive(true);
-                    hasGrenade += item.value;
-                    if (hasGrenade > maxHasGrenade)
-                        hasGrenade = maxHasGrenade;
-                    break;
+                    break;               
+                
             }
             // 파괴하는 거
             Destroy(item.gameObject);
         }
+        else if (other.tag == "Weapon")
+        {
+            Item item = other.GetComponent<Item>();
+            int weaponIndex = item.value;
+            hasWeapons[weaponIndex] = true; // 무기 획득 처리
+
+            if (equipWeapon != null)
+            {
+                equipWeapon.gameObject.SetActive(false);
+            }
+            // 새로운 무기를 장착합니다.
+            equipWeapon = weapons[weaponIndex].GetComponent<Weapon>();
+            equipWeapon.gameObject.SetActive(true);
+            equipWeaponIndex = weaponIndex;
+
+            Destroy(other.gameObject); // 주변 오브젝트 파괴
+        }
+
         // 적 총알과 충돌했을 때 처리
         else if (other.tag == "EnemyBullet")
         {
@@ -383,7 +310,6 @@ public class Player : MonoBehaviour
         // 무기와 트리거에 머물러있는 경우, 가까운 오브젝트로 설정
         if (other.tag == "Weapon")
             nearObject = other.gameObject;
-
     }
 
     // 트리거에서 벗어날 때 호출되는 함수
