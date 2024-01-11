@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -399,9 +399,7 @@ MonoBehaviour:
     maxBullet: 0
     reloadTime: 0
     range: 0
-    skill_1LV: 0
-    skill_2LV: 0
-    skill_3LV: 0
+    skillHave: []
     stage1ItemBox1: 0
     stage1ItemBox2: 0
     stage1Quest1Pro: 0
@@ -435,13 +433,14 @@ GameObject:
   - component: {fileID: 576628676}
   - component: {fileID: 576628675}
   - component: {fileID: 576628674}
+  - component: {fileID: 576628678}
   m_Layer: 5
   m_Name: SkillCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &576628674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -510,20 +509,32 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 576628673}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.91}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 650534830}
-  m_Father: {fileID: 1015332511}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -1.7389998, y: -1}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!225 &576628678
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576628673}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &643202002
 GameObject:
   m_ObjectHideFlags: 0
@@ -1352,38 +1363,6 @@ Transform:
   m_Father: {fileID: 806691447}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1015332510
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1015332511}
-  m_Layer: 0
-  m_Name: Skill
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1015332511
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1015332510}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.7389998, y: 1, z: -2.91}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 576628677}
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1058495762
 GameObject:
   m_ObjectHideFlags: 0
@@ -1901,9 +1880,7 @@ MonoBehaviour:
     maxBullet: 0
     reloadTime: 0
     range: 0
-    skill_1LV: 1
-    skill_2LV: 0
-    skill_3LV: 0
+    skillHave: []
     stage1ItemBox1: 0
     stage1ItemBox2: 0
     stage1Quest1Pro: 0
@@ -2055,8 +2032,9 @@ GameObject:
   - component: {fileID: 1911835668}
   - component: {fileID: 1911835671}
   - component: {fileID: 1911835669}
+  - component: {fileID: 1911835672}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: SkillNPC
   m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2140,6 +2118,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1911835672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911835667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd4040e26318163488d423df8a04c4a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillCanvas: {fileID: 576628678}
+  mainCanvas: {fileID: 2060069277}
 --- !u!1 &2060069272
 GameObject:
   m_ObjectHideFlags: 0
@@ -2152,6 +2144,7 @@ GameObject:
   - component: {fileID: 2060069275}
   - component: {fileID: 2060069274}
   - component: {fileID: 2060069273}
+  - component: {fileID: 2060069277}
   m_Layer: 5
   m_Name: SaveCanvas
   m_TagString: Untagged
@@ -2243,3 +2236,15 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!225 &2060069277
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060069272}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

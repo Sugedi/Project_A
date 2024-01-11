@@ -5,20 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class Move_SH : MonoBehaviour
 {
+    // 불변하는 플레이어 스탯
     public float moveSpeed = 5f;
     public float interactionDistance = 2f;
 
+    // 데이터 매니저에서 불러오는 플레이어 스탯
     public int maxHP;
     public float attackDamage;
 
-    // 데이터 묶음?을 저장하는 공간 선언
+    // 데이터 매니저에서 데이터를 불러오기 위한 초석
     public Datas datas;
     private string KeyName = "Datas";
 
-    //public GameObject skillUI;
-    //public GameObject mainUI;
 
-    private void Start() 
+
+    private void Start()
     {
         // 게임 시작 시, 캐릭터가 저장된 자신의 스탯을 불러옴
         ES3.LoadInto(KeyName, datas);
@@ -84,11 +85,11 @@ public class Move_SH : MonoBehaviour
 
             if (collider.CompareTag("NPC"))
             {
-                Debug.Log("여기까지1");
 
                 // 비활성화된 게임 오브젝트 찾아오기 왤케 어려움?
-                GameObject.Find("Skill").transform.Find("SkillCanvas").gameObject.SetActive(true);
-                Debug.Log("여기까지2");
+                //GameObject.Find("Skill").transform.Find("SkillCanvas").gameObject.SetActive(true);
+
+                GameObject.Find("SkillNPC").GetComponent<SkillNPC>().Interact();
 
                 // 이거 비활성화 말고, 메인 메뉴에서 썼던 캔버스 그룹으로 껐다 켜는 게 나을 듯 하다.
                 // 웬만하면 비활성화 안 시키는 게 좋을지도..?
@@ -96,9 +97,7 @@ public class Move_SH : MonoBehaviour
                 // + UI 창 켜졌을 때, 키마는 움직일 수 있게 되어있음. 모바일은 걱정 없겠지만...
                 // UI 뜨면 유저 이동, 공격 등 못하도록 하는 게 좋을 듯
 
-                GameObject mainUI = GameObject.Find("SaveCanvas");
-                mainUI.gameObject.SetActive(false);
-                Debug.Log("여기까지3");
+                //GameObject mainUI = GameObject.Find("SaveCanvas");
             }
         }
 
@@ -117,4 +116,6 @@ public class Move_SH : MonoBehaviour
         maxHP = datas.maxHP;
         attackDamage = datas.attackDamage;
     }
+
+
 }
