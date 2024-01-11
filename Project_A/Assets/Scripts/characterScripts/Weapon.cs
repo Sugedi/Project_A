@@ -19,6 +19,12 @@ public class Weapon : MonoBehaviour
     public int buckShotBullets = 3; // 한 번에 발사되는 총알의 수
     public float buckShotSpreadAngle = 30f; // 총알 사이의 각도
 
+    // 다리부수기 스킬 적용을 위한 속성
+    public bool isLegBreakActive = false;
+    public int legBreakBullets = 5;
+    public float legBreakSpreadAngle = 45f;
+
+
     public Transform bulletPos; // 총알 발사 위치
     public GameObject bullet; // 총알 프리팹    
     public Player player; // 무기를 소유하고 있는 플레이어의 참조입니다.
@@ -64,6 +70,7 @@ public class Weapon : MonoBehaviour
     {
         // 산탄 사격 스킬 활성화 여부에 따라 발사할 총알의 수를 결정합니다.
         int totalBullets = isBuckShotActive ? buckShotBullets : 1;
+        int totalBullets2 = isLegBreakActive ? legBreakBullets : 1;
 
         // 발사할 총알의 수만큼 반복합니다.
         for (int i = 0; i < totalBullets; i++)
@@ -93,8 +100,36 @@ public class Weapon : MonoBehaviour
                 spreadRotation = Quaternion.Euler(0, angle, 0);
             }
             bulletRigid.velocity = bulletPos.rotation * spreadRotation * Vector3.forward * 50;
-        }        
+        }
 
+        for (int i = 0; i < totalBullets2; i++)
+        {
+            // 총알을 생성하고 데미지에 배율을 적용합니다.
+
+            // Instantiate 대신 풀에서 총알을 가져옵니다.
+            GameObject instantBullet = bulletPool.Get();
+            instantBullet.transform.position = bulletPos.position;
+            instantBullet.transform.rotation = bulletPos.rotation;
+
+            Bullet bulletScript = instantBullet.GetComponent<Bullet>();
+            bulletScript.SetPool(bulletPool); // 풀을 설정합니다.
+            bulletScript.damage = bulletScript.baseDamage * damageMultiplier; //데미지 배율을 적용합니다.        
+
+            // 사거리(생명 시간) 설정을 추가합니다.
+            bulletScript.lifeTime = 0.5f;
+
+            // #1. 총알 발사        
+            Rigidbody bulletRigid = instantBullet.GetComponent<Rigidbody>();
+            Quaternion spreadRotation = Quaternion.identity;
+            
+            if (isLegBreakActive && totalBullets2 > 1)
+            {
+                // 총알 간의 각도를 계산합니다. 중앙 총알을 기준으로 좌우로 발사됩니다.
+                float angle = -legBreakSpreadAngle / 2 + legBreakSpreadAngle * (i / (float)(totalBullets2 - 1));
+                spreadRotation = Quaternion.Euler(0, angle, 0);
+            }
+            bulletRigid.velocity = bulletPos.rotation * spreadRotation * Vector3.forward * 50;
+        }
         // 공격 속도 배율을 고려하여 다음 총알 발사까지 대기합니다.
         yield return new WaitForSeconds(1f / (baseAttackSpeed * attackSpeedMultiplier));
        

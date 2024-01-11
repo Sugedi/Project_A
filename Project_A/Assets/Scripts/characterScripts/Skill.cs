@@ -31,4 +31,9 @@ public class Skill : ScriptableObject
     public bool isBuckShot = false; // 산탄 사격 스킬 활성화 여부입니다.
     public int buckShotCount = 3; // 한 번에 발사되는 총알의 수입니다.
     public float buckShotSpreadAngle = 30f; // 총알 사이의 각도입니다.
+
+    // 다리부수기 스킬 속성
+    public bool isLegBreak = false; // 다리부수기 스킬 활성화 여부
+    public int legBreakCount = 5; // 발사될 총알의 수
+    public float legBreakSpreadAngle = 45f; // 총알 사이의 각도    
 }

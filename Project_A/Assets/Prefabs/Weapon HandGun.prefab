@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1804690618523998051}
   - component: {fileID: 1804690618523998050}
   - component: {fileID: 2998082888899211801}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Weapon HandGun
   m_TagString: Weapon
   m_Icon: {fileID: 0}

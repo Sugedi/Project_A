@@ -333,8 +333,11 @@ public class Player : MonoBehaviour
         float totalDamageMultiplier = 1f;
         float totalAttackSpeedMultiplier = 1f;
         bool buckShotActive = false; // 산탄 사격 스킬 활성화 여부
+        bool legBreakActive = false; // 다리부수기 스킬 활성화 여부
         int buckShotBullets = 0; // 산탄 사격 시 발사될 추가 총알 수
         float buckShotAngle = 0f; // 산탄 사격의 총알 간 각도
+        int legBreakBullets = 0; // 다리부수기 스킬 시 발사될 추가 총알 수
+        float legBreakSpreadAngle = 0f; // 다리부수기 스킬의 총알 간 각도
 
         // 활성화된 스킬들을 순회하며 데미지 및 공격 속도 배율을 계산합니다.
         foreach (var skill in activeSkills)
@@ -351,6 +354,13 @@ public class Player : MonoBehaviour
                     buckShotBullets = skill.buckShotCount;
                     buckShotAngle = skill.buckShotSpreadAngle;
                 }
+
+                if (skill.isLegBreak)
+                {
+                    legBreakActive = true; // 다리부수기 스킬을 활성화 상태로 설정
+                    legBreakBullets = skill.legBreakCount; // 발사될 총알 수
+                    legBreakSpreadAngle = skill.legBreakSpreadAngle; // 총알 간의 각도
+                }
             }
         }
 
@@ -360,10 +370,29 @@ public class Player : MonoBehaviour
 
         // 산탄 사격 스킬이 활성화되었다면, 장착된 무기에 산탄 사격 설정을 적용함
         equipWeapon.isBuckShotActive = buckShotActive;
+        equipWeapon.isLegBreakActive = legBreakActive;
+
         if (buckShotActive)
         {
             equipWeapon.buckShotBullets = buckShotBullets; // 발사될 총알 수
             equipWeapon.buckShotSpreadAngle = buckShotAngle; // 총알 간의 각도
+        }
+        else
+        {   // 산탄사격 스킬이 비활성화되면 기본값으로 재설정합니다.         
+            equipWeapon.buckShotBullets = 0;
+            equipWeapon.buckShotSpreadAngle = 0f;
+        }
+
+        if (legBreakActive)
+        {
+            equipWeapon.legBreakBullets = legBreakBullets;
+            equipWeapon.legBreakSpreadAngle = legBreakSpreadAngle;
+        }
+        else
+        {
+            // 다리부수기 스킬이 비활성화되면 기본값으로 재설정합니다.
+            equipWeapon.legBreakBullets = 0;
+            equipWeapon.legBreakSpreadAngle = 0f;
         }
     }
 

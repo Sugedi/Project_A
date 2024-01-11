@@ -8,7 +8,8 @@ public class Bullet : MonoBehaviour
     public float baseDamage; // 총알의 기본 공격력
     public float damage; // 총알의 공격력  
     public float lifeTime; // 총알의 최대 생명 시간 (사거리 제한)
-    private float lifeTimer; // 현재까지의 생명 시간을 추적하는 타이머
+    private float lifeTimer; // 현재까지의 생명 시간을 추적하는 타이머    
+
     private ObjectPool<GameObject> pool;
     
     public void SetPool(ObjectPool<GameObject> pool)
@@ -53,7 +54,8 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.tag == "Floor" || collision.gameObject.tag == "Wall")
         {
             ReturnToPool();
-        }
+        }        
+    
     }
 
     // 트리거 충돌 시 호출되는 메서드
