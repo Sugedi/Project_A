@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool; // ObjectPool을 사용하기 위한 네임스페이스 추가
 
 public class Weapon : MonoBehaviour
 {
@@ -21,6 +22,32 @@ public class Weapon : MonoBehaviour
     public Transform bulletPos; // 총알 발사 위치
     public GameObject bullet; // 총알 프리팹    
     public Player player; // 무기를 소유하고 있는 플레이어의 참조입니다.
+
+    // 총알 오브젝트 풀을 추가합니다.
+    private ObjectPool<GameObject> bulletPool;
+
+    void Awake()
+    {
+        // 총알 풀을 초기화합니다.
+        bulletPool = new ObjectPool<GameObject>(
+            createFunc: () => {
+                var newBullet = Instantiate(bullet);
+                newBullet.SetActive(false); // 비활성화 상태로 시작합니다.
+                return newBullet;
+            },
+            actionOnGet: (obj) => {
+                obj.SetActive(true); // 활성화 상태로 변경합니다.
+            },
+            actionOnRelease: (obj) => {
+                obj.SetActive(false); // 비활성화 상태로 변경합니다.
+            },
+            actionOnDestroy: (obj) => {
+                Destroy(obj); // 오브젝트를 파괴합니다.
+            },
+            defaultCapacity: 30, // 기본 용량
+            maxSize: 120 // 최대 용량
+        );
+    }
 
     public void Use()
     // 무기를 사용하는 메서드입니다. 원거리 공격을 실행합니다.
@@ -43,9 +70,14 @@ public class Weapon : MonoBehaviour
         {
             // 총알을 생성하고 데미지에 배율을 적용합니다.
 
-            GameObject instantBullet = Instantiate(bullet, bulletPos.position, bulletPos.rotation);
+            // Instantiate 대신 풀에서 총알을 가져옵니다.
+            GameObject instantBullet = bulletPool.Get();
+            instantBullet.transform.position = bulletPos.position;
+            instantBullet.transform.rotation = bulletPos.rotation;
+
             Bullet bulletScript = instantBullet.GetComponent<Bullet>();
-            bulletScript.damage *= damageMultiplier; //데미지 배율을 적용합니다.        
+            bulletScript.SetPool(bulletPool); // 풀을 설정합니다.
+            bulletScript.damage = bulletScript.baseDamage * damageMultiplier; //데미지 배율을 적용합니다.        
 
             // 사거리(생명 시간) 설정을 추가합니다.
             bulletScript.lifeTime = 0.5f;

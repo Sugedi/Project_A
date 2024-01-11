@@ -14,4 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: SpeedUp
   damageMultiplier: 1
-  attackSpeedMultiplier: 4
+  attackSpeedMultiplier: 2
+  reloadTimeMultiplier: 1
+  isBuckShot: 0
+  buckShotCount: 3
+  buckShotSpreadAngle: 30

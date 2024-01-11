@@ -27,8 +27,8 @@ TagManager:
   - EnemyBullet
   - Weapon
   - Bullet
-  - 
-  - 
+  - Enemydead
+  - Item
   - 
   - 
   - 
