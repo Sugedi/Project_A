@@ -8,16 +8,11 @@ public class Move_SH : MonoBehaviour
     public float moveSpeed = 5f;
     public float interactionDistance = 2f;
 
-
-    // 데이터를 저장하는 오브젝트를 불러와
-    GameObject playerStat;
-
-    // 데이터 묶음?을 저장하는 공간 선언
-    public Datas datas;
-
     public int maxHP;
     public float attackDamage;
 
+    // 데이터 묶음?을 저장하는 공간 선언
+    public Datas datas;
     private string KeyName = "Datas";
 
     //public GameObject skillUI;
@@ -25,16 +20,15 @@ public class Move_SH : MonoBehaviour
 
     private void Awake()
     {
-        ES3.LoadInto(KeyName, datas);
+        
         // 현재 저장된 플레이어 스탯을 불러오고 싶어
         //playerStat = GameObject.Find("DataManager");
         //datas = playerStat.GetComponent<DataManager>().datas;
     }
     private void Start() 
     {
-        // 변수에 이걸 넣으면 되겠다. 지렸다. 나는 천재일까? 핫핫핫핫
-        // 안 되쥬? ㅋㅋㅋㅋㅋㅋㅋㅋㅋ
-        // ㅋㅋ 되죠?
+        // 게임 시작 시, 캐릭터가 저장된 자신의 스탯을 불러옴
+        ES3.LoadInto(KeyName, datas);
         maxHP = datas.maxHP;
         attackDamage = datas.attackDamage;
         Debug.Log(datas.maxHP);
@@ -113,5 +107,11 @@ public class Move_SH : MonoBehaviour
                 Debug.Log("여기까지3");
             }
         }
+
+        // 상호작용 시마다 데이터를 불러와 플레이어 몸에 적용해준다. 개꿀~
+        ES3.LoadInto(KeyName, datas);
+
+        maxHP = datas.maxHP;
+        attackDamage = datas.attackDamage;
     }
 }

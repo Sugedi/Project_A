@@ -26,15 +26,11 @@ public class OnePlayer : MonoBehaviour
 
         else
         {
-            player.gameObject.SetActive(false);
+            //player.gameObject.SetActive(false);
+            Destroy(player);
             Debug.Log("이미 나왔으니까 캐릭터 그만 소환");
         }
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

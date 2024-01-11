@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -278,7 +278,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &508978696
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -388,6 +388,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   interactionDistance: 2
+  maxHP: 0
+  attackDamage: 0
   datas:
     Soul: 0
     maxHP: 3
@@ -408,8 +410,6 @@ MonoBehaviour:
     stage1Puzzle2: 0
     stage1BossClear: 0
     stage1Tutorial: 0
-  maxHP: 0
-  attackDamage: 0
   stage_1: 1
 --- !u!114 &508978702
 MonoBehaviour:
@@ -1230,7 +1230,6 @@ GameObject:
   m_Component:
   - component: {fileID: 806691447}
   - component: {fileID: 806691448}
-  - component: {fileID: 806691449}
   m_Layer: 0
   m_Name: SaveTest
   m_TagString: Untagged
@@ -1269,20 +1268,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f57c7ba7410f242b91857965b818fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: 
---- !u!114 &806691449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 806691446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35946bf91885c43438ee3a25069ef3c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 508978694}
 --- !u!1 &934258737
 GameObject:
   m_ObjectHideFlags: 0
