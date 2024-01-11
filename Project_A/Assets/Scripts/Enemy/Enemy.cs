@@ -16,6 +16,11 @@ public class Enemy : MonoBehaviour
     public bool isChase; // 추격 상태 여부
     public bool isAttack; // 공격 상태 여부
 
+    //==============================================================
+    public GameObject itemprefab; // 드랍 아이템 프리펩 등록
+    [SerializeField] Transform dropPosition; // 드랍 아이템을 생성 시킬 위치
+    //==============================================================
+
     Rigidbody rigid; // Rigidbody 컴포넌트
     BoxCollider boxCollider; // BoxCollider 컴포넌트
     Material mat; // Material 컴포넌트
@@ -153,28 +158,32 @@ public class Enemy : MonoBehaviour
         FreezeVelocity();
     }
 
-    // 피격 시 발생하는 충돌 이벤트 처리 함수
-    void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        // 만약 충돌한 오브젝트의 태그가 "Bullet"인 경우
-        if (other.tag == "Bullet") // 원거리 공격을 받았을 때
+        if (collision.gameObject.tag == "Bullet") // 원거리 공격을 받았을 때
         {
             // 충돌한 오브젝트에서 Bullet 컴포넌트 획득
-            Bullet bullet = other.GetComponent<Bullet>();
+            Bullet bullet = collision.gameObject.GetComponent<Bullet>();
 
             // 현재 체력에서 총알의 데미지만큼 감소
             curHealth -= bullet.damage;
 
             // 공격으로 받은 위치 벡터 계산
-            Vector3 reactVec = transform.position - other.transform.position;
+            Vector3 reactVec = transform.position - collision.transform.position;
 
             // 충돌한 총알 오브젝트 파괴
-            Destroy(other.gameObject);
+            Destroy(collision.gameObject);
 
             // OnDamage 코루틴 실행
             StartCoroutine(OnDamage(reactVec));
         }
-        else if (other.tag == "Player") // 교수님 감사합니다..
+    }
+
+
+    // 피격 시 발생하는 충돌 이벤트 처리 함수
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player") // 교수님 감사합니다..
         {
             isChase = true;
             anim.SetBool("isWalk", true);
@@ -193,6 +202,7 @@ public class Enemy : MonoBehaviour
     // 피격 시 발생하는 코루틴 함수
     IEnumerator OnDamage(Vector3 reactVec)
     {
+        
         // 피격 시 일시적으로 캐릭터 색상을 빨간색으로 변경
         // mat.color = Color.red;
         yield return new WaitForSeconds(0.1f);
@@ -201,34 +211,43 @@ public class Enemy : MonoBehaviour
         if (curHealth > 0)
         {
             // mat.color = Color.white;
-            isChase = true;
-            // nav.enabled = false;
+            isChase = false;
             anim.SetBool("doGetHit", true);
+            // nav.enabled = false;
+            
         }
         // 현재 체력이 0 이하인 경우
         else
         {
             // 색상을 회색으로 변경하고 레이어를 "Dead"로 설정
             // mat.color = Color.gray;
+            StopAllCoroutines();
             isChase = true;
-            nav.enabled = false;
-            anim.SetBool("doGetHit", true);
+            //nav.enabled = false;
+            //anim.SetBool("doGetHit", true);
 
-            gameObject.layer = 14; // 레이어를 변경하여 다시 공격을 받지 않도록 설정
+            // gameObject.layer = 12; // 레이어를 변경하여 다시 공격을 받지 않도록 설정
 
             // 추격 중지, 네비게이션 비활성화, 죽음 애니메이션 재생
             isChase = false;
-            nav.enabled = false;
+            //nav.enabled = false;
             anim.SetTrigger("doDie");
 
             // 피격된 방향 벡터를 정규화하고 위로 조금 이동시켜줌
             reactVec = reactVec.normalized;
             reactVec += Vector3.up;
 
-            // 리지드바디에 피격 방향으로의 작은 힘을 가하고, 추락 애니메이션 재생 후 4초 후에 게임 오브젝트 파괴
+            // 리지드바디에 피격 방향으로의 작은 힘을 가하고
             rigid.AddForce(reactVec * 5, ForceMode.Impulse);
 
-            Destroy(gameObject, 4);
+            // _item이라는 게임 오브젝트 변수 선언 + itemprefab을 생성해서 _item에 할당
+            GameObject _item = Instantiate(itemprefab);
+            // _item의 위치를 드랍 위치로 변경 시킴
+            _item.transform.position = dropPosition.position;
+
+            // 2초 뒤 몹 사망
+            Destroy(gameObject, 2);
+            
         }
     }
 }

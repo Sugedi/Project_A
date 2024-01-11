@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c79d146dce9cd5748bdf26322cb44c16, type: 3}
+  m_Name: Ticket
+  m_EditorClassIdentifier: 
+  itemName: Ticket
+  itemType: 0
+  itemImage: {fileID: 21300000, guid: 9d986f49ce6cd534192f14632e916df7, type: 3}
+  itemPrefab: {fileID: 1297172181180802, guid: d8dad9d2d761e460bb0a3f03ef8fccb8, type: 3}
