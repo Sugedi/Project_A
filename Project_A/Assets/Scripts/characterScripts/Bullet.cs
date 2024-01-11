@@ -6,8 +6,23 @@ public class Bullet : MonoBehaviour
 {
     public float damage; // 총알의 공격력
     public bool isMelee; // 근접 공격인지 여부를 나타내는 플래그
+    public float lifeTime; // 총알의 최대 생명 시간 (사거리 제한)
+    private float lifeTimer; // 현재까지의 생명 시간을 추적하는 타이머
 
-    
+    void Start()
+    {
+        lifeTimer = lifeTime; // 타이머를 최대 생명 시간으로 초기화합니다.
+    }
+
+    void Update()
+    {
+        // 매 프레임마다 타이머를 감소시킵니다.
+        lifeTimer -= Time.deltaTime;
+        if (lifeTimer <= 0) // 타이머가 0 이하가 되면 총알을 파괴합니다.
+        {
+            Destroy(gameObject);
+        }
+    }
 
     // 충돌 시 호출되는 메서드
     void OnCollisionEnter(Collision collision)

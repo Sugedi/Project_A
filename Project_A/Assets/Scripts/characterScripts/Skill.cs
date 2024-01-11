@@ -22,5 +22,13 @@ public class Skill : ScriptableObject
 
     // 스킬이 적용될 때 플레이어 또는 무기의 공격 속도에 곱해지는 배율입니다.
     // 실제 스킬에 적용할 배율은 여기서 적는게 아니고 에셋을 만들어서 그거에 적음
-    public float attackSpeedMultiplier = 1f; 
+    public float attackSpeedMultiplier = 1f;
+
+    // 재장전 시간 배율을 추가합니다.
+    public float reloadTimeMultiplier = 1f;
+
+    // 산탄 사격 스킬을 위한 새로운 속성
+    public bool isBuckShot = false; // 산탄 사격 스킬 활성화 여부입니다.
+    public int buckShotCount = 3; // 한 번에 발사되는 총알의 수입니다.
+    public float buckShotSpreadAngle = 30f; // 총알 사이의 각도입니다.
 }

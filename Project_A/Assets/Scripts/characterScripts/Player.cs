@@ -163,23 +163,29 @@ public class Player : MonoBehaviour
     // 재장전
     void Reload()
     {
-        if (equipWeapon == null)
-            return;
-
-        if (equipWeapon.type == Weapon.Type.Melee)
-            return;
-
-        if (ammo == 0)
+        if (equipWeapon == null || equipWeapon.type == Weapon.Type.Melee || ammo == 0)
             return;
 
         if (rDown && !isDodge && isFireReady)
         {            
             isReload = true; // 재장전 중 상태 설정
-
-            Invoke("ReloadOut", 3f); // 3초 후 재장전 완료 처리
+            float reloadTime = 3f * GetReloadTimeMultiplier(); // 재장전 시간을 계산합니다.
+            Invoke("ReloadOut", reloadTime); // 3초 후 재장전 완료 처리
         }
     }
-
+    float GetReloadTimeMultiplier()
+    {
+        // 기본적으로는 1 (즉, 재장전 시간에 변화가 없음).
+        float reloadMultiplier = 1f;
+        foreach (var skill in activeSkills)
+        {
+            if (skill != null)
+            {
+                reloadMultiplier *= skill.reloadTimeMultiplier;
+            }
+        }
+        return reloadMultiplier;
+    }
     // 재장전 처리 완료
     void ReloadOut()
     {
@@ -326,6 +332,9 @@ public class Player : MonoBehaviour
         // 데미지와 공격 속도 배율을 기본 1로 설정합니다.
         float totalDamageMultiplier = 1f;
         float totalAttackSpeedMultiplier = 1f;
+        bool buckShotActive = false; // 산탄 사격 스킬 활성화 여부
+        int buckShotBullets = 0; // 산탄 사격 시 발사될 추가 총알 수
+        float buckShotAngle = 0f; // 산탄 사격의 총알 간 각도
 
         // 활성화된 스킬들을 순회하며 데미지 및 공격 속도 배율을 계산합니다.
         foreach (var skill in activeSkills)
@@ -334,12 +343,28 @@ public class Player : MonoBehaviour
             {
                 totalDamageMultiplier *= skill.damageMultiplier;
                 totalAttackSpeedMultiplier *= skill.attackSpeedMultiplier;
+
+                // 산탄 사격 스킬 활성화 여부를 체크하고 관련 값을 설정함
+                if (skill.isBuckShot)
+                {
+                    buckShotActive = true;
+                    buckShotBullets = skill.buckShotCount;
+                    buckShotAngle = skill.buckShotSpreadAngle;
+                }
             }
         }
 
         // 계산된 배율을 장착된 무기에 적용합니다.
         equipWeapon.damageMultiplier = totalDamageMultiplier;
         equipWeapon.attackSpeedMultiplier = totalAttackSpeedMultiplier;
+
+        // 산탄 사격 스킬이 활성화되었다면, 장착된 무기에 산탄 사격 설정을 적용함
+        equipWeapon.isBuckShotActive = buckShotActive;
+        if (buckShotActive)
+        {
+            equipWeapon.buckShotBullets = buckShotBullets; // 발사될 총알 수
+            equipWeapon.buckShotSpreadAngle = buckShotAngle; // 총알 간의 각도
+        }
     }
 
     // 새로운 스킬을 추가하는 메서드입니다.

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17276956, g: 0.21589413, b: 0.29782727, a: 1}
+  m_IndirectSpecularColor: {r: 0.17276934, g: 0.21589369, b: 0.2978267, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1246,6 +1246,9 @@ MonoBehaviour:
   attackSpeedMultiplier: 1
   maxAmmo: 30
   curAmmo: 30
+  isBuckShotActive: 0
+  buckShotBullets: 3
+  buckShotSpreadAngle: 30
   meleeArea: {fileID: 0}
   trailEffect: {fileID: 0}
   bulletPos: {fileID: 110506874}
@@ -2367,7 +2370,8 @@ MonoBehaviour:
   activeSkills:
   - {fileID: 11400000, guid: 60119781f3eceed4aa395152295b4043, type: 2}
   - {fileID: 11400000, guid: c9a55f0ba0d6ad0419cb6fd9a213a5f9, type: 2}
-  equipWeapon: {fileID: 335916396}
+  - {fileID: 11400000, guid: 9d45f889e5afcbd47a01436c66d31bb0, type: 2}
+  - {fileID: 11400000, guid: 456641c459d606948a2813c94e18fad5, type: 2}
 --- !u!1001 &722716000
 PrefabInstance:
   m_ObjectHideFlags: 0
