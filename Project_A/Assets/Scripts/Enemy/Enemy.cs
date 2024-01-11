@@ -30,7 +30,9 @@ public class Enemy : MonoBehaviour
         nav = GetComponent<NavMeshAgent>();
         anim = GetComponentInChildren<Animator>();
 
-        Invoke("ChaseStart", 1);  // 1초 뒤에 추격 시작
+        target = FindObjectOfType<Player>().GetComponent<Transform>();
+
+        // Invoke("ChaseStart", 1);  // 1초 뒤에 추격 시작
     }
 
     void ChaseStart()
@@ -40,11 +42,10 @@ public class Enemy : MonoBehaviour
     }
     void Update()
     {
-        //if(nav.enabled)
-        //{
-        //    nav.SetDestination(target.position);
-        //    nav.isStopped = !isChase;
-        //}
+        if (isChase)
+            nav.SetDestination(target.position);
+            nav.isStopped = !isChase;
+            transform.LookAt(target);
     }
 
     void FreezeVelocity()
@@ -65,8 +66,8 @@ public class Enemy : MonoBehaviour
         switch (enemyType)
         {
             case Type.A:
-                targetRadius = 0.5f;
-                targetRange = 0.5f;
+                targetRadius = 1f;
+                targetRange = 1f;
                 break;
             case Type.B:
                 targetRadius = 1f;
@@ -155,23 +156,8 @@ public class Enemy : MonoBehaviour
     // 피격 시 발생하는 충돌 이벤트 처리 함수
     void OnTriggerEnter(Collider other)
     {
-        // 만약 충돌한 오브젝트의 태그가 "Melee"인 경우
-        if (other.tag == "Melee")  // 근접 공격을 받았을 때
-        {
-            // 충돌한 오브젝트에서 Weapon 컴포넌트 획득
-            Weapon weapon = other.GetComponent<Weapon>();
-
-            // 현재 체력에서 무기의 데미지만큼 감소
-            curHealth -= weapon.damage;
-
-            // 공격으로 받은 위치 벡터 계산
-            Vector3 reactVec = transform.position - other.transform.position;
-
-            // OnDamage 코루틴 실행
-            StartCoroutine(OnDamage(reactVec));
-        }
         // 만약 충돌한 오브젝트의 태그가 "Bullet"인 경우
-        else if (other.tag == "Bullet") // 원거리 공격을 받았을 때
+        if (other.tag == "Bullet") // 원거리 공격을 받았을 때
         {
             // 충돌한 오브젝트에서 Bullet 컴포넌트 획득
             Bullet bullet = other.GetComponent<Bullet>();
@@ -187,6 +173,20 @@ public class Enemy : MonoBehaviour
 
             // OnDamage 코루틴 실행
             StartCoroutine(OnDamage(reactVec));
+        }
+        else if (other.tag == "Player") // 교수님 감사합니다..
+        {
+            isChase = true;
+            anim.SetBool("isWalk", true);
+        }
+    }
+
+    private void OnTriggerExit(Collider other) // 정말 감사합니다 교수님..
+    {
+        if (other.tag == "Player")
+        {
+            isChase = false;
+            anim.SetBool("isWalk", false);
         }
     }
 

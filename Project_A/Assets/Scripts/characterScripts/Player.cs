@@ -155,7 +155,7 @@ public class Player : MonoBehaviour
         if (fDown && isFireReady && !isDodge)
         {            
             equipWeapon.Use(); // 무기 사용
-            anim.SetTrigger(equipWeapon.type == Weapon.Type.Melee ? "doSwing" : "doShot"); // 무기 종류에 따라 애니메이션 설정
+            anim.SetTrigger("doShot"); // 무기 종류에 따라 애니메이션 설정
             fireDelay = 0; // 딜레이 초기화
         }
     }
@@ -163,7 +163,7 @@ public class Player : MonoBehaviour
     // 재장전
     void Reload()
     {
-        if (equipWeapon == null || equipWeapon.type == Weapon.Type.Melee || ammo == 0)
+        if (equipWeapon == null || ammo == 0)
             return;
 
         if (rDown && !isDodge && isFireReady)

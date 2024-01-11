@@ -42,7 +42,7 @@ public class EnemyWorm : MonoBehaviour
     }
     void Update()
     {
-        if(nav.enabled)
+        if (nav.enabled)
         {
             nav.SetDestination(target.position);
             nav.isStopped = !isChase;
@@ -158,24 +158,9 @@ public class EnemyWorm : MonoBehaviour
 
     // 피격 시 발생하는 충돌 이벤트 처리 함수
     void OnTriggerEnter(Collider other)
-    {
-        // 만약 충돌한 오브젝트의 태그가 "Melee"인 경우
-        if (other.tag == "Melee")  // 근접 공격을 받았을 때
-        {
-            // 충돌한 오브젝트에서 Weapon 컴포넌트 획득
-            Weapon weapon = other.GetComponent<Weapon>();
-
-            // 현재 체력에서 무기의 데미지만큼 감소
-            curHealth -= weapon.damage;
-
-            // 공격으로 받은 위치 벡터 계산
-            Vector3 reactVec = transform.position - other.transform.position;
-
-            // OnDamage 코루틴 실행
-            StartCoroutine(OnDamage(reactVec));
-        }
+    {        
         // 만약 충돌한 오브젝트의 태그가 "Bullet"인 경우
-        else if (other.tag == "Bullet") // 원거리 공격을 받았을 때
+        if (other.tag == "Bullet") // 원거리 공격을 받았을 때
         {
             // 충돌한 오브젝트에서 Bullet 컴포넌트 획득
             Bullet bullet = other.GetComponent<Bullet>();

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float damage; // 총알의 공격력
-    public bool isMelee; // 근접 공격인지 여부를 나타내는 플래그
+    public float damage; // 총알의 공격력  
     public float lifeTime; // 총알의 최대 생명 시간 (사거리 제한)
     private float lifeTimer; // 현재까지의 생명 시간을 추적하는 타이머
 
@@ -40,7 +39,7 @@ public class Bullet : MonoBehaviour
     // 트리거 충돌 시 호출되는 메서드
     void OnTriggerEnter(Collider other)
     {
-        if (!isMelee && other.gameObject.tag == "Wall") // 원거리 공격이면서 벽과 충돌한 경우
+        if (other.gameObject.tag == "Wall") // 원거리 공격이면서 벽과 충돌한 경우
         {
             Destroy(gameObject); // 총알 즉시 제거
         }
