@@ -1229,7 +1229,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 806691447}
-  - component: {fileID: 806691448}
   m_Layer: 0
   m_Name: SaveTest
   m_TagString: Untagged
@@ -1256,18 +1255,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &806691448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 806691446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71f57c7ba7410f242b91857965b818fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &934258737
 GameObject:
   m_ObjectHideFlags: 0
@@ -1925,6 +1912,7 @@ MonoBehaviour:
     stage1Puzzle2: 0
     stage1BossClear: 0
     stage1Tutorial: 0
+  stat: {fileID: 0}
 --- !u!4 &1622649317
 Transform:
   m_ObjectHideFlags: 0

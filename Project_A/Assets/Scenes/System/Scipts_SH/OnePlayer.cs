@@ -26,8 +26,8 @@ public class OnePlayer : MonoBehaviour
 
         else
         {
-            //player.gameObject.SetActive(false);
-            Destroy(player);
+            player.gameObject.SetActive(false);
+            //Destroy(player); // 가끔 작동을 안해 쉬바
             Debug.Log("이미 나왔으니까 캐릭터 그만 소환");
         }
         

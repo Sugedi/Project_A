@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 352046497}
   - component: {fileID: 352046499}
   - component: {fileID: 352046498}
+  - component: {fileID: 352046500}
   m_Layer: 5
   m_Name: NewGame
   m_TagString: Untagged
@@ -335,6 +336,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 352046496}
   m_CullTransparentMesh: 1
+--- !u!225 &352046500
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352046496}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &389425730
 GameObject:
   m_ObjectHideFlags: 0
@@ -946,6 +959,7 @@ GameObject:
   - component: {fileID: 724426172}
   - component: {fileID: 724426174}
   - component: {fileID: 724426173}
+  - component: {fileID: 724426175}
   m_Layer: 5
   m_Name: Continue
   m_TagString: Untagged
@@ -1012,6 +1026,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 724426171}
   m_CullTransparentMesh: 1
+--- !u!225 &724426175
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724426171}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &724792073
 GameObject:
   m_ObjectHideFlags: 0
@@ -1276,6 +1302,7 @@ MonoBehaviour:
     stage1Puzzle2: 0
     stage1BossClear: 0
     stage1Tutorial: 0
+  stat: {fileID: 0}
 --- !u!4 &778670428
 Transform:
   m_ObjectHideFlags: 0
@@ -2242,27 +2269,6 @@ MonoBehaviour:
   buttonScale: {fileID: 724426172}
   mainGroup: {fileID: 0}
   optionGroup: {fileID: 0}
-  ContinueGroup: {fileID: 0}
-  datas:
-    Soul: 0
-    maxHP: 3
-    attackDamage: 0
-    attackSpeed: 0
-    moveSpeed: 0
-    maxBullet: 0
-    reloadTime: 0
-    range: 0
-    skill_1LV: 0
-    skill_2LV: 0
-    skill_3LV: 0
-    stage1ItemBox1: 0
-    stage1ItemBox2: 0
-    stage1Quest1Pro: 0
-    stage1Quest2Pro: 0
-    stage1Puzzle1: 0
-    stage1Puzzle2: 0
-    stage1BossClear: 0
-    stage1Tutorial: 0
 --- !u!114 &1314622090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2879,27 +2885,6 @@ MonoBehaviour:
   buttonScale: {fileID: 352046497}
   mainGroup: {fileID: 0}
   optionGroup: {fileID: 0}
-  ContinueGroup: {fileID: 0}
-  datas:
-    Soul: 0
-    maxHP: 3
-    attackDamage: 0
-    attackSpeed: 0
-    moveSpeed: 0
-    maxBullet: 0
-    reloadTime: 0
-    range: 0
-    skill_1LV: 0
-    skill_2LV: 0
-    skill_3LV: 0
-    stage1ItemBox1: 0
-    stage1ItemBox2: 0
-    stage1Quest1Pro: 0
-    stage1Quest2Pro: 0
-    stage1Puzzle1: 0
-    stage1Puzzle2: 0
-    stage1BossClear: 0
-    stage1Tutorial: 0
 --- !u!1 &1655044223
 GameObject:
   m_ObjectHideFlags: 0
@@ -3348,27 +3333,6 @@ MonoBehaviour:
   buttonScale: {fileID: 718764085}
   mainGroup: {fileID: 0}
   optionGroup: {fileID: 0}
-  ContinueGroup: {fileID: 0}
-  datas:
-    Soul: 0
-    maxHP: 3
-    attackDamage: 0
-    attackSpeed: 0
-    moveSpeed: 0
-    maxBullet: 0
-    reloadTime: 0
-    range: 0
-    skill_1LV: 0
-    skill_2LV: 0
-    skill_3LV: 0
-    stage1ItemBox1: 0
-    stage1ItemBox2: 0
-    stage1Quest1Pro: 0
-    stage1Quest2Pro: 0
-    stage1Puzzle1: 0
-    stage1Puzzle2: 0
-    stage1BossClear: 0
-    stage1Tutorial: 0
 --- !u!114 &1877443632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3635,27 +3599,6 @@ MonoBehaviour:
   buttonScale: {fileID: 1042079824}
   mainGroup: {fileID: 1392676447}
   optionGroup: {fileID: 1930492859}
-  ContinueGroup: {fileID: 0}
-  datas:
-    Soul: 0
-    maxHP: 3
-    attackDamage: 0
-    attackSpeed: 0
-    moveSpeed: 0
-    maxBullet: 0
-    reloadTime: 0
-    range: 0
-    skill_1LV: 0
-    skill_2LV: 0
-    skill_3LV: 0
-    stage1ItemBox1: 0
-    stage1ItemBox2: 0
-    stage1Quest1Pro: 0
-    stage1Quest2Pro: 0
-    stage1Puzzle1: 0
-    stage1Puzzle2: 0
-    stage1BossClear: 0
-    stage1Tutorial: 0
 --- !u!114 &1897303140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4227,27 +4170,6 @@ MonoBehaviour:
   buttonScale: {fileID: 1812714926}
   mainGroup: {fileID: 1392676447}
   optionGroup: {fileID: 1930492859}
-  ContinueGroup: {fileID: 0}
-  datas:
-    Soul: 0
-    maxHP: 3
-    attackDamage: 0
-    attackSpeed: 0
-    moveSpeed: 0
-    maxBullet: 0
-    reloadTime: 0
-    range: 0
-    skill_1LV: 0
-    skill_2LV: 0
-    skill_3LV: 0
-    stage1ItemBox1: 0
-    stage1ItemBox2: 0
-    stage1Quest1Pro: 0
-    stage1Quest2Pro: 0
-    stage1Puzzle1: 0
-    stage1Puzzle2: 0
-    stage1BossClear: 0
-    stage1Tutorial: 0
 --- !u!114 &2106332403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4399,27 +4321,6 @@ MonoBehaviour:
   buttonScale: {fileID: 1655044224}
   mainGroup: {fileID: 1392676447}
   optionGroup: {fileID: 1930492859}
-  ContinueGroup: {fileID: 0}
-  datas:
-    Soul: 0
-    maxHP: 3
-    attackDamage: 0
-    attackSpeed: 0
-    moveSpeed: 0
-    maxBullet: 0
-    reloadTime: 0
-    range: 0
-    skill_1LV: 0
-    skill_2LV: 0
-    skill_3LV: 0
-    stage1ItemBox1: 0
-    stage1ItemBox2: 0
-    stage1Quest1Pro: 0
-    stage1Quest2Pro: 0
-    stage1Puzzle1: 0
-    stage1Puzzle2: 0
-    stage1BossClear: 0
-    stage1Tutorial: 0
 --- !u!114 &2140358892
 MonoBehaviour:
   m_ObjectHideFlags: 0

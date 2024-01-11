@@ -18,13 +18,6 @@ public class Move_SH : MonoBehaviour
     //public GameObject skillUI;
     //public GameObject mainUI;
 
-    private void Awake()
-    {
-        
-        // 현재 저장된 플레이어 스탯을 불러오고 싶어
-        //playerStat = GameObject.Find("DataManager");
-        //datas = playerStat.GetComponent<DataManager>().datas;
-    }
     private void Start() 
     {
         // 게임 시작 시, 캐릭터가 저장된 자신의 스탯을 불러옴
@@ -109,6 +102,15 @@ public class Move_SH : MonoBehaviour
         }
 
         // 상호작용 시마다 데이터를 불러와 플레이어 몸에 적용해준다. 개꿀~
+        ES3.LoadInto(KeyName, datas);
+
+        maxHP = datas.maxHP;
+        attackDamage = datas.attackDamage;
+    }
+
+    public void ChangeScene()
+    {
+        // 씬이 바뀌었을 때, 플레이어의 스탯을 마지막으로 저장된 값으로 변경
         ES3.LoadInto(KeyName, datas);
 
         maxHP = datas.maxHP;

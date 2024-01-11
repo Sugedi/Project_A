@@ -34,9 +34,6 @@ using UnityEngine;
 [System.Serializable]
 public class Datas
 {
-    // 플레이어에서 게임 오브젝트 찾아와야 됨
-    // sceneInfo = Save
-
     // 재화
     public int Soul;
 
@@ -51,9 +48,13 @@ public class Datas
     public float reloadTime;
     public float range;
 
-    public int skill_1LV = 0; // 0은 미획득, 1~3은 스킬 레벨 // 레벨 구현되지 않으면, 0 ~ 1로 bool처럼 써도 됨
-    public int skill_2LV = 0; 
-    public int skill_3LV = 0; 
+    //public int skill_1LV = 0; // 0은 미획득, 1~3은 스킬 레벨 // 레벨 구현되지 않으면, 0 ~ 1로 bool처럼 써도 됨
+    //public int skill_2LV = 0; 
+    //public int skill_3LV = 0; 
+
+    // 스킬 시스템 변경으로 인한 변수 변경
+    // 스킬 에셋을 불러와 저장해야 함.
+    public List<Skill> skillHave;
 
 
     // 여기부터는 스테이지 1만 적용
@@ -77,8 +78,8 @@ public class Datas
 
     //나중에 다 합치면 엄청 길어질 듯? 스테이지별로 쪼개거나 방법을 생각해야겠는데??
     //저장 중 원형 슬라이더 넣으면 좋을 것 같다. 로딩창처럼
+    
 
-    // 이제 데이터 저장한 걸, 플레이어한테 연결하는 기능 해야함
 }
 
 public class DataManager : MonoBehaviour
@@ -91,10 +92,13 @@ public class DataManager : MonoBehaviour
     private string KeyName = "Datas";
     private string fileName = "SaveData.txt";
 
+    public GameObject stat;
+
     void Start()
     {
         instance = this;
 
+        // 게임 접속 시 저장된 데이터 로드
         DataLoad();
     }
 
@@ -104,22 +108,26 @@ public class DataManager : MonoBehaviour
         // 기본 형
         // Datas 클래스에 있는 모든 변수값을 저장
         ES3.Save(KeyName,datas);  // <-------------------------------------- A
+        stat = GameObject.Find("Player_SH");
+        stat.GetComponent<Move_SH>().ChangeScene();
 
         // 자동저장 형
         //ES3AutoSaveMgr.Current.Save();
     }
     public void DataLoad()
     {
-        if (ES3.FileExists(fileName))
-        {
-            // 기본 형
-            ES3.LoadInto(KeyName, datas);
+        ES3.LoadInto(KeyName, datas);
 
-           // ES3AutoSaveMgr.Current.Load();
-        }
-        else
-        {
-            DataSave();
-        }
+        // 캐릭터 스탯에 동기화
+        stat = GameObject.Find("Player_SH");
+        stat.GetComponent<Move_SH>().ChangeScene();
+
     }
+
+    public void DataRemove()
+    {
+        ES3.DeleteFile(fileName);
+    }
+
+
 }
