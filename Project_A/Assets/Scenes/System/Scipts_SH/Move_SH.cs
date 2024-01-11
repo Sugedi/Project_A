@@ -55,6 +55,7 @@ public class Move_SH : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, interactionDistance);
         foreach (Collider collider in hitColliders)
         {
+
             if (collider.CompareTag("Enemy"))
             {
                 if (stage_1 == true)
