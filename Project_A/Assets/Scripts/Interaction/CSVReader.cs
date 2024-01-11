@@ -5,7 +5,12 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 public class CSVReader
-{   
+{
+    // =====================================================
+    // CSVReader에서는 엑셀 파일을 받아서 list 형태로 반환
+    // =====================================================
+
+
     static string SPLIT_RE = @"\|(?=(?:[^""]*""[^""]*"")*(?![^""]*""))"; // 정규 표현식을 사용하여 CSV 파일의 각 열을 나누는 패턴
     static string LINE_SPLIT_RE = @"\r\n|\n\r|\n|\r"; // 정규 표현식을 사용하여 CSV 파일의 각 행을 나누는 패턴
     static char[] TRIM_CHARS = { '\"' };  // CSV 데이터에서 양 끝의 따옴표를 제거하기 위한 문자 배열
