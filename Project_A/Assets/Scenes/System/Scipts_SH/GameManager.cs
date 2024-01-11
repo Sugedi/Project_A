@@ -6,6 +6,6 @@ public class GameManager : MonoBehaviour
 {
     public void SkillLevelUp()
     {
-        DataManager.instance.datas.skill_1LV += 1;
+        //DataManager.instance.datas.skill_1LV += 1;
     }
 }
