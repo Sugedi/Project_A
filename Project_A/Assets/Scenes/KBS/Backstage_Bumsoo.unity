@@ -1267,7 +1267,7 @@ MonoBehaviour:
   shotGun4SpreadAngle: 45
   bulletSpeed: 5
   bulletPos: {fileID: 110506874}
-  bullet: {fileID: 3236627698561214123, guid: 60ed3bcf8f085c9418b0721d11ce2e79, type: 3}
+  bullet: {fileID: 3236627698561214123, guid: 2741b169980cd0347898aea2b3806360, type: 3}
   player: {fileID: 717991137}
 --- !u!4 &346617859 stripped
 Transform:
