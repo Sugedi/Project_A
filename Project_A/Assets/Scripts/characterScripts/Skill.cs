@@ -27,13 +27,20 @@ public class Skill : ScriptableObject
     // 재장전 시간 배율을 추가합니다.
     public float reloadTimeMultiplier = 1f;
 
-    // 산탄 사격 스킬을 위한 새로운 속성
-    public bool isBuckShot = false; // 산탄 사격 스킬 활성화 여부입니다.
-    public int buckShotCount = 3; // 한 번에 발사되는 총알의 수입니다.
-    public float buckShotSpreadAngle = 30f; // 총알 사이의 각도입니다.
+    // 샷건 스킬을 위한 새로운 속성
+    public bool isShotGun1 = false; // 샷건1 스킬 활성화 여부입니다.
+    public int shotGun1Count = 2; // 한 번에 발사되는 총알의 수입니다.
+    public float shotGun1SpreadAngle = 45f; // 총알 사이의 각도입니다.
+    
+    public bool isShotGun2 = false; // 샷건2 스킬 활성화 여부
+    public int shotGun2Count = 3; // 발사될 총알의 수
+    public float shotGun2SpreadAngle = 45f; // 총알 사이의 각도
 
-    // 다리부수기 스킬 속성
-    public bool isLegBreak = false; // 다리부수기 스킬 활성화 여부
-    public int legBreakCount = 5; // 발사될 총알의 수
-    public float legBreakSpreadAngle = 45f; // 총알 사이의 각도    
+    public bool isShotGun3 = false; // 샷건3 스킬 활성화 여부
+    public int shotGun3Count = 4; // 발사될 총알의 수
+    public float shotGun3SpreadAngle = 45f; // 총알 사이의 각도   
+
+    public bool isShotGun4 = false; // 샷건4 스킬 활성화 여부
+    public int shotGun4Count = 5; // 발사될 총알의 수
+    public float shotGun4SpreadAngle = 45f; // 총알 사이의 각도   
 }

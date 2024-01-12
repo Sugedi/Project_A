@@ -15,3 +15,10 @@ MonoBehaviour:
   skillName: PowerUp
   damageMultiplier: 4
   attackSpeedMultiplier: 1
+  reloadTimeMultiplier: 1
+  isBuckShot: 0
+  buckShotCount: 3
+  buckShotSpreadAngle: 30
+  isLegBreak: 0
+  legBreakCount: 5
+  legBreakSpreadAngle: 30

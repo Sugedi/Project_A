@@ -332,12 +332,18 @@ public class Player : MonoBehaviour
         // 데미지와 공격 속도 배율을 기본 1로 설정합니다.
         float totalDamageMultiplier = 1f;
         float totalAttackSpeedMultiplier = 1f;
-        bool buckShotActive = false; // 산탄 사격 스킬 활성화 여부
-        bool legBreakActive = false; // 다리부수기 스킬 활성화 여부
-        int buckShotBullets = 0; // 산탄 사격 시 발사될 추가 총알 수
-        float buckShotAngle = 0f; // 산탄 사격의 총알 간 각도
-        int legBreakBullets = 0; // 다리부수기 스킬 시 발사될 추가 총알 수
-        float legBreakSpreadAngle = 0f; // 다리부수기 스킬의 총알 간 각도
+        bool shotGun1Active = false; // 샷건1 스킬 활성화 여부
+        bool shotGun2Active = false; // 샷건2 스킬 활성화 여부
+        bool shotGun3Active = false; // 샷건3 스킬 활성화 여부
+        bool shotGun4Active = false; // 샷건4 스킬 활성화 여부
+        int shotGun1Bullets = 0; // 샷건1 시 발사될 추가 총알 수
+        float shotGun1Angle = 0f; // 샷건1의 총알 간 각도
+        int shotGun2Bullets = 0; // 샷건2 스킬 시 발사될 추가 총알 수
+        float shotGun2Angle = 0f; // 샷건2 스킬의 총알 간 각도
+        int shotGun3Bullets = 0; // 샷건3 스킬 시 발사될 추가 총알 수
+        float shotGun3Angle = 0f; // 샷건3 스킬의 총알 간 각도
+        int shotGun4Bullets = 0; // 샷건4 스킬 시 발사될 추가 총알 수
+        float shotGun4Angle = 0f; // 샷건4 스킬의 총알 간 각도
 
         // 활성화된 스킬들을 순회하며 데미지 및 공격 속도 배율을 계산합니다.
         foreach (var skill in activeSkills)
@@ -347,19 +353,33 @@ public class Player : MonoBehaviour
                 totalDamageMultiplier *= skill.damageMultiplier;
                 totalAttackSpeedMultiplier *= skill.attackSpeedMultiplier;
 
-                // 산탄 사격 스킬 활성화 여부를 체크하고 관련 값을 설정함
-                if (skill.isBuckShot)
+                // 샷건1 스킬 활성화 여부를 체크하고 관련 값을 설정함
+                if (skill.isShotGun1)
                 {
-                    buckShotActive = true;
-                    buckShotBullets = skill.buckShotCount;
-                    buckShotAngle = skill.buckShotSpreadAngle;
+                    shotGun1Active = true;
+                    shotGun1Bullets = skill.shotGun1Count;
+                    shotGun1Angle = skill.shotGun1SpreadAngle;
                 }
 
-                if (skill.isLegBreak)
+                if (skill.isShotGun2)
                 {
-                    legBreakActive = true; // 다리부수기 스킬을 활성화 상태로 설정
-                    legBreakBullets = skill.legBreakCount; // 발사될 총알 수
-                    legBreakSpreadAngle = skill.legBreakSpreadAngle; // 총알 간의 각도
+                    shotGun2Active = true; // 샷건2 스킬을 활성화 상태로 설정
+                    shotGun2Bullets = skill.shotGun2Count; // 발사될 총알 수
+                    shotGun2Angle = skill.shotGun2SpreadAngle; // 총알 간의 각도
+                }
+
+                if (skill.isShotGun3)
+                {
+                    shotGun3Active = true; // 샷건3 스킬을 활성화 상태로 설정
+                    shotGun3Bullets = skill.shotGun3Count; // 발사될 총알 수
+                    shotGun3Angle = skill.shotGun3SpreadAngle; // 총알 간의 각도
+                }
+
+                if (skill.isShotGun4)
+                {
+                    shotGun4Active = true; // 샷건4 스킬을 활성화 상태로 설정
+                    shotGun4Bullets = skill.shotGun4Count; // 발사될 총알 수
+                    shotGun4Angle = skill.shotGun4SpreadAngle; // 총알 간의 각도
                 }
             }
         }
@@ -368,31 +388,57 @@ public class Player : MonoBehaviour
         equipWeapon.damageMultiplier = totalDamageMultiplier;
         equipWeapon.attackSpeedMultiplier = totalAttackSpeedMultiplier;
 
-        // 산탄 사격 스킬이 활성화되었다면, 장착된 무기에 산탄 사격 설정을 적용함
-        equipWeapon.isBuckShotActive = buckShotActive;
-        equipWeapon.isLegBreakActive = legBreakActive;
+        // 샷건1 스킬이 활성화되었다면, 장착된 무기에 샷건1 설정을 적용함
+        equipWeapon.isShotGun1Active = shotGun1Active;
+        equipWeapon.isShotGun2Active = shotGun2Active;
+        equipWeapon.isShotGun3Active = shotGun3Active;
+        equipWeapon.isShotGun4Active = shotGun4Active;
 
-        if (buckShotActive)
+        if (shotGun1Active)
         {
-            equipWeapon.buckShotBullets = buckShotBullets; // 발사될 총알 수
-            equipWeapon.buckShotSpreadAngle = buckShotAngle; // 총알 간의 각도
+            equipWeapon.shotGun1Bullets = shotGun1Bullets; // 발사될 총알 수
+            equipWeapon.shotGun1SpreadAngle = shotGun1Angle; // 총알 간의 각도
         }
         else
-        {   // 산탄사격 스킬이 비활성화되면 기본값으로 재설정합니다.         
-            equipWeapon.buckShotBullets = 0;
-            equipWeapon.buckShotSpreadAngle = 0f;
+        {   // 샷건1 스킬이 비활성화되면 기본값으로 재설정합니다.         
+            equipWeapon.shotGun1Bullets = 0;
+            equipWeapon.shotGun1SpreadAngle = 0f;
         }
 
-        if (legBreakActive)
+        if (shotGun2Active)
         {
-            equipWeapon.legBreakBullets = legBreakBullets;
-            equipWeapon.legBreakSpreadAngle = legBreakSpreadAngle;
+            equipWeapon.shotGun2Bullets = shotGun2Bullets;
+            equipWeapon.shotGun2SpreadAngle = shotGun2Angle;
         }
         else
         {
-            // 다리부수기 스킬이 비활성화되면 기본값으로 재설정합니다.
-            equipWeapon.legBreakBullets = 0;
-            equipWeapon.legBreakSpreadAngle = 0f;
+            // 샷건2 스킬이 비활성화되면 기본값으로 재설정합니다.
+            equipWeapon.shotGun2Bullets = 0;
+            equipWeapon.shotGun2SpreadAngle = 0f;
+        }
+
+        if (shotGun3Active)
+        {
+            equipWeapon.shotGun3Bullets = shotGun3Bullets;
+            equipWeapon.shotGun3SpreadAngle = shotGun3Angle;
+        }
+        else
+        {
+            // 샷건2 스킬이 비활성화되면 기본값으로 재설정합니다.
+            equipWeapon.shotGun3Bullets = 0;
+            equipWeapon.shotGun3SpreadAngle = 0f;
+        }
+
+        if (shotGun4Active)
+        {
+            equipWeapon.shotGun4Bullets = shotGun4Bullets;
+            equipWeapon.shotGun4SpreadAngle = shotGun4Angle;
+        }
+        else
+        {
+            // 샷건2 스킬이 비활성화되면 기본값으로 재설정합니다.
+            equipWeapon.shotGun4Bullets = 0;
+            equipWeapon.shotGun4SpreadAngle = 0f;
         }
     }
 

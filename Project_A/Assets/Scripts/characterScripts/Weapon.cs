@@ -14,17 +14,27 @@ public class Weapon : MonoBehaviour
     public int maxAmmo; // 최대 탄약 수
     public int curAmmo; // 현재 탄약 수
 
-    // 산탄 사격 스킬에 대한 속성
-    public bool isBuckShotActive = false; // 산탄 사격 스킬 활성화 여부
-    public int buckShotBullets = 3; // 한 번에 발사되는 총알의 수
-    public float buckShotSpreadAngle = 30f; // 총알 사이의 각도
+    // 샷건1 스킬에 대한 속성
+    public bool isShotGun1Active = false; // 샷건1 스킬 활성화 여부
+    public int shotGun1Bullets = 2; // 한 번에 발사되는 총알의 수
+    public float shotGun1SpreadAngle = 45f; // 총알 사이의 각도
 
-    // 다리부수기 스킬 적용을 위한 속성
-    public bool isLegBreakActive = false;
-    public int legBreakBullets = 5;
-    public float legBreakSpreadAngle = 45f;
+    // 샷건2 스킬 적용을 위한 속성
+    public bool isShotGun2Active = false; // 샷건1 스킬 활성화 여부
+    public int shotGun2Bullets = 3; // 한 번에 발사되는 총알의 수
+    public float shotGun2SpreadAngle = 45f; // 총알 사이의 각도
 
+    // 샷건1 스킬에 대한 속성
+    public bool isShotGun3Active = false; // 샷건1 스킬 활성화 여부
+    public int shotGun3Bullets = 4; // 한 번에 발사되는 총알의 수
+    public float shotGun3SpreadAngle = 45f; // 총알 사이의 각도
 
+    // 샷건1 스킬에 대한 속성
+    public bool isShotGun4Active = false; // 샷건1 스킬 활성화 여부
+    public int shotGun4Bullets = 5; // 한 번에 발사되는 총알의 수
+    public float shotGun4SpreadAngle = 45f; // 총알 사이의 각도
+
+    public float bulletSpeed = 25f; // 총알 속도 기본값 설정
     public Transform bulletPos; // 총알 발사 위치
     public GameObject bullet; // 총알 프리팹    
     public Player player; // 무기를 소유하고 있는 플레이어의 참조입니다.
@@ -50,7 +60,7 @@ public class Weapon : MonoBehaviour
             actionOnDestroy: (obj) => {
                 Destroy(obj); // 오브젝트를 파괴합니다.
             },
-            defaultCapacity: 30, // 기본 용량
+            defaultCapacity: 50, // 기본 용량
             maxSize: 120 // 최대 용량
         );
     }
@@ -59,81 +69,99 @@ public class Weapon : MonoBehaviour
     // 무기를 사용하는 메서드입니다. 원거리 공격을 실행합니다.
     {
 
-        if (type == Type.Range && curAmmo > 0) // 원거리 무기이고 탄약이 남아있는 경우
+        // 무기를 사용하는 메서드입니다. 원거리 공격을 실행합니다.
+        if (type == Type.Range)
         {
-            curAmmo--; // 탄약 감소
-            StartCoroutine(Shot()); // Shot 코루틴 시작
+            // 스킬이 활성화되었는지 확인하고 총알 개수를 결정합니다.
+            int totalBullets = 1;
+            if (isShotGun1Active) totalBullets = shotGun1Bullets;
+            if (isShotGun2Active) totalBullets = shotGun2Bullets;
+            if (isShotGun3Active) totalBullets = shotGun3Bullets;
+            if (isShotGun4Active) totalBullets = shotGun4Bullets;
+
+            // 현재 탄약 수가 발사할 총알 수보다 적은 경우, 남은 탄약만큼만 발사합니다.
+            int bulletsToFire = Mathf.Min(totalBullets, curAmmo);
+
+            // 탄약을 소모합니다.
+            curAmmo -= bulletsToFire;
+
+            // Shot 코루틴을 시작합니다.
+            StartCoroutine(Shot(bulletsToFire));
         }
     }
- 
-    IEnumerator Shot()
+
+        IEnumerator Shot(int bulletsToFire)
     {
-        // 산탄 사격 스킬 활성화 여부에 따라 발사할 총알의 수를 결정합니다.
-        int totalBullets = isBuckShotActive ? buckShotBullets : 1;
-        int totalBullets2 = isLegBreakActive ? legBreakBullets : 1;
+        // 스킬이 활성화되었는지 확인합니다.
+        
+        float spreadAngle = 0f;
 
-        // 발사할 총알의 수만큼 반복합니다.
-        for (int i = 0; i < totalBullets; i++)
+        // 가장 최근에 활성화된 스킬을 기준으로 spreadAngle을 설정합니다.
+        if (isShotGun4Active)
         {
-            // 총알을 생성하고 데미지에 배율을 적용합니다.
-
-            // Instantiate 대신 풀에서 총알을 가져옵니다.
-            GameObject instantBullet = bulletPool.Get();
-            instantBullet.transform.position = bulletPos.position;
-            instantBullet.transform.rotation = bulletPos.rotation;
-
-            Bullet bulletScript = instantBullet.GetComponent<Bullet>();
-            bulletScript.SetPool(bulletPool); // 풀을 설정합니다.
-            bulletScript.damage = bulletScript.baseDamage * damageMultiplier; //데미지 배율을 적용합니다.        
-
-            // 사거리(생명 시간) 설정을 추가합니다.
-            bulletScript.lifeTime = 0.5f;
-
-            // #1. 총알 발사        
-            Rigidbody bulletRigid = instantBullet.GetComponent<Rigidbody>();
-            Quaternion spreadRotation = Quaternion.identity;
-
-            // 산탄 사격 스킬이 활성화된 경우, 총알을 다양한 각도로 발사합니다.
-            if (isBuckShotActive && totalBullets > 1)
-            {
-                float angle = -buckShotSpreadAngle / 2 + buckShotSpreadAngle * (i / (float)(totalBullets - 1));
-                spreadRotation = Quaternion.Euler(0, angle, 0);
-            }
-            bulletRigid.velocity = bulletPos.rotation * spreadRotation * Vector3.forward * 50;
+            spreadAngle = shotGun4SpreadAngle;
+        }
+        else if (isShotGun3Active)
+        {
+            spreadAngle = shotGun3SpreadAngle;
+        }
+        else if (isShotGun2Active)
+        {
+            spreadAngle = shotGun2SpreadAngle;
+        }
+        else if (isShotGun1Active)
+        {
+            spreadAngle = shotGun1SpreadAngle;
         }
 
-        for (int i = 0; i < totalBullets2; i++)
-        {
-            // 총알을 생성하고 데미지에 배율을 적용합니다.
 
-            // Instantiate 대신 풀에서 총알을 가져옵니다.
+        for (int i = 0; i < bulletsToFire; i++)
+        {
             GameObject instantBullet = bulletPool.Get();
             instantBullet.transform.position = bulletPos.position;
             instantBullet.transform.rotation = bulletPos.rotation;
 
             Bullet bulletScript = instantBullet.GetComponent<Bullet>();
-            bulletScript.SetPool(bulletPool); // 풀을 설정합니다.
-            bulletScript.damage = bulletScript.baseDamage * damageMultiplier; //데미지 배율을 적용합니다.        
 
-            // 사거리(생명 시간) 설정을 추가합니다.
-            bulletScript.lifeTime = 0.5f;
+            // 총알 충돌을 일시적으로 비활성화
+            Collider bulletCollider = instantBullet.GetComponent<Collider>();
+            if (bulletCollider)
+            {
+                bulletCollider.enabled = false;
+            }
+            bulletScript.SetPool(bulletPool);
+            bulletScript.damage = bulletScript.baseDamage * damageMultiplier;
+            bulletScript.lifeTime = 1f; // 총알의 생명 시간 설정
 
-            // #1. 총알 발사        
             Rigidbody bulletRigid = instantBullet.GetComponent<Rigidbody>();
             Quaternion spreadRotation = Quaternion.identity;
+
+            // 총알 발사 각도를 계산합니다.
+            if (bulletsToFire > 1)
+            {
+                float angle = -spreadAngle / 2 + spreadAngle * (i / (float)(bulletsToFire - 1));
+                spreadRotation = Quaternion.Euler(0, angle, 0);
+            }
+
+            bulletRigid.velocity = bulletPos.rotation * spreadRotation * Vector3.forward * bulletSpeed;
             
-            if (isLegBreakActive && totalBullets2 > 1)
-            {
-                // 총알 간의 각도를 계산합니다. 중앙 총알을 기준으로 좌우로 발사됩니다.
-                float angle = -legBreakSpreadAngle / 2 + legBreakSpreadAngle * (i / (float)(totalBullets2 - 1));
-                spreadRotation = Quaternion.Euler(0, angle, 0);
-            }
-            bulletRigid.velocity = bulletPos.rotation * spreadRotation * Vector3.forward * 50;
+            // 총알 발사 후 충돌을 다시 활성화
+            StartCoroutine(EnableColliderAfterDelay(bulletCollider));
         }
+
         // 공격 속도 배율을 고려하여 다음 총알 발사까지 대기합니다.
         yield return new WaitForSeconds(1f / (baseAttackSpeed * attackSpeedMultiplier));
-       
+
     }
-    // Use() 메인루틴 -> Swing() 서브루틴 -> Use() 메인루틴
-    // Use() 메인루틴 + Swing() 코루틴 (Co-Op)
+    // 충돌을 활성화하는 코루틴
+    IEnumerator EnableColliderAfterDelay(Collider bulletCollider)
+    {
+        // 총알이 일정 거리 이동한 후에 충돌을 활성화합니다.
+        yield return new WaitForSeconds(0.1f); // 0.1초 대기=
+        if (bulletCollider)
+        {
+            bulletCollider.enabled = true;
+        }
+    }
+    
 }
