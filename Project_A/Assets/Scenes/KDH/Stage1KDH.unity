@@ -236,6 +236,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stakes (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000014246037622, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_RootOrder
       value: 102
@@ -292,6 +296,10 @@ PrefabInstance:
     - target: {fileID: 3857596201717286462, guid: d0b6cb4075deab943b85f18ff96f75de, type: 3}
       propertyPath: m_Name
       value: egypt-amphora-simple (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857596201717286462, guid: d0b6cb4075deab943b85f18ff96f75de, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 3857596201717651998, guid: d0b6cb4075deab943b85f18ff96f75de, type: 3}
       propertyPath: m_RootOrder
@@ -399,6 +407,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: house-egypt-big (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6758452341967345184, guid: 1ba98b3e447460f45ba077616eec4e20, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ba98b3e447460f45ba077616eec4e20, type: 3}
 --- !u!4 &26926286 stripped
@@ -416,6 +428,10 @@ PrefabInstance:
     - target: {fileID: 1404153633997127010, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
       propertyPath: m_Name
       value: egyptwall1 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404153633997127010, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 1744967726839408600, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
       propertyPath: m_RootOrder
@@ -730,6 +746,10 @@ PrefabInstance:
     - target: {fileID: 1109954306633886, guid: ad71ba25d17304082b8a05936a641368, type: 3}
       propertyPath: m_Name
       value: graveyard-wall-stone (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109954306633886, guid: ad71ba25d17304082b8a05936a641368, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4637967923684892, guid: ad71ba25d17304082b8a05936a641368, type: 3}
       propertyPath: m_RootOrder
@@ -1265,6 +1285,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: grass-long
       objectReference: {fileID: 0}
+    - target: {fileID: 1000014289357120, guid: 5d43bd8198132492795c84a7a66997e0, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000012004492730, guid: 5d43bd8198132492795c84a7a66997e0, type: 3}
       propertyPath: m_RootOrder
       value: 188
@@ -1321,6 +1345,10 @@ PrefabInstance:
     - target: {fileID: 1000010740007340, guid: 54baad8be8f0849b2b20fd1da61be15f, type: 3}
       propertyPath: m_Name
       value: stone-oval_brown
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010740007340, guid: 54baad8be8f0849b2b20fd1da61be15f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000013067603608, guid: 54baad8be8f0849b2b20fd1da61be15f, type: 3}
       propertyPath: m_RootOrder
@@ -1388,6 +1416,10 @@ PrefabInstance:
     - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_Name
       value: stakes (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000014246037622, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_RootOrder
@@ -1682,6 +1714,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egypt-amphora-simple (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3857596201717286462, guid: d0b6cb4075deab943b85f18ff96f75de, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 3857596201717651998, guid: d0b6cb4075deab943b85f18ff96f75de, type: 3}
       propertyPath: m_RootOrder
       value: 81
@@ -1744,6 +1780,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stakes (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000014246037622, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_RootOrder
       value: 90
@@ -1800,6 +1840,10 @@ PrefabInstance:
     - target: {fileID: 7043888936974094045, guid: 3c362c1d571e5974b8fa5f2eab28140f, type: 3}
       propertyPath: m_Name
       value: aloe-vera (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7043888936974094045, guid: 3c362c1d571e5974b8fa5f2eab28140f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 7677294893702927463, guid: 3c362c1d571e5974b8fa5f2eab28140f, type: 3}
       propertyPath: m_RootOrder
@@ -2420,6 +2464,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: house-egypt-big
       objectReference: {fileID: 0}
+    - target: {fileID: 6758452341967345184, guid: 1ba98b3e447460f45ba077616eec4e20, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ba98b3e447460f45ba077616eec4e20, type: 3}
 --- !u!4 &217911558 stripped
@@ -2713,6 +2761,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egyptwall3 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 1442854082391221502, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 2255701465745522244, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
       propertyPath: m_RootOrder
       value: 56
@@ -2903,6 +2955,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: palm-high
       objectReference: {fileID: 0}
+    - target: {fileID: 6448268575851112317, guid: 1fd8b349f655e5649a1db1a93fa09e65, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fd8b349f655e5649a1db1a93fa09e65, type: 3}
 --- !u!4 &266609771 stripped
@@ -2965,6 +3021,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sheep-white
       objectReference: {fileID: 0}
+    - target: {fileID: 2053046654768804484, guid: 3579a937e3060b54e94cb341dcbda2ba, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6365905081798045415, guid: 3579a937e3060b54e94cb341dcbda2ba, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3579a937e3060b54e94cb341dcbda2ba, type: 3}
@@ -3023,6 +3083,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egypt-obelisk-old (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8542896281475787047, guid: f11d87921bd883c4ea9ffd18626b3a48, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f11d87921bd883c4ea9ffd18626b3a48, type: 3}
 --- !u!1001 &278584987
@@ -3035,6 +3099,10 @@ PrefabInstance:
     - target: {fileID: 1404153633997127010, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
       propertyPath: m_Name
       value: egyptwall1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404153633997127010, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 1744967726839408600, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
       propertyPath: m_RootOrder
@@ -3207,6 +3275,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egypt-statue-cat (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4385986969744350624, guid: 13d5aff3720dca14b9734f82260231e1, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4385986969744507264, guid: 13d5aff3720dca14b9734f82260231e1, type: 3}
       propertyPath: m_RootOrder
       value: 133
@@ -3266,7 +3338,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1549619258373737837, guid: 1dc3b813802c4674ab039f9d5bda5f43, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 1549619258374164813, guid: 1dc3b813802c4674ab039f9d5bda5f43, type: 3}
       propertyPath: m_RootOrder
@@ -3324,6 +3396,10 @@ PrefabInstance:
     - target: {fileID: 1404153633997127010, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
       propertyPath: m_Name
       value: egyptwall1 (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404153633997127010, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 1744967726839408600, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
       propertyPath: m_RootOrder
@@ -3399,6 +3475,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egyptwall2
       objectReference: {fileID: 0}
+    - target: {fileID: 6114870316159865295, guid: 01f57406339396144af6f88c2c793a04, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 6888170465307282293, guid: 01f57406339396144af6f88c2c793a04, type: 3}
       propertyPath: m_RootOrder
       value: 22
@@ -3468,6 +3548,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stakes (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000014246037622, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_RootOrder
       value: 100
@@ -3524,6 +3608,10 @@ PrefabInstance:
     - target: {fileID: 6114870316159865295, guid: 01f57406339396144af6f88c2c793a04, type: 3}
       propertyPath: m_Name
       value: egyptwall2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6114870316159865295, guid: 01f57406339396144af6f88c2c793a04, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6888170465307282293, guid: 01f57406339396144af6f88c2c793a04, type: 3}
       propertyPath: m_RootOrder
@@ -3655,6 +3743,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egypt-obelisk-old-broken (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4764267632073841898, guid: 332202467aa528d41b9773e11933cfc8, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 332202467aa528d41b9773e11933cfc8, type: 3}
 --- !u!1001 &325868655
@@ -3667,6 +3759,10 @@ PrefabInstance:
     - target: {fileID: 7153944072423737871, guid: 89ab1d131f87a564cb85b092be8c969d, type: 3}
       propertyPath: m_Name
       value: palm-bush-big
+      objectReference: {fileID: 0}
+    - target: {fileID: 7153944072423737871, guid: 89ab1d131f87a564cb85b092be8c969d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 7497431902318776501, guid: 89ab1d131f87a564cb85b092be8c969d, type: 3}
       propertyPath: m_RootOrder
@@ -3730,6 +3826,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: graveyard-wall-stone (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 1109954306633886, guid: ad71ba25d17304082b8a05936a641368, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4637967923684892, guid: ad71ba25d17304082b8a05936a641368, type: 3}
       propertyPath: m_RootOrder
       value: 214
@@ -3791,6 +3891,10 @@ PrefabInstance:
     - target: {fileID: 1442854082391221502, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
       propertyPath: m_Name
       value: egyptwall3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1442854082391221502, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 2255701465745522244, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
       propertyPath: m_RootOrder
@@ -3860,6 +3964,10 @@ PrefabInstance:
     - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_Name
       value: stakes (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000014246037622, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_RootOrder
@@ -4117,6 +4225,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egyptwall1 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1404153633997127010, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 1744967726839408600, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
       propertyPath: m_RootOrder
       value: 39
@@ -4333,6 +4445,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egypt-obelisk-old-broken (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4764267632073841898, guid: 332202467aa528d41b9773e11933cfc8, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 332202467aa528d41b9773e11933cfc8, type: 3}
 --- !u!4 &371458895 stripped
@@ -4354,6 +4470,10 @@ PrefabInstance:
     - target: {fileID: 6114870316159865295, guid: 01f57406339396144af6f88c2c793a04, type: 3}
       propertyPath: m_Name
       value: egyptwall2 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6114870316159865295, guid: 01f57406339396144af6f88c2c793a04, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6888170465307282293, guid: 01f57406339396144af6f88c2c793a04, type: 3}
       propertyPath: m_RootOrder
@@ -4625,6 +4745,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stakes (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000014246037622, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_RootOrder
       value: 93
@@ -4750,6 +4874,10 @@ PrefabInstance:
     - target: {fileID: 1000011533223884, guid: c048e8af50d38224aa1c47540950543a, type: 3}
       propertyPath: m_Name
       value: palm
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011533223884, guid: c048e8af50d38224aa1c47540950543a, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000012176029756, guid: c048e8af50d38224aa1c47540950543a, type: 3}
       propertyPath: m_RootOrder
@@ -5087,7 +5215,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4768484371184703825, guid: 0e30fd1a6a0b16444884ddcbb0b86223, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e30fd1a6a0b16444884ddcbb0b86223, type: 3}
@@ -5161,6 +5289,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: grass-basic (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000011497609644, guid: 86c8aa56418d04c11b5a28c96bc80f96, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000012719265562, guid: 86c8aa56418d04c11b5a28c96bc80f96, type: 3}
       propertyPath: m_RootOrder
       value: 185
@@ -5217,6 +5349,10 @@ PrefabInstance:
     - target: {fileID: 1109954306633886, guid: ad71ba25d17304082b8a05936a641368, type: 3}
       propertyPath: m_Name
       value: graveyard-wall-stone (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109954306633886, guid: ad71ba25d17304082b8a05936a641368, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4637967923684892, guid: ad71ba25d17304082b8a05936a641368, type: 3}
       propertyPath: m_RootOrder
@@ -5280,6 +5416,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cactus-medium (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000010227003290, guid: 71da040b5c0ab72408e342ed49290c5a, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000013166053820, guid: 71da040b5c0ab72408e342ed49290c5a, type: 3}
       propertyPath: m_RootOrder
       value: 170
@@ -5341,6 +5481,10 @@ PrefabInstance:
     - target: {fileID: 1256879099210292, guid: bc7ea6f7a802a4f8bb58a3746bca0a9e, type: 3}
       propertyPath: m_Name
       value: door-prison (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1256879099210292, guid: bc7ea6f7a802a4f8bb58a3746bca0a9e, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4225281418982134, guid: bc7ea6f7a802a4f8bb58a3746bca0a9e, type: 3}
       propertyPath: m_RootOrder
@@ -5408,6 +5552,10 @@ PrefabInstance:
     - target: {fileID: 1404153633997127010, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
       propertyPath: m_Name
       value: egyptwall1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404153633997127010, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 1744967726839408600, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
       propertyPath: m_RootOrder
@@ -5482,6 +5630,10 @@ PrefabInstance:
     - target: {fileID: 1000011505633412, guid: 5e74835ce4619c94e9996cc209b92921, type: 3}
       propertyPath: m_Name
       value: stone-flat_orange
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011505633412, guid: 5e74835ce4619c94e9996cc209b92921, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000013183415300, guid: 5e74835ce4619c94e9996cc209b92921, type: 3}
       propertyPath: m_RootOrder
@@ -5642,6 +5794,10 @@ PrefabInstance:
     - target: {fileID: 1000012435560724, guid: b9fd96550c6ef8c48ac42fffcad3eeb0, type: 3}
       propertyPath: m_Name
       value: grass-tall_orange
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012435560724, guid: b9fd96550c6ef8c48ac42fffcad3eeb0, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000014111722898, guid: b9fd96550c6ef8c48ac42fffcad3eeb0, type: 3}
       propertyPath: m_RootOrder
@@ -6028,6 +6184,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stakes (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000014246037622, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_RootOrder
       value: 94
@@ -6292,6 +6452,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stone-diamond_orange (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000013714799558, guid: a418142078cffa24f8c4398472c9cafb, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000010245227958, guid: a418142078cffa24f8c4398472c9cafb, type: 3}
       propertyPath: m_RootOrder
       value: 164
@@ -6353,6 +6517,10 @@ PrefabInstance:
     - target: {fileID: 1000013714799558, guid: a418142078cffa24f8c4398472c9cafb, type: 3}
       propertyPath: m_Name
       value: stone-diamond_orange (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013714799558, guid: a418142078cffa24f8c4398472c9cafb, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000010245227958, guid: a418142078cffa24f8c4398472c9cafb, type: 3}
       propertyPath: m_RootOrder
@@ -6629,6 +6797,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stone-flat_brown (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000010635393592, guid: 0fe191e3edfdf472990132f6c31d4af8, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000011193101008, guid: 0fe191e3edfdf472990132f6c31d4af8, type: 3}
       propertyPath: m_RootOrder
       value: 158
@@ -6825,6 +6997,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egyptwall2 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6114870316159865295, guid: 01f57406339396144af6f88c2c793a04, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 6888170465307282293, guid: 01f57406339396144af6f88c2c793a04, type: 3}
       propertyPath: m_RootOrder
       value: 207
@@ -6996,6 +7172,10 @@ PrefabInstance:
     - target: {fileID: 1000010740007340, guid: 54baad8be8f0849b2b20fd1da61be15f, type: 3}
       propertyPath: m_Name
       value: stone-oval_brown (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010740007340, guid: 54baad8be8f0849b2b20fd1da61be15f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000013067603608, guid: 54baad8be8f0849b2b20fd1da61be15f, type: 3}
       propertyPath: m_RootOrder
@@ -7185,6 +7365,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stakes (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000014246037622, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_RootOrder
       value: 105
@@ -7247,6 +7431,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stone-diamond
       objectReference: {fileID: 0}
+    - target: {fileID: 1000011816824358, guid: 1e6bbdee4038af349901aa5f6b06c65b, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000012627383356, guid: 1e6bbdee4038af349901aa5f6b06c65b, type: 3}
       propertyPath: m_RootOrder
       value: 153
@@ -7290,6 +7478,10 @@ PrefabInstance:
     - target: {fileID: 4000012627383356, guid: 1e6bbdee4038af349901aa5f6b06c65b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3420996156407362402, guid: 1e6bbdee4038af349901aa5f6b06c65b, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e6bbdee4038af349901aa5f6b06c65b, type: 3}
@@ -7384,6 +7576,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stone-diamond_orange (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000013714799558, guid: a418142078cffa24f8c4398472c9cafb, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000010245227958, guid: a418142078cffa24f8c4398472c9cafb, type: 3}
       propertyPath: m_RootOrder
       value: 141
@@ -7458,6 +7654,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cactus-basic
       objectReference: {fileID: 0}
+    - target: {fileID: 1000013257966646, guid: 588fab76897001347beb7c03f344920b, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000012969573968, guid: 588fab76897001347beb7c03f344920b, type: 3}
       propertyPath: m_RootOrder
       value: 116
@@ -7524,6 +7724,10 @@ PrefabInstance:
     - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_Name
       value: stakes (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000014246037622, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_RootOrder
@@ -7592,6 +7796,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stakes (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000014246037622, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_RootOrder
       value: 101
@@ -7648,6 +7856,10 @@ PrefabInstance:
     - target: {fileID: 4385986969744350624, guid: 13d5aff3720dca14b9734f82260231e1, type: 3}
       propertyPath: m_Name
       value: egypt-statue-cat
+      objectReference: {fileID: 0}
+    - target: {fileID: 4385986969744350624, guid: 13d5aff3720dca14b9734f82260231e1, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4385986969744507264, guid: 13d5aff3720dca14b9734f82260231e1, type: 3}
       propertyPath: m_RootOrder
@@ -7722,6 +7934,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egyptwall2 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 6114870316159865295, guid: 01f57406339396144af6f88c2c793a04, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 6888170465307282293, guid: 01f57406339396144af6f88c2c793a04, type: 3}
       propertyPath: m_RootOrder
       value: 38
@@ -7795,6 +8011,10 @@ PrefabInstance:
     - target: {fileID: 5812486095548991760, guid: 8cfdb9d9bc554a541acc872e388d39b9, type: 3}
       propertyPath: m_Name
       value: egypt-pillar-proto-doric
+      objectReference: {fileID: 0}
+    - target: {fileID: 5812486095548991760, guid: 8cfdb9d9bc554a541acc872e388d39b9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 5812486095549486384, guid: 8cfdb9d9bc554a541acc872e388d39b9, type: 3}
       propertyPath: m_RootOrder
@@ -7922,6 +8142,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stakes (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000014246037622, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -8036,6 +8260,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: house-egypt-big
       objectReference: {fileID: 0}
+    - target: {fileID: 6758452341967345184, guid: 1ba98b3e447460f45ba077616eec4e20, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ba98b3e447460f45ba077616eec4e20, type: 3}
 --- !u!4 &626545566 stripped
@@ -8053,6 +8281,10 @@ PrefabInstance:
     - target: {fileID: 1000012879325186, guid: 763ec83b84e5ab5419a4ca657b002e63, type: 3}
       propertyPath: m_Name
       value: ground-cracked_dry
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012879325186, guid: 763ec83b84e5ab5419a4ca657b002e63, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000010966705758, guid: 763ec83b84e5ab5419a4ca657b002e63, type: 3}
       propertyPath: m_RootOrder
@@ -8128,6 +8360,10 @@ PrefabInstance:
     - target: {fileID: 1000013747084568, guid: 57ee24a79f9434341b85434ba53b0526, type: 3}
       propertyPath: m_Name
       value: stone-diamond_brown
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013747084568, guid: 57ee24a79f9434341b85434ba53b0526, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000012983757074, guid: 57ee24a79f9434341b85434ba53b0526, type: 3}
       propertyPath: m_RootOrder
@@ -8342,6 +8578,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: house-egypt-small (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4768484371184703825, guid: 0e30fd1a6a0b16444884ddcbb0b86223, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e30fd1a6a0b16444884ddcbb0b86223, type: 3}
 --- !u!4 &642029871 stripped
@@ -8359,6 +8599,10 @@ PrefabInstance:
     - target: {fileID: 1000013747084568, guid: 57ee24a79f9434341b85434ba53b0526, type: 3}
       propertyPath: m_Name
       value: stone-diamond_brown (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013747084568, guid: 57ee24a79f9434341b85434ba53b0526, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000012983757074, guid: 57ee24a79f9434341b85434ba53b0526, type: 3}
       propertyPath: m_RootOrder
@@ -8497,6 +8741,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stone-flat_brown
       objectReference: {fileID: 0}
+    - target: {fileID: 1000010635393592, guid: 0fe191e3edfdf472990132f6c31d4af8, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000011193101008, guid: 0fe191e3edfdf472990132f6c31d4af8, type: 3}
       propertyPath: m_RootOrder
       value: 111
@@ -8558,6 +8806,10 @@ PrefabInstance:
     - target: {fileID: 5672143247012761817, guid: 24e1a9d6308d28f47b04c33f8eaf7687, type: 3}
       propertyPath: m_Name
       value: egypt-stone-block-square (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5672143247012761817, guid: 24e1a9d6308d28f47b04c33f8eaf7687, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 5672143247012793593, guid: 24e1a9d6308d28f47b04c33f8eaf7687, type: 3}
       propertyPath: m_RootOrder
@@ -8892,6 +9144,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: shrub_orange (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012801719706, guid: 70fe31028d9546942b08e366a4946e4e, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000010913155976, guid: 70fe31028d9546942b08e366a4946e4e, type: 3}
       propertyPath: m_RootOrder
       value: 126
@@ -8966,6 +9222,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stakes (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000014246037622, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_RootOrder
       value: 202
@@ -9022,6 +9282,10 @@ PrefabInstance:
     - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_Name
       value: stakes (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000014246037622, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_RootOrder
@@ -9084,6 +9348,10 @@ PrefabInstance:
     - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_Name
       value: stakes (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000014246037622, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_RootOrder
@@ -9239,6 +9507,10 @@ PrefabInstance:
     - target: {fileID: 6813589976102174425, guid: 1c3f10f24a5bf5c49accd9435f762bc4, type: 3}
       propertyPath: m_Name
       value: egypt-spice-big
+      objectReference: {fileID: 0}
+    - target: {fileID: 6813589976102174425, guid: 1c3f10f24a5bf5c49accd9435f762bc4, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6813589976102265593, guid: 1c3f10f24a5bf5c49accd9435f762bc4, type: 3}
       propertyPath: m_RootOrder
@@ -9414,6 +9686,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stone-diamond_orange (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000013714799558, guid: a418142078cffa24f8c4398472c9cafb, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000010245227958, guid: a418142078cffa24f8c4398472c9cafb, type: 3}
       propertyPath: m_RootOrder
       value: 159
@@ -9475,6 +9751,10 @@ PrefabInstance:
     - target: {fileID: 1404153633997127010, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
       propertyPath: m_Name
       value: egyptwall1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404153633997127010, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 1744967726839408600, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
       propertyPath: m_RootOrder
@@ -9545,6 +9825,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stone-oval_brown (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000010740007340, guid: 54baad8be8f0849b2b20fd1da61be15f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000013067603608, guid: 54baad8be8f0849b2b20fd1da61be15f, type: 3}
       propertyPath: m_RootOrder
       value: 135
@@ -9607,6 +9891,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stakes (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000014246037622, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_RootOrder
       value: 85
@@ -9663,6 +9951,10 @@ PrefabInstance:
     - target: {fileID: 1109954306633886, guid: ad71ba25d17304082b8a05936a641368, type: 3}
       propertyPath: m_Name
       value: graveyard-wall-stone (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109954306633886, guid: ad71ba25d17304082b8a05936a641368, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4637967923684892, guid: ad71ba25d17304082b8a05936a641368, type: 3}
       propertyPath: m_RootOrder
@@ -9734,6 +10026,10 @@ PrefabInstance:
     - target: {fileID: 1404153633997127010, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
       propertyPath: m_Name
       value: egyptwall1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404153633997127010, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 1744967726839408600, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
       propertyPath: m_RootOrder
@@ -9985,6 +10281,10 @@ PrefabInstance:
     - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_Name
       value: stakes (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000014246037622, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_RootOrder
@@ -10246,9 +10546,53 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2054505724}
     m_Modifications:
+    - target: {fileID: 760437833930309791, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1456358277474191840, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2036741361697823868, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2389108087932291400, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4252568956683107662, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4540763144889177518, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4658889067269351359, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330800205691132359, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965025274980665977, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7635675651366263923, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 8323934124936775485, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
       propertyPath: m_Name
       value: egyptBuilding (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323934124936775485, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 8705279205328002439, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
       propertyPath: m_RootOrder
@@ -10294,6 +10638,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9126246441768450194, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
 --- !u!4 &770238676 stripped
@@ -10311,6 +10659,10 @@ PrefabInstance:
     - target: {fileID: 6114870316159865295, guid: 01f57406339396144af6f88c2c793a04, type: 3}
       propertyPath: m_Name
       value: egyptwall2 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6114870316159865295, guid: 01f57406339396144af6f88c2c793a04, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6888170465307282293, guid: 01f57406339396144af6f88c2c793a04, type: 3}
       propertyPath: m_RootOrder
@@ -10396,6 +10748,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egypt-amphora-simple
       objectReference: {fileID: 0}
+    - target: {fileID: 3857596201717286462, guid: d0b6cb4075deab943b85f18ff96f75de, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 3857596201717651998, guid: d0b6cb4075deab943b85f18ff96f75de, type: 3}
       propertyPath: m_RootOrder
       value: 59
@@ -10463,6 +10819,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stakes (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000014246037622, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_RootOrder
       value: 103
@@ -10519,6 +10879,10 @@ PrefabInstance:
     - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_Name
       value: stakes (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000014246037622, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_RootOrder
@@ -11388,6 +11752,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: house-egypt-small (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4768484371184703825, guid: 0e30fd1a6a0b16444884ddcbb0b86223, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e30fd1a6a0b16444884ddcbb0b86223, type: 3}
 --- !u!4 &877503509 stripped
@@ -11405,6 +11773,10 @@ PrefabInstance:
     - target: {fileID: 1000011210138126, guid: f9c68666ec758cb48afb06107c00dfcd, type: 3}
       propertyPath: m_Name
       value: stone-oval (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011210138126, guid: f9c68666ec758cb48afb06107c00dfcd, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000013631235076, guid: f9c68666ec758cb48afb06107c00dfcd, type: 3}
       propertyPath: m_RootOrder
@@ -11542,6 +11914,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: palm (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000011533223884, guid: c048e8af50d38224aa1c47540950543a, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000012176029756, guid: c048e8af50d38224aa1c47540950543a, type: 3}
       propertyPath: m_RootOrder
       value: 136
@@ -11603,6 +11979,10 @@ PrefabInstance:
     - target: {fileID: 3857596201717286462, guid: d0b6cb4075deab943b85f18ff96f75de, type: 3}
       propertyPath: m_Name
       value: egypt-amphora-simple (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857596201717286462, guid: d0b6cb4075deab943b85f18ff96f75de, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 3857596201717651998, guid: d0b6cb4075deab943b85f18ff96f75de, type: 3}
       propertyPath: m_RootOrder
@@ -12217,6 +12597,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: house-egypt-small
       objectReference: {fileID: 0}
+    - target: {fileID: 4768484371184703825, guid: 0e30fd1a6a0b16444884ddcbb0b86223, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e30fd1a6a0b16444884ddcbb0b86223, type: 3}
 --- !u!4 &936474771 stripped
@@ -12234,6 +12618,10 @@ PrefabInstance:
     - target: {fileID: 1000011002110890, guid: 316d955f00eeb21408c2c85cc9afe054, type: 3}
       propertyPath: m_Name
       value: jar-medium
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011002110890, guid: 316d955f00eeb21408c2c85cc9afe054, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000012330840448, guid: 316d955f00eeb21408c2c85cc9afe054, type: 3}
       propertyPath: m_RootOrder
@@ -12291,6 +12679,10 @@ PrefabInstance:
     - target: {fileID: 1000010897770062, guid: 8295367b16a7c104797e4a749765ddbd, type: 3}
       propertyPath: m_Name
       value: cactus-big
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010897770062, guid: 8295367b16a7c104797e4a749765ddbd, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000013266598056, guid: 8295367b16a7c104797e4a749765ddbd, type: 3}
       propertyPath: m_RootOrder
@@ -12566,6 +12958,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egyptShortBlock (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5830391472588796730, guid: 4812d6e729e256f4ba0423e50b593fed, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 6602952754282326400, guid: 4812d6e729e256f4ba0423e50b593fed, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -12664,6 +13060,10 @@ PrefabInstance:
     - target: {fileID: 1000013070978894, guid: 16c6ecb322f65d1498b1b8b303ba2b90, type: 3}
       propertyPath: m_Name
       value: stone-oval_orange
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013070978894, guid: 16c6ecb322f65d1498b1b8b303ba2b90, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000014249411078, guid: 16c6ecb322f65d1498b1b8b303ba2b90, type: 3}
       propertyPath: m_RootOrder
@@ -12850,6 +13250,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stakes (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000014246037622, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_RootOrder
       value: 196
@@ -13004,6 +13408,10 @@ PrefabInstance:
     - target: {fileID: 6114870316159865295, guid: 01f57406339396144af6f88c2c793a04, type: 3}
       propertyPath: m_Name
       value: egyptwall2 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6114870316159865295, guid: 01f57406339396144af6f88c2c793a04, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6888170465307282293, guid: 01f57406339396144af6f88c2c793a04, type: 3}
       propertyPath: m_RootOrder
@@ -13176,6 +13584,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egyptwall2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6114870316159865295, guid: 01f57406339396144af6f88c2c793a04, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 6888170465307282293, guid: 01f57406339396144af6f88c2c793a04, type: 3}
       propertyPath: m_RootOrder
       value: 205
@@ -13250,6 +13662,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rocks-small (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000010961514128, guid: 6cc963073d7c6dc4a9b1e1487ffda630, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000011748167870, guid: 6cc963073d7c6dc4a9b1e1487ffda630, type: 3}
       propertyPath: m_RootOrder
       value: 131
@@ -13306,6 +13722,10 @@ PrefabInstance:
     - target: {fileID: 1000013747084568, guid: 57ee24a79f9434341b85434ba53b0526, type: 3}
       propertyPath: m_Name
       value: stone-diamond_brown (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013747084568, guid: 57ee24a79f9434341b85434ba53b0526, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000012983757074, guid: 57ee24a79f9434341b85434ba53b0526, type: 3}
       propertyPath: m_RootOrder
@@ -13373,6 +13793,10 @@ PrefabInstance:
     - target: {fileID: 1000013313606856, guid: 2285a3453cbdb1348b8fa12d4f06cc55, type: 3}
       propertyPath: m_Name
       value: rock-sharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013313606856, guid: 2285a3453cbdb1348b8fa12d4f06cc55, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000011972474570, guid: 2285a3453cbdb1348b8fa12d4f06cc55, type: 3}
       propertyPath: m_RootOrder
@@ -13631,6 +14055,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egyptwall3 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1442854082391221502, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 2255701465745522244, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
       propertyPath: m_RootOrder
       value: 208
@@ -13749,6 +14177,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egypt-amphora-tall
       objectReference: {fileID: 0}
+    - target: {fileID: 2003336815274952262, guid: 53c1c4fd8e96e0e429019b3bfa7e4b99, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53c1c4fd8e96e0e429019b3bfa7e4b99, type: 3}
 --- !u!1 &1028113904
@@ -13859,6 +14291,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egyptwall2 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 6114870316159865295, guid: 01f57406339396144af6f88c2c793a04, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 6888170465307282293, guid: 01f57406339396144af6f88c2c793a04, type: 3}
       propertyPath: m_RootOrder
       value: 69
@@ -13927,6 +14363,10 @@ PrefabInstance:
     - target: {fileID: 1109954306633886, guid: ad71ba25d17304082b8a05936a641368, type: 3}
       propertyPath: m_Name
       value: graveyard-wall-stone (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109954306633886, guid: ad71ba25d17304082b8a05936a641368, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4637967923684892, guid: ad71ba25d17304082b8a05936a641368, type: 3}
       propertyPath: m_RootOrder
@@ -14232,6 +14672,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egyptwall1 (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 1404153633997127010, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 1744967726839408600, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
       propertyPath: m_RootOrder
       value: 71
@@ -14300,6 +14744,10 @@ PrefabInstance:
     - target: {fileID: 1442854082391221502, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
       propertyPath: m_Name
       value: egyptwall3 (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1442854082391221502, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 2255701465745522244, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
       propertyPath: m_RootOrder
@@ -14482,6 +14930,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egyptwall2 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 6114870316159865295, guid: 01f57406339396144af6f88c2c793a04, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 6888170465307282293, guid: 01f57406339396144af6f88c2c793a04, type: 3}
       propertyPath: m_RootOrder
       value: 78
@@ -14625,6 +15077,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: door-prison
       objectReference: {fileID: 0}
+    - target: {fileID: 1256879099210292, guid: bc7ea6f7a802a4f8bb58a3746bca0a9e, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4225281418982134, guid: bc7ea6f7a802a4f8bb58a3746bca0a9e, type: 3}
       propertyPath: m_RootOrder
       value: 18
@@ -14726,6 +15182,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egypt-obelisk-old-broken (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4764267632073841898, guid: 332202467aa528d41b9773e11933cfc8, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 332202467aa528d41b9773e11933cfc8, type: 3}
 --- !u!1 &1097909527
@@ -14823,6 +15283,10 @@ PrefabInstance:
     - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_Name
       value: stakes (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000014246037622, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_RootOrder
@@ -14983,6 +15447,10 @@ PrefabInstance:
     - target: {fileID: 1442854082391221502, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
       propertyPath: m_Name
       value: egyptwall3 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1442854082391221502, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 2255701465745522244, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
       propertyPath: m_RootOrder
@@ -15392,6 +15860,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: aloe-vera (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7043888936974094045, guid: 3c362c1d571e5974b8fa5f2eab28140f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 7677294893702927463, guid: 3c362c1d571e5974b8fa5f2eab28140f, type: 3}
       propertyPath: m_RootOrder
       value: 191
@@ -15562,6 +16034,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egypt-obelisk-old
       objectReference: {fileID: 0}
+    - target: {fileID: 8542896281475787047, guid: f11d87921bd883c4ea9ffd18626b3a48, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f11d87921bd883c4ea9ffd18626b3a48, type: 3}
 --- !u!1001 &1150528720
@@ -15574,6 +16050,10 @@ PrefabInstance:
     - target: {fileID: 1000010740007340, guid: 54baad8be8f0849b2b20fd1da61be15f, type: 3}
       propertyPath: m_Name
       value: stone-oval_brown (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010740007340, guid: 54baad8be8f0849b2b20fd1da61be15f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000013067603608, guid: 54baad8be8f0849b2b20fd1da61be15f, type: 3}
       propertyPath: m_RootOrder
@@ -15734,6 +16214,10 @@ PrefabInstance:
     - target: {fileID: 1000010740549920, guid: 5aa80b55966c6404fb24876c1d1e55d5, type: 3}
       propertyPath: m_Name
       value: stone-round
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010740549920, guid: 5aa80b55966c6404fb24876c1d1e55d5, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000011421364786, guid: 5aa80b55966c6404fb24876c1d1e55d5, type: 3}
       propertyPath: m_RootOrder
@@ -16302,6 +16786,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egyptwall3 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1442854082391221502, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 2255701465745522244, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
       propertyPath: m_RootOrder
       value: 35
@@ -16377,9 +16865,53 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2054505724}
     m_Modifications:
+    - target: {fileID: 760437833930309791, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1456358277474191840, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2036741361697823868, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2389108087932291400, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4252568956683107662, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4540763144889177518, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4658889067269351359, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330800205691132359, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965025274980665977, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7635675651366263923, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 8323934124936775485, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
       propertyPath: m_Name
       value: egyptBuilding (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323934124936775485, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 8705279205328002439, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
       propertyPath: m_RootOrder
@@ -16437,6 +16969,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9126246441768450194, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
 --- !u!4 &1178657489 stripped
@@ -16454,6 +16990,10 @@ PrefabInstance:
     - target: {fileID: 1109954306633886, guid: ad71ba25d17304082b8a05936a641368, type: 3}
       propertyPath: m_Name
       value: graveyard-wall-stone
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109954306633886, guid: ad71ba25d17304082b8a05936a641368, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4637967923684892, guid: ad71ba25d17304082b8a05936a641368, type: 3}
       propertyPath: m_RootOrder
@@ -16508,9 +17048,53 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2054505724}
     m_Modifications:
+    - target: {fileID: 760437833930309791, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1456358277474191840, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2036741361697823868, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2389108087932291400, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4252568956683107662, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4540763144889177518, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4658889067269351359, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330800205691132359, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965025274980665977, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7635675651366263923, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 8323934124936775485, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
       propertyPath: m_Name
       value: egyptBuilding (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323934124936775485, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 8705279205328002439, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
       propertyPath: m_RootOrder
@@ -16556,6 +17140,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9126246441768450194, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
 --- !u!4 &1184567345 stripped
@@ -16573,6 +17161,10 @@ PrefabInstance:
     - target: {fileID: 1000010651977466, guid: 1689020eaa3b542b1ae54fbdb838f290, type: 3}
       propertyPath: m_Name
       value: grass-tall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010651977466, guid: 1689020eaa3b542b1ae54fbdb838f290, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000013560357936, guid: 1689020eaa3b542b1ae54fbdb838f290, type: 3}
       propertyPath: m_RootOrder
@@ -16630,6 +17222,10 @@ PrefabInstance:
     - target: {fileID: 8272344345038028360, guid: c4e908956a82c314eaa789591391caf3, type: 3}
       propertyPath: m_Name
       value: pipe-wrinkled-stack
+      objectReference: {fileID: 0}
+    - target: {fileID: 8272344345038028360, guid: c4e908956a82c314eaa789591391caf3, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 8756851413474321650, guid: c4e908956a82c314eaa789591391caf3, type: 3}
       propertyPath: m_RootOrder
@@ -16697,6 +17293,10 @@ PrefabInstance:
     - target: {fileID: 3857596201717286462, guid: d0b6cb4075deab943b85f18ff96f75de, type: 3}
       propertyPath: m_Name
       value: egypt-amphora-simple (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857596201717286462, guid: d0b6cb4075deab943b85f18ff96f75de, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 3857596201717651998, guid: d0b6cb4075deab943b85f18ff96f75de, type: 3}
       propertyPath: m_RootOrder
@@ -16971,6 +17571,10 @@ PrefabInstance:
     - target: {fileID: 1404153633997127010, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
       propertyPath: m_Name
       value: egyptwall1 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404153633997127010, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 1744967726839408600, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
       propertyPath: m_RootOrder
@@ -17285,6 +17889,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egypt-obelisk-old-broken
       objectReference: {fileID: 0}
+    - target: {fileID: 4764267632073841898, guid: 332202467aa528d41b9773e11933cfc8, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 332202467aa528d41b9773e11933cfc8, type: 3}
 --- !u!1001 &1250048717
@@ -17297,6 +17905,10 @@ PrefabInstance:
     - target: {fileID: 1459591913828670, guid: 70a3468d739b44ec0bb9495750b479fa, type: 3}
       propertyPath: m_Name
       value: dungeon-stairs-stone
+      objectReference: {fileID: 0}
+    - target: {fileID: 1459591913828670, guid: 70a3468d739b44ec0bb9495750b479fa, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4058195599578694, guid: 70a3468d739b44ec0bb9495750b479fa, type: 3}
       propertyPath: m_RootOrder
@@ -17471,6 +18083,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stakes (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000014246037622, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_RootOrder
       value: 199
@@ -17527,6 +18143,10 @@ PrefabInstance:
     - target: {fileID: 1404153633997127010, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
       propertyPath: m_Name
       value: egyptwall1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404153633997127010, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 1744967726839408600, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
       propertyPath: m_RootOrder
@@ -17596,6 +18216,10 @@ PrefabInstance:
     - target: {fileID: 4688294090425149448, guid: a97f2ebe2652eb6409268da918356b65, type: 3}
       propertyPath: m_Name
       value: palm-round
+      objectReference: {fileID: 0}
+    - target: {fileID: 4688294090425149448, guid: a97f2ebe2652eb6409268da918356b65, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4688294090425316392, guid: a97f2ebe2652eb6409268da918356b65, type: 3}
       propertyPath: m_RootOrder
@@ -17845,6 +18469,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stone-diamond
       objectReference: {fileID: 0}
+    - target: {fileID: 1000011816824358, guid: 1e6bbdee4038af349901aa5f6b06c65b, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000012627383356, guid: 1e6bbdee4038af349901aa5f6b06c65b, type: 3}
       propertyPath: m_RootOrder
       value: 176
@@ -17889,6 +18517,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3420996156407362402, guid: 1e6bbdee4038af349901aa5f6b06c65b, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e6bbdee4038af349901aa5f6b06c65b, type: 3}
 --- !u!1001 &1282913464
@@ -17901,6 +18533,10 @@ PrefabInstance:
     - target: {fileID: 1442854082391221502, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
       propertyPath: m_Name
       value: egyptwall3 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1442854082391221502, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 2255701465745522244, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
       propertyPath: m_RootOrder
@@ -18295,6 +18931,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egyptwall2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6114870316159865295, guid: 01f57406339396144af6f88c2c793a04, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 6888170465307282293, guid: 01f57406339396144af6f88c2c793a04, type: 3}
       propertyPath: m_RootOrder
       value: 25
@@ -18368,6 +19008,10 @@ PrefabInstance:
     - target: {fileID: 1404153633997127010, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
       propertyPath: m_Name
       value: egyptwall1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404153633997127010, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 1744967726839408600, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
       propertyPath: m_RootOrder
@@ -18565,6 +19209,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: graveyard-wall-stone (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1109954306633886, guid: ad71ba25d17304082b8a05936a641368, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4637967923684892, guid: ad71ba25d17304082b8a05936a641368, type: 3}
       propertyPath: m_RootOrder
       value: 145
@@ -18749,7 +19397,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1549619258373737837, guid: 1dc3b813802c4674ab039f9d5bda5f43, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 1549619258374164813, guid: 1dc3b813802c4674ab039f9d5bda5f43, type: 3}
       propertyPath: m_RootOrder
@@ -18807,6 +19455,10 @@ PrefabInstance:
     - target: {fileID: 1000011865009160, guid: 696732de140f6a64291366fdc2d850d3, type: 3}
       propertyPath: m_Name
       value: dryer
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011865009160, guid: 696732de140f6a64291366fdc2d850d3, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000011231103168, guid: 696732de140f6a64291366fdc2d850d3, type: 3}
       propertyPath: m_RootOrder
@@ -18869,6 +19521,10 @@ PrefabInstance:
     - target: {fileID: 1000012801719706, guid: 70fe31028d9546942b08e366a4946e4e, type: 3}
       propertyPath: m_Name
       value: shrub_orange
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012801719706, guid: 70fe31028d9546942b08e366a4946e4e, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000010913155976, guid: 70fe31028d9546942b08e366a4946e4e, type: 3}
       propertyPath: m_RootOrder
@@ -18943,6 +19599,10 @@ PrefabInstance:
     - target: {fileID: 5043703894269650328, guid: d088aed8ba37ca342bb31a9831e0cbda, type: 3}
       propertyPath: m_Name
       value: pirate-platform-small
+      objectReference: {fileID: 0}
+    - target: {fileID: 5043703894269650328, guid: d088aed8ba37ca342bb31a9831e0cbda, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 5671445166234418978, guid: d088aed8ba37ca342bb31a9831e0cbda, type: 3}
       propertyPath: m_RootOrder
@@ -19106,6 +19766,10 @@ PrefabInstance:
     - target: {fileID: 4385986969744350624, guid: 13d5aff3720dca14b9734f82260231e1, type: 3}
       propertyPath: m_Name
       value: egypt-statue-cat
+      objectReference: {fileID: 0}
+    - target: {fileID: 4385986969744350624, guid: 13d5aff3720dca14b9734f82260231e1, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4385986969744507264, guid: 13d5aff3720dca14b9734f82260231e1, type: 3}
       propertyPath: m_RootOrder
@@ -19510,6 +20174,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stone-oval
       objectReference: {fileID: 0}
+    - target: {fileID: 1000011210138126, guid: f9c68666ec758cb48afb06107c00dfcd, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000013631235076, guid: f9c68666ec758cb48afb06107c00dfcd, type: 3}
       propertyPath: m_RootOrder
       value: 154
@@ -19675,6 +20343,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: grass-basic_orange
       objectReference: {fileID: 0}
+    - target: {fileID: 1000011460197470, guid: c3591d4a38d50e440931ebbe367ff068, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000010912365170, guid: c3591d4a38d50e440931ebbe367ff068, type: 3}
       propertyPath: m_RootOrder
       value: 184
@@ -19781,6 +20453,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egypt-obelisk-old
       objectReference: {fileID: 0}
+    - target: {fileID: 8542896281475787047, guid: f11d87921bd883c4ea9ffd18626b3a48, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f11d87921bd883c4ea9ffd18626b3a48, type: 3}
 --- !u!1001 &1397877183
@@ -19793,6 +20469,10 @@ PrefabInstance:
     - target: {fileID: 3857596201717286462, guid: d0b6cb4075deab943b85f18ff96f75de, type: 3}
       propertyPath: m_Name
       value: egypt-amphora-simple (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857596201717286462, guid: d0b6cb4075deab943b85f18ff96f75de, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 3857596201717651998, guid: d0b6cb4075deab943b85f18ff96f75de, type: 3}
       propertyPath: m_RootOrder
@@ -19855,6 +20535,10 @@ PrefabInstance:
     - target: {fileID: 1442854082391221502, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
       propertyPath: m_Name
       value: egyptwall3 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1442854082391221502, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 2255701465745522244, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
       propertyPath: m_RootOrder
@@ -19930,6 +20614,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stakes (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000014246037622, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -19988,9 +20676,53 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2054505724}
     m_Modifications:
+    - target: {fileID: 760437833930309791, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1456358277474191840, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2036741361697823868, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2389108087932291400, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4252568956683107662, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4540763144889177518, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4658889067269351359, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330800205691132359, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965025274980665977, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7635675651366263923, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 8323934124936775485, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
       propertyPath: m_Name
       value: egyptBuilding
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323934124936775485, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 8705279205328002439, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
       propertyPath: m_RootOrder
@@ -20048,6 +20780,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9126246441768450194, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
 --- !u!4 &1402426251 stripped
@@ -20062,9 +20798,53 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2054505724}
     m_Modifications:
+    - target: {fileID: 760437833930309791, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1456358277474191840, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2036741361697823868, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2389108087932291400, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4252568956683107662, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4540763144889177518, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4658889067269351359, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330800205691132359, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965025274980665977, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7635675651366263923, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 8323934124936775485, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
       propertyPath: m_Name
       value: egyptBuilding (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323934124936775485, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 8705279205328002439, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
       propertyPath: m_RootOrder
@@ -20122,6 +20902,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9126246441768450194, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
 --- !u!1001 &1405683948
@@ -20134,6 +20918,10 @@ PrefabInstance:
     - target: {fileID: 1442854082391221502, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
       propertyPath: m_Name
       value: egyptwall3 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1442854082391221502, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 2255701465745522244, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
       propertyPath: m_RootOrder
@@ -20351,6 +21139,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sheep-white (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2053046654768804484, guid: 3579a937e3060b54e94cb341dcbda2ba, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6365905081798045415, guid: 3579a937e3060b54e94cb341dcbda2ba, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3579a937e3060b54e94cb341dcbda2ba, type: 3}
@@ -20364,6 +21156,10 @@ PrefabInstance:
     - target: {fileID: 1442854082391221502, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
       propertyPath: m_Name
       value: egyptwall3 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1442854082391221502, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 2255701465745522244, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
       propertyPath: m_RootOrder
@@ -20498,6 +21294,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: grass-basic
       objectReference: {fileID: 0}
+    - target: {fileID: 1000011497609644, guid: 86c8aa56418d04c11b5a28c96bc80f96, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000012719265562, guid: 86c8aa56418d04c11b5a28c96bc80f96, type: 3}
       propertyPath: m_RootOrder
       value: 186
@@ -20559,6 +21359,10 @@ PrefabInstance:
     - target: {fileID: 7153944072423737871, guid: 89ab1d131f87a564cb85b092be8c969d, type: 3}
       propertyPath: m_Name
       value: palm-bush-big (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7153944072423737871, guid: 89ab1d131f87a564cb85b092be8c969d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 7497431902318776501, guid: 89ab1d131f87a564cb85b092be8c969d, type: 3}
       propertyPath: m_RootOrder
@@ -20872,6 +21676,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sheep-white
       objectReference: {fileID: 0}
+    - target: {fileID: 2053046654768804484, guid: 3579a937e3060b54e94cb341dcbda2ba, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3579a937e3060b54e94cb341dcbda2ba, type: 3}
 --- !u!1 &1458654995
@@ -21024,6 +21832,10 @@ PrefabInstance:
     - target: {fileID: 1000013714799558, guid: a418142078cffa24f8c4398472c9cafb, type: 3}
       propertyPath: m_Name
       value: stone-diamond_orange
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013714799558, guid: a418142078cffa24f8c4398472c9cafb, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000010245227958, guid: a418142078cffa24f8c4398472c9cafb, type: 3}
       propertyPath: m_RootOrder
@@ -21343,6 +22155,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cactus-big (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000010897770062, guid: 8295367b16a7c104797e4a749765ddbd, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000013266598056, guid: 8295367b16a7c104797e4a749765ddbd, type: 3}
       propertyPath: m_RootOrder
       value: 161
@@ -21415,6 +22231,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stakes (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000014246037622, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_RootOrder
       value: 195
@@ -21471,6 +22291,10 @@ PrefabInstance:
     - target: {fileID: 3857596201717286462, guid: d0b6cb4075deab943b85f18ff96f75de, type: 3}
       propertyPath: m_Name
       value: egypt-amphora-simple (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857596201717286462, guid: d0b6cb4075deab943b85f18ff96f75de, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 3857596201717651998, guid: d0b6cb4075deab943b85f18ff96f75de, type: 3}
       propertyPath: m_RootOrder
@@ -21533,6 +22357,10 @@ PrefabInstance:
     - target: {fileID: 7153944072423737871, guid: 89ab1d131f87a564cb85b092be8c969d, type: 3}
       propertyPath: m_Name
       value: palm-bush-big (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7153944072423737871, guid: 89ab1d131f87a564cb85b092be8c969d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 7497431902318776501, guid: 89ab1d131f87a564cb85b092be8c969d, type: 3}
       propertyPath: m_RootOrder
@@ -21759,6 +22587,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stakes (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000014246037622, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_RootOrder
       value: 198
@@ -21934,6 +22766,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: house-egypt-small
       objectReference: {fileID: 0}
+    - target: {fileID: 4768484371184703825, guid: 0e30fd1a6a0b16444884ddcbb0b86223, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e30fd1a6a0b16444884ddcbb0b86223, type: 3}
 --- !u!1001 &1540731376
@@ -21946,6 +22782,10 @@ PrefabInstance:
     - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_Name
       value: stakes (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000014246037622, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_RootOrder
@@ -22019,6 +22859,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egyptwall1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1404153633997127010, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 1744967726839408600, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
       propertyPath: m_RootOrder
       value: 204
@@ -22089,9 +22933,53 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2054505724}
     m_Modifications:
+    - target: {fileID: 760437833930309791, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1456358277474191840, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2036741361697823868, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2389108087932291400, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4252568956683107662, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4540763144889177518, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4658889067269351359, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330800205691132359, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965025274980665977, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7635675651366263923, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 8323934124936775485, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
       propertyPath: m_Name
       value: egyptBuilding (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323934124936775485, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 8705279205328002439, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
       propertyPath: m_RootOrder
@@ -22149,6 +23037,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9126246441768450194, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
 --- !u!4 &1560427958 stripped
@@ -22166,6 +23058,10 @@ PrefabInstance:
     - target: {fileID: 1000011865009160, guid: 696732de140f6a64291366fdc2d850d3, type: 3}
       propertyPath: m_Name
       value: dryer (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011865009160, guid: 696732de140f6a64291366fdc2d850d3, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000011231103168, guid: 696732de140f6a64291366fdc2d850d3, type: 3}
       propertyPath: m_RootOrder
@@ -22228,6 +23124,10 @@ PrefabInstance:
     - target: {fileID: 1000011471527648, guid: aa2aba1c609347b46a000dcb4078c820, type: 3}
       propertyPath: m_Name
       value: grass-clumb_orange
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011471527648, guid: aa2aba1c609347b46a000dcb4078c820, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000013551168098, guid: aa2aba1c609347b46a000dcb4078c820, type: 3}
       propertyPath: m_RootOrder
@@ -22295,6 +23195,10 @@ PrefabInstance:
     - target: {fileID: 1404153633997127010, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
       propertyPath: m_Name
       value: egyptwall1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404153633997127010, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 1744967726839408600, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
       propertyPath: m_RootOrder
@@ -22369,6 +23273,10 @@ PrefabInstance:
     - target: {fileID: 1256879099210292, guid: bc7ea6f7a802a4f8bb58a3746bca0a9e, type: 3}
       propertyPath: m_Name
       value: door-prison (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1256879099210292, guid: bc7ea6f7a802a4f8bb58a3746bca0a9e, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4225281418982134, guid: bc7ea6f7a802a4f8bb58a3746bca0a9e, type: 3}
       propertyPath: m_RootOrder
@@ -22529,6 +23437,10 @@ PrefabInstance:
     - target: {fileID: 7153944072423737871, guid: 89ab1d131f87a564cb85b092be8c969d, type: 3}
       propertyPath: m_Name
       value: palm-bush-big (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7153944072423737871, guid: 89ab1d131f87a564cb85b092be8c969d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 7497431902318776501, guid: 89ab1d131f87a564cb85b092be8c969d, type: 3}
       propertyPath: m_RootOrder
@@ -22805,6 +23717,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egypt-stone-block-square
       objectReference: {fileID: 0}
+    - target: {fileID: 5672143247012761817, guid: 24e1a9d6308d28f47b04c33f8eaf7687, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 5672143247012793593, guid: 24e1a9d6308d28f47b04c33f8eaf7687, type: 3}
       propertyPath: m_RootOrder
       value: 216
@@ -22884,6 +23800,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egypt-ladder
       objectReference: {fileID: 0}
+    - target: {fileID: 7938952128519948908, guid: b914c860f4db6754eaeff29ae4ee12e9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 7938952128520050252, guid: b914c860f4db6754eaeff29ae4ee12e9, type: 3}
       propertyPath: m_RootOrder
       value: 26
@@ -22941,6 +23861,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stakes (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000014246037622, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_RootOrder
       value: 92
@@ -22997,6 +23921,10 @@ PrefabInstance:
     - target: {fileID: 1000010227003290, guid: 71da040b5c0ab72408e342ed49290c5a, type: 3}
       propertyPath: m_Name
       value: cactus-medium (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010227003290, guid: 71da040b5c0ab72408e342ed49290c5a, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000013166053820, guid: 71da040b5c0ab72408e342ed49290c5a, type: 3}
       propertyPath: m_RootOrder
@@ -23059,6 +23987,10 @@ PrefabInstance:
     - target: {fileID: 1967692405255397808, guid: 25fa77246fbd9154a9e822d7805f4606, type: 3}
       propertyPath: m_Name
       value: egypt-stone-block
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967692405255397808, guid: 25fa77246fbd9154a9e822d7805f4606, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 1967692405255503248, guid: 25fa77246fbd9154a9e822d7805f4606, type: 3}
       propertyPath: m_RootOrder
@@ -23129,6 +24061,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stakes (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000014246037622, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -23190,6 +24126,10 @@ PrefabInstance:
     - target: {fileID: 6114870316159865295, guid: 01f57406339396144af6f88c2c793a04, type: 3}
       propertyPath: m_Name
       value: egyptwall2 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6114870316159865295, guid: 01f57406339396144af6f88c2c793a04, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6888170465307282293, guid: 01f57406339396144af6f88c2c793a04, type: 3}
       propertyPath: m_RootOrder
@@ -23264,6 +24204,10 @@ PrefabInstance:
     - target: {fileID: 1000013714799558, guid: a418142078cffa24f8c4398472c9cafb, type: 3}
       propertyPath: m_Name
       value: stone-diamond_orange (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013714799558, guid: a418142078cffa24f8c4398472c9cafb, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000010245227958, guid: a418142078cffa24f8c4398472c9cafb, type: 3}
       propertyPath: m_RootOrder
@@ -23499,6 +24443,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egypt-amphora-tall (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2003336815274952262, guid: 53c1c4fd8e96e0e429019b3bfa7e4b99, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53c1c4fd8e96e0e429019b3bfa7e4b99, type: 3}
 --- !u!1001 &1688384951
@@ -23511,6 +24459,10 @@ PrefabInstance:
     - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_Name
       value: stakes (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000014246037622, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_RootOrder
@@ -23568,6 +24520,10 @@ PrefabInstance:
     - target: {fileID: 3857596201717286462, guid: d0b6cb4075deab943b85f18ff96f75de, type: 3}
       propertyPath: m_Name
       value: egypt-amphora-simple (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857596201717286462, guid: d0b6cb4075deab943b85f18ff96f75de, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 3857596201717651998, guid: d0b6cb4075deab943b85f18ff96f75de, type: 3}
       propertyPath: m_RootOrder
@@ -23631,6 +24587,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stakes (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000014246037622, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_RootOrder
       value: 87
@@ -23687,6 +24647,10 @@ PrefabInstance:
     - target: {fileID: 1000010635393592, guid: 0fe191e3edfdf472990132f6c31d4af8, type: 3}
       propertyPath: m_Name
       value: stone-flat_brown (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010635393592, guid: 0fe191e3edfdf472990132f6c31d4af8, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000011193101008, guid: 0fe191e3edfdf472990132f6c31d4af8, type: 3}
       propertyPath: m_RootOrder
@@ -24037,6 +25001,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stone-oval (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000011210138126, guid: f9c68666ec758cb48afb06107c00dfcd, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000013631235076, guid: f9c68666ec758cb48afb06107c00dfcd, type: 3}
       propertyPath: m_RootOrder
       value: 166
@@ -24098,6 +25066,10 @@ PrefabInstance:
     - target: {fileID: 1000011505633412, guid: 5e74835ce4619c94e9996cc209b92921, type: 3}
       propertyPath: m_Name
       value: stone-flat_orange (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011505633412, guid: 5e74835ce4619c94e9996cc209b92921, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000013183415300, guid: 5e74835ce4619c94e9996cc209b92921, type: 3}
       propertyPath: m_RootOrder
@@ -24246,6 +25218,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egyptwall3 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1442854082391221502, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 2255701465745522244, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
       propertyPath: m_RootOrder
       value: 40
@@ -24324,6 +25300,10 @@ PrefabInstance:
     - target: {fileID: 1000013729230236, guid: a95afc340b7d21348a22207edba026df, type: 3}
       propertyPath: m_Name
       value: well
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013729230236, guid: a95afc340b7d21348a22207edba026df, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000012174342246, guid: a95afc340b7d21348a22207edba026df, type: 3}
       propertyPath: m_RootOrder
@@ -24519,6 +25499,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egyptwall1 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1404153633997127010, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 1744967726839408600, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
       propertyPath: m_RootOrder
       value: 43
@@ -24597,6 +25581,10 @@ PrefabInstance:
     - target: {fileID: 1000011471527648, guid: aa2aba1c609347b46a000dcb4078c820, type: 3}
       propertyPath: m_Name
       value: grass-clumb_orange
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011471527648, guid: aa2aba1c609347b46a000dcb4078c820, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000013551168098, guid: aa2aba1c609347b46a000dcb4078c820, type: 3}
       propertyPath: m_RootOrder
@@ -24753,6 +25741,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egypt-pillar-proto-doric (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5812486095548991760, guid: 8cfdb9d9bc554a541acc872e388d39b9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 5812486095549486384, guid: 8cfdb9d9bc554a541acc872e388d39b9, type: 3}
       propertyPath: m_RootOrder
       value: 132
@@ -24854,6 +25846,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: house-egypt-small (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4768484371184703825, guid: 0e30fd1a6a0b16444884ddcbb0b86223, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e30fd1a6a0b16444884ddcbb0b86223, type: 3}
 --- !u!4 &1786227263 stripped
@@ -24871,6 +25867,10 @@ PrefabInstance:
     - target: {fileID: 1442854082391221502, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
       propertyPath: m_Name
       value: egyptwall3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1442854082391221502, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 2255701465745522244, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
       propertyPath: m_RootOrder
@@ -25078,6 +26078,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: grass-clumb
       objectReference: {fileID: 0}
+    - target: {fileID: 1000011669407258, guid: 03b67f53c002a4af881d7049bc3e950b, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000011923692066, guid: 03b67f53c002a4af881d7049bc3e950b, type: 3}
       propertyPath: m_RootOrder
       value: 189
@@ -25142,7 +26146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1549619258373737837, guid: 1dc3b813802c4674ab039f9d5bda5f43, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 1549619258374164813, guid: 1dc3b813802c4674ab039f9d5bda5f43, type: 3}
       propertyPath: m_RootOrder
@@ -25303,6 +26307,10 @@ PrefabInstance:
     - target: {fileID: 1442854082391221502, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
       propertyPath: m_Name
       value: egyptwall3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1442854082391221502, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 2255701465745522244, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
       propertyPath: m_RootOrder
@@ -25480,6 +26488,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: grass-basic (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000011497609644, guid: 86c8aa56418d04c11b5a28c96bc80f96, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000012719265562, guid: 86c8aa56418d04c11b5a28c96bc80f96, type: 3}
       propertyPath: m_RootOrder
       value: 129
@@ -25536,6 +26548,10 @@ PrefabInstance:
     - target: {fileID: 6114870316159865295, guid: 01f57406339396144af6f88c2c793a04, type: 3}
       propertyPath: m_Name
       value: egyptwall2 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6114870316159865295, guid: 01f57406339396144af6f88c2c793a04, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6888170465307282293, guid: 01f57406339396144af6f88c2c793a04, type: 3}
       propertyPath: m_RootOrder
@@ -25724,6 +26740,10 @@ PrefabInstance:
     - target: {fileID: 1000012949157106, guid: 1d8c661f6bf533646aed511b6b3ae675, type: 3}
       propertyPath: m_Name
       value: jar-big
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012949157106, guid: 1d8c661f6bf533646aed511b6b3ae675, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000011593407188, guid: 1d8c661f6bf533646aed511b6b3ae675, type: 3}
       propertyPath: m_RootOrder
@@ -26074,6 +27094,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rocks-small (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000010961514128, guid: 6cc963073d7c6dc4a9b1e1487ffda630, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000011748167870, guid: 6cc963073d7c6dc4a9b1e1487ffda630, type: 3}
       propertyPath: m_RootOrder
       value: 130
@@ -26254,6 +27278,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: grass-tall_orange
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012435560724, guid: b9fd96550c6ef8c48ac42fffcad3eeb0, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000014111722898, guid: b9fd96550c6ef8c48ac42fffcad3eeb0, type: 3}
       propertyPath: m_RootOrder
       value: 182
@@ -26315,6 +27343,10 @@ PrefabInstance:
     - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_Name
       value: stakes (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000014246037622, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_RootOrder
@@ -26486,6 +27518,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stakes (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000014246037622, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_RootOrder
       value: 89
@@ -26641,6 +27677,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rocks-small
       objectReference: {fileID: 0}
+    - target: {fileID: 1000010961514128, guid: 6cc963073d7c6dc4a9b1e1487ffda630, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000011748167870, guid: 6cc963073d7c6dc4a9b1e1487ffda630, type: 3}
       propertyPath: m_RootOrder
       value: 181
@@ -26697,6 +27737,10 @@ PrefabInstance:
     - target: {fileID: 3863284765622839124, guid: a0b1c62a84ec7db48b050cca2f0d4a82, type: 3}
       propertyPath: m_Name
       value: egypt-oven
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863284765622839124, guid: a0b1c62a84ec7db48b050cca2f0d4a82, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 3863284765623270260, guid: a0b1c62a84ec7db48b050cca2f0d4a82, type: 3}
       propertyPath: m_RootOrder
@@ -26759,6 +27803,10 @@ PrefabInstance:
     - target: {fileID: 7153944072423737871, guid: 89ab1d131f87a564cb85b092be8c969d, type: 3}
       propertyPath: m_Name
       value: palm-bush-big (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7153944072423737871, guid: 89ab1d131f87a564cb85b092be8c969d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 7497431902318776501, guid: 89ab1d131f87a564cb85b092be8c969d, type: 3}
       propertyPath: m_RootOrder
@@ -27147,6 +28195,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sheep-white (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2053046654768804484, guid: 3579a937e3060b54e94cb341dcbda2ba, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3579a937e3060b54e94cb341dcbda2ba, type: 3}
 --- !u!1 &1912974157
@@ -27316,6 +28368,10 @@ PrefabInstance:
     - target: {fileID: 5697429523478479541, guid: 2c71860299c623542a37b498e38ad64b, type: 3}
       propertyPath: m_Name
       value: egypt-spice-medium
+      objectReference: {fileID: 0}
+    - target: {fileID: 5697429523478479541, guid: 2c71860299c623542a37b498e38ad64b, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 5697429523478716053, guid: 2c71860299c623542a37b498e38ad64b, type: 3}
       propertyPath: m_RootOrder
@@ -27644,6 +28700,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: house-egypt-big
       objectReference: {fileID: 0}
+    - target: {fileID: 6758452341967345184, guid: 1ba98b3e447460f45ba077616eec4e20, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ba98b3e447460f45ba077616eec4e20, type: 3}
 --- !u!1 &1964122205
@@ -27955,6 +29015,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egyptwall3 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1442854082391221502, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 2255701465745522244, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
       propertyPath: m_RootOrder
       value: 50
@@ -28126,6 +29190,10 @@ PrefabInstance:
     - target: {fileID: 1109954306633886, guid: ad71ba25d17304082b8a05936a641368, type: 3}
       propertyPath: m_Name
       value: graveyard-wall-stone (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109954306633886, guid: ad71ba25d17304082b8a05936a641368, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4637967923684892, guid: ad71ba25d17304082b8a05936a641368, type: 3}
       propertyPath: m_RootOrder
@@ -28385,6 +29453,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: dryer
       objectReference: {fileID: 0}
+    - target: {fileID: 1000011865009160, guid: 696732de140f6a64291366fdc2d850d3, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000011231103168, guid: 696732de140f6a64291366fdc2d850d3, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -28486,6 +29558,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egypt-rack
       objectReference: {fileID: 0}
+    - target: {fileID: 6908562968782828024, guid: 46b5ee2ab4f0c284cbd6da1011d358ef, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46b5ee2ab4f0c284cbd6da1011d358ef, type: 3}
 --- !u!4 &1997155898 stripped
@@ -28503,6 +29579,10 @@ PrefabInstance:
     - target: {fileID: 1000010227003290, guid: 71da040b5c0ab72408e342ed49290c5a, type: 3}
       propertyPath: m_Name
       value: cactus-medium
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010227003290, guid: 71da040b5c0ab72408e342ed49290c5a, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000013166053820, guid: 71da040b5c0ab72408e342ed49290c5a, type: 3}
       propertyPath: m_RootOrder
@@ -28610,6 +29690,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egypt-rack (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6908562968782828024, guid: 46b5ee2ab4f0c284cbd6da1011d358ef, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46b5ee2ab4f0c284cbd6da1011d358ef, type: 3}
 --- !u!1001 &2010363463
@@ -28626,6 +29710,10 @@ PrefabInstance:
     - target: {fileID: 6114870316159865295, guid: 01f57406339396144af6f88c2c793a04, type: 3}
       propertyPath: m_Name
       value: egyptwall2 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6114870316159865295, guid: 01f57406339396144af6f88c2c793a04, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6888170465307282293, guid: 01f57406339396144af6f88c2c793a04, type: 3}
       propertyPath: m_RootOrder
@@ -28706,6 +29794,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egyptwall3 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 1442854082391221502, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 2255701465745522244, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
       propertyPath: m_RootOrder
       value: 53
@@ -28779,6 +29871,10 @@ PrefabInstance:
     - target: {fileID: 1000011497609644, guid: 86c8aa56418d04c11b5a28c96bc80f96, type: 3}
       propertyPath: m_Name
       value: grass-basic (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011497609644, guid: 86c8aa56418d04c11b5a28c96bc80f96, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000012719265562, guid: 86c8aa56418d04c11b5a28c96bc80f96, type: 3}
       propertyPath: m_RootOrder
@@ -28894,6 +29990,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: house-egypt-small
       objectReference: {fileID: 0}
+    - target: {fileID: 4768484371184703825, guid: 0e30fd1a6a0b16444884ddcbb0b86223, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e30fd1a6a0b16444884ddcbb0b86223, type: 3}
 --- !u!4 &2035240698 stripped
@@ -28908,9 +30008,53 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2054505724}
     m_Modifications:
+    - target: {fileID: 760437833930309791, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1456358277474191840, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2036741361697823868, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2389108087932291400, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4252568956683107662, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4540763144889177518, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4658889067269351359, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330800205691132359, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965025274980665977, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7635675651366263923, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 8323934124936775485, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
       propertyPath: m_Name
       value: egyptBuilding (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323934124936775485, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 8705279205328002439, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
       propertyPath: m_RootOrder
@@ -28967,6 +30111,10 @@ PrefabInstance:
     - target: {fileID: 8705279205328002439, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9126246441768450194, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
@@ -29199,7 +30347,7 @@ GameObject:
   - component: {fileID: 2054505724}
   m_Layer: 0
   m_Name: Objects
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29454,6 +30602,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: graveyard-wall-stone (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1109954306633886, guid: ad71ba25d17304082b8a05936a641368, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4637967923684892, guid: ad71ba25d17304082b8a05936a641368, type: 3}
       propertyPath: m_RootOrder
       value: 144
@@ -29564,6 +30716,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egyptwall1
       objectReference: {fileID: 0}
+    - target: {fileID: 1404153633997127010, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 1744967726839408600, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
       propertyPath: m_RootOrder
       value: 212
@@ -29641,7 +30797,7 @@ GameObject:
   - component: {fileID: 2072939722}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29735,6 +30891,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stakes (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012757635934, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000014246037622, guid: 214b8a6ba0c92a9449f27b489959e15d, type: 3}
       propertyPath: m_RootOrder
       value: 88
@@ -29791,6 +30951,10 @@ PrefabInstance:
     - target: {fileID: 1000011356834100, guid: e54a49023536d1645984b85e61f058aa, type: 3}
       propertyPath: m_Name
       value: palm-angle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011356834100, guid: e54a49023536d1645984b85e61f058aa, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4000013236953906, guid: e54a49023536d1645984b85e61f058aa, type: 3}
       propertyPath: m_RootOrder
@@ -29853,6 +31017,10 @@ PrefabInstance:
     - target: {fileID: 1442854082391221502, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
       propertyPath: m_Name
       value: egyptwall3 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1442854082391221502, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 2255701465745522244, guid: 37856251587263a46a76ca3bba1ff266, type: 3}
       propertyPath: m_RootOrder
@@ -29928,6 +31096,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stone-diamond_orange (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000013714799558, guid: a418142078cffa24f8c4398472c9cafb, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4000010245227958, guid: a418142078cffa24f8c4398472c9cafb, type: 3}
       propertyPath: m_RootOrder
       value: 138
@@ -29993,7 +31165,7 @@ GameObject:
   - component: {fileID: 2093071393}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30184,6 +31356,10 @@ PrefabInstance:
     - target: {fileID: 5672143247012761817, guid: 24e1a9d6308d28f47b04c33f8eaf7687, type: 3}
       propertyPath: m_Name
       value: egypt-stone-block-square
+      objectReference: {fileID: 0}
+    - target: {fileID: 5672143247012761817, guid: 24e1a9d6308d28f47b04c33f8eaf7687, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 5672143247012793593, guid: 24e1a9d6308d28f47b04c33f8eaf7687, type: 3}
       propertyPath: m_RootOrder
@@ -30457,6 +31633,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egyptwall1 (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 1404153633997127010, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 1744967726839408600, guid: 7305fe1f4d32d7945aae3b7848ec1e9b, type: 3}
       propertyPath: m_RootOrder
       value: 67
@@ -30522,9 +31702,53 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2054505724}
     m_Modifications:
+    - target: {fileID: 760437833930309791, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1456358277474191840, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2036741361697823868, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2389108087932291400, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4252568956683107662, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4540763144889177518, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4658889067269351359, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330800205691132359, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6965025274980665977, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7635675651366263923, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 8323934124936775485, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
       propertyPath: m_Name
       value: egyptBuilding
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323934124936775485, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 8705279205328002439, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
       propertyPath: m_RootOrder
@@ -30569,6 +31793,10 @@ PrefabInstance:
     - target: {fileID: 8705279205328002439, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9126246441768450194, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2fb157c1d8c5244bf4ad3299a37d97, type: 3}
@@ -30646,6 +31874,10 @@ PrefabInstance:
     - target: {fileID: 8702552429590173306, guid: f2b8c24c50b675a45bda020cb83d4aaf, type: 3}
       propertyPath: m_Name
       value: egyptLongBlock (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8702552429590173306, guid: f2b8c24c50b675a45bda020cb83d4aaf, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2b8c24c50b675a45bda020cb83d4aaf, type: 3}
@@ -30756,6 +31988,10 @@ PrefabInstance:
     - target: {fileID: 7043888936974094045, guid: 3c362c1d571e5974b8fa5f2eab28140f, type: 3}
       propertyPath: m_Name
       value: aloe-vera
+      objectReference: {fileID: 0}
+    - target: {fileID: 7043888936974094045, guid: 3c362c1d571e5974b8fa5f2eab28140f, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 7677294893702927463, guid: 3c362c1d571e5974b8fa5f2eab28140f, type: 3}
       propertyPath: m_RootOrder
@@ -30884,9 +32120,45 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2054505724}
     m_Modifications:
+    - target: {fileID: 6284226571545413, guid: c2514d2f03d83ac4293c6fed9fb437d2, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 795013550752871546, guid: c2514d2f03d83ac4293c6fed9fb437d2, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2176798109475387299, guid: c2514d2f03d83ac4293c6fed9fb437d2, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 3419029548931699868, guid: c2514d2f03d83ac4293c6fed9fb437d2, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 3429770724854954535, guid: c2514d2f03d83ac4293c6fed9fb437d2, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 3821168487590996973, guid: c2514d2f03d83ac4293c6fed9fb437d2, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4726879414503909492, guid: c2514d2f03d83ac4293c6fed9fb437d2, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5518961341646372035, guid: c2514d2f03d83ac4293c6fed9fb437d2, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 5959686867431482672, guid: c2514d2f03d83ac4293c6fed9fb437d2, type: 3}
       propertyPath: m_Name
       value: egyptBuilding2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5959686867431482672, guid: c2514d2f03d83ac4293c6fed9fb437d2, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6484865763799744394, guid: c2514d2f03d83ac4293c6fed9fb437d2, type: 3}
       propertyPath: m_RootOrder
@@ -30943,6 +32215,18 @@ PrefabInstance:
     - target: {fileID: 6484865763799744394, guid: c2514d2f03d83ac4293c6fed9fb437d2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7031861406660150706, guid: c2514d2f03d83ac4293c6fed9fb437d2, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7195160317805631051, guid: c2514d2f03d83ac4293c6fed9fb437d2, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 8590372935880945393, guid: c2514d2f03d83ac4293c6fed9fb437d2, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2514d2f03d83ac4293c6fed9fb437d2, type: 3}
@@ -31085,6 +32369,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: egyptLongBlock
       objectReference: {fileID: 0}
+    - target: {fileID: 8702552429590173306, guid: f2b8c24c50b675a45bda020cb83d4aaf, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2b8c24c50b675a45bda020cb83d4aaf, type: 3}
 --- !u!1001 &6035021923961478007
@@ -31190,6 +32478,10 @@ PrefabInstance:
     - target: {fileID: 5830391472588796730, guid: 4812d6e729e256f4ba0423e50b593fed, type: 3}
       propertyPath: m_Name
       value: egyptShortBlock
+      objectReference: {fileID: 0}
+    - target: {fileID: 5830391472588796730, guid: 4812d6e729e256f4ba0423e50b593fed, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 6602952754282326400, guid: 4812d6e729e256f4ba0423e50b593fed, type: 3}
       propertyPath: m_RootOrder
