@@ -14,16 +14,18 @@ public enum ButtonType
     Back,
     Quit
 }
-/*
-public enum StageName
+
+public enum Skills
 {
-    BackStage,
-    Stage1,
-    Stage2,
-    Stage3,
-    Stage4 
+    Skill_1, Skill_1Up,
+    Skill_2, Skill_2Up,
+    Skill_3, Skill_3Up,
+    Skill_4, Skill_4Up,
+    Skill_5, Skill_5Up
+
+
 }
-*/
+
 public class MainUI : MonoBehaviour
 {
 
