@@ -151,7 +151,7 @@ MonoBehaviour:
       type: 1
       typeString: CustomFieldType_Number
     - title: Entry 1 State
-      value: unassigned
+      value: returnToNPC
       type: 0
       typeString: CustomFieldType_QuestState
     - title: 
@@ -408,7 +408,7 @@ MonoBehaviour:
       type: 0
       typeString: CustomFieldType_Text
     - title: "Entry 1 \uD3EC\uC758 \uC67C\uCABD \uB208"
-      value: 7
+      value: -1
       type: 6
       typeString: CustomFieldType_Item
   - id: 7
@@ -484,6 +484,20 @@ MonoBehaviour:
       value: 
       type: 6
       typeString: CustomFieldType_Item
+    - title: Description
+      value: 
+      type: 0
+      typeString: 
+  - id: 5
+    fields:
+    - title: Name
+      value: 
+      type: 0
+      typeString: 
+    - title: Initial Value
+      value: False
+      type: 2
+      typeString: CustomFieldType_Boolean
     - title: Description
       value: 
       type: 0
@@ -699,8 +713,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 98.999985
-        y: 224.2941
+        x: 101.35292
+        y: 238.41174
         width: 160
         height: 30
     - id: 3
@@ -756,8 +770,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 98.999985
-        y: 274.2941
+        x: 100.17647
+        y: 308.41174
         width: 160
         height: 30
     - id: 4
@@ -812,8 +826,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 98.999985
-        y: 324.2941
+        x: 102.5294
+        y: 376.0588
         width: 160
         height: 30
     - id: 5
@@ -863,8 +877,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 101.352936
-        y: 374.29413
+        x: 100.17645
+        y: 440.17657
         width: 160
         height: 30
     entryGroups: []
