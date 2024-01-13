@@ -38,6 +38,11 @@ public class Weapon : MonoBehaviour
     // 관통샷 스킬에 대한 속성
     public bool isPierceShotActive = false; // 관통샷 스킬 활성화 여부
 
+    // 붐샷 스킬에 대한 속성
+    public bool isBoomShotActive = false; // 붐샷 스킬 활성화 여부
+    public float boomShotRadius; // 붐샷 폭발 반경
+    public float boomShotDamage; // 붐샷 폭발 때 주는 피해량
+
     public float bulletSpeed = 25f; // 총알 속도 기본값 설정
     public Transform bulletPos; // 총알 발사 위치
     public GameObject bullet; // 총알 프리팹    
@@ -134,7 +139,12 @@ public class Weapon : MonoBehaviour
             instantBullet.transform.rotation = bulletPos.rotation;
 
             Bullet bulletScript = instantBullet.GetComponent<Bullet>();
-            bulletScript.isPenetrating = isPierceShotActive; // 관통샷 여부 설정
+            bulletScript.isPenetrating = isPierceShotActive; // 관통샷 여부 설정                                            
+
+            // BoomShot 스킬 적용
+            bulletScript.isBoomShotActive = isBoomShotActive;
+            bulletScript.boomShotRadius = boomShotRadius;
+            bulletScript.boomShotDamage = boomShotDamage;
 
             // 총알 충돌을 일시적으로 비활성화
             Collider bulletCollider = instantBullet.GetComponent<Collider>();

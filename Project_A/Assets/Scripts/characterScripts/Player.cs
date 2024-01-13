@@ -340,6 +340,8 @@ public class Player : MonoBehaviour
         bool shotGun3Active = false; // 샷건3 스킬 활성화 여부
         bool shotGun4Active = false; // 샷건4 스킬 활성화 여부
         bool pierceShotActive = false; // 관통샷 스킬 활성화 여부
+        bool boomShotActive = false; // 붐샷 스킬 활성화 여부
+
         int shotGun1Bullets = 0; // 샷건1 시 발사될 추가 총알 수
         float shotGun1Angle = 0f; // 샷건1의 총알 간 각도
         int shotGun2Bullets = 0; // 샷건2 스킬 시 발사될 추가 총알 수
@@ -349,6 +351,8 @@ public class Player : MonoBehaviour
         int shotGun4Bullets = 0; // 샷건4 스킬 시 발사될 추가 총알 수
         float shotGun4Angle = 0f; // 샷건4 스킬의 총알 간 각도
         int totalAmmoIncrease = 0; // 최대 탄창 증가량을 기본 0으로 설정합니다.
+        float boomShotRadius = 0f; // 붐샷 스킬 피해 범위
+        float boomShotDamage = 0f; // 붐샷 스킬 피해량
 
         // 활성화된 스킬들을 순회하며 데미지 및 공격 속도 배율을 계산합니다.
         foreach (var skill in activeSkills)
@@ -392,6 +396,14 @@ public class Player : MonoBehaviour
                     pierceShotActive = true;
                 }
                 // 총알 증가 스킬이 활성화된 경우, 증가량을 더합니다.
+
+                // 붐샷 스킬 적용 로직
+                if (skill.isBoomShot)
+                {
+                    boomShotActive = true;
+                    boomShotRadius = skill.boomShotRadius;
+                    boomShotDamage = skill.boomShotDamage;
+                }
                 totalAmmoIncrease += skill.ammoIncrease;
             } 
 
@@ -413,6 +425,11 @@ public class Player : MonoBehaviour
 
         // 관통샷 스킬의 활성화 여부를 무기에 전달
         equipWeapon.isPierceShotActive = pierceShotActive;
+
+        // 장착된 무기에 붐샷 스킬 속성 설정
+        equipWeapon.isBoomShotActive = boomShotActive;
+        equipWeapon.boomShotRadius = boomShotRadius;
+        equipWeapon.boomShotDamage = boomShotDamage;
 
         if (shotGun1Active)
         {

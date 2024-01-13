@@ -49,4 +49,9 @@ public class Skill : ScriptableObject
 
     // 관통샷 스킬 활성화 여부입니다.
     public bool isPierceShot = false;
+
+    // 붐샷 스킬을 위한 필드 추가
+    public bool isBoomShot = false;
+    public float boomShotRadius;
+    public float boomShotDamage;
 }

@@ -158,62 +158,55 @@ public class Enemy : MonoBehaviour
         FreezeVelocity();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    // 받는 피해 관리하는 함수
+    public void TakeDamage(Bullet bullet, Vector3 hitPoint)
     {
-        if (collision.gameObject.tag == "Bullet") // 원거리 공격을 받았을 때
-        {
-            // 충돌한 오브젝트에서 Bullet 컴포넌트 획득
-            Bullet bullet = collision.gameObject.GetComponent<Bullet>();
+        curHealth -= bullet.damage; // 데미지 적용
 
+        // 공격으로 받은 위치 벡터 계산
+        Vector3 reactVec = transform.position - hitPoint;
+
+        // OnDamage 코루틴 실행
+        StartCoroutine(OnDamage(reactVec));
+
+        if (!bullet.isPenetrating) // 관통 총알이 아니면 총알을 오브젝트 풀로 반환합니다.
+        {
+            bullet.ReturnToPool(); // 총알 반환
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Bullet")
+        {
+            Bullet bullet = collision.gameObject.GetComponent<Bullet>();
             if (bullet != null)
             {
-                // 현재 체력에서 총알의 데미지만큼 감소
-                curHealth -= bullet.damage;
-
-                // 공격으로 받은 위치 벡터 계산
-                Vector3 reactVec = transform.position - collision.transform.position;
-
-                // OnDamage 코루틴 실행
-                StartCoroutine(OnDamage(reactVec));
-
-                // 관통 총알이 아닌 경우에만 총알 오브젝트 파괴
-                if (!bullet.isPenetrating)
-                {
-                    bullet.ReturnToPool();
-                }
-                // 관통 총알인 경우에는 총알을 파괴하지 않습니다.
+                // TakeDamage 메서드를 호출하여 데미지 처리를 합니다.
+                TakeDamage(bullet, collision.contacts[0].point);
             }
         }
     }
 
-
-    // 피격 시 발생하는 충돌 이벤트 처리 함수
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Bullet")) // 총알과의 충돌을 감지
+        if (other.CompareTag("Bullet"))
         {
             Bullet bullet = other.GetComponent<Bullet>();
-            if (bullet != null && bullet.isPenetrating)
+            if (bullet != null)
             {
-                // 현재 체력에서 총알의 데미지만큼 감소
-                curHealth -= bullet.damage;
-
-                // 공격으로 받은 위치 벡터 계산
-                Vector3 reactVec = transform.position - other.transform.position;
-
-                // OnDamage 코루틴 실행
-                StartCoroutine(OnDamage(reactVec));
-                
+                // TakeDamage 메서드를 호출하여 데미지 처리를 합니다.
+                TakeDamage(bullet, other.transform.position);
             }
         }
-        if (other.tag == "Player") // 교수님 감사합니다..
+        else if (other.tag == "Player")
         {
             isChase = true;
             anim.SetBool("isWalk", true);
         }
     }
 
-    private void OnTriggerExit(Collider other) // 정말 감사합니다 교수님..
+    private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player")
         {
