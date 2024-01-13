@@ -4,37 +4,92 @@ using UnityEngine;
 
 public class SkillTreeBtn : MonoBehaviour
 {
+    public SkillBtn skillBtn;
 
-    public Skills skillBtn;
-    private List<Skills> unlockedSkillList;
+    public List<Skill> unlockedSkillList;
+
+    public Datas datas;
+    private string KeyName = "Datas";
+
 
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("왜 안뜸;;");
         // foreach로 돌려서 리스트에 버튼이 있으면, 버튼 색을 회색으로
         // 첫 설명 화면은 딱총 설명화면으로
+
+        // 데이터 매니저에서 바로 불러오는 방식 - 장기적으로는 이게 유리할 수 밖에 없음 - 근데 리스트에 스킬 애드를 못해서 못씀
+        ES3.LoadInto(KeyName, datas);
+        unlockedSkillList = datas.skillHave;
+
+        // 캐릭터가 소지한 스킬을 불러오는 방식 
+        // 아니 AddSkill 어케 쓰는 건데 ~~~
+        //GameObject skillLoad = GameObject.Find("Player_SH");
+        //unlockedSkillList = skillLoad.GetComponent<Move_SH>().activeSkills;
+
+
+    }
+    /*
+    public void UnlockSkill(Skill skill)
+    {
+        unlockedSkillList.Add(skill);
     }
 
-    public void UnlockSkill(Skills skills)
+    public bool IsSkillUnlocked(Skill skill)
     {
-        unlockedSkillList.Add(skills);
+        return unlockedSkillList.Contains(skill);
     }
-
-    public bool IsSkillUnlocked(Skills skills)
-    {
-        return unlockedSkillList.Contains(skills);
-    }
+    */
 
     public void OnBtnClick()
     {
-
-        for (int i = 1;  i < 6; i++ )
+        switch (skillBtn)
         {
-            
-        }
-    }
+            case SkillBtn.Skill_1:
 
-    // 1.스킬스 오브젝트의 하위 스킬들 이름을 모두 불러와, skill + n 값의 형식으로 불러오기?
-    // 2.그냥 노가다로 버튼 모두 불러오기? 그럼 스킬이 많아지면 어카농 -구조가 별론뎅
-    
+                break;
+
+            case SkillBtn.Skill_1Up:
+                Skill skillName = Resources.Load<Skill>("SpeedUp1");      // "Prefabs/MyPrefab" 리소스 하위 경로
+                unlockedSkillList.Add(skillName);
+                DataManager.instance.datas.skillHave.Add(skillName);
+                DataManager.instance.DataSave();
+                GameObject.Find("Player_SH").GetComponent<Move_SH>().SkillGet(); // 커스텀 클래스를 저장, 불러오기 하려면 해당 씬에 easy save 3 manager가 있어야 하는 듯, 삽질 ㅈㄴ 했다.
+
+
+                // 캐릭터에 직접 안 들어가고 datas에는 들어가는 것 확인
+                // 캐릭터에 직접 넣어야 할듯
+                // 추가적으로 저기 누를 때마다 계속 스킬 같은거 추가되니까
+                // if 문 bool 값으로 1회 제한 두고, 초기화에는 되돌리기      +      강화하면, 버튼 비활성화 시키기 두개 하면 될 듯 하다.
+                // 제엔장, 스킬 초기화 버튼도 넣어야 하네;;
+
+                // ---
+                // 대위기, 직접 만든 클래스를 불러오지를 못하네? 하핫 분명 해결법은 있다 이건. 말도 안 돼 안 될 리가 없는데 어려운 것 뿐이야.
+                // ---
+
+                break;
+
+            case SkillBtn.Skill_2:
+                break;
+            case SkillBtn.Skill_2Up:
+                break;
+            case SkillBtn.Skill_3:
+                break;
+            case SkillBtn.Skill_3Up:
+                break;
+            case SkillBtn.Skill_4:
+                break;
+            case SkillBtn.Skill_4Up:
+                break;
+            case SkillBtn.Skill_5:
+                break;
+            case SkillBtn.Skill_5Up:
+                break;
+        }
+
+        // 1.스킬스 오브젝트의 하위 스킬들 이름을 모두 불러와, skill + n 값의 형식으로 불러오기?
+        // 2.그냥 노가다로 버튼 모두 불러오기? 그럼 스킬이 많아지면 어카농 -구조가 별론뎅
+
+    }
 }

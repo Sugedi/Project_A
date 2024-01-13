@@ -117,6 +117,7 @@ public class DataManager : MonoBehaviour
     public void DataLoad()
     {
         ES3.LoadInto(KeyName, datas);
+        //ES3.Load(KeyName, datas);
 
         // 캐릭터 스탯에 동기화
         stat = GameObject.Find("Player_SH");
