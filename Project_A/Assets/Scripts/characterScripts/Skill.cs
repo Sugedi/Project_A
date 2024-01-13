@@ -27,6 +27,9 @@ public class Skill : ScriptableObject
     // 재장전 시간 배율을 추가합니다.
     public float reloadTimeMultiplier = 1f;
 
+    // 탄창 증가량 추가
+    public int ammoIncrease;
+
     // 샷건 스킬을 위한 새로운 속성
     public bool isShotGun1 = false; // 샷건1 스킬 활성화 여부입니다.
     public int shotGun1Count = 2; // 한 번에 발사되는 총알의 수입니다.

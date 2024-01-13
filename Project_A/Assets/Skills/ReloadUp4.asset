@@ -10,19 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0046befe101796e439fb0389aacf328b, type: 3}
-  m_Name: Shot Gun3
+  m_Name: ReloadUp4
   m_EditorClassIdentifier: 
-  skillName: Shot Gun3
+  skillName: ReloadUp4
   damageMultiplier: 1
   attackSpeedMultiplier: 1
-  reloadTimeMultiplier: 1
+  reloadTimeMultiplier: 0.5
+  ammoIncrease: 0
   isShotGun1: 0
   shotGun1Count: 2
   shotGun1SpreadAngle: 45
   isShotGun2: 0
   shotGun2Count: 3
   shotGun2SpreadAngle: 45
-  isShotGun3: 1
+  isShotGun3: 0
   shotGun3Count: 4
   shotGun3SpreadAngle: 45
   isShotGun4: 0

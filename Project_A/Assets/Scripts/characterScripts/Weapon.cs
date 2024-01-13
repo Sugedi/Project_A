@@ -11,8 +11,9 @@ public class Weapon : MonoBehaviour
     public float damageMultiplier = 1f; // 데미지 배율
     public float attackSpeedMultiplier = 1f; // 공격 속도 배율
 
-    public int maxAmmo; // 최대 탄약 수
-    public int curAmmo; // 현재 탄약 수
+    public int baseMaxAmmo = 30; // 기본 최대 탄약 수
+    public int maxAmmo = 30; // 최대 탄약 수
+    public int curAmmo = 30; // 현재 탄약 수
 
     // 샷건1 스킬에 대한 속성
     public bool isShotGun1Active = false; // 샷건1 스킬 활성화 여부
@@ -63,6 +64,13 @@ public class Weapon : MonoBehaviour
             defaultCapacity: 50, // 기본 용량
             maxSize: 120 // 최대 용량
         );
+    }
+
+    // 스킬에 의해 변경된 최대 탄창을 적용하는 메서드
+    public void UpdateMaxAmmo(int ammoIncrease)
+    {        
+        maxAmmo = baseMaxAmmo + ammoIncrease; // 최대 탄창을 업데이트합니다.
+        curAmmo = Mathf.Min(curAmmo, maxAmmo); // 현재 탄약이 최대 탄창을 초과하지 않도록 조정합니다.        
     }
 
     public void Use()

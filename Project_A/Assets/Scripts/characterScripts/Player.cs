@@ -344,6 +344,7 @@ public class Player : MonoBehaviour
         float shotGun3Angle = 0f; // 샷건3 스킬의 총알 간 각도
         int shotGun4Bullets = 0; // 샷건4 스킬 시 발사될 추가 총알 수
         float shotGun4Angle = 0f; // 샷건4 스킬의 총알 간 각도
+        int totalAmmoIncrease = 0; // 최대 탄창 증가량을 기본 0으로 설정합니다.
 
         // 활성화된 스킬들을 순회하며 데미지 및 공격 속도 배율을 계산합니다.
         foreach (var skill in activeSkills)
@@ -381,9 +382,17 @@ public class Player : MonoBehaviour
                     shotGun4Bullets = skill.shotGun4Count; // 발사될 총알 수
                     shotGun4Angle = skill.shotGun4SpreadAngle; // 총알 간의 각도
                 }
-            }
+
+                // 총알 증가 스킬이 활성화된 경우, 증가량을 더합니다.
+                totalAmmoIncrease += skill.ammoIncrease;
+            } 
+
+            equipWeapon.UpdateMaxAmmo(totalAmmoIncrease);
         }
 
+        // 계산된 최대 탄창 증가량을 장착된 무기의 baseMaxAmmo에 적용합니다.
+        // 이를 위해 Weapon 클래스에 baseMaxAmmo와 UpdateMaxAmmo 메서드가 정의되어 있어야 합니다.
+        equipWeapon.UpdateMaxAmmo(totalAmmoIncrease);
         // 계산된 배율을 장착된 무기에 적용합니다.
         equipWeapon.damageMultiplier = totalDamageMultiplier;
         equipWeapon.attackSpeedMultiplier = totalAttackSpeedMultiplier;

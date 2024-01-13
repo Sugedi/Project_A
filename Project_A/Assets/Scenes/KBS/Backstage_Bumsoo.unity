@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17276934, g: 0.21589369, b: 0.2978267, a: 1}
+  m_IndirectSpecularColor: {r: 0.17276956, g: 0.21589413, b: 0.29782727, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1251,7 +1251,8 @@ MonoBehaviour:
   baseAttackSpeed: 1
   damageMultiplier: 1
   attackSpeedMultiplier: 1
-  maxAmmo: 30
+  baseMaxAmmo: 30
+  maxAmmo: 0
   curAmmo: 30
   isShotGun1Active: 0
   shotGun1Bullets: 2
@@ -2417,13 +2418,14 @@ MonoBehaviour:
   maxAmmo: 1000
   maxHealth: 100
   activeSkills:
-  - {fileID: 11400000, guid: 60119781f3eceed4aa395152295b4043, type: 2}
-  - {fileID: 11400000, guid: c9a55f0ba0d6ad0419cb6fd9a213a5f9, type: 2}
-  - {fileID: 11400000, guid: 9d45f889e5afcbd47a01436c66d31bb0, type: 2}
+  - {fileID: 11400000, guid: a8dd44edb691bc5499bb785864c5788c, type: 2}
+  - {fileID: 11400000, guid: eb17ed314fcc0c04293ad208c7d4a245, type: 2}
+  - {fileID: 11400000, guid: 6fb2e8d53941b074b95b8d2be1fa13c5, type: 2}
   - {fileID: 11400000, guid: 456641c459d606948a2813c94e18fad5, type: 2}
   - {fileID: 11400000, guid: 9c32ecbd0cc0e9a4180092ea1b3691be, type: 2}
   - {fileID: 11400000, guid: d9e8ff468b51df4498804007eb2651d5, type: 2}
   - {fileID: 11400000, guid: 054ed1ce8883dbc40bd8b50e72505b8e, type: 2}
+  - {fileID: 11400000, guid: 949b8165ff328714ab0c1b1c73843931, type: 2}
 --- !u!1001 &722716000
 PrefabInstance:
   m_ObjectHideFlags: 0

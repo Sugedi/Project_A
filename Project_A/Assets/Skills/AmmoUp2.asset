@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0046befe101796e439fb0389aacf328b, type: 3}
-  m_Name: Shot Gun1
+  m_Name: AmmoUp2
   m_EditorClassIdentifier: 
-  skillName: Shot Gun1
+  skillName: AmmoUp2
   damageMultiplier: 1
   attackSpeedMultiplier: 1
   reloadTimeMultiplier: 1
-  isShotGun1: 1
+  ammoIncrease: 60
+  isShotGun1: 0
   shotGun1Count: 2
   shotGun1SpreadAngle: 45
   isShotGun2: 0
