@@ -45,5 +45,8 @@ public class Skill : ScriptableObject
 
     public bool isShotGun4 = false; // 샷건4 스킬 활성화 여부
     public int shotGun4Count = 5; // 발사될 총알의 수
-    public float shotGun4SpreadAngle = 45f; // 총알 사이의 각도   
+    public float shotGun4SpreadAngle = 45f; // 총알 사이의 각도
+
+    // 관통샷 스킬 활성화 여부입니다.
+    public bool isPierceShot = false;
 }

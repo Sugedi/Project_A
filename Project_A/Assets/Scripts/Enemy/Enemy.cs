@@ -165,17 +165,24 @@ public class Enemy : MonoBehaviour
             // 충돌한 오브젝트에서 Bullet 컴포넌트 획득
             Bullet bullet = collision.gameObject.GetComponent<Bullet>();
 
-            // 현재 체력에서 총알의 데미지만큼 감소
-            curHealth -= bullet.damage;
+            if (bullet != null)
+            {
+                // 현재 체력에서 총알의 데미지만큼 감소
+                curHealth -= bullet.damage;
 
-            // 공격으로 받은 위치 벡터 계산
-            Vector3 reactVec = transform.position - collision.transform.position;
+                // 공격으로 받은 위치 벡터 계산
+                Vector3 reactVec = transform.position - collision.transform.position;
 
-            // 충돌한 총알 오브젝트 파괴
-            Destroy(collision.gameObject);
+                // OnDamage 코루틴 실행
+                StartCoroutine(OnDamage(reactVec));
 
-            // OnDamage 코루틴 실행
-            StartCoroutine(OnDamage(reactVec));
+                // 관통 총알이 아닌 경우에만 총알 오브젝트 파괴
+                if (!bullet.isPenetrating)
+                {
+                    bullet.ReturnToPool();
+                }
+                // 관통 총알인 경우에는 총알을 파괴하지 않습니다.
+            }
         }
     }
 
@@ -183,6 +190,22 @@ public class Enemy : MonoBehaviour
     // 피격 시 발생하는 충돌 이벤트 처리 함수
     void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Bullet")) // 총알과의 충돌을 감지
+        {
+            Bullet bullet = other.GetComponent<Bullet>();
+            if (bullet != null && bullet.isPenetrating)
+            {
+                // 현재 체력에서 총알의 데미지만큼 감소
+                curHealth -= bullet.damage;
+
+                // 공격으로 받은 위치 벡터 계산
+                Vector3 reactVec = transform.position - other.transform.position;
+
+                // OnDamage 코루틴 실행
+                StartCoroutine(OnDamage(reactVec));
+                
+            }
+        }
         if (other.tag == "Player") // 교수님 감사합니다..
         {
             isChase = true;

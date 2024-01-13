@@ -12,8 +12,8 @@ public class Weapon : MonoBehaviour
     public float attackSpeedMultiplier = 1f; // 공격 속도 배율
 
     public int baseMaxAmmo = 30; // 기본 최대 탄약 수
-    public int maxAmmo = 30; // 최대 탄약 수
-    public int curAmmo = 30; // 현재 탄약 수
+    public int maxAmmo; // 최대 탄약 수
+    public int curAmmo; // 현재 탄약 수
 
     // 샷건1 스킬에 대한 속성
     public bool isShotGun1Active = false; // 샷건1 스킬 활성화 여부
@@ -34,6 +34,9 @@ public class Weapon : MonoBehaviour
     public bool isShotGun4Active = false; // 샷건1 스킬 활성화 여부
     public int shotGun4Bullets = 5; // 한 번에 발사되는 총알의 수
     public float shotGun4SpreadAngle = 45f; // 총알 사이의 각도
+
+    // 관통샷 스킬에 대한 속성
+    public bool isPierceShotActive = false; // 관통샷 스킬 활성화 여부
 
     public float bulletSpeed = 25f; // 총알 속도 기본값 설정
     public Transform bulletPos; // 총알 발사 위치
@@ -64,6 +67,7 @@ public class Weapon : MonoBehaviour
             defaultCapacity: 50, // 기본 용량
             maxSize: 120 // 최대 용량
         );
+
     }
 
     // 스킬에 의해 변경된 최대 탄창을 적용하는 메서드
@@ -130,12 +134,14 @@ public class Weapon : MonoBehaviour
             instantBullet.transform.rotation = bulletPos.rotation;
 
             Bullet bulletScript = instantBullet.GetComponent<Bullet>();
+            bulletScript.isPenetrating = isPierceShotActive; // 관통샷 여부 설정
 
             // 총알 충돌을 일시적으로 비활성화
             Collider bulletCollider = instantBullet.GetComponent<Collider>();
             if (bulletCollider)
             {
                 bulletCollider.enabled = false;
+                bulletCollider.isTrigger = isPierceShotActive; // 관통샷 활성화 여부에 따라 isTrigger 설정
             }
             bulletScript.SetPool(bulletPool);
             bulletScript.damage = bulletScript.baseDamage * damageMultiplier;

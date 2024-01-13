@@ -1253,7 +1253,7 @@ MonoBehaviour:
   attackSpeedMultiplier: 1
   baseMaxAmmo: 30
   maxAmmo: 0
-  curAmmo: 30
+  curAmmo: 0
   isShotGun1Active: 0
   shotGun1Bullets: 2
   shotGun1SpreadAngle: 45
@@ -1266,6 +1266,7 @@ MonoBehaviour:
   isShotGun4Active: 0
   shotGun4Bullets: 5
   shotGun4SpreadAngle: 45
+  isPierceShotActive: 0
   bulletSpeed: 5
   bulletPos: {fileID: 110506874}
   bullet: {fileID: 3236627698561214123, guid: 2741b169980cd0347898aea2b3806360, type: 3}
@@ -2426,6 +2427,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d9e8ff468b51df4498804007eb2651d5, type: 2}
   - {fileID: 11400000, guid: 054ed1ce8883dbc40bd8b50e72505b8e, type: 2}
   - {fileID: 11400000, guid: 949b8165ff328714ab0c1b1c73843931, type: 2}
+  - {fileID: 11400000, guid: 2fdfea97991e4224da300e6c1c6b9046, type: 2}
 --- !u!1001 &722716000
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -279,6 +279,9 @@ public class Player : MonoBehaviour
 
             ApplySkills(); // 무기를 장착했으므로, 스킬을 적용합니다.
 
+            // 현재 탄약을 최대 탄약으로 설정합니다.
+            equipWeapon.curAmmo = equipWeapon.maxAmmo;
+
             Destroy(other.gameObject); // 주변 오브젝트 파괴
         }
 
@@ -336,6 +339,7 @@ public class Player : MonoBehaviour
         bool shotGun2Active = false; // 샷건2 스킬 활성화 여부
         bool shotGun3Active = false; // 샷건3 스킬 활성화 여부
         bool shotGun4Active = false; // 샷건4 스킬 활성화 여부
+        bool pierceShotActive = false; // 관통샷 스킬 활성화 여부
         int shotGun1Bullets = 0; // 샷건1 시 발사될 추가 총알 수
         float shotGun1Angle = 0f; // 샷건1의 총알 간 각도
         int shotGun2Bullets = 0; // 샷건2 스킬 시 발사될 추가 총알 수
@@ -383,6 +387,10 @@ public class Player : MonoBehaviour
                     shotGun4Angle = skill.shotGun4SpreadAngle; // 총알 간의 각도
                 }
 
+                if (skill.isPierceShot)
+                {
+                    pierceShotActive = true;
+                }
                 // 총알 증가 스킬이 활성화된 경우, 증가량을 더합니다.
                 totalAmmoIncrease += skill.ammoIncrease;
             } 
@@ -402,6 +410,9 @@ public class Player : MonoBehaviour
         equipWeapon.isShotGun2Active = shotGun2Active;
         equipWeapon.isShotGun3Active = shotGun3Active;
         equipWeapon.isShotGun4Active = shotGun4Active;
+
+        // 관통샷 스킬의 활성화 여부를 무기에 전달
+        equipWeapon.isPierceShotActive = pierceShotActive;
 
         if (shotGun1Active)
         {
