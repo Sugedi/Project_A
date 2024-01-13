@@ -159,9 +159,11 @@ public class Enemy : MonoBehaviour
     }
 
     // 받는 피해 관리하는 함수
+
     public void TakeDamage(Bullet bullet, Vector3 hitPoint)
     {
-        curHealth -= bullet.damage; // 데미지 적용
+        float damageToApply = bullet.isExplosion ? bullet.boomShotDamage : bullet.damage;
+        curHealth -= damageToApply; // 데미지 적용        
 
         // 공격으로 받은 위치 벡터 계산
         Vector3 reactVec = transform.position - hitPoint;

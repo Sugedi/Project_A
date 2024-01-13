@@ -5,7 +5,7 @@ using UnityEngine.Pool;
 
 public class Bullet : MonoBehaviour
 {
-    public float baseDamage; // 총알의 기본 공격력
+    public float baseDamage = 10; // 총알의 기본 공격력
     public float damage; // 총알의 공격력  
     public float lifeTime; // 총알의 최대 생명 시간 (사거리 제한)
     private float lifeTimer; // 현재까지의 생명 시간을 추적하는 타이머
@@ -19,6 +19,7 @@ public class Bullet : MonoBehaviour
     public bool isBoomShotActive;
     public float boomShotRadius; // 붐샷 폭발 반경
     public float boomShotDamage; // 붐샷 데미지
+    public bool isExplosion = false;
 
     public void SetPool(ObjectPool<GameObject> pool)
     {
@@ -30,7 +31,7 @@ public class Bullet : MonoBehaviour
         // 총알이 활성화될 때마다 기본 데미지로 초기화합니다.
         damage = baseDamage;
         lifeTimer = lifeTime; // 타이머를 최대 생명 시간으로 초기화합니다.
-
+        isExplosion = false; // 폭발 여부를 false로 재설정
         // 파티클 시스템이 있다면 비활성화했다가 다시 활성화
         if (explosionPrefab != null)
         {
@@ -155,7 +156,8 @@ public class Bullet : MonoBehaviour
 
     // 폭발 처리 메서드
     private void Explode()
-    {        
+    {
+        isExplosion = true; // 폭발 발생 시 true로 설정
 
         // 폭발 범위 내의 모든 콜라이더를 찾습니다.
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, boomShotRadius);
@@ -165,9 +167,7 @@ public class Bullet : MonoBehaviour
             {
                 Enemy enemy = hitCollider.GetComponent<Enemy>();
                 if (enemy != null)
-                {
-                    damage = boomShotDamage; // BoomShot 스킬의 데미지를 총알의 데미지로 설정합니다.
-
+                {                   
                     enemy.TakeDamage(this, transform.position); // 폭발로 인한 데미지 적용
                 }
             }
