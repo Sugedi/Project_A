@@ -589,8 +589,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 420, y: 0}
-  m_SizeDelta: {x: 568, y: 0}
+  m_AnchoredPosition: {x: 1012, y: 0}
+  m_SizeDelta: {x: 1752, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &22223862
 CanvasRenderer:
@@ -1046,6 +1046,7 @@ MonoBehaviour:
   pcImage: {fileID: 0}
   pcName:
     m_uiText: {fileID: 0}
+    m_textMeshProUGUI: {fileID: 0}
   usePortraitNativeSize: 0
   timerSlider: {fileID: 11440058}
   buttonAlignment: 0
@@ -2504,8 +2505,10 @@ MonoBehaviour:
   portraitImage: {fileID: 11477626}
   portraitName:
     m_uiText: {fileID: 11408278}
+    m_textMeshProUGUI: {fileID: 0}
   subtitleText:
     m_uiText: {fileID: 11465190}
+    m_textMeshProUGUI: {fileID: 0}
   addSpeakerName: 0
   addSpeakerNameFormat: '{0}: {1}'
   accumulateText: 0
@@ -2644,8 +2647,10 @@ MonoBehaviour:
   panel: {fileID: 11474372}
   label:
     m_uiText: {fileID: 11478188}
+    m_textMeshProUGUI: {fileID: 0}
   inputField:
     m_uiInputField: {fileID: 11464682}
+    m_textMeshProInputField: {fileID: 0}
   acceptKey: 13
   acceptButton: 
   cancelKey: 27
@@ -2798,8 +2803,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 420, y: 0}
-  m_SizeDelta: {x: 568, y: 0}
+  m_AnchoredPosition: {x: 1012, y: 0}
+  m_SizeDelta: {x: 1752, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &22294970
 CanvasRenderer:
@@ -3500,8 +3505,10 @@ MonoBehaviour:
   portraitImage: {fileID: 11482806}
   portraitName:
     m_uiText: {fileID: 11468822}
+    m_textMeshProUGUI: {fileID: 0}
   subtitleText:
     m_uiText: {fileID: 11471026}
+    m_textMeshProUGUI: {fileID: 0}
   addSpeakerName: 0
   addSpeakerNameFormat: '{0}: {1}'
   accumulateText: 0
@@ -4280,6 +4287,7 @@ MonoBehaviour:
     panel: {fileID: 11445782}
     alertText:
       m_uiText: {fileID: 11454200}
+      m_textMeshProUGUI: {fileID: 0}
     queueAlerts: 1
     dontQueueDuplicates: 0
     waitForHideAnimation: 1
@@ -4625,5 +4633,6 @@ MonoBehaviour:
   button: {fileID: 11432072}
   label:
     m_uiText: {fileID: 11407908}
+    m_textMeshProUGUI: {fileID: 0}
   setLabelColor: 1
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
