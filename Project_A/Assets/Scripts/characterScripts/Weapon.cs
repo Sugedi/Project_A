@@ -181,51 +181,74 @@ public class Weapon : MonoBehaviour
         if (isSideShotActive)
         {
             // 사이드샷 총알을 정면 총알의 수만큼 양쪽으로 발사합니다.
-            FireSideShot(bulletPosLeft, bulletsToFire); // 왼쪽 발사 위치에서 총알 발사
-            FireSideShot(bulletPosRight, bulletsToFire); // 오른쪽 발사 위치에서 총알 발사
+            StartCoroutine(FireSideShot(bulletPosLeft, bulletsToFire, spreadAngle)); // 왼쪽 발사 위치에서 총알 발사
+            StartCoroutine(FireSideShot(bulletPosRight, bulletsToFire, spreadAngle)); // 오른쪽 발사 위치에서 총알 발사
         }
 
         // 공격 속도 배율을 고려하여 다음 총알 발사까지 대기합니다.
         yield return new WaitForSeconds(1f / (baseAttackSpeed * attackSpeedMultiplier));
 
     }
-    void FireSideShot(Transform sideShotPos, int bulletsToFire)
+    IEnumerator FireSideShot(Transform sideShotPos, int bulletsToFire, float spreadAngle)
     {
         for (int i = 0; i < bulletsToFire; i++)
         {
-            GameObject instantBullet = bulletPool.Get();
-            instantBullet.transform.position = sideShotPos.position;
-            instantBullet.transform.rotation = sideShotPos.rotation;
-
-            // 총알 충돌을 일시적으로 비활성화
-            Collider bulletCollider = instantBullet.GetComponent<Collider>();
-            if (bulletCollider)
+            // 탄약이 남아있는 경우에만 총알을 발사합니다.
+            if (curAmmo > 0)
             {
-                bulletCollider.enabled = false;
-                bulletCollider.isTrigger = isPierceShotActive; // 관통샷 활성화 여부에 따라 isTrigger 설정
+                // 탄약 소모
+                curAmmo--;
+
+                GameObject instantBullet = bulletPool.Get();
+                instantBullet.transform.position = sideShotPos.position + sideShotPos.forward *0.5f;
+
+                // 사이드샷 총알의 발사 각도를 계산합니다.
+                float angle = 0f;
+                if (bulletsToFire > 1)
+                {
+                    angle = (-spreadAngle / 2) + (spreadAngle / (bulletsToFire - 1)) * i;
+                }
+
+                // 사이드샷 발사 각도를 위한 회전을 추가합니다.
+                Quaternion sideShotRotation = Quaternion.Euler(0, sideShotPos.eulerAngles.y + angle, 0);
+                instantBullet.transform.rotation = sideShotRotation;
+
+                // 총알 충돌을 일시적으로 비활성화
+                Collider bulletCollider = instantBullet.GetComponent<Collider>();
+                if (bulletCollider)
+                {
+                    bulletCollider.enabled = false;
+                    bulletCollider.isTrigger = isPierceShotActive; // 관통샷 활성화 여부에 따라 isTrigger 설정
+                }
+                Bullet bulletScript = instantBullet.GetComponent<Bullet>();
+                bulletScript.isPenetrating = isPierceShotActive; // 관통샷 여부 설정
+
+                // BoomShot 스킬 적용
+                bulletScript.isBoomShotActive = isBoomShotActive;
+                bulletScript.boomShotRadius = boomShotRadius;
+                bulletScript.boomShotDamage = boomShotDamage;
+
+                bulletScript.SetPool(bulletPool);
+                // 총알의 데미지 설정
+                bulletScript.damage = bulletScript.baseDamage * damageMultiplier;
+
+                // 총알의 생명주기 설정
+                bulletScript.lifeTime = 1f;
+
+                Rigidbody bulletRigid = instantBullet.GetComponent<Rigidbody>();
+                bulletRigid.velocity = sideShotPos.forward * bulletSpeed;
+
+                // 총알 충돌을 비활성화하고 지연 후 다시 활성화하는 코루틴 호출
+                StartCoroutine(EnableColliderAfterDelay(instantBullet.GetComponent<Collider>()));
+
+                // 여기에 지연을 추가합니다.
+                yield return new WaitForSeconds(0.1f); // 예시로 0.1초의 지연을 추가합니다.
             }
-            Bullet bulletScript = instantBullet.GetComponent<Bullet>();
-            bulletScript.isPenetrating = isPierceShotActive; // 관통샷 여부 설정
-
-            // BoomShot 스킬 적용
-            bulletScript.isBoomShotActive = isBoomShotActive;
-            bulletScript.boomShotRadius = boomShotRadius;
-            bulletScript.boomShotDamage = boomShotDamage;
-
-            bulletScript.SetPool(bulletPool);
-            // 총알의 데미지 설정
-            bulletScript.damage = bulletScript.baseDamage * damageMultiplier;
-
-            // 총알의 생명주기 설정
-            bulletScript.lifeTime = 1f;
-
-            Rigidbody bulletRigid = instantBullet.GetComponent<Rigidbody>();
-            bulletRigid.velocity = sideShotPos.forward * bulletSpeed;
-
-
-
-            // 총알 충돌을 비활성화하고 지연 후 다시 활성화하는 코루틴 호출
-            StartCoroutine(EnableColliderAfterDelay(instantBullet.GetComponent<Collider>()));
+            else
+            {
+                // 탄약이 없으면 루프를 종료합니다.
+                break;
+            }
         }
     }
     // 충돌을 활성화하는 코루틴
