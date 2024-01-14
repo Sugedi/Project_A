@@ -35,10 +35,24 @@ public class DialogueManager : MonoBehaviour
     public int dialogCount = 0; // 현재 대화 진행 상태를 나타내는 카운트 변수
 
 
+    public int endTalk = 7;
+
+    private QuestManager questManager; // 퀘스트 관리자
+
+
     private void Awake() // 게임 시작 시 호출되는 Awake 함수
     {
         // "dialogue" 부분은 Reasources 폴더에 넣어둔 CSV 파일의 이름을 넣어주면 됨
-        data_Dialog = CSVReader.Read("dialogue"); // CSVReader를 사용하여 대화 데이터를 읽어옴 -> data_Dialog로 저장!
+        data_Dialog = CSVReader.Read("maindialogue"); // CSVReader를 사용하여 대화 데이터를 읽어옴 -> data_Dialog로 저장!
+
+
+        questManager = FindObjectOfType<QuestManager>(); // 퀘스트 관리자 찾기
+        if (questManager != null)
+        {
+            // CSV 파일에서 퀘스트 데이터를 로드하고 QuestManager에 전달
+            List<Dictionary<string, object>> questData = CSVReader.Read("mainquest"); // 가정: mainquestdata.csv 파일에서 읽어옴
+            questManager.LoadQuests(questData);
+        }
     }
 
     private void Start() // 게임 시작 시 호출되는 Start 함수
@@ -52,13 +66,15 @@ public class DialogueManager : MonoBehaviour
         dialogPopup.SetActive(false); // 대화 팝업을 초기 상태(비활성화 상태)로 설정
     }
 
+    // ####### 그룹 안 쓰기로 했으니까 일단 주석처리 함
+
     // 대화를 표시하는 메서드
-    public void ChangeTalkId(int _id)
-    {
-        id = _id; // 대화 ID를 새로운 _id로 변경
-        dialogCount = 0; // 대화 카운트를 초기화
-        DialogSetting(); // 대화 설정 메서드 호출
-    }
+    //public void ChangeTalkId(int _id)
+    //{
+    //    id = _id; // 대화 ID를 새로운 _id로 변경
+    //    dialogCount = 0; // 대화 카운트를 초기화
+    //    DialogSetting(); // 대화 설정 메서드 호출
+    //}
     public void SettingUI(bool type) // UI를 설정하는 메서드 (버튼 키기)
     {
         dialogPopupBtn.gameObject.SetActive(type); // 대화 팝업 버튼의 활성화 상태를 type 값에 따라 변경
@@ -67,60 +83,66 @@ public class DialogueManager : MonoBehaviour
     // 대화 팝업을 표시하는 메서드
     public void ShowDialog()
     {
+        //DialogSetting();
         // 현재 대화 카운트(dialogCount)에 해당하는 이름과 대화 내용을 각각 name과 dialog 텍스트 UI에 설정
-        name.text = names[dialogCount];
-        dialog.text = dialogs[dialogCount];
+        //name.text = names[dialogCount];
+        //dialog.text = dialogs[dialogCount];
 
         // 대화 팝업을 활성화하고, 조이스틱과 대화 팝업 버튼을 비활성화
         dialogPopup.SetActive(true);
         joystick.SetActive(false);
         dialogPopupBtn.SetActive(false) ;
+        NextTalk();
 
     }
 
+    // ####### 그룹 안 쓰기로 했으니까 일단 주석처리 함
 
-    void DialogSetting() // 대화 설정을 하는 메서드
-    {
-        // 이름과 대화 리스트 초기화
-        names = new List<string>();
-        dialogs = new List<string>();
+    //void DialogSetting() // 대화 설정을 하는 메서드
+    //{
+    //    // 이름과 대화 리스트 초기화
+    //    //names = new List<string>();
+    //    //dialogs = new List<string>();
 
-        // 대화 데이터에서 현재 대화 ID에 해당하는 대화를 찾아 이름과 대화 리스트에 추가
-        for (int i = 0; i < data_Dialog.Count; i++) // for문은 (시작; 조건; 단계)로 작성됨
-        {
-            if ((int)data_Dialog[i]["talkID"] == id)
-            {
-                names.Add(data_Dialog[i]["chaName"].ToString());
-                dialogs.Add(data_Dialog[i]["description"].ToString());
-            }
-        }
-    }
+
+    //    // 대화 데이터에서 현재 대화 ID에 해당하는 대화를 찾아 이름과 대화 리스트에 추가
+    //    for (int i = 0; i < data_Dialog.Count; i++) // for문은 (시작; 조건; 단계)로 작성됨
+    //    {
+    //        if ((int)data_Dialog[i]["talkID"] == id)
+    //        {
+    //            names.Add(data_Dialog[i]["chaName"].ToString());
+    //            dialogs.Add(data_Dialog[i]["description"].ToString());
+    //        }
+    //    }
+    //}
+
+    // ####### 그룹 안 쓰기로 했으니까 일단 주석처리 함
 
     // 다음 대화를 표시하는 메서드
-    public void NextDialog()
-    {
-        dialogCount++; // 대화 카운트 증가
+    //public void NextDialog()
+    //{
+    //    dialogCount++; // 대화 카운트 증가
 
-        if (dialogCount >= names.Count)
-        {
-            // 모든 대화를 표시했을 경우, 대화 팝업을 비활성화하고 대화 카운트를 초기화
-            dialogPopup.SetActive(false);
-            dialogCount = 0;
+    //    if (dialogCount >= names.Count)
+    //    {
+    //        // 모든 대화를 표시했을 경우, 대화 팝업을 비활성화하고 대화 카운트를 초기화
+    //        dialogPopup.SetActive(false);
+    //        dialogCount = 0;
 
-            //대화 ID에 따라 다음 대화를 설정 -> 이걸 지우면 2번 그룹의 대사가 끝난 후 3번 그룹의 대사가 안뜸
-            if (id == 2)
-            {
-                ChangeTalkId(3); // 대화 ID를 3으로 변경하여 대화 3을 시작
-                ShowDialog(); // 대화 팝업을 표시
-            }
-        }
-        else
-        {
-            // 다음 대화를 표시
-            name.text = names[dialogCount];
-            dialog.text = dialogs[dialogCount];
-        }
-    }
+    //        //대화 ID에 따라 다음 대화를 설정 -> 이걸 지우면 2번 그룹의 대사가 끝난 후 3번 그룹의 대사가 안뜸
+    //        if (id == 2)
+    //        {
+    //            ChangeTalkId(3); // 대화 ID를 3으로 변경하여 대화 3을 시작
+    //            ShowDialog(); // 대화 팝업을 표시
+    //        }
+    //    }
+    //    else
+    //    {
+    //        // 다음 대화를 표시
+    //        name.text = names[dialogCount];
+    //        dialog.text = dialogs[dialogCount];
+    //    }
+    //}
 
     // 대화 ID와 대화 카운트를 검사하여 대화가 모두 끝났는지 확인하는 메서드
     public bool CheckIfDialogueIsComplete(int dialogueID)
@@ -130,5 +152,27 @@ public class DialogueManager : MonoBehaviour
         return id == dialogueID && dialogCount >= names.Count;
     }
 
+    
+    public void NextTalk() // 다음 대사 나오는 함수
+    {
+        if (id > endTalk) // == endTalk가 아닌 이유: 같다고 하면 그 숫자대의 대사가 나오지 않은 채 종료되기 때문
+        {
+            dialogPopup.SetActive(false);
+            joystick.SetActive(true);
+            dialogPopupBtn.SetActive(true);
+        }
+        else
+        {
+            name.text = data_Dialog[id]["MainChaName"].ToString();
+            dialog.text = data_Dialog[id]["MainDescription"].ToString();
+            id++;
+        }
+
+        if (data_Dialog[id]["Mainkind"].ToString() == "quest" && int.TryParse(data_Dialog[id]["QuestID"].ToString(), out int questId))
+        {
+            questManager.ActivateQuest(questId); // 퀘스트 활성화
+        }
+        Debug.Log("id");
+    }
 
 }

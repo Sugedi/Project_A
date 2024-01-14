@@ -45,7 +45,7 @@ public class ObjectInteraction : MonoBehaviour
             // ChangeButtonsState(false, true); // 공격 버튼을 비활성화하고, 상호작용 버튼을 활성화
             // 아래 2줄은 준혁이가 알려준대로 자료형을 GameObject로 변경해주고, SetActive 기능 사용한 것
             // 기록해 놔야 내가 나중에 저 위의 방법이 불편하다는 것을 알고 다른 방법으로 바꿀 수 있어서 적어놓음
-            dialogueManager.ChangeTalkId(talkId); // 대화 ID 변경
+            //dialogueManager.ChangeTalkId(talkId); // 대화 ID 변경
             dialogueManager.SettingUI(true); // UI 설정
 
         }
