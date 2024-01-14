@@ -35,7 +35,7 @@ using UnityEngine;
 public class Datas
 {
     // 재화
-    public int Soul;
+    public static int Soul;
 
     // 유저 스탯
     public int maxHP = 3; // 최대체력만 저장해주고, 스위치 때는 현재 체력을 최대 체력으로 회복시키기
@@ -76,6 +76,9 @@ public class Datas
     // 튜토리얼 완료 여부
     public bool stage1Tutorial = false;
 
+    // 세이브 위치
+    public static Vector3 playerPos;
+
     //나중에 다 합치면 엄청 길어질 듯? 스테이지별로 쪼개거나 방법을 생각해야겠는데??
     //저장 중 원형 슬라이더 넣으면 좋을 것 같다. 로딩창처럼
     
@@ -85,7 +88,7 @@ public class Datas
 public class DataManager : MonoBehaviour
 {
     public static DataManager instance;
-
+    
     public Datas datas;  // ----------------------------------------------- A
         
     // 기본 형
@@ -112,6 +115,10 @@ public class DataManager : MonoBehaviour
         stat = GameObject.Find("Player_SH");
         stat.GetComponent<Move_SH>().ChangeScene();
 
+        // 캐릭터 세이브 위치 저장 테스트 - 이건 스위치에다가 삽입하면 될듯
+        Transform playerTrans = GameObject.Find("Player_SH").GetComponent<Transform>();
+        Vector3 playerPos = playerTrans.position;
+
         // 자동저장 형
         //ES3AutoSaveMgr.Current.Save();
     }
@@ -127,6 +134,10 @@ public class DataManager : MonoBehaviour
         stat = GameObject.Find("Player_SH");
         stat.GetComponent<Move_SH>().ChangeScene();
 
+        // test 칸 
+
+        Debug.Log(Datas.playerPos);
+         
     }
 
     public void DataRemove()
