@@ -323,6 +323,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2859837008743640358, guid: 510756cd1f9bb3049ba2f38db181a1bb, type: 3}
   m_PrefabInstance: {fileID: 909510260}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &105126699
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 105126700}
+  m_Layer: 7
+  m_Name: Bullet Pos Right
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &105126700
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105126699}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 1.15, y: 0.98, z: -0.03}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 717991136}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &110506873
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,7 +378,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 110506873}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.004, y: 1.302, z: 0.192}
+  m_LocalPosition: {x: 0.004, y: 1.302, z: 0.548}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1270,8 +1301,12 @@ MonoBehaviour:
   isBoomShotActive: 0
   boomShotRadius: 0
   boomShotDamage: 0
+  isSideShotActive: 0
+  sideShotBullets: 0
   bulletSpeed: 5
   bulletPos: {fileID: 110506874}
+  bulletPosLeft: {fileID: 640226322}
+  bulletPosRight: {fileID: 105126700}
   bullet: {fileID: 3236627698561214123, guid: 2741b169980cd0347898aea2b3806360, type: 3}
   player: {fileID: 717991137}
 --- !u!4 &346617859 stripped
@@ -2171,6 +2206,37 @@ Transform:
   m_Father: {fileID: 1860621316}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &640226321
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 640226322}
+  m_Layer: 7
+  m_Name: Bullet Pos Left
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &640226322
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640226321}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -1.15, y: 0.98, z: -0.03}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 717991136}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1001 &652742944
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2422,7 +2488,7 @@ MonoBehaviour:
   maxAmmo: 1000
   maxHealth: 100
   activeSkills:
-  - {fileID: 11400000, guid: a8dd44edb691bc5499bb785864c5788c, type: 2}
+  - {fileID: 11400000, guid: 60119781f3eceed4aa395152295b4043, type: 2}
   - {fileID: 11400000, guid: eb17ed314fcc0c04293ad208c7d4a245, type: 2}
   - {fileID: 11400000, guid: 6fb2e8d53941b074b95b8d2be1fa13c5, type: 2}
   - {fileID: 11400000, guid: 456641c459d606948a2813c94e18fad5, type: 2}
@@ -2432,6 +2498,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 949b8165ff328714ab0c1b1c73843931, type: 2}
   - {fileID: 11400000, guid: 2fdfea97991e4224da300e6c1c6b9046, type: 2}
   - {fileID: 11400000, guid: 7ca8df1b5bc6e044984a89938ae958cf, type: 2}
+  - {fileID: 11400000, guid: 47e3c71f3d977544280f9a5587c0a03b, type: 2}
 --- !u!1001 &722716000
 PrefabInstance:
   m_ObjectHideFlags: 0

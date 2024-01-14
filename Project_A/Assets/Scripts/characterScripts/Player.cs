@@ -254,7 +254,7 @@ public class Player : MonoBehaviour
                     // 총알 수가 최대치를 넘지 않도록 합니다.
                     if (ammo > maxAmmo)
                         ammo = maxAmmo;
-                    break;               
+                    break;
                 
             }
             // 파괴하는 거
@@ -341,6 +341,7 @@ public class Player : MonoBehaviour
         bool shotGun4Active = false; // 샷건4 스킬 활성화 여부
         bool pierceShotActive = false; // 관통샷 스킬 활성화 여부
         bool boomShotActive = false; // 붐샷 스킬 활성화 여부
+        bool sideShotActive = false; // 사이드샷 스킬 활성화 여부
 
         int shotGun1Bullets = 0; // 샷건1 시 발사될 추가 총알 수
         float shotGun1Angle = 0f; // 샷건1의 총알 간 각도
@@ -353,6 +354,7 @@ public class Player : MonoBehaviour
         int totalAmmoIncrease = 0; // 최대 탄창 증가량을 기본 0으로 설정합니다.
         float boomShotRadius = 0f; // 붐샷 스킬 피해 범위
         float boomShotDamage = 0f; // 붐샷 스킬 피해량
+        int sideShotBullets = 0; // 사이드샷 스킬에서 발사되는 총알의 수
 
         // 활성화된 스킬들을 순회하며 데미지 및 공격 속도 배율을 계산합니다.
         foreach (var skill in activeSkills)
@@ -404,6 +406,13 @@ public class Player : MonoBehaviour
                     boomShotRadius = skill.boomShotRadius;
                     boomShotDamage = skill.boomShotDamage;
                 }
+                // SideShot 스킬 적용 로직
+                if (skill != null && skill.isSideShot)
+                {
+                    sideShotActive = true;
+                    // 가장 높은 단계의 총알 수를 적용
+                    sideShotBullets = Mathf.Max(sideShotBullets, skill.sideShotCount); 
+                }
                 totalAmmoIncrease += skill.ammoIncrease;
             } 
 
@@ -430,6 +439,9 @@ public class Player : MonoBehaviour
         equipWeapon.isBoomShotActive = boomShotActive;
         equipWeapon.boomShotRadius = boomShotRadius;
         equipWeapon.boomShotDamage = boomShotDamage;
+
+        // 장착된 무기에 SideShot 스킬 속성 설정
+        equipWeapon.isSideShotActive = sideShotActive;
 
         if (shotGun1Active)
         {
@@ -476,6 +488,17 @@ public class Player : MonoBehaviour
             // 샷건2 스킬이 비활성화되면 기본값으로 재설정합니다.
             equipWeapon.shotGun4Bullets = 0;
             equipWeapon.shotGun4SpreadAngle = 0f;
+        }
+        // 사이드샷 스킬이 활성화되었다면, 무기에 사이드샷 스킬 정보를 업데이트합니다.
+        if (sideShotActive)
+        {
+            equipWeapon.isSideShotActive = true;
+            equipWeapon.sideShotBullets = sideShotBullets;
+        }
+        else
+        {
+            equipWeapon.isSideShotActive = false;
+            equipWeapon.sideShotBullets = 0;
         }
     }
 

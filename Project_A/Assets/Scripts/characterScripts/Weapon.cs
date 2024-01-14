@@ -43,8 +43,14 @@ public class Weapon : MonoBehaviour
     public float boomShotRadius; // 붐샷 폭발 반경
     public float boomShotDamage; // 붐샷 폭발 때 주는 피해량
 
-    public float bulletSpeed = 25f; // 총알 속도 기본값 설정
+    // 사이드샷 스킬에 대한 속성
+    public bool isSideShotActive = false; // 사이드샷 스킬 활성화 여부
+    public int sideShotBullets = 0; // 사이드샷 스킬에서 발사되는 총알의 수
+
+    public float bulletSpeed = 30f; // 총알 속도 기본값 설정
     public Transform bulletPos; // 총알 발사 위치
+    public Transform bulletPosLeft; // 총알 발사 위치
+    public Transform bulletPosRight; // 총알 발사 위치
     public GameObject bullet; // 총알 프리팹    
     public Player player; // 무기를 소유하고 있는 플레이어의 참조입니다.
 
@@ -69,7 +75,7 @@ public class Weapon : MonoBehaviour
             actionOnDestroy: (obj) => {
                 Destroy(obj); // 오브젝트를 파괴합니다.
             },
-            defaultCapacity: 50, // 기본 용량
+            defaultCapacity: 60, // 기본 용량
             maxSize: 120 // 최대 용량
         );
 
@@ -172,16 +178,60 @@ public class Weapon : MonoBehaviour
             // 총알 발사 후 충돌을 다시 활성화
             StartCoroutine(EnableColliderAfterDelay(bulletCollider));
         }
+        // 사이드샷 스킬이 활성화된 경우
+        if (isSideShotActive)
+        {            
+            FireSideShot(bulletPosLeft, sideShotBullets); // 왼쪽 발사 위치에서 총알 발사
+            FireSideShot(bulletPosRight, sideShotBullets); // 오른쪽 발사 위치에서 총알 발사
+        }
 
         // 공격 속도 배율을 고려하여 다음 총알 발사까지 대기합니다.
         yield return new WaitForSeconds(1f / (baseAttackSpeed * attackSpeedMultiplier));
 
     }
+    void FireSideShot(Transform sideShotPos, int sideShotBullets)
+    {
+        for (int i = 0; i < sideShotBullets; i++)
+        {
+            GameObject instantBullet = bulletPool.Get();
+            instantBullet.transform.position = sideShotPos.position;
+            instantBullet.transform.rotation = sideShotPos.rotation;
+
+            // 총알 충돌을 일시적으로 비활성화
+            Collider bulletCollider = instantBullet.GetComponent<Collider>();
+            if (bulletCollider)
+            {
+                bulletCollider.enabled = false;
+                bulletCollider.isTrigger = isPierceShotActive; // 관통샷 활성화 여부에 따라 isTrigger 설정
+            }
+            Bullet bulletScript = instantBullet.GetComponent<Bullet>();
+            bulletScript.isPenetrating = isPierceShotActive; // 관통샷 여부 설정
+
+            // BoomShot 스킬 적용
+            bulletScript.isBoomShotActive = isBoomShotActive;
+            bulletScript.boomShotRadius = boomShotRadius;
+            bulletScript.boomShotDamage = boomShotDamage;
+
+            // 총알의 데미지 설정
+            bulletScript.damage = bulletScript.baseDamage * damageMultiplier;
+
+            // 총알의 생명주기 설정
+            bulletScript.lifeTime = 1f;
+
+            Rigidbody bulletRigid = instantBullet.GetComponent<Rigidbody>();
+            bulletRigid.velocity = sideShotPos.forward * bulletSpeed;
+
+
+
+            // 총알 충돌을 비활성화하고 지연 후 다시 활성화하는 코루틴 호출
+            StartCoroutine(EnableColliderAfterDelay(instantBullet.GetComponent<Collider>()));
+        }
+    }
     // 충돌을 활성화하는 코루틴
     IEnumerator EnableColliderAfterDelay(Collider bulletCollider)
     {
         // 총알이 일정 거리 이동한 후에 충돌을 활성화합니다.
-        yield return new WaitForSeconds(0.1f); // 0.1초 대기=
+        yield return new WaitForSeconds(0.5f); // 0.5초 대기=
         if (bulletCollider)
         {
             bulletCollider.enabled = true;
