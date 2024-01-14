@@ -55,6 +55,5 @@ public class Skill : ScriptableObject
     public float boomShotRadius;
     public float boomShotDamage;
 
-    public bool isSideShot = false; // 사이드샷 스킬 활성화 여부입니다.
-    public int sideShotCount = 0; // 사이드샷 스킬에서 발사되는 총알의 수
+    public bool isSideShot = false; // 사이드샷 스킬 활성화 여부입니다.    
 }

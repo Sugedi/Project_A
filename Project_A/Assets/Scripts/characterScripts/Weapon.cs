@@ -44,8 +44,7 @@ public class Weapon : MonoBehaviour
     public float boomShotDamage; // 붐샷 폭발 때 주는 피해량
 
     // 사이드샷 스킬에 대한 속성
-    public bool isSideShotActive = false; // 사이드샷 스킬 활성화 여부
-    public int sideShotBullets = 0; // 사이드샷 스킬에서 발사되는 총알의 수
+    public bool isSideShotActive = false; // 사이드샷 스킬 활성화 여부    
 
     public float bulletSpeed = 30f; // 총알 속도 기본값 설정
     public Transform bulletPos; // 총알 발사 위치
@@ -100,7 +99,7 @@ public class Weapon : MonoBehaviour
             if (isShotGun1Active) totalBullets = shotGun1Bullets;
             if (isShotGun2Active) totalBullets = shotGun2Bullets;
             if (isShotGun3Active) totalBullets = shotGun3Bullets;
-            if (isShotGun4Active) totalBullets = shotGun4Bullets;
+            if (isShotGun4Active) totalBullets = shotGun4Bullets;           
 
             // 현재 탄약 수가 발사할 총알 수보다 적은 경우, 남은 탄약만큼만 발사합니다.
             int bulletsToFire = Mathf.Min(totalBullets, curAmmo);
@@ -180,18 +179,19 @@ public class Weapon : MonoBehaviour
         }
         // 사이드샷 스킬이 활성화된 경우
         if (isSideShotActive)
-        {            
-            FireSideShot(bulletPosLeft, sideShotBullets); // 왼쪽 발사 위치에서 총알 발사
-            FireSideShot(bulletPosRight, sideShotBullets); // 오른쪽 발사 위치에서 총알 발사
+        {
+            // 사이드샷 총알을 정면 총알의 수만큼 양쪽으로 발사합니다.
+            FireSideShot(bulletPosLeft, bulletsToFire); // 왼쪽 발사 위치에서 총알 발사
+            FireSideShot(bulletPosRight, bulletsToFire); // 오른쪽 발사 위치에서 총알 발사
         }
 
         // 공격 속도 배율을 고려하여 다음 총알 발사까지 대기합니다.
         yield return new WaitForSeconds(1f / (baseAttackSpeed * attackSpeedMultiplier));
 
     }
-    void FireSideShot(Transform sideShotPos, int sideShotBullets)
+    void FireSideShot(Transform sideShotPos, int bulletsToFire)
     {
-        for (int i = 0; i < sideShotBullets; i++)
+        for (int i = 0; i < bulletsToFire; i++)
         {
             GameObject instantBullet = bulletPool.Get();
             instantBullet.transform.position = sideShotPos.position;
@@ -212,6 +212,7 @@ public class Weapon : MonoBehaviour
             bulletScript.boomShotRadius = boomShotRadius;
             bulletScript.boomShotDamage = boomShotDamage;
 
+            bulletScript.SetPool(bulletPool);
             // 총알의 데미지 설정
             bulletScript.damage = bulletScript.baseDamage * damageMultiplier;
 
@@ -231,7 +232,7 @@ public class Weapon : MonoBehaviour
     IEnumerator EnableColliderAfterDelay(Collider bulletCollider)
     {
         // 총알이 일정 거리 이동한 후에 충돌을 활성화합니다.
-        yield return new WaitForSeconds(0.5f); // 0.5초 대기=
+        yield return new WaitForSeconds(0.2f); // 0.2초 대기=
         if (bulletCollider)
         {
             bulletCollider.enabled = true;
