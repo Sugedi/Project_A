@@ -22,7 +22,7 @@ public class ActionController : MonoBehaviour
     }
     void TryAction()
     {
-        if (Input.GetKeyDown(KeyCode.P)) // P 키를 눌렀을 때
+        if (Input.GetKeyDown(KeyCode.E)) // E 키를 눌렀을 때
         {
             CheckItem();
             CanPickUp();

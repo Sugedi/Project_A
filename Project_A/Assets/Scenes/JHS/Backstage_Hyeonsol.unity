@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17276905, g: 0.2158935, b: 0.2978262, a: 1}
+  m_IndirectSpecularColor: {r: 0.17276956, g: 0.21589413, b: 0.29782727, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1544,22 +1544,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91a8948113e38754ab823c500470d658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
-  damage: 0
+  type: 0
   baseAttackSpeed: 1
   damageMultiplier: 1
   attackSpeedMultiplier: 1
+  baseMaxAmmo: 30
   maxAmmo: 30
   curAmmo: 30
-  isBuckShotActive: 0
-  buckShotBullets: 3
-  buckShotSpreadAngle: 30
-  meleeArea: {fileID: 0}
-  trailEffect: {fileID: 0}
+  isShotGun1Active: 0
+  shotGun1Bullets: 2
+  shotGun1SpreadAngle: 45
+  isShotGun2Active: 0
+  shotGun2Bullets: 3
+  shotGun2SpreadAngle: 45
+  isShotGun3Active: 0
+  shotGun3Bullets: 4
+  shotGun3SpreadAngle: 45
+  isShotGun4Active: 0
+  shotGun4Bullets: 5
+  shotGun4SpreadAngle: 45
+  isPierceShotActive: 0
+  isBoomShotActive: 0
+  boomShotRadius: 0
+  boomShotDamage: 0
+  bulletSpeed: 25
   bulletPos: {fileID: 110506874}
   bullet: {fileID: 1154848691978880094, guid: e9c63464e4d921b4fbc7125530c5c4e4, type: 3}
-  bulletCasePos: {fileID: 1829675177}
-  bulletCase: {fileID: 2387103695211861123, guid: 431bad8add2adc64da9e16bb51eaeaf3, type: 3}
   player: {fileID: 717991137}
 --- !u!4 &346617859 stripped
 Transform:
@@ -4108,6 +4118,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb5ffa15a37e73b4ba42e78ed19c4fe2, type: 3}
+--- !u!1 &1216651744
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1216651745}
+  m_Layer: 0
+  m_Name: DropPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1216651745
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1216651744}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1446932760}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1222051257
 GameObject:
   m_ObjectHideFlags: 0
@@ -4352,6 +4393,8 @@ MonoBehaviour:
   bullet: {fileID: 636954836966932781, guid: 4e081be2a143477448ea4ac757e2b343, type: 3}
   isChase: 0
   isAttack: 0
+  itemprefab: {fileID: 1297172181180802, guid: d8dad9d2d761e460bb0a3f03ef8fccb8, type: 3}
+  dropPosition: {fileID: 0}
 --- !u!195 &1446932755
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4416,6 +4459,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!4 &1446932760 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3029897042515285248, guid: 7110a21afadc482595f133443a3bcaf0, type: 3}
+  m_PrefabInstance: {fileID: 168370124}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1498686209
 GameObject:
   m_ObjectHideFlags: 0

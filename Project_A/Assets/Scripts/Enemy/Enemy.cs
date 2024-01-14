@@ -80,7 +80,7 @@ public class Enemy : MonoBehaviour
                 break;
             case Type.C:
                 targetRadius = 0.5f;
-                targetRange = 25f;
+                targetRange = 20f;
                 break;
         }
         // 플레이어를 감지하면 공격 시작
@@ -139,7 +139,7 @@ public class Enemy : MonoBehaviour
                 rigidBullet.velocity = transform.forward * 20;
 
                 // 2초 대기
-                yield return new WaitForSeconds(1.8f);
+                yield return new WaitForSeconds(2f);
                 break;
         }
 
@@ -225,14 +225,14 @@ public class Enemy : MonoBehaviour
         // mat.color = Color.red;
         yield return new WaitForSeconds(0.1f);
 
-        // 현재 체력이 0보다 큰 경우 색상을 원래대로 되돌림
+        // 현재 체력이 0보다 큰 경우 doGetHit 애니메이션 재생
         if (curHealth > 0)
         {
             // mat.color = Color.white;
             isChase = false;
             anim.SetBool("doGetHit", true);
-            // nav.enabled = false;
-            
+            nav.enabled = false;
+
         }
         // 현재 체력이 0 이하인 경우
         else
@@ -244,11 +244,11 @@ public class Enemy : MonoBehaviour
             //nav.enabled = false;
             //anim.SetBool("doGetHit", true);
 
-            // gameObject.layer = 12; // 레이어를 변경하여 다시 공격을 받지 않도록 설정
+            gameObject.layer = 12; // 레이어를 변경하여 다시 공격을 받지 않도록 설정
 
             // 추격 중지, 네비게이션 비활성화, 죽음 애니메이션 재생
             isChase = false;
-            //nav.enabled = false;
+            // nav.enabled = false;
             anim.SetTrigger("doDie");
 
             // 피격된 방향 벡터를 정규화하고 위로 조금 이동시켜줌
@@ -265,7 +265,6 @@ public class Enemy : MonoBehaviour
 
             // 2초 뒤 몹 사망
             Destroy(gameObject, 2);
-            
         }
     }
 }

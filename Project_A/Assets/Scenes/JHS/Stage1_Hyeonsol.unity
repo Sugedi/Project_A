@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4530,6 +4530,8 @@ MonoBehaviour:
   bullet: {fileID: 0}
   isChase: 0
   isAttack: 0
+  itemprefab: {fileID: 0}
+  dropPosition: {fileID: 0}
 --- !u!195 &724805230
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5502,6 +5504,8 @@ MonoBehaviour:
   bullet: {fileID: 0}
   isChase: 0
   isAttack: 0
+  itemprefab: {fileID: 0}
+  dropPosition: {fileID: 0}
 --- !u!195 &876570399
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -8151,6 +8155,8 @@ MonoBehaviour:
   bullet: {fileID: 0}
   isChase: 0
   isAttack: 0
+  itemprefab: {fileID: 0}
+  dropPosition: {fileID: 0}
 --- !u!65 &1302057644
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8918,6 +8924,8 @@ MonoBehaviour:
   bullet: {fileID: 0}
   isChase: 0
   isAttack: 0
+  itemprefab: {fileID: 0}
+  dropPosition: {fileID: 0}
 --- !u!195 &1368791609
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -11034,6 +11042,8 @@ MonoBehaviour:
   bullet: {fileID: 636954836966932781, guid: 4e081be2a143477448ea4ac757e2b343, type: 3}
   isChase: 0
   isAttack: 0
+  itemprefab: {fileID: 0}
+  dropPosition: {fileID: 0}
 --- !u!65 &1618025467
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11255,6 +11265,8 @@ MonoBehaviour:
   bullet: {fileID: 0}
   isChase: 0
   isAttack: 0
+  itemprefab: {fileID: 0}
+  dropPosition: {fileID: 0}
 --- !u!195 &1664297613
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -11645,6 +11657,8 @@ MonoBehaviour:
   bullet: {fileID: 636954836966932781, guid: 4e081be2a143477448ea4ac757e2b343, type: 3}
   isChase: 0
   isAttack: 0
+  itemprefab: {fileID: 0}
+  dropPosition: {fileID: 0}
 --- !u!195 &1668335521
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -12202,6 +12216,8 @@ MonoBehaviour:
   bullet: {fileID: 0}
   isChase: 0
   isAttack: 0
+  itemprefab: {fileID: 0}
+  dropPosition: {fileID: 0}
 --- !u!195 &1731896759
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -13714,6 +13730,8 @@ MonoBehaviour:
   bullet: {fileID: 0}
   isChase: 0
   isAttack: 0
+  itemprefab: {fileID: 0}
+  dropPosition: {fileID: 0}
 --- !u!195 &1907218372
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -14124,21 +14142,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  damage: 0
   baseAttackSpeed: 1
   damageMultiplier: 1
   attackSpeedMultiplier: 1
+  baseMaxAmmo: 30
   maxAmmo: 30
   curAmmo: 30
-  isBuckShotActive: 0
-  buckShotBullets: 3
-  buckShotSpreadAngle: 30
-  meleeArea: {fileID: 0}
-  trailEffect: {fileID: 0}
+  isShotGun1Active: 0
+  shotGun1Bullets: 2
+  shotGun1SpreadAngle: 45
+  isShotGun2Active: 0
+  shotGun2Bullets: 3
+  shotGun2SpreadAngle: 45
+  isShotGun3Active: 0
+  shotGun3Bullets: 4
+  shotGun3SpreadAngle: 45
+  isShotGun4Active: 0
+  shotGun4Bullets: 5
+  shotGun4SpreadAngle: 45
+  isPierceShotActive: 0
+  isBoomShotActive: 0
+  boomShotRadius: 0
+  boomShotDamage: 0
+  bulletSpeed: 25
   bulletPos: {fileID: 1314680933}
   bullet: {fileID: 1154848691978880094, guid: e9c63464e4d921b4fbc7125530c5c4e4, type: 3}
-  bulletCasePos: {fileID: 1526676223}
-  bulletCase: {fileID: 2387103695211861123, guid: 431bad8add2adc64da9e16bb51eaeaf3, type: 3}
   player: {fileID: 1265028314}
 --- !u!4 &1962513939 stripped
 Transform:
@@ -15064,6 +15092,8 @@ MonoBehaviour:
   bullet: {fileID: 0}
   isChase: 0
   isAttack: 0
+  itemprefab: {fileID: 0}
+  dropPosition: {fileID: 0}
 --- !u!4 &1994469357 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4701395883958751260, guid: e98d21bd1c854c45a8719474f78c5126, type: 3}
@@ -15652,6 +15682,8 @@ MonoBehaviour:
   bullet: {fileID: 0}
   isChase: 0
   isAttack: 0
+  itemprefab: {fileID: 0}
+  dropPosition: {fileID: 0}
 --- !u!195 &2065099384
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -16586,6 +16618,8 @@ MonoBehaviour:
   bullet: {fileID: 636954836966932781, guid: 4e081be2a143477448ea4ac757e2b343, type: 3}
   isChase: 0
   isAttack: 0
+  itemprefab: {fileID: 0}
+  dropPosition: {fileID: 0}
 --- !u!135 &2122460063
 SphereCollider:
   m_ObjectHideFlags: 0

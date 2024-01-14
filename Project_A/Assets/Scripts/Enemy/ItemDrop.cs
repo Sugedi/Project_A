@@ -14,6 +14,6 @@ public class ItemDrop : ScriptableObject
 
     public enum ItemType
     {
-        Ticket
+        Gem
     }
 }
