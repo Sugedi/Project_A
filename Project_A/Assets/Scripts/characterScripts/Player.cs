@@ -96,17 +96,28 @@ public class Player : MonoBehaviour
         cameraForward.Normalize();
         cameraRight.Normalize();
 
-        moveVec = (cameraForward * vAxis) + (cameraRight * hAxis); // 입력값을 정규화하여 이동 벡터 생성
+        moveVec = (cameraForward * vAxis) + (cameraRight * hAxis);
 
         if (isDodge)
-            moveVec = dodgeVec; // 회피 중이면 이동 벡터를 회피 벡터로 설정
+            moveVec = dodgeVec;
 
         if (isReload || !isFireReady)
-            moveVec = Vector3.zero; // 무기 스왑, 재장전, 공격 불가 상태일 때 이동 멈춤
+            moveVec = Vector3.zero;
 
         if (!isBorder)
-            transform.position += moveVec * speed * (wDown ? 0.3f : 1f) * Time.deltaTime; // 이동 벡터를 이용해 플레이어 이동
+        {
+            // Calculate the ray positions for top, middle, and bottom of the player collider
+            List<Vector3> rayPositions = new List<Vector3>();
+            rayPositions.Add(transform.position + Vector3.up * 0.9f); // Top
+            rayPositions.Add(transform.position + Vector3.up * 0.5f); // Middle
+            //rayPositions.Add(transform.position + Vector3.up * 0.1f); // Bottom
 
+            // Check if any of the rays hit a wall within a certain scope
+            if (CheckHitWall(rayPositions, moveVec))
+                moveVec = Vector3.zero;
+        }
+
+        // Rest of the Move method remains unchanged
         rigid.MovePosition(rigid.position + moveVec * speed * Time.deltaTime);
 
         if (moveVec != Vector3.zero)
@@ -115,9 +126,30 @@ public class Player : MonoBehaviour
             Quaternion moveQuat = Quaternion.Slerp(rigid.rotation, dirQuat, 0.3f);
             rigid.MoveRotation(moveQuat);
         }
-        anim.SetBool("isRun", moveVec != Vector3.zero); // 이동 중인지 애니메이터에 전달
-        anim.SetBool("isWalk", wDown); // 걷기 입력 여부를 애니메이터에 전달
+
+        anim.SetBool("isRun", moveVec != Vector3.zero);
+        anim.SetBool("isWalk", wDown);
     }
+
+    public float Wallscope = 1f;
+    bool CheckHitWall(List<Vector3> rayPositions, Vector3 movement)
+    {
+        
+
+        foreach (Vector3 pos in rayPositions)
+        {
+            Debug.DrawRay(pos, movement * Wallscope, Color.red);
+
+            if (Physics.Raycast(pos, movement, out RaycastHit hit, Wallscope))
+            {
+                if (hit.collider.CompareTag("Wall"))
+                    return true;
+            }
+        }
+
+        return false;
+    }
+
 
     // 다 돌려놔~
     void Turn()
