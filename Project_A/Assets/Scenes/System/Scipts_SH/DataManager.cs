@@ -107,7 +107,8 @@ public class DataManager : MonoBehaviour
     {
         // 기본 형
         // Datas 클래스에 있는 모든 변수값을 저장
-        ES3.Save(KeyName,datas);  // <-------------------------------------- A
+        var settings = new ES3Settings { memberReferenceMode = ES3.ReferenceMode.ByRefAndValue };
+        ES3.Save(KeyName,datas, settings);  // <-------------------------------------- A
         stat = GameObject.Find("Player_SH");
         stat.GetComponent<Move_SH>().ChangeScene();
 
@@ -116,7 +117,10 @@ public class DataManager : MonoBehaviour
     }
     public void DataLoad()
     {
-        ES3.LoadInto(KeyName, datas);
+        // 이제 커스텀 클래스도 저장 불러오기가 가능합니다만, 
+        // Skill 이름은 못 불러오네. 정확히 파일은 들어가있는 듯 해
+        var settings = new ES3Settings { memberReferenceMode = ES3.ReferenceMode.ByRefAndValue };
+        ES3.LoadInto(KeyName, datas, settings);
         //ES3.Load(KeyName, datas);
 
         // 캐릭터 스탯에 동기화

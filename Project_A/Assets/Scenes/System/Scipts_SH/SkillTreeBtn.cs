@@ -15,7 +15,6 @@ public class SkillTreeBtn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("왜 안뜸;;");
         // foreach로 돌려서 리스트에 버튼이 있으면, 버튼 색을 회색으로
         // 첫 설명 화면은 딱총 설명화면으로
 
@@ -51,7 +50,16 @@ public class SkillTreeBtn : MonoBehaviour
                 break;
 
             case SkillBtn.Skill_1Up:
-                Skill skillName = Resources.Load<Skill>("SpeedUp1");      // "Prefabs/MyPrefab" 리소스 하위 경로
+                
+                foreach (var Skill in unlockedSkillList)
+                {
+                    if (Skill.skillName == "SpeedUp1")
+                    {
+                        Debug.Log("잡았다 요놈");
+                        // 여기에 버튼 비활성화 넣으면 될듯
+                    }
+                }
+                Skill skillName = Resources.Load<Skill>("SpeedUp1");      // "Prefabs/MyPrefab" 리소스 하위 경로 "Resources/Skills/스킬 이름" 으로 정리하면 될 듯
                 unlockedSkillList.Add(skillName);
                 DataManager.instance.datas.skillHave.Add(skillName);
                 DataManager.instance.DataSave();
