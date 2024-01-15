@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
-using UnityEngine.Pool;
 
 
-public class Btn : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class TitleBtn : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     // 버튼의 타입을 선언했는데... MainUI에 있는 열거형이 적용된 것 같다? 신기해
     public ButtonType currentType;

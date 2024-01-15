@@ -26,7 +26,3 @@ public enum SkillBtn
     Quit
 }
 
-public class MainUI : MonoBehaviour
-{
-
-}
