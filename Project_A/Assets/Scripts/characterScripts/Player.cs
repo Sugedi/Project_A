@@ -59,6 +59,7 @@ public class Player : MonoBehaviour
         rigid = GetComponent<Rigidbody>(); // Rigidbody 컴포넌트 가져오기
         anim = GetComponentInChildren<Animator>(); // Animator 컴포넌트 가져오기
         meshs = GetComponentsInChildren<MeshRenderer>(); // MeshRenderer 배열 가져오기
+        EquipWeapon(0);
     }
 
     void Update()
@@ -267,6 +268,33 @@ public class Player : MonoBehaviour
     {
         FreezeRotation();
         StopToWall();
+    }
+    // 무기 장착 메서드
+    void EquipWeapon(int weaponIndex)
+    {
+        if (weapons[weaponIndex] != null)
+        {
+            // 현재 장착된 무기가 있으면 비활성화
+            if (equipWeapon != null)
+            {
+                equipWeapon.gameObject.SetActive(false);
+            }
+
+            // 새 무기 장착
+            equipWeapon = weapons[weaponIndex].GetComponent<Weapon>();
+            equipWeapon.gameObject.SetActive(true);
+            equipWeaponIndex = weaponIndex;
+
+            // 무기 습득 처리
+            hasWeapons[weaponIndex] = true;
+
+            // 무기에 따른 스킬 적용
+            ApplySkills();
+
+            // 현재 탄약을 최대 탄약으로 설정
+            equipWeapon.curAmmo = equipWeapon.maxAmmo;
+
+        }
     }
 
     // 트리거와 충돌했을 때 호출되는 함수
