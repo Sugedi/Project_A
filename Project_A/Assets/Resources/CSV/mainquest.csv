@@ -1,4 +1,6 @@
-﻿mainquestID|mainquestName|mainquestDescription|mainquestGiver|mainquestType|mainlocation1|mainquestCondition_name1|mainquestCondition_amount1|mainlocation2|mainquestCondition_name2|mainquestObjective_amount2|mainlocation3|mainquestCondition_name3|mainquestCondition_amount3|mainreward|mainreward_amount
-0|운명의 실 조각을 찾아서|혼란이 각 스테이지에 숨겨놓은 운명의 실 조각을 찾으세요.|질서의 신|메인|1스테이지|운명의 실 조각(빨강)|1|2스테이지|운명의 실 조각(노랑)|1|3스테이지|운명의 실 조각(파랑)|1|영혼 조각|10
-1|연극이 모두 끝나기 전에-1|인형이 된 상태로 숨어있는 혼란을 찾으세요.|질서의 신|메인|4스테이지|혼란(NPC오브젝트)|is trigger(true)||||||||
-2|연극이 모두 끝나기 전에-2|혼란과의 전투에서 승리한 뒤 질서의 신에게 데려가세요.|질서의 신|메인|4스테이지|혼란(NPC오브젝트)|||||||||
+MainquestID|MainquestName|MainquestDescription|MainquestGiver|MainLocation|MainquestConditionName|MainquestConditionAmount|MainReward|MainRewardAmount
+0|운명의 실 조각을 찾아서-1|혼란이 각 스테이지에 숨겨놓은 빨간 실 조각을 찾으세요.|질서의 신|1스테이지|빨간 실 조각|1|영혼 조각|10
+1|운명의 실 조각을 찾아서-2|혼란이 각 스테이지에 숨겨놓은 노란 실 조각을 찾으세요.|질서의 신|2스테이지|노란 실 조각|1|영혼 조각|10
+2|운명의 실 조각을 찾아서-3|혼란이 각 스테이지에 숨겨놓은 파란 실 조각을 찾으세요.|질서의 신|3스테이지|파란 실 조각|1|영혼 조각|10
+3|연극이 모두 끝나기 전에-1|인형이 된 상태로 숨어있는 혼란을 찾으세요.|질서의 신|4스테이지|혼란|1|영혼 조각|10
+4|연극이 모두 끝나기 전에-2|혼란과의 전투에서 승리한 뒤 질서의 신에게 데려가세요.|질서의 신|4스테이지|혼란|1|영혼 조각|10

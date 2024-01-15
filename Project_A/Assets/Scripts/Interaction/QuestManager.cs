@@ -48,34 +48,26 @@ public class QuestManager : MonoBehaviour
     // 퀘스트 데이터를 로드합니다.
     public void LoadQuests(List<Dictionary<string, object>> questData)
     {
+        quests.Clear(); // 기존 퀘스트 데이터를 클리어합니다.
         foreach (var data in questData)
         {
-            int id = Convert.ToInt32(data["mainquestID"]);
-            string name = data["mainquestName"].ToString();
-            string description = data["mainquestDescription"].ToString();
-            string giver = data["mainquestGiver"].ToString();
-            // mainquestType은 필요 없으므로 제외합니다.
-            Dictionary<string, int> conditions = new Dictionary<string, int>();
-            // CSV 구조에 따라 최대 3개의 조건을 가정합니다.
-            for (int i = 1; i <= 3; i++)
-            {
-                string conditionKey = $"mainquestCondition_name{i}";
-                string locationKey = $"mainlocation{i}";
-                string amountKey = $"mainquestCondition_amount{i}";
+            // 데이터에서 필요한 정보를 추출합니다.
+            int id = Convert.ToInt32(data["MainquestID"]);
+            string name = data["MainquestName"].ToString();
+            string description = data["MainquestDescription"].ToString();
+            string giver = data["MainquestGiver"].ToString();
+            string conditionName = data["MainquestConditionName"].ToString();
+            int conditionAmount = Convert.ToInt32(data["MainquestConditionAmount"]);
+            string reward = data["MainReward"].ToString();
+            int rewardAmount = Convert.ToInt32(data["MainRewardAmount"]);
 
-                if (data.ContainsKey(conditionKey) && data.ContainsKey(amountKey))
-                {
-                    string itemName = data[conditionKey].ToString();
-                    // 명확성을 위해 위치와 아이템 이름을 연결합니다. 필요에 따라 수정하세요.
-                    string conditionName = $"{data[locationKey].ToString()}_{itemName}";
-                    int conditionAmount = Convert.ToInt32(data[amountKey]);
-                    conditions.Add(conditionName, conditionAmount);
-                }
-            }
+            // 퀘스트 조건을 사전에 추가합니다.
+            Dictionary<string, int> conditions = new Dictionary<string, int>
+        {
+            { conditionName, conditionAmount }
+        };
 
-            string reward = data["mainreward"].ToString();
-            int rewardAmount = Convert.ToInt32(data["mainreward_amount"]);
-
+            // 새로운 퀘스트 객체를 생성하고 사전에 추가합니다.
             Quest newQuest = new Quest(id, name, description, giver, conditions, reward, rewardAmount);
             quests.Add(id, newQuest);
         }
