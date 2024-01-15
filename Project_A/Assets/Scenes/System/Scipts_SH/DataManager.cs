@@ -98,7 +98,7 @@ public class DataManager : MonoBehaviour
     private string KeyName = "Datas";
     private string fileName = "SaveData.txt";
 
-    public GameObject stat;
+    //public GameObject stat;
 
     void Start()
     {
@@ -115,8 +115,10 @@ public class DataManager : MonoBehaviour
         // Datas 클래스에 있는 모든 변수값을 저장
         var settings = new ES3Settings { memberReferenceMode = ES3.ReferenceMode.ByRefAndValue };
         ES3.Save(KeyName,datas, settings);  // <-------------------------------------- A
-        stat = GameObject.Find("Player");
-        stat.GetComponent<Player>().ChangeScene();
+        //stat = GameObject.Find("Player");
+        //stat.GetComponent<Player>().ChangeScene();
+        GameObject.Find("Player").GetComponent<Player>().ChangeScene();
+        
 
         // 캐릭터 세이브 위치 저장 테스트 - 이건 스위치에다가 삽입하면 될듯
         Transform playerTrans = GameObject.Find("Player").GetComponent<Transform>();
@@ -134,10 +136,10 @@ public class DataManager : MonoBehaviour
         //ES3.Load(KeyName, datas);
 
         // 캐릭터 스탯에 동기화
-        stat = GameObject.Find("Player");
-        stat.GetComponent<Player>().ChangeScene();
+        //stat = GameObject.Find("Player");
+        //stat.GetComponent<Player>().ChangeScene();
+        GameObject.Find("Player").GetComponent<Player>().ChangeScene();
 
-         
     }
 
     public void DataRemove()

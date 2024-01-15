@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
     {
         // 씬이 바뀌었을 때, 플레이어의 스탯을 마지막으로 저장된 값으로 변경
         ES3.LoadInto(KeyName, datas);
-
+        activeSkills = datas.skillHave;
         maxHealth = datas.maxHP;
     }
 

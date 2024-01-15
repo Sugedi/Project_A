@@ -54,24 +54,24 @@ public class SkillTreeBtn : MonoBehaviour
                 
                 foreach (var Skill in unlockedSkillList)
                 {
-                    if (Skill.skillName == "SpeedUp1")
+                    if (Skill.skillName == "Basic")
                     {
-                        Debug.Log("잡았다 요놈");
+                        Debug.Log(Skill.skillName);
                         // 여기에 버튼 비활성화 넣으면 될듯
                     }
                 }
                 foreach (var Skill in datas.skillHave)
                 {
-                    if(Skill.skillName == "SpeedUp1")
+                    if(Skill.skillName == "Basic")
                     {
-                        CanvasGroup cg = transform.Find("Skill (1)").GetComponent<CanvasGroup>(); //여기 오류 뜸 정신차리게 해주자. 
+                        CanvasGroup cg = transform.Find("Basic").GetComponent<CanvasGroup>(); //여기 오류 뜸 정신차리게 해주자. 
                         cg.alpha = 0;
                         cg.interactable = false;
                         cg.blocksRaycasts = false;
                     }
                 }
 
-                Skill skillName = Resources.Load<Skill>("SpeedUp1");      // "Prefabs/MyPrefab" 리소스 하위 경로 "Resources/Skills/스킬 이름" 으로 정리하면 될 듯
+                Skill skillName = Resources.Load<Skill>("Basic");      // "Prefabs/MyPrefab" 리소스 하위 경로 "Resources/Skills/스킬 이름" 으로 정리하면 될 듯
                 unlockedSkillList.Add(skillName);
                 DataManager.instance.datas.skillHave.Add(skillName);
                 DataManager.instance.DataSave();
