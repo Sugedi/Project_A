@@ -5,10 +5,13 @@ using UnityEngine.Pool;
 
 public class Bullet : MonoBehaviour
 {
-    public float baseDamage = 10; // 총알의 기본 공격력
+    public float baseDamage; // 총알의 기본 공격력
     public float damage; // 총알의 공격력  
     public float lifeTime; // 총알의 최대 생명 시간 (사거리 제한)
     private float lifeTimer; // 현재까지의 생명 시간을 추적하는 타이머
+    public float acceleration; // 총알의 가속도
+    private Rigidbody bulletRigidbody; // 총알의 Rigidbody 참조
+
     public GameObject explosionPrefab; // 폭발 효과 프리팹
 
     private ObjectPool<GameObject> pool;
@@ -20,6 +23,11 @@ public class Bullet : MonoBehaviour
     public float boomShotRadius; // 붐샷 폭발 반경
     public float boomShotDamage; // 붐샷 데미지
     public bool isExplosion = false;
+
+    void Awake()
+    {
+        bulletRigidbody = GetComponent<Rigidbody>();
+    }
 
     public void SetPool(ObjectPool<GameObject> pool)
     {
@@ -78,6 +86,12 @@ public class Bullet : MonoBehaviour
                 ReturnToPool();
             }
         }
+        else if (isPenetrating)
+        {
+            // 피어스샷일 때 총알에 가속도를 적용합니다.
+            bulletRigidbody.AddForce(transform.forward * acceleration, ForceMode.Acceleration);
+        }
+
     }
 
     // 충돌 시 호출되는 메서드

@@ -2022,6 +2022,28 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2fdfea97991e4224da300e6c1c6b9046, type: 2}
   - {fileID: 11400000, guid: 7ca8df1b5bc6e044984a89938ae958cf, type: 2}
   - {fileID: 11400000, guid: 47e3c71f3d977544280f9a5587c0a03b, type: 2}
+  equipWeapon: {fileID: 0}
+  datas:
+    maxHP: 3
+    attackDamage: 0
+    attackSpeed: 0
+    moveSpeed: 0
+    maxBullet: 0
+    reloadTime: 0
+    range: 0
+    skillHave: []
+    stage1ItemBox1: 0
+    stage1ItemBox2: 0
+    stage1Quest1Pro: 0
+    stage1Quest2Pro: 0
+    stage1Puzzle1: 0
+    stage1Puzzle2: 0
+    stage1BossClear: 0
+    stage1Tutorial: 0
+    savePos: {x: 10, y: 10, z: 10}
+    saveScene:
+      m_Handle: 0
+    saveSceneName: Backstage_0114
   Wallscope: 1
 --- !u!95 &165644245
 Animator:
@@ -12078,7 +12100,7 @@ MonoBehaviour:
   curAmmo: 0
   isShotGun1Active: 0
   shotGun1Bullets: 2
-  shotGun1SpreadAngle: 45
+  shotGun1SpreadAngle: 25
   isShotGun2Active: 0
   shotGun2Bullets: 3
   shotGun2SpreadAngle: 45
@@ -12098,6 +12120,7 @@ MonoBehaviour:
   bulletPosLeft: {fileID: 544127227}
   bulletPosRight: {fileID: 1550262721}
   bullet: {fileID: 3236627698561214123, guid: 2741b169980cd0347898aea2b3806360, type: 3}
+  pierceBullet: {fileID: 3617708564184716146, guid: 722acf6a115f98c4f9113a0576b7a311, type: 3}
   player: {fileID: 165644244}
 --- !u!4 &818405044 stripped
 Transform:

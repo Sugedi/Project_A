@@ -33,7 +33,7 @@ public class Skill : ScriptableObject
     // 샷건 스킬을 위한 새로운 속성
     public bool isShotGun1 = false; // 샷건1 스킬 활성화 여부입니다.
     public int shotGun1Count = 2; // 한 번에 발사되는 총알의 수입니다.
-    public float shotGun1SpreadAngle = 45f; // 총알 사이의 각도입니다.
+    public float shotGun1SpreadAngle = 20f; // 총알 사이의 각도입니다.
     
     public bool isShotGun2 = false; // 샷건2 스킬 활성화 여부
     public int shotGun2Count = 3; // 발사될 총알의 수

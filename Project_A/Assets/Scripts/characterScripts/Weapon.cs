@@ -18,7 +18,7 @@ public class Weapon : MonoBehaviour
     // 샷건1 스킬에 대한 속성
     public bool isShotGun1Active = false; // 샷건1 스킬 활성화 여부
     public int shotGun1Bullets = 2; // 한 번에 발사되는 총알의 수
-    public float shotGun1SpreadAngle = 45f; // 총알 사이의 각도
+    public float shotGun1SpreadAngle = 20f; // 총알 사이의 각도
 
     // 샷건2 스킬 적용을 위한 속성
     public bool isShotGun2Active = false; // 샷건1 스킬 활성화 여부
@@ -46,15 +46,17 @@ public class Weapon : MonoBehaviour
     // 사이드샷 스킬에 대한 속성
     public bool isSideShotActive = false; // 사이드샷 스킬 활성화 여부    
 
-    public float bulletSpeed = 30f; // 총알 속도 기본값 설정
+    public float bulletSpeed; // 총알 속도 기본값 설정
     public Transform bulletPos; // 총알 발사 위치
     public Transform bulletPosLeft; // 총알 발사 위치
     public Transform bulletPosRight; // 총알 발사 위치
-    public GameObject bullet; // 총알 프리팹    
+    public GameObject bullet; // 총알 프리팹   
+    public GameObject pierceBullet; // 피어스샷 총알 프리팹
     public Player player; // 무기를 소유하고 있는 플레이어의 참조입니다.
 
     // 총알 오브젝트 풀을 추가합니다.
     private ObjectPool<GameObject> bulletPool;
+    private ObjectPool<GameObject> pierceBulletPool;
 
     void Awake()
     {
@@ -76,6 +78,20 @@ public class Weapon : MonoBehaviour
             },
             defaultCapacity: 60, // 기본 용량
             maxSize: 120 // 최대 용량
+        );
+
+        // 피어스샷 총알 풀 초기화
+        pierceBulletPool = new ObjectPool<GameObject>(
+            createFunc: () => {
+                var newBullet = Instantiate(pierceBullet);
+                newBullet.SetActive(false);
+                return newBullet;
+            },
+            actionOnGet: (obj) => obj.SetActive(true),
+            actionOnRelease: (obj) => obj.SetActive(false),
+            actionOnDestroy: (obj) => Destroy(obj),
+            defaultCapacity: 60,
+            maxSize: 120
         );
 
     }
@@ -117,29 +133,34 @@ public class Weapon : MonoBehaviour
         // 스킬이 활성화되었는지 확인합니다.
         
         float spreadAngle = 0f;
+        float currentBulletSpeed = bulletSpeed;
 
         // 가장 최근에 활성화된 스킬을 기준으로 spreadAngle을 설정합니다.
         if (isShotGun4Active)
         {
+            currentBulletSpeed += 2f;
             spreadAngle = shotGun4SpreadAngle;
         }
         else if (isShotGun3Active)
         {
+            currentBulletSpeed += 2f;
             spreadAngle = shotGun3SpreadAngle;
         }
         else if (isShotGun2Active)
         {
+            currentBulletSpeed += 2f;
             spreadAngle = shotGun2SpreadAngle;
         }
         else if (isShotGun1Active)
         {
+            currentBulletSpeed += 2f; // 인스펙터에서 설정한 속도에 2를 더합니다.
             spreadAngle = shotGun1SpreadAngle;
         }
 
 
         for (int i = 0; i < bulletsToFire; i++)
         {
-            GameObject instantBullet = bulletPool.Get();
+            GameObject instantBullet = isPierceShotActive ? pierceBulletPool.Get() : bulletPool.Get(); // 적절한 풀에서 총알을 가져옵니다.
             instantBullet.transform.position = bulletPos.position;
             instantBullet.transform.rotation = bulletPos.rotation;
 
@@ -158,7 +179,7 @@ public class Weapon : MonoBehaviour
                 bulletCollider.enabled = false;
                 bulletCollider.isTrigger = isPierceShotActive; // 관통샷 활성화 여부에 따라 isTrigger 설정
             }
-            bulletScript.SetPool(bulletPool);
+            bulletScript.SetPool(isPierceShotActive ? pierceBulletPool : bulletPool);
             bulletScript.damage = bulletScript.baseDamage * damageMultiplier;
             bulletScript.lifeTime = 1f; // 총알의 생명 시간 설정
 
@@ -172,7 +193,7 @@ public class Weapon : MonoBehaviour
                 spreadRotation = Quaternion.Euler(0, angle, 0);
             }
 
-            bulletRigid.velocity = bulletPos.rotation * spreadRotation * Vector3.forward * bulletSpeed;
+            bulletRigid.velocity = bulletPos.rotation * spreadRotation * Vector3.forward * currentBulletSpeed;
             
             // 총알 발사 후 충돌을 다시 활성화
             StartCoroutine(EnableColliderAfterDelay(bulletCollider));
@@ -199,7 +220,7 @@ public class Weapon : MonoBehaviour
                 // 탄약 소모
                 curAmmo--;
 
-                GameObject instantBullet = bulletPool.Get();
+                GameObject instantBullet = isPierceShotActive ? pierceBulletPool.Get() : bulletPool.Get();
                 instantBullet.transform.position = sideShotPos.position + sideShotPos.forward *0.5f;
 
                 // 사이드샷 총알의 발사 각도를 계산합니다.
@@ -228,7 +249,7 @@ public class Weapon : MonoBehaviour
                 bulletScript.boomShotRadius = boomShotRadius;
                 bulletScript.boomShotDamage = boomShotDamage;
 
-                bulletScript.SetPool(bulletPool);
+                bulletScript.SetPool(isPierceShotActive ? pierceBulletPool : bulletPool);
                 // 총알의 데미지 설정
                 bulletScript.damage = bulletScript.baseDamage * damageMultiplier;
 
