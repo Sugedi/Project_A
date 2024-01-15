@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     // 플레이어 속성값
-
     public float speed; // 이동 속도
     public GameObject[] weapons; // 무기 배열
-    public bool[] hasWeapons; // 보유한 무기 여부 배열    
+    public bool[] hasWeapons; // 보유한 무기 여부 배열
     public Camera followCamera; // 카메라
     public int ammo; // 현재 총알 수량    
     public int health; // 현재 체력
@@ -19,7 +19,6 @@ public class Player : MonoBehaviour
     public List<Skill> activeSkills; // 활성화된 스킬들을 저장하는 리스트   
 
     // 투입 변수
-
     float hAxis; // 가로 축 입력값
     float vAxis; // 세로 축 입력값
     bool wDown; // 걷기 입력 여부
@@ -27,10 +26,7 @@ public class Player : MonoBehaviour
     bool fDown; // 공격 입력 여부
     bool rDown; // 재장전 입력 여부
         
-
     // 상태 변수
-
-    
     bool isDodge; // 회피 상태 여부    
     bool isReload; // 재장전 상태 여부
     bool isFireReady = true; // 공격 가능 여부
@@ -41,17 +37,19 @@ public class Player : MonoBehaviour
     Vector3 dodgeVec; // 회피 벡터
 
     // 구성 요소
-
     Rigidbody rigid; // Rigidbody 컴포넌트
     Animator anim; // Animator 컴포넌트
     MeshRenderer[] meshs; // MeshRenderer 배열
 
     // 장비 값
-
     GameObject nearObject; // 주변 오브젝트
-    Weapon equipWeapon; // 현재 장착된 무기
+    public Weapon equipWeapon; // 현재 장착된 무기
     int equipWeaponIndex = -1; // 현재 장착된 무기의 인덱스
     float fireDelay; // 공격 딜레이
+
+    // 데이터 매니저에서 저장된 데이터를 불러오기 위한 초석
+    public Datas datas;
+    private string KeyName = "Datas";
 
     // 초기화 시키는 거
     void Awake()
@@ -62,7 +60,57 @@ public class Player : MonoBehaviour
         EquipWeapon(0);
     }
 
-    void Update()
+    // 승호 추가 시작
+    private void Start()
+    {
+        ES3.LoadInto(KeyName, datas);
+        activeSkills = datas.skillHave;
+        EquipWeapon(0);
+    }
+
+    public void ChangeScene()
+    {
+        // 씬이 바뀌었을 때, 플레이어의 스탯을 마지막으로 저장된 값으로 변경
+        ES3.LoadInto(KeyName, datas);
+
+        maxHealth = datas.maxHP;
+    }
+
+    public void SkillGet()
+    {
+        ES3.LoadInto(KeyName, datas);
+        Debug.Log(datas.skillHave[0]);
+        activeSkills = datas.skillHave;
+        EquipWeapon(0);
+    }
+
+    void SpaceFunction()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 3);
+        foreach (Collider collider in hitColliders)
+        {
+            if (collider.CompareTag("NPC"))
+            {
+
+                // 비활성화된 게임 오브젝트 찾아오기 왤케 어려움?
+                //GameObject.Find("Skill").transform.Find("SkillCanvas").gameObject.SetActive(true);
+                
+                GameObject.Find("SkillNPC").GetComponent<SkillNPC>().Interact();
+
+                // 이거 비활성화 말고, 메인 메뉴에서 썼던 캔버스 그룹으로 껐다 켜는 게 나을 듯 하다.
+                // 웬만하면 비활성화 안 시키는 게 좋을지도..?
+                // 아직 잘 모르겠네
+                // + UI 창 켜졌을 때, 키마는 움직일 수 있게 되어있음. 모바일은 걱정 없겠지만...
+                // UI 뜨면 유저 이동, 공격 등 못하도록 하는 게 좋을 듯
+
+                //GameObject mainUI = GameObject.Find("SaveCanvas");
+            }
+        }
+    }
+    //승호 추가 끝
+
+
+        public void Update()
     {
         // 입력 처리
         GetInput();
@@ -72,7 +120,11 @@ public class Player : MonoBehaviour
         Attack();
         Reload();
         Dodge();
-        
+
+        // 승호 - skill NPC 상호작용
+        if (Input.GetKeyDown(KeyCode.Space))
+            SpaceFunction();
+        //
     }
     
     void GetInput()

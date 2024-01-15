@@ -22,7 +22,8 @@ public enum SkillBtn
     Skill_2, Skill_2Up,
     Skill_3, Skill_3Up,
     Skill_4, Skill_4Up,
-    Skill_5, Skill_5Up
+    Skill_5, Skill_5Up,
+    Quit
 }
 
 public class MainUI : MonoBehaviour

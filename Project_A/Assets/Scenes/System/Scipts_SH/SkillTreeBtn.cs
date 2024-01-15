@@ -7,6 +7,7 @@ public class SkillTreeBtn : MonoBehaviour
     public SkillBtn skillBtn;
 
     public List<Skill> unlockedSkillList;
+    public Player player;
 
     public Datas datas;
     private string KeyName = "Datas";
@@ -59,11 +60,22 @@ public class SkillTreeBtn : MonoBehaviour
                         // 여기에 버튼 비활성화 넣으면 될듯
                     }
                 }
+                foreach (var Skill in datas.skillHave)
+                {
+                    if(Skill.skillName == "SpeedUp1")
+                    {
+                        CanvasGroup cg = transform.Find("Skill (1)").GetComponent<CanvasGroup>(); //여기 오류 뜸 정신차리게 해주자. 
+                        cg.alpha = 0;
+                        cg.interactable = false;
+                        cg.blocksRaycasts = false;
+                    }
+                }
+
                 Skill skillName = Resources.Load<Skill>("SpeedUp1");      // "Prefabs/MyPrefab" 리소스 하위 경로 "Resources/Skills/스킬 이름" 으로 정리하면 될 듯
                 unlockedSkillList.Add(skillName);
                 DataManager.instance.datas.skillHave.Add(skillName);
                 DataManager.instance.DataSave();
-                GameObject.Find("Player_SH").GetComponent<Move_SH>().SkillGet(); // 커스텀 클래스를 저장, 불러오기 하려면 해당 씬에 easy save 3 manager가 있어야 하는 듯, 삽질 ㅈㄴ 했다.
+                GameObject.Find("Player").GetComponent<Player>().SkillGet(); // 커스텀 클래스를 저장, 불러오기 하려면 해당 씬에 easy save 3 manager가 있어야 하는 듯, 삽질 ㅈㄴ 했다.
 
 
                 // 캐릭터에 직접 안 들어가고 datas에는 들어가는 것 확인
@@ -94,6 +106,20 @@ public class SkillTreeBtn : MonoBehaviour
                 break;
             case SkillBtn.Skill_5Up:
                 break;
+
+            case SkillBtn.Quit:
+                CanvasGroup skillTree = GameObject.Find("SkillCanvas").GetComponent<CanvasGroup>();
+                skillTree.alpha = 0;
+                skillTree.interactable = false;
+                skillTree.blocksRaycasts = false;
+
+                CanvasGroup MainUI = GameObject.Find("MainCanvas").GetComponent<CanvasGroup>();
+                MainUI.alpha = 1;
+                MainUI.interactable = true;
+                MainUI.blocksRaycasts = true;
+
+                break;
+
         }
 
         // 1.스킬스 오브젝트의 하위 스킬들 이름을 모두 불러와, skill + n 값의 형식으로 불러오기?

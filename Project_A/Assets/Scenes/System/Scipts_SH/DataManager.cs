@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // 이제 데이터 저장한 걸, 플레이어한테 연결하는 기능 해야함
 
@@ -77,7 +78,9 @@ public class Datas
     public bool stage1Tutorial = false;
 
     // 세이브 위치
-    public static Vector3 playerPos;
+    public Vector3 savePos = new Vector3(10,10, 10);
+    public Scene saveScene ;
+    public string saveSceneName = "Backstage_0114"; //일단 저장한 게 없어서 초기값
 
     //나중에 다 합치면 엄청 길어질 듯? 스테이지별로 쪼개거나 방법을 생각해야겠는데??
     //저장 중 원형 슬라이더 넣으면 좋을 것 같다. 로딩창처럼
@@ -112,11 +115,11 @@ public class DataManager : MonoBehaviour
         // Datas 클래스에 있는 모든 변수값을 저장
         var settings = new ES3Settings { memberReferenceMode = ES3.ReferenceMode.ByRefAndValue };
         ES3.Save(KeyName,datas, settings);  // <-------------------------------------- A
-        stat = GameObject.Find("Player_SH");
-        stat.GetComponent<Move_SH>().ChangeScene();
+        stat = GameObject.Find("Player");
+        stat.GetComponent<Player>().ChangeScene();
 
         // 캐릭터 세이브 위치 저장 테스트 - 이건 스위치에다가 삽입하면 될듯
-        Transform playerTrans = GameObject.Find("Player_SH").GetComponent<Transform>();
+        Transform playerTrans = GameObject.Find("Player").GetComponent<Transform>();
         Vector3 playerPos = playerTrans.position;
 
         // 자동저장 형
@@ -131,12 +134,9 @@ public class DataManager : MonoBehaviour
         //ES3.Load(KeyName, datas);
 
         // 캐릭터 스탯에 동기화
-        stat = GameObject.Find("Player_SH");
-        stat.GetComponent<Move_SH>().ChangeScene();
+        stat = GameObject.Find("Player");
+        stat.GetComponent<Player>().ChangeScene();
 
-        // test 칸 
-
-        Debug.Log(Datas.playerPos);
          
     }
 

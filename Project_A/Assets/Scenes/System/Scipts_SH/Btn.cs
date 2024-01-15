@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.Pool;
 
 
 public class Btn : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
@@ -22,6 +23,10 @@ public class Btn : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     // private string KeyName = "Datas";
     private string fileName = "SaveData.txt";
 
+
+    public Datas datas;
+    Transform curPlayerPos;
+
     private void Start()
     {
         defaltScale = buttonScale.localScale;
@@ -40,10 +45,22 @@ public class Btn : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         {
             //CanvasGroupOff(newGroup);
         }
+        // 테스트
+
+        if (player == null)
+        {
+            player = FindObjectOfType<Player>();
+        }
+
     }
 
     // UI 버튼 온클릭에 적용할 것
     // 버튼의 컴포넌트에 on click에 적용하면 되겠죠?
+
+    public string transferMapName;
+    private Player player;
+
+
     public void OnBtnClick()
     {
         
@@ -55,14 +72,30 @@ public class Btn : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
                 // 걍 데이터 있을 때에는 영영 다시 시작할 수 없게 만들자. 오류생기는 거 열받음 시발 ㅓㅁ노이ㅏ러몬아ㅣ퍼ㅗ뮤내
                 // 첫 스테이지의 위치로 이동
-                SceneManager.LoadScene("SaveTest");
+                // DontDestroy 때문에 플레이어를 못 읽어와서 추가해줘야 함.
+
+
+                // 1번 방법
+                //GameObject.Find("Player ").transform.position = datas.savePos; //new Vector3(10, 10, 10);
+                //SceneManager.LoadScene("Backstage_0114");
+
+                //2번 방법
+                Vector3 lastPos = datas.savePos;
+                string lastScene = datas.saveSceneName;
+                SceneManager.LoadScene(lastScene); // 저장된 씬으로 이동
+                GameObject.Find("Player").transform.position = lastPos;
+                
+                // 맵 위치 저장 즉, 세이브 스위치에서 해당 코드 주기
+                // string a = SceneManager.GetActiveScene().name;
+
                 break;
 
             case ButtonType.Continue:
 
                 // DataManager.instance.DataLoad(); -> 데이터 매니저가 항상 로드합니다. 걱정마세요.
                 // 모든 씬에는 데이터 매니저가 함께 합니다.
-                SceneManager.LoadScene("SaveTest");
+                
+                SceneManager.LoadScene(datas.saveScene.name);
                 // 이어하기일 때에는 저장된 데이터를 불러와서 시작
                 break;
 
