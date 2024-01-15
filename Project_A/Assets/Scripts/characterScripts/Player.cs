@@ -6,14 +6,15 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     // 플레이어 속성값
-    public float speed; // 이동 속도
-    public GameObject[] weapons; // 무기 배열
-    public bool[] hasWeapons; // 보유한 무기 여부 배열
-    public Camera followCamera; // 카메라
-    public int ammo; // 현재 총알 수량    
-    public int health; // 현재 체력
-    public int maxAmmo; // 최대 총알 수량    
-    public int maxHealth; // 최대 체력
+    // 기본값을 적어줘야 할 듯
+    public float speed; // 이동 속도 - 저장 안 함.
+    public GameObject[] weapons; // 무기 배열 - 일단 저장해(Start에서 Equip해서 상관은 없을듯)
+    public bool[] hasWeapons; // 보유한 무기 여부 배열 - 이것도 애매
+    public Camera followCamera; // 카메라 - 안함
+    public int ammo; // 현재 총알 수량 - 이게 현재 총알인가?
+    public int health; // 현재 체력 - 어차피 저장하면 회복 줌
+    public int maxAmmo; // 최대 총알 수량 - 스킬로 변동
+    public int maxHealth; // 최대 체력 - 저장 해
 
     // 플레이어 스킬 저장
     public List<Skill> activeSkills; // 활성화된 스킬들을 저장하는 리스트   
@@ -65,6 +66,7 @@ public class Player : MonoBehaviour
     {
         ES3.LoadInto(KeyName, datas);
         activeSkills = datas.skillHave;
+        maxHealth = datas.maxHP;
         EquipWeapon(0);
     }
 
@@ -79,8 +81,8 @@ public class Player : MonoBehaviour
     public void SkillGet()
     {
         ES3.LoadInto(KeyName, datas);
-        Debug.Log(datas.skillHave[0]);
         activeSkills = datas.skillHave;
+        maxHealth = datas.maxHP;
         EquipWeapon(0);
     }
 
@@ -104,6 +106,14 @@ public class Player : MonoBehaviour
                 // UI 뜨면 유저 이동, 공격 등 못하도록 하는 게 좋을 듯
 
                 //GameObject mainUI = GameObject.Find("SaveCanvas");
+            }
+        }
+        Collider[] hitColliders_ = Physics.OverlapSphere(transform.position, 3);
+        foreach (Collider collider in hitColliders)
+        {
+            if (collider.CompareTag("Door"))
+            {
+                GameObject.Find("door-house-simple").GetComponent<SceneMove>().Portal();
             }
         }
     }

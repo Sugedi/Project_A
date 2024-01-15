@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class Move_SH : MonoBehaviour
 {
     // 불변하는 플레이어 스탯
-    public float moveSpeed = 5f;
+    public float moveSpeed = 5f; // 이동 속도 저장 안함
     public float interactionDistance = 2f;
 
     // 데이터 매니저에서 불러오는 플레이어 스탯
@@ -26,9 +26,7 @@ public class Move_SH : MonoBehaviour
         // 게임 시작 시, 캐릭터가 저장된 자신의 스탯을 불러옴
         ES3.LoadInto(KeyName, datas);
         maxHP = datas.maxHP;
-        attackDamage = datas.attackDamage;
         Debug.Log(datas.maxHP);
-        Debug.Log(datas.attackDamage);
         Debug.Log(maxHP);
 
         activeSkills = datas.skillHave;
@@ -120,7 +118,7 @@ public class Move_SH : MonoBehaviour
         ES3.LoadInto(KeyName, datas);
 
         maxHP = datas.maxHP;
-        attackDamage = datas.attackDamage;
+
     }
 
     public void ChangeScene()
@@ -129,7 +127,6 @@ public class Move_SH : MonoBehaviour
         ES3.LoadInto(KeyName, datas);
 
         maxHP = datas.maxHP;
-        attackDamage = datas.attackDamage;
 
     }
     

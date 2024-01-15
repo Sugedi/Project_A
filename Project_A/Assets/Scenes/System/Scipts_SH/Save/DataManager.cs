@@ -40,23 +40,17 @@ public class Datas
 
     // 유저 스탯
     public int maxHP = 3; // 최대체력만 저장해주고, 스위치 때는 현재 체력을 최대 체력으로 회복시키기
-    public float attackDamage; 
-    public float attackSpeed;
-    public float moveSpeed;
+    // public float attackDamage; 
+    // public float attackSpeed;
+    // public float moveSpeed;
 
-    // 총기 & 스킬
-    public int maxBullet;
-    public float reloadTime;
-    public float range;
+    // 총기 & 스킬 - 스킬에서 저장해서 쓸모가 없는듯
+    //public int maxBullet;
+    //public float reloadTime;
+    //public float range;
 
-    //public int skill_1LV = 0; // 0은 미획득, 1~3은 스킬 레벨 // 레벨 구현되지 않으면, 0 ~ 1로 bool처럼 써도 됨
-    //public int skill_2LV = 0; 
-    //public int skill_3LV = 0; 
-
-    // 스킬 시스템 변경으로 인한 변수 변경
     // 스킬 에셋을 불러와 저장해야 함.
     public List<Skill> skillHave;
-
 
     // 여기부터는 스테이지 1만 적용
     // 귀속 아이템 획득 여부 - true값이 되면, 상자를 열린 이미지로 바꾸거나, 오브젝트 삭제
@@ -78,8 +72,8 @@ public class Datas
     public bool stage1Tutorial = false;
 
     // 세이브 위치
-    public Vector3 savePos = new Vector3(10,10, 10);
-    public Scene saveScene ;
+    public Vector3 savePos = new Vector3(0, 0, 0); // 스위치에서 이 변수를 불러와 바꾼다.
+    public Scene saveScene;
     public string saveSceneName = "Backstage_0114"; //일단 저장한 게 없어서 초기값
 
     //나중에 다 합치면 엄청 길어질 듯? 스테이지별로 쪼개거나 방법을 생각해야겠는데??

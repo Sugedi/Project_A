@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class SkillTreeBtn : MonoBehaviour
 {
@@ -28,7 +30,26 @@ public class SkillTreeBtn : MonoBehaviour
         //GameObject skillLoad = GameObject.Find("Player_SH");
         //unlockedSkillList = skillLoad.GetComponent<Move_SH>().activeSkills;
 
+        // 버튼 비활성화 하는 거 -> 이건 강화에 적용해야 함.
+        foreach (var Skill in datas.skillHave)
+        {
+            if (Skill.skillName == "Basic")
+            {
+                Button cg = transform.Find("Basic").GetComponent<Button>(); //여기 오류 뜸 정신차리게 해주자. 
+                cg.interactable = false;
+            }
+        }
 
+    }
+
+    void UnlockedSkillColor()
+    {
+        // 이거 배껴서 다른 스크립트에 쓰고, Skills 패널에 달아야 함.
+        foreach (var Skill in datas.skillHave)
+        {
+            Image cg = transform.Find(Skill.skillName).GetComponent<Image>(); //여기 오류 뜸 정신차리게 해주자. 
+            //cg.color = ();
+        }
     }
     /*
     public void UnlockSkill(Skill skill)
@@ -48,28 +69,12 @@ public class SkillTreeBtn : MonoBehaviour
         {
             case SkillBtn.Skill_1:
 
+                // 여기는 우측의 스킬 설명창을 바꾸는 곳 TMPro 이용해서 글을 바꿀 것
+                // 강화 버튼을 해당 스킬로도 바꿔야함. 이거 좀 어렵겠는데?
+
                 break;
 
             case SkillBtn.Skill_1Up:
-                
-                foreach (var Skill in unlockedSkillList)
-                {
-                    if (Skill.skillName == "Basic")
-                    {
-                        Debug.Log(Skill.skillName);
-                        // 여기에 버튼 비활성화 넣으면 될듯
-                    }
-                }
-                foreach (var Skill in datas.skillHave)
-                {
-                    if(Skill.skillName == "Basic")
-                    {
-                        CanvasGroup cg = transform.Find("Basic").GetComponent<CanvasGroup>(); //여기 오류 뜸 정신차리게 해주자. 
-                        cg.alpha = 0;
-                        cg.interactable = false;
-                        cg.blocksRaycasts = false;
-                    }
-                }
 
                 Skill skillName = Resources.Load<Skill>("Basic");      // "Prefabs/MyPrefab" 리소스 하위 경로 "Resources/Skills/스킬 이름" 으로 정리하면 될 듯
                 unlockedSkillList.Add(skillName);
