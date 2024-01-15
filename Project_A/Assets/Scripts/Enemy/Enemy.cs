@@ -16,6 +16,12 @@ public class Enemy : MonoBehaviour
     public bool isChase; // 추격 상태 여부
     public bool isAttack; // 공격 상태 여부
 
+    private float targetRange = 0;
+    
+    public float sightRange = 10f; // 타겟이 유저 인식
+
+
+
     //==============================================================
     public GameObject itemprefab; // 드랍 아이템 프리펩 등록
     [SerializeField] Transform dropPosition; // 드랍 아이템을 생성 시킬 위치
@@ -37,21 +43,63 @@ public class Enemy : MonoBehaviour
 
         target = FindObjectOfType<Player>().GetComponent<Transform>();
 
+
         // Invoke("ChaseStart", 1);  // 1초 뒤에 추격 시작
     }
 
+    void Start()
+    {
+
+    }
+
+    
     void ChaseStart()
     {
-        isChase = true;
-        anim.SetBool("isWalk", true);
+        if (curHealth > 0)  // Only start chasing if health is greater than 0
+        {
+            isChase = true;
+            anim.SetBool("isWalk", true);
+
+            StartCoroutine(ChasePlayer());
+        }
     }
-    void Update()
+
+    IEnumerator ChasePlayer()
     {
-        if (isChase)
+        while (isChase)
+        {
             nav.SetDestination(target.position);
             nav.isStopped = !isChase;
             transform.LookAt(target);
+
+            yield return null;  // Yielding null allows the coroutine to continue indefinitely
+        }
     }
+
+    void Update()
+    {
+
+        float distanceToPlayer = Vector3.Distance(transform.position, target.position);
+
+        if (distanceToPlayer <= sightRange)
+        {
+            if (!isChase)
+            {
+                ChaseStart();
+            }
+
+            
+        }
+        else
+        {
+            isChase = false;
+
+            anim.SetBool("isAttack", false);
+            anim.SetBool("isWalk", false);
+        }
+    }
+
+
 
     void FreezeVelocity()
     {
@@ -65,7 +113,6 @@ public class Enemy : MonoBehaviour
     void Targerting()
     {
         float targetRadius = 0;
-        float targetRange = 0;
 
         // 적 종류에 따라 탐지 범위 조정
         switch (enemyType)
@@ -99,6 +146,7 @@ public class Enemy : MonoBehaviour
     {
         // 추격 중지 및 공격 상태로 전환
         isChase = false;
+
         isAttack = true;
         anim.SetBool("isAttack", true);
 
@@ -162,11 +210,18 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(Bullet bullet, Vector3 hitPoint)
     {
-        float damageToApply = bullet.isExplosion ? bullet.boomShotDamage : bullet.damage;
-        curHealth -= damageToApply; // 데미지 적용        
+        // Check if the monster is in the 'Enemydead' layer
+        if (gameObject.layer == LayerMask.NameToLayer("Enemydead"))
+        {
+            // If in the 'Enemydead' layer, do nothing (or handle it as needed)
+            return;
+        }
 
-        // 공격으로 받은 위치 벡터 계산
-        Vector3 reactVec = transform.position - hitPoint;
+        float damageToApply = bullet.isExplosion ? bullet.boomShotDamage : bullet.damage;
+        curHealth -= damageToApply; // Apply damage
+
+    // 공격으로 받은 위치 벡터 계산
+    Vector3 reactVec = transform.position - hitPoint;
 
         // OnDamage 코루틴 실행
         StartCoroutine(OnDamage(reactVec));
@@ -208,30 +263,43 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            isChase = false;
-            anim.SetBool("isWalk", false);
-        }
-    }
+    //private void OnTriggerExit(Collider other)
+    //{
+    //   if (other.tag == "Player")
+    //    {
+    //        isChase = false;
+    //        anim.SetBool("isWalk", false);
+    //    }
+    //}
 
     // 피격 시 발생하는 코루틴 함수
     IEnumerator OnDamage(Vector3 reactVec)
     {
-        
+
         // 피격 시 일시적으로 캐릭터 색상을 빨간색으로 변경
         // mat.color = Color.red;
-        yield return new WaitForSeconds(0.1f);
+        // yield return new WaitForSeconds(0.1f);
 
         // 현재 체력이 0보다 큰 경우 doGetHit 애니메이션 재생
         if (curHealth > 0)
         {
+
+
             // mat.color = Color.white;
-            isChase = false;
+            //isChase = false;
+            //nav.enabled = false;
+
+            // Play doGetHit animation
             anim.SetBool("doGetHit", true);
-            nav.enabled = false;
+
+
+            // Wait for the doGetHit animation to finish
+            yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+
+            // Reset the doGetHit animation state
+            anim.SetBool("doGetHit", false);
+ 
+          
 
         }
         // 현재 체력이 0 이하인 경우
@@ -267,4 +335,5 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject, 2);
         }
     }
+
 }

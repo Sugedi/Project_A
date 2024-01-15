@@ -2092,7 +2092,7 @@ MonoBehaviour:
   speed: 5
   weapons:
   - {fileID: 818405040}
-  hasWeapons: 01
+  hasWeapons: 00
   followCamera: {fileID: 1949724474}
   ammo: 1000
   health: 100
@@ -2110,6 +2110,28 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2fdfea97991e4224da300e6c1c6b9046, type: 2}
   - {fileID: 11400000, guid: 7ca8df1b5bc6e044984a89938ae958cf, type: 2}
   - {fileID: 11400000, guid: 47e3c71f3d977544280f9a5587c0a03b, type: 2}
+  equipWeapon: {fileID: 0}
+  datas:
+    maxHP: 3
+    attackDamage: 0
+    attackSpeed: 0
+    moveSpeed: 0
+    maxBullet: 0
+    reloadTime: 0
+    range: 0
+    skillHave: []
+    stage1ItemBox1: 0
+    stage1ItemBox2: 0
+    stage1Quest1Pro: 0
+    stage1Quest2Pro: 0
+    stage1Puzzle1: 0
+    stage1Puzzle2: 0
+    stage1BossClear: 0
+    stage1Tutorial: 0
+    savePos: {x: 10, y: 10, z: 10}
+    saveScene:
+      m_Handle: 0
+    saveSceneName: Backstage_0114
   Wallscope: 1
 --- !u!95 &165644245
 Animator:
@@ -4481,8 +4503,7 @@ MonoBehaviour:
   bullet: {fileID: 0}
   isChase: 0
   isAttack: 0
-  isPatrol: 0
-  sightRange: 15
+  sightRange: 10
   itemprefab: {fileID: 4897191960096235927, guid: 46145f107f00a0648ac374e6664e1a78, type: 3}
   dropPosition: {fileID: 1002890373}
 --- !u!65 &309059480
@@ -7503,8 +7524,7 @@ MonoBehaviour:
   bullet: {fileID: 636954836966932781, guid: 4e081be2a143477448ea4ac757e2b343, type: 3}
   isChase: 0
   isAttack: 0
-  isPatrol: 0
-  sightRange: 15
+  sightRange: 10
   itemprefab: {fileID: 4897191960096235927, guid: 46145f107f00a0648ac374e6664e1a78, type: 3}
   dropPosition: {fileID: 1933137451}
 --- !u!195 &499779269
@@ -25092,7 +25112,6 @@ MonoBehaviour:
   bullet: {fileID: 0}
   isChase: 0
   isAttack: 0
-  isPatrol: 0
   sightRange: 10
   itemprefab: {fileID: 4897191960096235927, guid: 46145f107f00a0648ac374e6664e1a78, type: 3}
   dropPosition: {fileID: 703300245}
@@ -27783,7 +27802,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3029897042515285248, guid: 7110a21afadc482595f133443a3bcaf0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.53
+      value: -0.17
       objectReference: {fileID: 0}
     - target: {fileID: 3029897042515285248, guid: 7110a21afadc482595f133443a3bcaf0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -27791,7 +27810,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3029897042515285248, guid: 7110a21afadc482595f133443a3bcaf0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.84
+      value: -0.03
       objectReference: {fileID: 0}
     - target: {fileID: 3029897042515285248, guid: 7110a21afadc482595f133443a3bcaf0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -35212,7 +35231,6 @@ MonoBehaviour:
   bullet: {fileID: 636954836966932781, guid: 4e081be2a143477448ea4ac757e2b343, type: 3}
   isChase: 0
   isAttack: 0
-  isPatrol: 0
   sightRange: 10
   itemprefab: {fileID: 4897191960096235927, guid: 46145f107f00a0648ac374e6664e1a78, type: 3}
   dropPosition: {fileID: 1836296930}
