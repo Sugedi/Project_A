@@ -70,4 +70,16 @@ public class UIManager : MonoBehaviour
     }
 
     // ... UI 관련 기타 메서드 ...
+    public void DisplayQuestInfo(Quest quest)
+    {
+        if (quest != null)
+        {
+            // 퀘스트 이름과 설명을 UI에 설정합니다.
+            questNameText.text = quest.mainquestName;
+            questContentText.text = quest.mainquestDescription;
+
+            // 퀘스트 진행 상태를 나타내는 UI를 생성하거나 업데이트합니다.
+            RefreshItemCounter();
+        }
+    }
 }

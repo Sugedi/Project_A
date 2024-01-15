@@ -79,6 +79,13 @@ public class QuestManager : MonoBehaviour
         if (quests.ContainsKey(questId))
         {
             Quest questToActivate = quests[questId];
+
+            // 퀘스트를 활성 상태로 설정하고 UI에 표시합니다.
+            UIManager uiManager = FindObjectOfType<UIManager>();
+            if (uiManager != null)
+            {
+                uiManager.DisplayQuestInfo(questToActivate);
+            }
             // 여기에 퀘스트를 활성화하는 로직을 구현합니다.
             // 예를 들어, 퀘스트 상태를 업데이트하거나 UI에 표시하고 퀘스트 진행 상황을 추적하는 등의 작업을 할 수 있습니다.
             Debug.Log($"퀘스트 활성화: {questToActivate.mainquestName}");

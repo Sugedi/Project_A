@@ -39,6 +39,8 @@ public class DialogueManager : MonoBehaviour
 
     private QuestManager questManager; // 퀘스트 관리자
 
+    public GameObject questCanvas; // Quest Canvas에 대한 참조
+
 
     private void Awake() // 게임 시작 시 호출되는 Awake 함수
     {
@@ -51,7 +53,7 @@ public class DialogueManager : MonoBehaviour
         {
             // CSV 파일에서 퀘스트 데이터를 로드하고 QuestManager에 전달
             List<Dictionary<string, object>> questData = CSVReader.Read("mainquest"); // 가정: mainquestdata.csv 파일에서 읽어옴
-            questManager.LoadQuests(questData); // #################
+            questManager.LoadQuests(questData);
         }
     }
 
@@ -91,7 +93,14 @@ public class DialogueManager : MonoBehaviour
         // 대화 팝업을 활성화하고, 조이스틱과 대화 팝업 버튼을 비활성화
         dialogPopup.SetActive(true);
         joystick.SetActive(false);
-        dialogPopupBtn.SetActive(false) ;
+        dialogPopupBtn.SetActive(false);
+
+        if (data_Dialog[id].ContainsKey("MainTalkID") && int.Parse(data_Dialog[id]["MainTalkID"].ToString()) == 4)
+        {
+            // MainTalkID가 4일 때 Quest Canvas를 활성화합니다.
+            questCanvas.SetActive(true);
+        }
+
         NextTalk();
 
     }
@@ -175,23 +184,19 @@ public class DialogueManager : MonoBehaviour
                 dialog.text = data_Dialog[id]["MainDescription"].ToString();
 
                 // 다음 대화 조각이 퀘스트를 트리거하는지 확인합니다.
-                // 'MainKind' 필드가 'quest'인지 확인하고, 해당하는 경우 퀘스트를 활성화합니다.
-                if (data_Dialog[id].ContainsKey("MainKind") && data_Dialog[id]["MainKind"].ToString() == "quest")
+                // 'MainKind' 필드가 'quest'이고 대화 ID가 4일 때 첫 번째 퀘스트를 활성화합니다.
+                if (data_Dialog[id].ContainsKey("MainKind") && data_Dialog[id]["MainKind"].ToString() == "quest" && id == 4)
                 {
-                    if (int.TryParse(data_Dialog[id]["MainTalkID"].ToString(), out int questId))
-                    {
-                        questManager.ActivateQuest(questId);
-                    }
+                    questManager.ActivateQuest(0); // 첫 번째 퀘스트 활성화
                 }
+
+                id++; // 다음 대화 ID로 이동
             }
             else
             {
                 // 범위를 벗어났을 때의 처리를 추가합니다.
                 Debug.LogError("Dialogue ID is out of range. No more dialogue entries to show.");
-            }
-
-            // 다음 대화 조각으로 진행하기 위해 대화 ID를 증가시킵니다.
-            id++;
+            }            
 
             // 디버깅 목적으로 현재 대화 ID를 로그에 기록합니다.
             Debug.Log("Current dialogue ID: " + id);

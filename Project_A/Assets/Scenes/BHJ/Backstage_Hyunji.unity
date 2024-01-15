@@ -2486,6 +2486,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questValue: {fileID: 1230434490}
   itemValue: 0
+  systemMessageUI: {fileID: 0}
+  messageDisplayTime: 5
 --- !u!1 &679798443
 GameObject:
   m_ObjectHideFlags: 0
@@ -3766,7 +3768,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1138219262}
         m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
-        m_MethodName: NextTalk
+        m_MethodName: ShowDialog
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4395,6 +4397,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questValue: {fileID: 1230434490}
   itemValue: 0
+  systemMessageUI: {fileID: 0}
+  messageDisplayTime: 5
 --- !u!1 &1138219257
 GameObject:
   m_ObjectHideFlags: 0
@@ -4519,6 +4523,7 @@ MonoBehaviour:
   dialogs: []
   dialogCount: 0
   endTalk: 7
+  questCanvas: {fileID: 1650283821}
 --- !u!4 &1150902615 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4539467890459088977, guid: f0217e27b2b26c94b924802eb62cc4c7, type: 3}
@@ -6109,12 +6114,12 @@ GameObject:
   - component: {fileID: 1650283827}
   - component: {fileID: 1650283826}
   m_Layer: 5
-  m_Name: Quest Canvas
+  m_Name: MiniQuestWindow Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1650283822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6392,7 +6397,7 @@ GameObject:
   - component: {fileID: 1763810403}
   - component: {fileID: 1763810402}
   m_Layer: 5
-  m_Name: Quest Panel
+  m_Name: MiniQuest Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6804,6 +6809,7 @@ GameObject:
   - component: {fileID: 1873375810}
   - component: {fileID: 1873375812}
   - component: {fileID: 1873375811}
+  - component: {fileID: 1873375813}
   m_Layer: 5
   m_Name: New Quest Alarm
   m_TagString: Untagged
@@ -6928,6 +6934,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1873375809}
   m_CullTransparentMesh: 1
+--- !u!114 &1873375813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873375809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c616bb5905d14e4aaea78873ed30c06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialog: {fileID: 0}
+  name: {fileID: 0}
+  dialogPopupBtn: {fileID: 0}
+  joystick: {fileID: 0}
+  dialogPopup: {fileID: 0}
+  id: 0
+  names: []
+  dialogs: []
+  dialogCount: 0
+  endTalk: 7
+  questCanvas: {fileID: 0}
 --- !u!1 &1940646353
 GameObject:
   m_ObjectHideFlags: 0
@@ -7074,6 +7103,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questValue: {fileID: 1230434490}
   itemValue: 0
+  systemMessageUI: {fileID: 0}
+  messageDisplayTime: 5
 --- !u!224 &1957289868 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230, type: 3}
