@@ -1,11 +1,12 @@
-
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class PlayerHealthUI : MonoBehaviour
+public class PlayerGemUI : MonoBehaviour
 {
     public Player Player; // 플레이어 스크립트 참조
-    public TextMeshProUGUI healthText; // TextMeshProUGUI로 변경
+    public TextMeshProUGUI GetText; // TextMeshProUGUI로 변경
 
     void Start()
     {
@@ -15,6 +16,7 @@ public class PlayerHealthUI : MonoBehaviour
     void Update()
     {
         // 플레이어의 현재 체력과 최대 체력을 TextMeshProUGUI에 표시
-        healthText.text = "Hp: " + Player.health.ToString() + " / " + Player.maxHealth.ToString();
+        GetText.text = "Gem: " + Player.gem.ToString();
     }
 }
+
