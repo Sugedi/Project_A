@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17276956, g: 0.21589413, b: 0.2978273, a: 1}
+  m_IndirectSpecularColor: {r: 0.17276905, g: 0.2158935, b: 0.2978262, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -21827,6 +21827,7 @@ MonoBehaviour:
   bulletPosLeft: {fileID: 894157673}
   bulletPosRight: {fileID: 954795820}
   bullet: {fileID: 3236627698561214123, guid: 2741b169980cd0347898aea2b3806360, type: 3}
+  pierceBullet: {fileID: 0}
   player: {fileID: 1407338179}
 --- !u!4 &1543226674 stripped
 Transform:

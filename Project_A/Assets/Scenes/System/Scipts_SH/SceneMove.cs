@@ -7,7 +7,6 @@ public class SceneMove : MonoBehaviour
 {
 
     public Datas datas;
-    Transform a;
 
     public void Portal()
     {
@@ -15,10 +14,9 @@ public class SceneMove : MonoBehaviour
         Vector3 lastPos = datas.savePos;
         string lastScene = datas.saveScene.name;
         SceneManager.LoadScene("Stage_0114"); // 저장된 씬으로 이동
-        a = GameObject.Find("Player").GetComponent<Transform>();
-        a.position = lastPos;
-
-        GameObject.Find("Player").transform.position = datas.savePos;
+        Debug.Log("씬 이동 완료");
+        //GameObject.Find("Player").transform.position = datas.savePos; // 지금은 스테이지에 데이터 매니저가 없어서 0,0,0으로 안 가요
+        GameObject.Find("Player").transform.position = new Vector3(0,0,0);
 
 
     }
