@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
@@ -15,6 +16,7 @@ public class Player : MonoBehaviour
     public int health; // 현재 체력 - 어차피 저장하면 회복 줌
     public int maxAmmo; // 최대 총알 수량 - 스킬로 변동
     public int maxHealth; // 최대 체력 - 저장 해
+    public Image gameOverScreen;
 
     // 플레이어 스킬 저장
     public List<Skill> activeSkills; // 활성화된 스킬들을 저장하는 리스트   
@@ -33,6 +35,7 @@ public class Player : MonoBehaviour
     bool isFireReady = true; // 공격 가능 여부
     bool isBorder; // 벽과 충돌 여부
     bool isDamage; // 데미지를 받은 상태 여부
+    bool isDead = false;
 
     Vector3 moveVec; // 이동 벡터
     Vector3 dodgeVec; // 회피 벡터
@@ -127,21 +130,29 @@ public class Player : MonoBehaviour
     //승호 추가 끝
 
 
-        public void Update()
+    public void Update()
     {
-        // 입력 처리
-        GetInput();
-        // 플레이어 액션
-        Move();
-        Turn();
-        Attack();
-        Reload();
-        Dodge();
+        if (health <= 0 && !isDead)
+        {
+            Die();
+            return; // 사망했으므로 여기서 Update 메서드를 종료합니다.
+        }
+        if (!isDead) // 사망하지 않았을 때만 입력과 액션을 처리합니다.
+        {
+            // 입력 처리
+            GetInput();
+            // 플레이어 액션
+            Move();
+            Turn();
+            Attack();
+            Reload();
+            Dodge();
 
-        // 승호 - skill NPC 상호작용
-        if (Input.GetKeyDown(KeyCode.Space))
-            SpaceFunction();
-        //
+            // 승호 - skill NPC 상호작용
+            if (Input.GetKeyDown(KeyCode.Space))
+                SpaceFunction();
+        }
+
     }
     
     void GetInput()
@@ -428,11 +439,7 @@ public class Player : MonoBehaviour
                 // 데미지 표시 코루틴 실행
                 StartCoroutine(OnDamage());
 
-                // 체력이 0 이하인 경우, 죽음 처리
-                if (health <= 0)
-                {
-                    Die();
-                }
+                
             }
         }
     }
@@ -440,14 +447,27 @@ public class Player : MonoBehaviour
     // 죽음 처리 메서드
     void Die()
     {
+        // 사망 상태를 true로 설정합니다.
+        isDead = true;
+
         // 사망 애니메이션 재생
         anim.SetTrigger("Die");
 
-        // 사망 관련 로직 처리
-        // 예: 게임 오버 화면 표시, 캐릭터 컨트롤 비활성화 등
-        // ...
+        StartCoroutine(DieSequence());
+        
     }
 
+    IEnumerator DieSequence()
+    {
+        // 사망 애니메이션이 재생되는 동안 대기
+        yield return new WaitForSeconds(3f);
+
+        // 게임 오버 화면을 활성화하고 회색으로 만듭니다.
+        gameOverScreen.gameObject.SetActive(true);
+        
+        // 씬의 모든 움직임을 멈춥니다. (필요한 경우)
+        Time.timeScale = 0;
+    }
     // 데미지 표시 코루틴
     IEnumerator OnDamage()
     {
