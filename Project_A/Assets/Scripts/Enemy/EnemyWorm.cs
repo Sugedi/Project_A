@@ -15,7 +15,8 @@ public class EnemyWorm : MonoBehaviour
     public GameObject bullet; // 원거리 공격에 사용되는 총알
     public bool isChase; // 추격 상태 여부
     public bool isAttack; // 공격 상태 여부
-    public int itemDropCount = 1; // 드랍 아이템 개수. 적을 생성할 때 이 값을 설정합니다.
+    public int minDropCount; // 드랍 아이템의 최소 개수
+    public int maxDropCount; // 드랍 아이템의 최대 개수
     public float targetRange = 0;
 
     public float sightRange = 10f; // 타겟이 유저 인식
@@ -327,7 +328,8 @@ public class EnemyWorm : MonoBehaviour
 
             // _item이라는 게임 오브젝트 변수 선언 + itemPrefab을 생성해서 _item에 할당
             GameObject _item;
-            for (int i = 0; i < itemDropCount; i++) // itemDropCount만큼 아이템을 생성합니다.
+            int dropCount = Random.Range(minDropCount, maxDropCount + 1); // minDropCount부터 maxDropCount까지의 랜덤한 수량
+            for (int i = 0; i < dropCount; i++) // dropCount만큼 아이템을 생성합니다.
             {
                 _item = Instantiate(itemPrefab); // 아이템 생성
                 _item.transform.position = dropPosition.position; // 아이템 위치 설정
