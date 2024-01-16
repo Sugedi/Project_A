@@ -14,6 +14,11 @@ public class SkillTreeBtn : MonoBehaviour
     public Datas datas;
     private string KeyName = "Datas";
 
+    public CanvasGroup powerInfoCanvas;
+    public CanvasGroup ammoInfoCanvas;
+    public CanvasGroup speedInfoCanvas;
+    public CanvasGroup reloadInfoCanvas;
+
 
     // Start is called before the first frame update
     void Start()
@@ -35,8 +40,9 @@ public class SkillTreeBtn : MonoBehaviour
         {
             if (Skill.skillName == "Basic")
             {
-                Button cg = transform.Find("Basic").GetComponent<Button>(); //여기 오류 뜸 정신차리게 해주자. 
-                cg.interactable = false;
+                //Button cg = transform.Find("Basic").GetComponent<Button>(); //여기 오류 뜸 정신차리게 해주자. 
+                // 지금 자식이 없는 버튼에 넣어서 오류가 나는 것.여러 데에 다 넣을 거라
+                //cg.interactable = false;
             }
         }
 
@@ -63,10 +69,167 @@ public class SkillTreeBtn : MonoBehaviour
     }
     */
 
+    public void CanvasGroupOn(CanvasGroup cg)
+    {
+        cg.alpha = 1;
+        cg.interactable = true;
+        cg.blocksRaycasts = true;
+    }
+
+    public void CanvasGroupOff(CanvasGroup cg)
+    {
+        cg.alpha = 0;
+        cg.interactable = false;
+        cg.blocksRaycasts = false;
+
+    }
+
     public void OnBtnClick()
     {
+
         switch (skillBtn)
         {
+            case SkillBtn.Power:
+                if(powerInfoCanvas.alpha == 1)
+                {
+
+                }
+                else
+                {
+                    CanvasGroupOn(powerInfoCanvas);
+                    CanvasGroupOff(ammoInfoCanvas);
+                    CanvasGroupOff(speedInfoCanvas);
+                    CanvasGroupOff(reloadInfoCanvas);
+                }
+                break;
+
+            case SkillBtn.Ammo:
+                if(ammoInfoCanvas.alpha == 1)
+                {
+
+                }
+                else
+                {
+                    CanvasGroupOn(ammoInfoCanvas);
+                    CanvasGroupOff(powerInfoCanvas);
+                    CanvasGroupOff(speedInfoCanvas);
+                    CanvasGroupOff(reloadInfoCanvas);
+                }
+                break;
+
+            case SkillBtn.Speed:
+                if(speedInfoCanvas.alpha == 1)
+                {
+
+                }
+                else
+                {
+                    CanvasGroupOn(speedInfoCanvas);
+                    CanvasGroupOff(ammoInfoCanvas);
+                    CanvasGroupOff(powerInfoCanvas);
+                    CanvasGroupOff(reloadInfoCanvas);
+                }
+                break;
+
+            case SkillBtn.Reload:
+                if(reloadInfoCanvas.alpha == 1)
+                {
+
+                }
+                else
+                {
+                    CanvasGroupOn(reloadInfoCanvas);
+                    CanvasGroupOff(ammoInfoCanvas);
+                    CanvasGroupOff(speedInfoCanvas);
+                    CanvasGroupOff(powerInfoCanvas);
+                }
+                break;
+
+
+            case SkillBtn.PowerUp:
+
+                int powerSkillCheck = 0;
+                //int listCount = datas.skillHave.Count;
+                //Debug.Log("여기");
+                //for (int i = 0; i < listCount; i++)
+                //{
+                //    Debug.Log("저기");
+                //    Skill skill = datas.skillHave[i];
+                //    Debug.Log(skill.skillName);
+                //    if (skill.skillName == "PowerUp1")
+                //    {
+                //        Debug.Log(i + skill.name);
+
+                //    }
+                //}
+
+                // 문제점 => 재시작 시 이름 날아갔을 때, 이름을 못읽어서 중복이 생김
+                // 이름 제대로 떴을 때는 문제없이 작동함.
+                List<Skill> skillList = GameObject.Find("DataManager").GetComponent<DataManager>().datas.skillHave;
+                
+                foreach (Skill skill in skillList )
+                {
+                    Skill powerUp1 = Resources.Load<Skill>("PowerUp1");
+                    Skill powerUp2 = Resources.Load<Skill>("PowerUp2");
+                    Skill powerUp3 = Resources.Load<Skill>("PowerUp3");
+                    Skill powerUp4 = Resources.Load<Skill>("PowerUp4");
+
+                    Debug.Log(skill.skillName);
+
+                    if (skill.skillName == "PowerUp1")
+                    {
+                        DataManager.instance.datas.skillHave.Add(powerUp2);
+                        DataManager.instance.datas.skillHave.Remove(powerUp1);
+                        DataManager.instance.DataSave();
+                        GameObject.Find("Player").GetComponent<Player>().SkillGet();
+                        // GameObject.Find("Player").GetComponent<Player>().gem -= 300;
+                        Debug.Log("2");
+                        powerSkillCheck += 1;
+                        break;
+                    }
+                    else if (skill.skillName == "PowerUp2")
+                    {
+                        DataManager.instance.datas.skillHave.Add(powerUp3);
+                        DataManager.instance.datas.skillHave.Remove(powerUp2);
+                        DataManager.instance.DataSave();
+                        GameObject.Find("Player").GetComponent<Player>().SkillGet();
+                        // GameObject.Find("Player").GetComponent<Player>().gem -= 500;
+                        Debug.Log("3");
+                        powerSkillCheck += 1;
+                        break;
+                    }
+                    else if (skill.skillName == "PowerUp3")
+                    {
+                        DataManager.instance.datas.skillHave.Add(powerUp4);
+                        DataManager.instance.datas.skillHave.Remove(powerUp3);
+                        DataManager.instance.DataSave();
+                        GameObject.Find("Player").GetComponent<Player>().SkillGet();
+                        // GameObject.Find("Player").GetComponent<Player>().gem -= 700;
+                        Debug.Log("3");
+                        powerSkillCheck += 1;
+                        break;
+                    }
+                    else if(skill.skillName == "PowerUp4")
+                    {
+                        Debug.Log("더 이상 강화 불가");
+                        powerSkillCheck += 1;
+                        break;
+                    }
+                    
+                    
+                    
+                }
+                if (powerSkillCheck == 0)
+                {
+                    Skill powerUp1 = Resources.Load<Skill>("PowerUp1");
+                    Debug.Log(powerUp1);
+                    DataManager.instance.datas.skillHave.Add(powerUp1);
+                    DataManager.instance.DataSave();
+                    GameObject.Find("Player").GetComponent<Player>().SkillGet();
+                    break;
+                }
+                break;
+
             case SkillBtn.Skill_1:
 
                 // 여기는 우측의 스킬 설명창을 바꾸는 곳 TMPro 이용해서 글을 바꿀 것

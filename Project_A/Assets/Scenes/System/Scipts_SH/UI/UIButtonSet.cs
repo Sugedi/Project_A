@@ -23,6 +23,16 @@ public enum SkillBtn
     Skill_3, Skill_3Up,
     Skill_4, Skill_4Up,
     Skill_5, Skill_5Up,
-    Quit
+    Quit,
+
+    Power, 
+    PowerUp, 
+    Ammo,
+    AmmoUp,
+    Speed,
+    SpeedUp,
+    Reload,
+    ReloadUp
+
 }
 
