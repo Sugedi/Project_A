@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     public bool isChase; // 추격 상태 여부
     public bool isAttack; // 공격 상태 여부
     public int itemDropCount = 1; // 드랍 아이템 개수. 적을 생성할 때 이 값을 설정합니다.
-    private float targetRange = 0;
+    public float targetRange = 0;
     
     public float sightRange = 10f; // 타겟이 유저 인식
 
@@ -146,7 +146,6 @@ public class Enemy : MonoBehaviour
     {
         // 추격 중지 및 공격 상태로 전환
         isChase = false;
-
         isAttack = true;
         anim.SetBool("isAttack", true);
 
