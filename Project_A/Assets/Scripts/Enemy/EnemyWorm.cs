@@ -19,6 +19,9 @@ public class EnemyWorm : MonoBehaviour
     public float targetRange = 0;
 
     public float sightRange = 10f; // 타겟이 유저 인식
+
+
+
     //==============================================================
     public GameObject itemPrefab; // 드랍 아이템 프리펩 등록
     [SerializeField] Transform dropPosition; // 드랍 아이템을 생성 시킬 위치
@@ -40,14 +43,22 @@ public class EnemyWorm : MonoBehaviour
 
         target = FindObjectOfType<Player>().GetComponent<Transform>();
 
+
         // Invoke("ChaseStart", 1);  // 1초 뒤에 추격 시작
     }
+
+    void Start()
+    {
+
+    }
+
 
     void ChaseStart()
     {
         if (curHealth > 0)  // Only start chasing if health is greater than 0
         {
-            isChase = true;            
+            isChase = true;
+            
 
             StartCoroutine(ChasePlayer());
         }
@@ -64,8 +75,10 @@ public class EnemyWorm : MonoBehaviour
             yield return null;  // Yielding null allows the coroutine to continue indefinitely
         }
     }
+
     void Update()
     {
+
         float distanceToPlayer = Vector3.Distance(transform.position, target.position);
 
         if (distanceToPlayer <= sightRange)
@@ -81,9 +94,12 @@ public class EnemyWorm : MonoBehaviour
         {
             isChase = false;
 
-            anim.SetBool("isAttack", false);            
+            anim.SetBool("isAttack", false);
+            
         }
     }
+
+
 
     void FreezeVelocity()
     {
@@ -96,7 +112,7 @@ public class EnemyWorm : MonoBehaviour
 
     void Targerting()
     {
-        float targetRadius = 0;        
+        float targetRadius = 0;
 
         // 적 종류에 따라 탐지 범위 조정
         switch (enemyType)
@@ -169,7 +185,7 @@ public class EnemyWorm : MonoBehaviour
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
                 rigidBullet.velocity = transform.forward * 20;
 
-                // 2초 대기로 변경
+                // 2초 대기
                 yield return new WaitForSeconds(2f);
                 break;
         }
@@ -193,8 +209,15 @@ public class EnemyWorm : MonoBehaviour
 
     public void TakeDamage(Bullet bullet, Vector3 hitPoint)
     {
+        // Check if the monster is in the 'Enemydead' layer
+        if (gameObject.layer == LayerMask.NameToLayer("Enemydead"))
+        {
+            // If in the 'Enemydead' layer, do nothing (or handle it as needed)
+            return;
+        }
+
         float damageToApply = bullet.isExplosion ? bullet.boomShotDamage : bullet.damage;
-        curHealth -= damageToApply; // 데미지 적용        
+        curHealth -= damageToApply; // Apply damage
 
         // 공격으로 받은 위치 벡터 계산
         Vector3 reactVec = transform.position - hitPoint;
@@ -235,18 +258,18 @@ public class EnemyWorm : MonoBehaviour
         else if (other.tag == "Player")
         {
             isChase = true;
-            
+           
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            isChase = false;
-            
-        }
-    }
+    //private void OnTriggerExit(Collider other)
+    //{
+    //   if (other.tag == "Player")
+    //    {
+    //        isChase = false;
+    //        anim.SetBool("isWalk", false);
+    //    }
+    //}
 
     // 피격 시 발생하는 코루틴 함수
     IEnumerator OnDamage(Vector3 reactVec)
@@ -254,15 +277,28 @@ public class EnemyWorm : MonoBehaviour
 
         // 피격 시 일시적으로 캐릭터 색상을 빨간색으로 변경
         // mat.color = Color.red;
-        yield return new WaitForSeconds(0.1f);
+        // yield return new WaitForSeconds(0.1f);
 
         // 현재 체력이 0보다 큰 경우 doGetHit 애니메이션 재생
         if (curHealth > 0)
         {
+
+
             // mat.color = Color.white;
-            isChase = false;
+            //isChase = false;
+            //nav.enabled = false;
+
+            // Play doGetHit animation
             anim.SetBool("doGetHit", true);
-            nav.enabled = false;
+
+
+            // Wait for the doGetHit animation to finish
+            yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+
+            // Reset the doGetHit animation state
+            anim.SetBool("doGetHit", false);
+
+
 
         }
         // 현재 체력이 0 이하인 경우
@@ -289,7 +325,7 @@ public class EnemyWorm : MonoBehaviour
             // 리지드바디에 피격 방향으로의 작은 힘을 가하고
             rigid.AddForce(reactVec * 5, ForceMode.Impulse);
 
-            // _item이라는 게임 오브젝트 변수 선언 + itemprefab을 생성해서 _item에 할당
+            // _item이라는 게임 오브젝트 변수 선언 + itemPrefab을 생성해서 _item에 할당
             GameObject _item;
             for (int i = 0; i < itemDropCount; i++) // itemDropCount만큼 아이템을 생성합니다.
             {
@@ -301,4 +337,5 @@ public class EnemyWorm : MonoBehaviour
             Destroy(gameObject, 2);
         }
     }
+
 }
