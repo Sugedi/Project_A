@@ -67,6 +67,7 @@ public class Player : MonoBehaviour
         ES3.LoadInto(KeyName, datas);
         activeSkills = datas.skillHave;
         maxHealth = datas.maxHP;
+        health = maxHealth;
         EquipWeapon(0);
     }
 
@@ -420,8 +421,25 @@ public class Player : MonoBehaviour
 
                 // 데미지 표시 코루틴 실행
                 StartCoroutine(OnDamage());
+
+                // 체력이 0 이하인 경우, 죽음 처리
+                if (health <= 0)
+                {
+                    Die();
+                }
             }
         }
+    }
+
+    // 죽음 처리 메서드
+    void Die()
+    {
+        // 사망 애니메이션 재생
+        anim.SetTrigger("Die");
+
+        // 사망 관련 로직 처리
+        // 예: 게임 오버 화면 표시, 캐릭터 컨트롤 비활성화 등
+        // ...
     }
 
     // 데미지 표시 코루틴
