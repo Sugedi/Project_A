@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 {
     // 플레이어 속성값
     // 기본값을 적어줘야 할 듯
+    public int gem;
     public float speed; // 이동 속도 - 저장 안 함.
     public GameObject[] weapons; // 무기 배열 - 일단 저장해(Start에서 Equip해서 상관은 없을듯)
     public bool[] hasWeapons; // 보유한 무기 여부 배열 - 이것도 애매
@@ -395,7 +396,10 @@ public class Player : MonoBehaviour
                     if (ammo > maxAmmo)
                         ammo = maxAmmo;
                     break;
-                
+
+                case Item.Type.Gem:
+                    gem += item.value;
+                    break;
             }
             // 파괴하는 거
             Destroy(item.gameObject);

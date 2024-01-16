@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     public GameObject bullet; // 원거리 공격에 사용되는 총알
     public bool isChase; // 추격 상태 여부
     public bool isAttack; // 공격 상태 여부
-
+    public int itemDropCount = 1; // 드랍 아이템 개수. 적을 생성할 때 이 값을 설정합니다.
     private float targetRange = 0;
     
     public float sightRange = 10f; // 타겟이 유저 인식
@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
 
 
     //==============================================================
-    public GameObject itemprefab; // 드랍 아이템 프리펩 등록
+    public GameObject itemPrefab; // 드랍 아이템 프리펩 등록
     [SerializeField] Transform dropPosition; // 드랍 아이템을 생성 시킬 위치
     //==============================================================
 
@@ -326,10 +326,13 @@ public class Enemy : MonoBehaviour
             // 리지드바디에 피격 방향으로의 작은 힘을 가하고
             rigid.AddForce(reactVec * 5, ForceMode.Impulse);
 
-            // _item이라는 게임 오브젝트 변수 선언 + itemprefab을 생성해서 _item에 할당
-            GameObject _item = Instantiate(itemprefab);
-            // _item의 위치를 드랍 위치로 변경 시킴
-            _item.transform.position = dropPosition.position;
+            // _item이라는 게임 오브젝트 변수 선언 + itemPrefab을 생성해서 _item에 할당
+            GameObject _item;
+            for (int i = 0; i < itemDropCount; i++) // itemDropCount만큼 아이템을 생성합니다.
+            {
+                _item = Instantiate(itemPrefab); // 아이템 생성
+                _item.transform.position = dropPosition.position; // 아이템 위치 설정
+            }
 
             // 2초 뒤 몹 사망
             Destroy(gameObject, 2);

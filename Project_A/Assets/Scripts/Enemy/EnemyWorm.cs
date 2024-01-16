@@ -15,9 +15,12 @@ public class EnemyWorm : MonoBehaviour
     public GameObject bullet; // 원거리 공격에 사용되는 총알
     public bool isChase; // 추격 상태 여부
     public bool isAttack; // 공격 상태 여부
+    public int itemDropCount = 1; // 드랍 아이템 개수. 적을 생성할 때 이 값을 설정합니다.
+    public float targetRange = 0;
 
+    public float sightRange = 10f; // 타겟이 유저 인식
     //==============================================================
-    public GameObject itemprefab; // 드랍 아이템 프리펩 등록
+    public GameObject itemPrefab; // 드랍 아이템 프리펩 등록
     [SerializeField] Transform dropPosition; // 드랍 아이템을 생성 시킬 위치
     //==============================================================
 
@@ -42,15 +45,44 @@ public class EnemyWorm : MonoBehaviour
 
     void ChaseStart()
     {
-        isChase = true;
-        anim.SetBool("isWalk", true);
+        if (curHealth > 0)  // Only start chasing if health is greater than 0
+        {
+            isChase = true;            
+
+            StartCoroutine(ChasePlayer());
+        }
+    }
+
+    IEnumerator ChasePlayer()
+    {
+        while (isChase)
+        {
+            nav.SetDestination(target.position);
+            nav.isStopped = !isChase;
+            transform.LookAt(target);
+
+            yield return null;  // Yielding null allows the coroutine to continue indefinitely
+        }
     }
     void Update()
     {
-        if (isChase)
-            nav.SetDestination(target.position);
-        nav.isStopped = !isChase;
-        transform.LookAt(target);
+        float distanceToPlayer = Vector3.Distance(transform.position, target.position);
+
+        if (distanceToPlayer <= sightRange)
+        {
+            if (!isChase)
+            {
+                ChaseStart();
+            }
+
+
+        }
+        else
+        {
+            isChase = false;
+
+            anim.SetBool("isAttack", false);            
+        }
     }
 
     void FreezeVelocity()
@@ -64,8 +96,7 @@ public class EnemyWorm : MonoBehaviour
 
     void Targerting()
     {
-        float targetRadius = 0;
-        float targetRange = 0;
+        float targetRadius = 0;        
 
         // 적 종류에 따라 탐지 범위 조정
         switch (enemyType)
@@ -80,7 +111,7 @@ public class EnemyWorm : MonoBehaviour
                 break;
             case Type.C:
                 targetRadius = 0.5f;
-                targetRange = 25f;
+                targetRange = 20f;
                 break;
         }
         // 플레이어를 감지하면 공격 시작
@@ -138,8 +169,8 @@ public class EnemyWorm : MonoBehaviour
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
                 rigidBullet.velocity = transform.forward * 20;
 
-                // 2초 ~ 0.5초 대기로 변경
-                yield return new WaitForSeconds(0.5f);
+                // 2초 대기로 변경
+                yield return new WaitForSeconds(2f);
                 break;
         }
 
@@ -204,7 +235,7 @@ public class EnemyWorm : MonoBehaviour
         else if (other.tag == "Player")
         {
             isChase = true;
-            anim.SetBool("isWalk", true);
+            
         }
     }
 
@@ -213,7 +244,7 @@ public class EnemyWorm : MonoBehaviour
         if (other.tag == "Player")
         {
             isChase = false;
-            anim.SetBool("isWalk", false);
+            
         }
     }
 
@@ -259,9 +290,12 @@ public class EnemyWorm : MonoBehaviour
             rigid.AddForce(reactVec * 5, ForceMode.Impulse);
 
             // _item이라는 게임 오브젝트 변수 선언 + itemprefab을 생성해서 _item에 할당
-            GameObject _item = Instantiate(itemprefab);
-            // _item의 위치를 드랍 위치로 변경 시킴
-            _item.transform.position = dropPosition.position;
+            GameObject _item;
+            for (int i = 0; i < itemDropCount; i++) // itemDropCount만큼 아이템을 생성합니다.
+            {
+                _item = Instantiate(itemPrefab); // 아이템 생성
+                _item.transform.position = dropPosition.position; // 아이템 위치 설정
+            }
 
             // 2초 뒤 몹 사망
             Destroy(gameObject, 2);

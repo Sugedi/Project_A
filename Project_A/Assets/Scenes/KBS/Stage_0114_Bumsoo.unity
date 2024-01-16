@@ -440,29 +440,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1868034469679089911, guid: 55928102ac584b2fb8dcba88e8d833e8, type: 3}
   m_PrefabInstance: {fileID: 2737698}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2737701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2737700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0c91b97089529348adfbc502b5aec8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyType: 2
-  maxHealth: 9000
-  curHealth: 100
-  target: {fileID: 165644248}
-  meleeArea: {fileID: 0}
-  bullet: {fileID: 636954836966932781, guid: 4e081be2a143477448ea4ac757e2b343, type: 3}
-  isChase: 0
-  isAttack: 0
-  sightRange: 10
-  itemprefab: {fileID: 4897191960096235927, guid: 46145f107f00a0648ac374e6664e1a78, type: 3}
-  dropPosition: {fileID: 1979558528}
 --- !u!195 &2737702
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -527,6 +504,31 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &2737707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2737700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5781a3f8d0a5cf48a9deb119524a473, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyType: 2
+  maxHealth: 9000
+  curHealth: 100
+  target: {fileID: 165644248}
+  meleeArea: {fileID: 0}
+  bullet: {fileID: 636954836966932781, guid: 4e081be2a143477448ea4ac757e2b343, type: 3}
+  isChase: 0
+  isAttack: 0
+  itemDropCount: 4
+  targetRange: 20
+  sightRange: 10
+  itemPrefab: {fileID: 4897191960096235927, guid: 46145f107f00a0648ac374e6664e1a78, type: 3}
+  dropPosition: {fileID: 1979558528}
 --- !u!1 &6668869
 GameObject:
   m_ObjectHideFlags: 0
@@ -2425,6 +2427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de4eaa43b5d0c4bbac4b89cd2067f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gem: 0
   speed: 5
   weapons:
   - {fileID: 818405040}
@@ -4738,8 +4741,9 @@ MonoBehaviour:
   bullet: {fileID: 0}
   isChase: 0
   isAttack: 0
+  itemDropCount: 1
   sightRange: 10
-  itemprefab: {fileID: 6152016626063021912, guid: cc52c4d4ca64852428a565e1a90640f7, type: 3}
+  itemPrefab: {fileID: 0}
   dropPosition: {fileID: 1002890373}
 --- !u!65 &309059480
 BoxCollider:
@@ -7614,8 +7618,9 @@ MonoBehaviour:
   bullet: {fileID: 636954836966932781, guid: 4e081be2a143477448ea4ac757e2b343, type: 3}
   isChase: 0
   isAttack: 0
+  itemDropCount: 1
   sightRange: 10
-  itemprefab: {fileID: 6152016626063021912, guid: cc52c4d4ca64852428a565e1a90640f7, type: 3}
+  itemPrefab: {fileID: 0}
   dropPosition: {fileID: 1933137451}
 --- !u!195 &499779269
 NavMeshAgent:
@@ -12876,8 +12881,8 @@ MonoBehaviour:
   damageMultiplier: 1
   attackSpeedMultiplier: 1
   baseMaxAmmo: 30
-  maxAmmo: 0
-  curAmmo: 0
+  maxAmmo: 30
+  curAmmo: 30
   isShotGun1Active: 0
   shotGun1Bullets: 2
   shotGun1SpreadAngle: 25
@@ -20868,8 +20873,9 @@ MonoBehaviour:
   bullet: {fileID: 0}
   isChase: 0
   isAttack: 0
+  itemDropCount: 1
   sightRange: 10
-  itemprefab: {fileID: 4897191960096235927, guid: 46145f107f00a0648ac374e6664e1a78, type: 3}
+  itemPrefab: {fileID: 4897191960096235927, guid: 46145f107f00a0648ac374e6664e1a78, type: 3}
   dropPosition: {fileID: 733480720}
 --- !u!135 &1299796012
 SphereCollider:
@@ -24396,8 +24402,9 @@ MonoBehaviour:
   bullet: {fileID: 0}
   isChase: 0
   isAttack: 0
+  itemDropCount: 1
   sightRange: 10
-  itemprefab: {fileID: 6152016626063021912, guid: cc52c4d4ca64852428a565e1a90640f7, type: 3}
+  itemPrefab: {fileID: 0}
   dropPosition: {fileID: 703300245}
 --- !u!195 &1518550212
 NavMeshAgent:
@@ -25775,8 +25782,9 @@ MonoBehaviour:
   bullet: {fileID: 0}
   isChase: 0
   isAttack: 0
+  itemDropCount: 2
   sightRange: 10
-  itemprefab: {fileID: 4897191960096235927, guid: 46145f107f00a0648ac374e6664e1a78, type: 3}
+  itemPrefab: {fileID: 4897191960096235927, guid: 46145f107f00a0648ac374e6664e1a78, type: 3}
   dropPosition: {fileID: 398876061}
 --- !u!195 &1569848501
 NavMeshAgent:
@@ -34415,7 +34423,10 @@ MonoBehaviour:
   bullet: {fileID: 636954836966932781, guid: 4e081be2a143477448ea4ac757e2b343, type: 3}
   isChase: 0
   isAttack: 0
-  itemprefab: {fileID: 6152016626063021912, guid: cc52c4d4ca64852428a565e1a90640f7, type: 3}
+  itemDropCount: 1
+  targetRange: 0
+  sightRange: 10
+  itemPrefab: {fileID: 0}
   dropPosition: {fileID: 1836296930}
 --- !u!195 &2076367312
 NavMeshAgent:
@@ -35812,8 +35823,9 @@ MonoBehaviour:
   bullet: {fileID: 636954836966932781, guid: 4e081be2a143477448ea4ac757e2b343, type: 3}
   isChase: 0
   isAttack: 0
+  itemDropCount: 3
   sightRange: 10
-  itemprefab: {fileID: 4897191960096235927, guid: 46145f107f00a0648ac374e6664e1a78, type: 3}
+  itemPrefab: {fileID: 4897191960096235927, guid: 46145f107f00a0648ac374e6664e1a78, type: 3}
   dropPosition: {fileID: 1717867249}
 --- !u!65 &2120320879
 BoxCollider:

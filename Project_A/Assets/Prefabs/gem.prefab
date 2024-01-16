@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8631957172652017242}
   - component: {fileID: 6205515824582397306}
   - component: {fileID: -3286080687494783305}
+  - component: {fileID: 6633269663530419635}
   m_Layer: 13
   m_Name: gem
   m_TagString: Item
@@ -158,3 +159,17 @@ MonoBehaviour:
   gemMoveRange: 8
   gemMoveSpeed: 8
   gemObtainRange: 1
+--- !u!114 &6633269663530419635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4897191960096235927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e02542c0033846418d1f1f8bbbe8d56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 5
+  value: 1
