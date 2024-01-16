@@ -29,3 +29,8 @@ MonoBehaviour:
   isShotGun4: 0
   shotGun4Count: 5
   shotGun4SpreadAngle: 45
+  isPierceShot: 0
+  isBoomShot: 0
+  boomShotRadius: 0
+  boomShotDamage: 0
+  isSideShot: 0

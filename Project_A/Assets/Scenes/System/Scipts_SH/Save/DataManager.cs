@@ -100,6 +100,7 @@ public class DataManager : MonoBehaviour
 
         // 게임 접속 시 저장된 데이터 로드
         DataLoad();
+        //SkillUpdate();
     }
 
 
@@ -141,5 +142,6 @@ public class DataManager : MonoBehaviour
         ES3.DeleteFile(fileName);
     }
 
+    public List<Skill> tempList;
 
 }

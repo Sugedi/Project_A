@@ -18,13 +18,8 @@ public enum ButtonType
 public enum SkillBtn 
 {
     // 스킬트리 버튼
-    Skill_1, Skill_1Up,
-    Skill_2, Skill_2Up,
-    Skill_3, Skill_3Up,
-    Skill_4, Skill_4Up,
-    Skill_5, Skill_5Up,
     Quit,
-
+    Reset,
     Power, 
     PowerUp, 
     Ammo,
