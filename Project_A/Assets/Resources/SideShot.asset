@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0046befe101796e439fb0389aacf328b, type: 3}
   m_Name: SideShot
   m_EditorClassIdentifier: 
-  skillName: 
+  skillName: SideShot
   damageMultiplier: 1
   attackSpeedMultiplier: 1
   reloadTimeMultiplier: 1
@@ -34,4 +34,3 @@ MonoBehaviour:
   boomShotRadius: 0
   boomShotDamage: 0
   isSideShot: 1
-  sideShotCount: 3

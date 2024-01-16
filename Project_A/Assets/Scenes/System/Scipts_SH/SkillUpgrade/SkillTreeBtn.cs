@@ -409,8 +409,55 @@ public class SkillTreeBtn : MonoBehaviour
 
             case SkillBtn.Reset:
 
+                // 리셋 예외 설정
                 List<Skill> resetillList = GameObject.Find("DataManager").GetComponent<DataManager>().datas.skillHave;
+                List<Skill> tempList = new List<Skill>();
+
+                Skill buckShot1 = Resources.Load<Skill>("BuckShot1");
+                Skill pierceShot = Resources.Load<Skill>("PierceShot");
+                Skill boomShot1 = Resources.Load<Skill>("BoomShot1");
+                Skill sideShot = Resources.Load<Skill>("SideShot");
+
+                foreach (Skill skill in resetillList)
+                {
+                    if (skill.skillName == "BuckShot1")
+                    {
+                        tempList.Add(buckShot1);
+                    }
+                    else if (skill.skillName == "PierceShot")
+                    {
+                        tempList.Add(pierceShot);
+                    }
+                    else if (skill.skillName == "BoomShot1")
+                    {
+                        tempList.Add(boomShot1);
+                    }
+                    else if (skill.skillName == "SideShot")
+                    {
+                        tempList.Add(sideShot);
+                    }
+                }
                 resetillList.Clear();
+
+                foreach (Skill skill in tempList)
+                {
+                    if (skill.skillName == "BuckShot1")
+                    {
+                        resetillList.Add(buckShot1);
+                    }
+                    else if (skill.skillName == "PierceShot")
+                    {
+                        resetillList.Add(pierceShot);
+                    }
+                    else if (skill.skillName == "BoomShot1")
+                    {
+                        resetillList.Add(boomShot1);
+                    }
+                    else if (skill.skillName == "SideShot")
+                    {
+                        resetillList.Add(sideShot);
+                    }
+                }
                 Skill basic = Resources.Load<Skill>("Basic");
                 DataManager.instance.datas.skillHave.Add(basic);
                 DataManager.instance.DataSave();
