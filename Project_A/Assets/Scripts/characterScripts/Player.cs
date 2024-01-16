@@ -69,6 +69,12 @@ public class Player : MonoBehaviour
         maxHealth = datas.maxHP;
         health = maxHealth;
         EquipWeapon(0);
+
+        if (SceneManager.GetActiveScene().name == "Stage_0114")
+        {
+            //transform.position = datas.savePos;
+            transform.position = new Vector3(0, 0, 0);
+        }
     }
 
     public void ChangeScene()
