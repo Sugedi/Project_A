@@ -74,10 +74,9 @@ public class Player : MonoBehaviour
         health = maxHealth;
         EquipWeapon(0);
 
-        if (SceneManager.GetActiveScene().name == "Stage_0114")
+        if (SceneManager.GetActiveScene().name == "Stage")
         {
-            //transform.position = datas.savePos;
-            transform.position = new Vector3(0, 0, 0);
+            transform.position = datas.savePos;
         }
     }
 
@@ -99,7 +98,7 @@ public class Player : MonoBehaviour
 
     void SpaceFunction()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 3);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 2);
         foreach (Collider collider in hitColliders)
         {
             if (collider.CompareTag("NPC"))
@@ -119,12 +118,26 @@ public class Player : MonoBehaviour
                 //GameObject mainUI = GameObject.Find("SaveCanvas");
             }
         }
-        Collider[] hitColliders_ = Physics.OverlapSphere(transform.position, 3);
-        foreach (Collider collider in hitColliders)
+
+        Collider[] hitColliders_1 = Physics.OverlapSphere(transform.position, 2);
+        foreach (Collider collider in hitColliders_1)
         {
             if (collider.CompareTag("Door"))
             {
                 GameObject.Find("door-house-simple").GetComponent<SceneMove>().Portal();
+            }
+        }
+
+        
+        Collider[] hitColliders_2 = Physics.OverlapSphere(transform.position, 2);
+        foreach (Collider collider in hitColliders_2)
+        { 
+            if (collider.CompareTag("Switch"))
+            {
+                Debug.Log("1");
+                int moveToSavePos = GameObject.Find("Switch").GetComponent<SaveSwitch>().saveNumber;
+                GameObject.Find("Switch").GetComponent<SaveSwitch>().SaveData(moveToSavePos);
+                Debug.Log("2");
             }
         }
     }

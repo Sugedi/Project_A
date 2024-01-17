@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: SpeedUp4
   damageMultiplier: 1
-  attackSpeedMultiplier: 1.5
+  attackSpeedMultiplier: 3
   reloadTimeMultiplier: 1
   ammoIncrease: 0
   isShotGun1: 0
@@ -29,3 +29,8 @@ MonoBehaviour:
   isShotGun4: 0
   shotGun4Count: 5
   shotGun4SpreadAngle: 45
+  isPierceShot: 0
+  isBoomShot: 0
+  boomShotRadius: 0
+  boomShotDamage: 0
+  isSideShot: 0

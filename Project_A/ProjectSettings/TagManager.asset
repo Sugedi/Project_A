@@ -15,6 +15,7 @@ TagManager:
   - Wall
   - Bullet
   - Door
+  - Switch
   layers:
   - Default
   - TransparentFX
