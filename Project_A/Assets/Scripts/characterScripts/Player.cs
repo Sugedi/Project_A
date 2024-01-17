@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     bool isFireReady = true; // 공격 가능 여부
     bool isBorder; // 벽과 충돌 여부
     bool isDamage; // 데미지를 받은 상태 여부
-    bool isDead = false;
+    public bool isDead = false;
 
     Vector3 moveVec; // 이동 벡터
     Vector3 dodgeVec; // 회피 벡터
@@ -55,6 +55,7 @@ public class Player : MonoBehaviour
     // 데이터 매니저에서 저장된 데이터를 불러오기 위한 초석
     public Datas datas;
     private string KeyName = "Datas";
+    public SaveSwitch save;
 
     // 초기화 시키는 거
     void Awake()
@@ -74,9 +75,19 @@ public class Player : MonoBehaviour
         health = maxHealth;
         EquipWeapon(0);
 
+        // 스테이지에 입장하면 위치를 저장된 세이브 위치 혹은 초기 위치로 복귀
         if (SceneManager.GetActiveScene().name == "Stage")
         {
             transform.position = datas.savePos;
+        }
+
+        // 백스테이지에 돌아오면 저장 위치는 백스테이지 0,0,0
+        else if (SceneManager.GetActiveScene().name == "Backstage_0114")
+        {
+
+            GameObject.Find("DataManager").GetComponent<DataManager>().datas.saveSceneName = "Backstage_0114";
+            transform.position = new Vector3(0f, 0f, 0f);
+            DataManager.instance.DataSave();
         }
     }
 
@@ -116,30 +127,24 @@ public class Player : MonoBehaviour
                 // UI 뜨면 유저 이동, 공격 등 못하도록 하는 게 좋을 듯
 
                 //GameObject mainUI = GameObject.Find("SaveCanvas");
-            }
-        }
 
-        Collider[] hitColliders_1 = Physics.OverlapSphere(transform.position, 2);
-        foreach (Collider collider in hitColliders_1)
-        {
+
+            }
+
             if (collider.CompareTag("Door"))
             {
                 GameObject.Find("door-house-simple").GetComponent<SceneMove>().Portal();
             }
-        }
 
-        
-        Collider[] hitColliders_2 = Physics.OverlapSphere(transform.position, 2);
-        foreach (Collider collider in hitColliders_2)
-        { 
             if (collider.CompareTag("Switch"))
             {
-                Debug.Log("1");
-                int moveToSavePos = GameObject.Find("Switch").GetComponent<SaveSwitch>().saveNumber;
-                GameObject.Find("Switch").GetComponent<SaveSwitch>().SaveData(moveToSavePos);
-                Debug.Log("2");
+                //GameObject.Find("Switch").GetComponent<SaveSwitch>().SwitchFunc();
+                SaveSwitch.SwitchFunc();
+                //GameObject.Find("Switch").GetComponent<SaveSwitch>().SaveData();
             }
+
         }
+
     }
     //승호 추가 끝
 

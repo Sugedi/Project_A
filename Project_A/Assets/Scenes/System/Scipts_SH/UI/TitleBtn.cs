@@ -24,7 +24,7 @@ public class TitleBtn : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
 
     public Datas datas;
-    Transform curPlayerPos;
+    //Transform curPlayerPos;
 
     private void Start()
     {
@@ -40,10 +40,10 @@ public class TitleBtn : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             //CanvasGroupOff(continueGroup);
             // 아직 연결 안 해 놓음.
         }
-        else
-        {
-            //CanvasGroupOff(newGroup);
-        }
+        //else
+        //{
+        //    //CanvasGroupOff(newGroup);
+        //}
         // 테스트
 
         if (player == null)
@@ -79,10 +79,9 @@ public class TitleBtn : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 //SceneManager.LoadScene("Backstage_0114");
 
                 //2번 방법
-                Vector3 lastPos = datas.savePos;
-                string lastScene = datas.saveSceneName;
+                //Vector3 lastPos = datas.savePos;
+                string lastScene = GameObject.Find("DataManager").GetComponent<DataManager>().datas.saveSceneName;
                 SceneManager.LoadScene(lastScene); // 저장된 씬으로 이동
-                GameObject.Find("Player").transform.position = lastPos;
                 
                 // 맵 위치 저장 즉, 세이브 스위치에서 해당 코드 주기
                 // string a = SceneManager.GetActiveScene().name;
@@ -94,7 +93,7 @@ public class TitleBtn : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 // DataManager.instance.DataLoad(); -> 데이터 매니저가 항상 로드합니다. 걱정마세요.
                 // 모든 씬에는 데이터 매니저가 함께 합니다.
                 
-                SceneManager.LoadScene(datas.saveScene.name);
+                SceneManager.LoadScene(datas.saveSceneName);
                 // 이어하기일 때에는 저장된 데이터를 불러와서 시작
                 break;
 

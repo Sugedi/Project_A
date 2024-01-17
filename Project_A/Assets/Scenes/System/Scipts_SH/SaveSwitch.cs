@@ -1,8 +1,65 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
+public enum SaveSwitchNumber
+{
+    SaveSwitch_1,
+    SaveSwitch_2,
+    SaveSwitch_9,
+}
+public class SaveSwitch : MonoBehaviour
+{
+    public SaveSwitchNumber switchNumber;
+
+    static public Vector3 checkPoint_1 = new Vector3(-32f, 0.5f, 36f);
+    static public Vector3 checkPoint_2 = new Vector3(0f, 0.5f, 36f); // 아직 미정
+    static public Vector3 checkPoint_9 = new Vector3(0f, 0f, 0f);
+    static public string checkScene_1 = "Stage";
+    static public int saveNumber = 1;
+
+    private void Start()
+    {
+        if (switchNumber == SaveSwitchNumber.SaveSwitch_1)
+        {
+            saveNumber = 1;
+        }
+        else if (switchNumber == SaveSwitchNumber.SaveSwitch_2)
+        {
+            saveNumber = 2;
+        }
+        // 테스트할 때 쓰세요. 0,0,0으로 초기화하는 버튼
+        else if (switchNumber == SaveSwitchNumber.SaveSwitch_9)
+        {
+            saveNumber = 9;
+        }
+
+    }
+
+    public static void SwitchFunc()
+    {
+        if (saveNumber == 1)
+        {
+            DataManager.instance.datas.savePos = checkPoint_1;
+            DataManager.instance.datas.saveSceneName= checkScene_1;
+            DataManager.instance.DataSave();
+        }
+        else if (saveNumber == 2)
+        {
+            DataManager.instance.datas.savePos = checkPoint_2;
+            DataManager.instance.datas.saveSceneName = checkScene_1;
+            DataManager.instance.DataSave();
+        }
+        else if (saveNumber == 9)
+        {
+            DataManager.instance.datas.savePos = checkPoint_9;
+            DataManager.instance.datas.saveSceneName = checkScene_1;
+            DataManager.instance.DataSave();
+        }
+        Debug.Log("저장되었습니다.");
+    }
+
+}
 
 // 세이브_1 (-32f, 0.5f, 36f)
 //- 귀속 아이템
@@ -15,34 +72,3 @@ using UnityEngine.SceneManagement;
 // UI 
 //- 백스테이지로
 //- 계속 하기
-
-public class SaveSwitch : MonoBehaviour
-{
-    
-    public Vector3 checkPoint_1 = new Vector3(-32f, 0.5f, 36f);
-    public Vector3 checkPoint_2 = new Vector3(0f, 0.5f, 36f); // 아직 미정
-    public string checkScene_1 = "Stage";
-    public int saveNumber = 1;
-    //public SavePoint savePoint = SavePoint.SavePoint_1;
-
-    public void SaveData(int saveNumber)
-    {
-        DataManager dataManager = GameObject.Find("DataManager").GetComponent<DataManager>();
-        if (saveNumber == 1)
-        {
-            dataManager.datas.savePos = checkPoint_1;
-            dataManager.datas.saveSceneName = checkScene_1;
-            dataManager.DataSave();
-        }
-        else if (saveNumber == 2)
-        {
-            dataManager.datas.savePos = checkPoint_2;
-            dataManager.datas.saveSceneName = checkScene_1;
-            dataManager.DataSave();
-        }
-
-
-        Debug.Log("저장되었습니다.");
-    }
-
-}

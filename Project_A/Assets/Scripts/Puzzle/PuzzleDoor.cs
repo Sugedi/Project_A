@@ -27,7 +27,7 @@ public class PuzzleDoor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        redRock.target = redTile;
+        //redRock.target = redTile;
         doorAnimation = GetComponentInParent<Animation>();
         //yellowRock.target = yellowTile;
         //blueRock.target = blueTile;

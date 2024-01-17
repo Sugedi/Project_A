@@ -73,7 +73,7 @@ public class Datas
 
     // 세이브 위치
     public Vector3 savePos = new Vector3(0, 0, 0); // 스위치에서 이 변수를 불러와 바꾼다.
-    public Scene saveScene;
+    //public Scene saveScene;
     public string saveSceneName = "Backstage_0114"; //일단 저장한 게 없어서 초기값
 
     //나중에 다 합치면 엄청 길어질 듯? 스테이지별로 쪼개거나 방법을 생각해야겠는데??
