@@ -56,6 +56,7 @@ public class SwitchButton : MonoBehaviour
                 CanvasGroupOn(no1);
                 CanvasGroupOff(no4);
                 Time.timeScale = 1f;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
                 break;
 
