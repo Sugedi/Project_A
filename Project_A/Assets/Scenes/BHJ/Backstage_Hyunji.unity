@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17276905, g: 0.2158935, b: 0.2978262, a: 1}
+  m_IndirectSpecularColor: {r: 0.17276956, g: 0.21589413, b: 0.2978273, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -420,7 +420,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uBA54\uC778\uD018 3 \uC0DD\uC131 \uD560 \uB54C \uC4F0\uC2DC\uC694!"
+  m_text: "\uC55E\uC73C\uB85C \uADF8\uB300\uC758 \uB098\uB0A0\uB4E4\uC5D0 \uD589\uC6B4\uC774
+    \uAC00\uB4DD\uD558\uAE30\uB97C..."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: acd83fdab0e155d4aaf2afead2319a69, type: 2}
   m_sharedMaterial: {fileID: -1197064303331170791, guid: acd83fdab0e155d4aaf2afead2319a69, type: 2}
@@ -454,8 +455,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -974,7 +975,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &121568313
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1184,7 +1185,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &156603232
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3423,103 +3424,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb5ffa15a37e73b4ba42e78ed19c4fe2, type: 3}
---- !u!1 &656077316
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 656077320}
-  - component: {fileID: 656077319}
-  - component: {fileID: 656077318}
-  - component: {fileID: 656077317}
-  m_Layer: 0
-  m_Name: Blue Line(QI3)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!65 &656077317
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 656077316}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &656077318
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 656077316}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 4899c51a67fa2ca44b9cf4d52e5341c8, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &656077319
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 656077316}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &656077320
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 656077316}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 53.81, y: 0.08255345, z: -6.789}
-  m_LocalScale: {x: 0.16511703, y: 0.16511703, z: 0.16511703}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &679140644
 GameObject:
   m_ObjectHideFlags: 0
@@ -4737,7 +4641,7 @@ RectTransform:
   - {fileID: 156603232}
   - {fileID: 1730375978}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5193,7 +5097,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &929723389
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6107,6 +6011,9 @@ MonoBehaviour:
   nextButtonUI: {fileID: 1730375977}
   systemMessagePanel: {fileID: 684708309}
   systemMessageText: {fileID: 170872745}
+  mainQuestPanel1: {fileID: 1763810400}
+  mainQuestPanel2: {fileID: 766008335}
+  mainQuestPanel3: {fileID: 679140644}
 --- !u!4 &1088408321
 Transform:
   m_ObjectHideFlags: 0
@@ -6120,7 +6027,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1093038519
 PrefabInstance:
@@ -6417,7 +6324,7 @@ GameObject:
   - component: {fileID: 1136260131}
   - component: {fileID: 1136260135}
   m_Layer: 0
-  m_Name: thread of fate (QI1)
+  m_Name: QUESTITEM(thread of fate)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6514,6 +6421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemValue: 0
+  uiManager: {fileID: 1088408320}
 --- !u!1 &1138219257
 GameObject:
   m_ObjectHideFlags: 0
@@ -6532,7 +6440,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1138219258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6608,7 +6516,7 @@ RectTransform:
   m_Children:
   - {fileID: 121568313}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7983,7 +7891,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1498686209
 GameObject:
@@ -8420,7 +8328,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1730375978
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8554,6 +8462,9 @@ MonoBehaviour:
   nextButtonUI: {fileID: 1730375977}
   systemMessagePanel: {fileID: 684708309}
   systemMessageText: {fileID: 170872745}
+  mainQuestPanel1: {fileID: 0}
+  mainQuestPanel2: {fileID: 0}
+  mainQuestPanel3: {fileID: 0}
 --- !u!1 &1748030158
 GameObject:
   m_ObjectHideFlags: 0
@@ -8745,7 +8656,7 @@ RectTransform:
   m_Children:
   - {fileID: 571553771}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -8769,7 +8680,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1763810401
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9233,6 +9144,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2fdfea97991e4224da300e6c1c6b9046, type: 2}
   - {fileID: 11400000, guid: 7ca8df1b5bc6e044984a89938ae958cf, type: 2}
   - {fileID: 11400000, guid: 47e3c71f3d977544280f9a5587c0a03b, type: 2}
+  isDead: 0
   equipWeapon: {fileID: 0}
   datas:
     maxHP: 3
@@ -9246,9 +9158,8 @@ MonoBehaviour:
     stage1BossClear: 0
     stage1Tutorial: 0
     savePos: {x: 10, y: 10, z: 10}
-    saveScene:
-      m_Handle: 0
     saveSceneName: Backstage_0114
+  save: {fileID: 0}
   Wallscope: 1
 --- !u!95 &1857073001
 Animator:
@@ -9384,7 +9295,7 @@ GameObject:
   - component: {fileID: 1953724895}
   - component: {fileID: 1953724894}
   m_Layer: 0
-  m_Name: Yellow Line(QI2)
+  m_Name: QUESTITEM(For's lost eye)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9401,7 +9312,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 5, y: 5, z: 5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1953724895
 MeshRenderer:
@@ -10099,7 +10010,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uBA54\uC778\uD018 3 \uC0DD\uC131 \uD560 \uB54C \uC4F0\uC2DC\uC694!"
+  m_text: "~\uC8FC\uB300\uBCF8 \uC644\uB8CC~"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ac9cbc2587d7d774d92e69e458eaf16b, type: 2}
   m_sharedMaterial: {fileID: 6468227281360488440, guid: ac9cbc2587d7d774d92e69e458eaf16b, type: 2}
@@ -10133,7 +10044,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0

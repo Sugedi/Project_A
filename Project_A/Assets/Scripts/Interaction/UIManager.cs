@@ -13,6 +13,11 @@ public class UIManager : MonoBehaviour
     public GameObject systemMessagePanel; // 시스템 메시지를 포함하는 패널
     public TextMeshProUGUI systemMessageText; // 'TextMeshProUGUI' 컴포넌트
 
+    // MainQuest Panels 참조
+    public GameObject mainQuestPanel1;
+    public GameObject mainQuestPanel2;
+    public GameObject mainQuestPanel3;
+
 
     private void Start() // 게임 시작 시 호출되는 Start 함수
     {
@@ -43,5 +48,23 @@ public class UIManager : MonoBehaviour
     {
         yield return new WaitForSeconds(displayTime); // 지정된 시간 동안 대기
         systemMessagePanel.SetActive(false); // 패널 비활성화
+    }
+
+
+    // 아이템 카운터를 업데이트하는 메서드
+    public void RefreshItemCounter(int itemValue)
+    {
+        if (itemValue == 1)
+        {
+            mainQuestPanel1.SetActive(false);
+            mainQuestPanel2.SetActive(true);
+        }
+
+        if (itemValue == 2)
+        {
+            mainQuestPanel2.SetActive(false);
+            mainQuestPanel3.SetActive(true);
+        }
+
     }
 }
