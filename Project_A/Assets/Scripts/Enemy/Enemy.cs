@@ -128,7 +128,7 @@ public class Enemy : MonoBehaviour
                 break;
             case Type.C:
                 targetRadius = 0.5f;
-                targetRange = 18f;
+                targetRange = 8f;
                 break;
         }
         // 플레이어를 감지하면 공격 시작
@@ -184,10 +184,10 @@ public class Enemy : MonoBehaviour
                 yield return new WaitForSeconds(0.5f);
                 GameObject instantBullet = Instantiate(bullet, transform.position, transform.rotation);
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
-                rigidBullet.velocity = transform.forward * 20;
+                rigidBullet.velocity = transform.forward * 10;
 
                 // 2초 대기
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(1.5f);
                 break;
         }
 
@@ -334,8 +334,7 @@ public class Enemy : MonoBehaviour
             }
 
             // 2초 뒤 몹 사망
-            Destroy(gameObject, 2);
+            Destroy(gameObject, 1);
         }
     }
-
 }

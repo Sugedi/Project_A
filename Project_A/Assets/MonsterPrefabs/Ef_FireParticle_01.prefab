@@ -19146,7 +19146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30353af62a23cf04ca7e63cac88d26cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
+  damage: 10
   isMelee: 0
 --- !u!96 &1564544706742378071
 TrailRenderer:

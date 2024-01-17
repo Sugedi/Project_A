@@ -181,13 +181,13 @@ public class EnemyWorm : MonoBehaviour
                 break;
             case Type.C:
                 // 0.5초 대기 후 총알 생성 및 발사
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.1f);
                 GameObject instantBullet = Instantiate(bullet, transform.position, transform.rotation);
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
-                rigidBullet.velocity = transform.forward * 20;
+                rigidBullet.velocity = transform.forward * 10;
 
                 // 2초 대기
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(1.5f);
                 break;
         }
 
@@ -259,7 +259,6 @@ public class EnemyWorm : MonoBehaviour
         else if (other.tag == "Player")
         {
             isChase = true;
-           
         }
     }
 
@@ -336,5 +335,4 @@ public class EnemyWorm : MonoBehaviour
             Destroy(gameObject, 2);
         }
     }
-
 }
