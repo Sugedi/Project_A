@@ -23,6 +23,7 @@ public class UIManager : MonoBehaviour
     {
         questIconButton.SetActive(false); // 대화 팝업을 초기 상태(비활성화 상태)로 설정
         systemMessagePanel.SetActive(false); // 시스템 메시지 패널을 초기 상태(비활성화 상태)로 설정
+        mainQuestPanel1.SetActive(true); // 첫 번째 메인 퀘스트 패널을 활성화 상태로 설정
     }
 
 

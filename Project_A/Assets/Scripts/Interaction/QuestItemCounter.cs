@@ -43,11 +43,9 @@ public class QuestItemCounter : MonoBehaviour
             Debug.Log("먹었당~");
 
             uiManager.RefreshItemCounter(itemValue); // UIManager의 메서드 호출
+            
 
         }
-        //// 현재 게임 오브젝트(퀘스트 아이템)를 비활성화하여 더 이상 충돌하지 않도록 함
-        //gameObject.SetActive(false);
-        //    Debug.Log("먹었당~");
     }
 
 }
