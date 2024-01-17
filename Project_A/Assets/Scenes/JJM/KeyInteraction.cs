@@ -26,7 +26,7 @@ public class KeyInteraction : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player") || Input.GetKeyDown(KeyCode.Space))
+        if (other.CompareTag("Player"))
         {
             HideImage();
         }
@@ -34,7 +34,7 @@ public class KeyInteraction : MonoBehaviour
 
     private void ShowImage()
     {
-        Debug.Log("ShowImage() 호출됨");
+
 
         // 이미지를 Canvas 하위에 생성하고 활성화
         displayedImage = Instantiate(Clickspace, StageUI.transform);
@@ -44,7 +44,7 @@ public class KeyInteraction : MonoBehaviour
 
     private void HideImage()
     {
-        Debug.Log("HideImage() 호출됨");
+
         // 이미지를 비활성화하고 제거
         if (displayedImage != null)
         {
