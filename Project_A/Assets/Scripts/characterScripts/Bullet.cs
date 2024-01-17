@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -23,6 +24,12 @@ public class Bullet : MonoBehaviour
     public float boomShotRadius; // 붐샷 폭발 반경
     public float boomShotDamage; // 붐샷 데미지
     public bool isExplosion = false;
+
+    // SideShot 스킬 속성
+    public bool isHoming; // 추적 기능 활성화 여부
+    public Transform target; // 추적할 대상
+    public float homingSpeed = 20f; // 추적 속도
+    public float homingRotateSpeed = 200f; // 추적 회전 속도
 
     void Awake()
     {
@@ -55,20 +62,20 @@ public class Bullet : MonoBehaviour
     
     public void ReturnToPool()
     {
-        if (!gameObject.activeInHierarchy)
+        // 오브젝트가 활성화 상태인 경우에만 풀로 반환합니다.
+        if (gameObject.activeInHierarchy)
         {
-            // 오브젝트가 이미 비활성화되었다면 반환을 시도하지 않습니다.
-            return;
-        }
-
-        if (pool != null)
-        {
-            pool.Release(gameObject);
-        }
-        else
-        {
-            // 풀이 설정되어 있지 않다면, 기본적인 Destroy를 호출합니다.
-            Destroy(gameObject);
+            if (pool != null)
+            {
+                // 오브젝트를 비활성화하고 풀로 반환합니다.
+                gameObject.SetActive(false);
+                pool.Release(gameObject);
+            }
+            else
+            {
+                // 풀이 설정되어 있지 않다면, 기본적인 Destroy를 호출합니다.
+                Destroy(gameObject);
+            }
         }
     }
     void Update()
@@ -90,8 +97,25 @@ public class Bullet : MonoBehaviour
         {
             // 피어스샷일 때 총알에 가속도를 적용합니다.
             bulletRigidbody.AddForce(transform.forward * acceleration, ForceMode.Acceleration);
-        }
+        }       
 
+    }
+    void FixedUpdate()
+    {        
+        // 추적 기능이 활성화되어 있고, 타겟이 설정되어 있다면 추적 로직을 수행합니다.
+        if (isHoming && target != null)
+        {
+            // 타겟 방향으로 총알의 방향을 부드럽게 회전시킵니다.
+            Vector3 directionToTarget = (target.position - transform.position).normalized;
+            Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
+
+            // Quaternion.Slerp를 사용하여 보다 부드러운 회전을 구현합니다.
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, homingRotateSpeed * Time.deltaTime);
+
+            // 총알의 속도를 점점 증가시킵니다.
+            bulletRigidbody.velocity += transform.forward * (homingSpeed * Time.fixedDeltaTime);
+            bulletRigidbody.velocity = Vector3.ClampMagnitude(bulletRigidbody.velocity, homingSpeed); // 최대 속도를 제한합니다.
+        }
     }
 
     // 충돌 시 호출되는 메서드

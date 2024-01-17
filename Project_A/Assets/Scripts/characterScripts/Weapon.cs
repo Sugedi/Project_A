@@ -11,7 +11,7 @@ public class Weapon : MonoBehaviour
     public float damageMultiplier = 1f; // 데미지 배율
     public float attackSpeedMultiplier = 1f; // 공격 속도 배율
 
-    public int baseMaxAmmo = 30; // 기본 최대 탄약 수
+    public int baseMaxAmmo = 20; // 기본 최대 탄약 수
     public int maxAmmo; // 최대 탄약 수
     public int curAmmo; // 현재 탄약 수
 
@@ -52,11 +52,13 @@ public class Weapon : MonoBehaviour
     public Transform bulletPosRight; // 총알 발사 위치
     public GameObject bullet; // 총알 프리팹   
     public GameObject pierceBullet; // 피어스샷 총알 프리팹
+    public GameObject sideBullet; // 피어스샷 총알 프리팹
     public Player player; // 무기를 소유하고 있는 플레이어의 참조입니다.
 
     // 총알 오브젝트 풀을 추가합니다.
     private ObjectPool<GameObject> bulletPool;
     private ObjectPool<GameObject> pierceBulletPool;
+    private ObjectPool<GameObject> sideBulletPool; // 추적 총알을 위한 오브젝트 풀
 
     void Awake()
     {
@@ -92,6 +94,19 @@ public class Weapon : MonoBehaviour
             actionOnDestroy: (obj) => Destroy(obj),
             defaultCapacity: 60,
             maxSize: 120
+        );
+        // 사이드샷 총알 풀 초기화
+        sideBulletPool = new ObjectPool<GameObject>(
+            createFunc: () => {
+                var newBullet = Instantiate(sideBullet);
+                newBullet.SetActive(false);
+                return newBullet;
+            },
+            actionOnGet: (obj) => obj.SetActive(true),
+            actionOnRelease: (obj) => obj.SetActive(false),
+            actionOnDestroy: (obj) => Destroy(obj),
+            defaultCapacity: 60, // 사이드샷 총알의 기본 용량
+            maxSize: 120       // 사이드샷 총알의 최대 용량
         );
 
     }
@@ -181,7 +196,7 @@ public class Weapon : MonoBehaviour
             }
             bulletScript.SetPool(isPierceShotActive ? pierceBulletPool : bulletPool);
             bulletScript.damage = bulletScript.baseDamage * damageMultiplier;
-            bulletScript.lifeTime = 1.5f; // 총알의 생명 시간 설정
+            bulletScript.lifeTime = 1.2f; // 총알의 생명 시간 설정
 
             Rigidbody bulletRigid = instantBullet.GetComponent<Rigidbody>();
             Quaternion spreadRotation = Quaternion.identity;
@@ -210,6 +225,37 @@ public class Weapon : MonoBehaviour
         yield return new WaitForSeconds(1f / (baseAttackSpeed * attackSpeedMultiplier));
 
     }
+
+    // FindClosestEnemy 메서드에 매개변수를 추가합니다.
+    Transform FindClosestEnemy(Transform shotPosition)
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        Transform closestTarget = null;
+        float closestDistanceSqr = Mathf.Infinity;
+        Vector3 currentPosition = shotPosition.position; // 매개변수로 받은 위치를 사용합니다.
+
+        foreach (GameObject potentialTarget in enemies)
+        {
+            Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
+            float dSqrToTarget = directionToTarget.sqrMagnitude;
+            if (dSqrToTarget < closestDistanceSqr)
+            {
+                closestDistanceSqr = dSqrToTarget;
+                closestTarget = potentialTarget.transform;
+            }
+        }
+        // 선택된 가장 가까운 적의 이름을 콘솔에 출력합니다.
+        if (closestTarget != null)
+        {
+            Debug.Log("가장 가까운 적: " + closestTarget.name);
+        }
+        else
+        {
+            Debug.Log("적을 찾을 수 없음");
+        }
+
+        return closestTarget;
+    }
     IEnumerator FireSideShot(Transform sideShotPos, int bulletsToFire, float spreadAngle)
     {
         for (int i = 0; i < bulletsToFire; i++)
@@ -217,58 +263,39 @@ public class Weapon : MonoBehaviour
             // 탄약이 남아있는 경우에만 총알을 발사합니다.
             if (curAmmo > 0)
             {
-                // 탄약 소모
-                curAmmo--;
+                curAmmo--; // 탄약 소모
 
-                GameObject instantBullet = isPierceShotActive ? pierceBulletPool.Get() : bulletPool.Get();
-                instantBullet.transform.position = sideShotPos.position + sideShotPos.forward *0.5f;
+                // 사이드샷 총알 프리팹을 사용하여 인스턴스를 생성합니다.
+                GameObject instantBullet = sideBulletPool.Get();
+                instantBullet.transform.position = sideShotPos.position + sideShotPos.forward * 0.5f;
 
-                // 사이드샷 총알의 발사 각도를 계산합니다.
-                float angle = 0f;
-                if (bulletsToFire > 1)
-                {
-                    angle = (-spreadAngle / 2) + (spreadAngle / (bulletsToFire - 1)) * i;
-                }
-
-                // 사이드샷 발사 각도를 위한 회전을 추가합니다.
+                // 사이드샷 총알의 발사 각도를 계산하고 적용합니다.
+                float angle = (bulletsToFire > 1) ? (-spreadAngle / 2) + (spreadAngle / (bulletsToFire - 1)) * i : 0f;
                 Quaternion sideShotRotation = Quaternion.Euler(0, sideShotPos.eulerAngles.y + angle, 0);
                 instantBullet.transform.rotation = sideShotRotation;
 
-                // 총알 충돌을 일시적으로 비활성화
-                Collider bulletCollider = instantBullet.GetComponent<Collider>();
-                if (bulletCollider)
-                {
-                    bulletCollider.enabled = false;
-                    bulletCollider.isTrigger = isPierceShotActive; // 관통샷 활성화 여부에 따라 isTrigger 설정
-                }
+                // 총알 스크립트 설정
                 Bullet bulletScript = instantBullet.GetComponent<Bullet>();
-                bulletScript.isPenetrating = isPierceShotActive; // 관통샷 여부 설정
+                bulletScript.isPenetrating = false; // 관통샷 비활성화
+                bulletScript.isHoming = true; // 추적 기능 활성화
+                bulletScript.target = FindClosestEnemy(sideShotPos); // 가장 가까운 적을 타겟으로 설정
+                bulletScript.SetPool(sideBulletPool); // 해당 오브젝트 풀 설정
+                bulletScript.damage = bulletScript.baseDamage * damageMultiplier; // 데미지 설정
+                bulletScript.lifeTime = 3f; // 생명주기 설정
 
-                // BoomShot 스킬 적용
-                bulletScript.isBoomShotActive = isBoomShotActive;
-                bulletScript.boomShotRadius = boomShotRadius;
-                bulletScript.boomShotDamage = boomShotDamage;
-
-                bulletScript.SetPool(isPierceShotActive ? pierceBulletPool : bulletPool);
-                // 총알의 데미지 설정
-                bulletScript.damage = bulletScript.baseDamage * damageMultiplier;
-
-                // 총알의 생명주기 설정
-                bulletScript.lifeTime = 1.5f;
-
+                // 총알의 Rigidbody 설정
                 Rigidbody bulletRigid = instantBullet.GetComponent<Rigidbody>();
+                // 총알에 초기 속도를 부여합니다. 추적 로직은 Bullet 스크립트 내에서 처리됩니다.
                 bulletRigid.velocity = sideShotPos.forward * bulletSpeed;
 
                 // 총알 충돌을 비활성화하고 지연 후 다시 활성화하는 코루틴 호출
                 StartCoroutine(EnableColliderAfterDelay(instantBullet.GetComponent<Collider>()));
 
-                // 여기에 지연을 추가합니다.
-                yield return new WaitForSeconds(0.1f); // 예시로 0.1초의 지연을 추가합니다.
+                yield return new WaitForSeconds(0.2f); // 총알 발사 간 지연
             }
             else
             {
-                // 탄약이 없으면 루프를 종료합니다.
-                break;
+                break; // 탄약이 없으면 루프 종료
             }
         }
     }
