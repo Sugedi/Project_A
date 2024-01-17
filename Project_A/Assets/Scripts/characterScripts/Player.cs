@@ -143,6 +143,11 @@ public class Player : MonoBehaviour
                 //GameObject.Find("Switch").GetComponent<SaveSwitch>().SaveData();
             }
 
+            if (collider.CompareTag("Treasure"))
+            {
+                TreasureBox.TreasureFind();
+            }
+
         }
 
     }
