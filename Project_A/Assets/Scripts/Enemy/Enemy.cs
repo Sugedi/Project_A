@@ -128,7 +128,7 @@ public class Enemy : MonoBehaviour
                 break;
             case Type.C:
                 targetRadius = 0.5f;
-                targetRange = 20f;
+                targetRange = 18f;
                 break;
         }
         // 플레이어를 감지하면 공격 시작
@@ -277,30 +277,29 @@ public class Enemy : MonoBehaviour
     {
 
         // 피격 시 일시적으로 캐릭터 색상을 빨간색으로 변경
-        // mat.color = Color.red;
-        // yield return new WaitForSeconds(0.1f);
+        mat.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
 
         // 현재 체력이 0보다 큰 경우 doGetHit 애니메이션 재생
         if (curHealth > 0)
         {
-
-
-            // mat.color = Color.white;
-            //isChase = false;
-            //nav.enabled = false;
+            mat.color = Color.white;
+            isChase = false;
+            nav.enabled = false;
+            // yield return new WaitForSeconds(0.5f);
 
             // Play doGetHit animation
             anim.SetBool("doGetHit", true);
-
 
             // Wait for the doGetHit animation to finish
             yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
 
             // Reset the doGetHit animation state
             anim.SetBool("doGetHit", false);
- 
-          
 
+            isChase = true;
+            nav.enabled = true;
+            
         }
         // 현재 체력이 0 이하인 경우
         else
@@ -309,15 +308,14 @@ public class Enemy : MonoBehaviour
             // mat.color = Color.gray;
             StopAllCoroutines();
             isChase = true;
-            //nav.enabled = false;
-            //anim.SetBool("doGetHit", true);
+            nav.enabled = false;
 
             gameObject.layer = 12; // 레이어를 변경하여 다시 공격을 받지 않도록 설정
 
             // 추격 중지, 네비게이션 비활성화, 죽음 애니메이션 재생
             isChase = false;
-            // nav.enabled = false;
             anim.SetTrigger("doDie");
+            // nav.enabled = false;
 
             // 피격된 방향 벡터를 정규화하고 위로 조금 이동시켜줌
             reactVec = reactVec.normalized;

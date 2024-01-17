@@ -277,21 +277,18 @@ public class EnemyWorm : MonoBehaviour
     {
 
         // 피격 시 일시적으로 캐릭터 색상을 빨간색으로 변경
-        // mat.color = Color.red;
-        // yield return new WaitForSeconds(0.1f);
+        mat.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
 
         // 현재 체력이 0보다 큰 경우 doGetHit 애니메이션 재생
         if (curHealth > 0)
         {
-
-
-            // mat.color = Color.white;
-            //isChase = false;
-            //nav.enabled = false;
+            mat.color = Color.white;
+            isChase = false;
+            nav.enabled = false;
 
             // Play doGetHit animation
             anim.SetBool("doGetHit", true);
-
 
             // Wait for the doGetHit animation to finish
             yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
@@ -299,8 +296,8 @@ public class EnemyWorm : MonoBehaviour
             // Reset the doGetHit animation state
             anim.SetBool("doGetHit", false);
 
-
-
+            isChase = true;
+            nav.enabled = true;
         }
         // 현재 체력이 0 이하인 경우
         else
@@ -320,11 +317,11 @@ public class EnemyWorm : MonoBehaviour
             anim.SetTrigger("doDie");
 
             // 피격된 방향 벡터를 정규화하고 위로 조금 이동시켜줌
-            reactVec = reactVec.normalized;
-            reactVec += Vector3.up;
+            // reactVec = reactVec.normalized; 이거 수정함 !!!!!!!!!!!!!!!!!! 주석 달았음
+            // reactVec += Vector3.up; 이거 수정함 !!!!!!!!!!!!!!! 주석 달았음
 
             // 리지드바디에 피격 방향으로의 작은 힘을 가하고
-            rigid.AddForce(reactVec * 5, ForceMode.Impulse);
+            // rigid.AddForce(reactVec * 5, ForceMode.Impulse); 이것도 주석 달았음!!!!!!!!!!!!!
 
             // _item이라는 게임 오브젝트 변수 선언 + itemPrefab을 생성해서 _item에 할당
             GameObject _item;
