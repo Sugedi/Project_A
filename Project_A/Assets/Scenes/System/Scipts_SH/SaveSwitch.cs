@@ -26,9 +26,29 @@ public enum SavePoint
 
 public class SaveSwitch : MonoBehaviour
 {
+    public Vector3 checkPoint_1 = new Vector3(-32f, 0.5f, 36f);
+    public Vector3 checkPoint_2 = new Vector3(-32f, 0.5f, 36f); // 아직 미정
+    public string checkScene_1 = "Stage";
+    DataManager dataManager = GameObject.Find("DataManager").GetComponent<DataManager>();
 
-    private void SaveData()
+    public SavePoint savePoint = SavePoint.SavePoint_1;
+
+    
+
+    public void SaveData(SavePoint savePoint)
     {
+        if (savePoint == SavePoint.SavePoint_1)
+        {
+            dataManager.datas.savePos = checkPoint_1;
+            dataManager.datas.saveSceneName = checkScene_1;
+            dataManager.DataSave();
+        }
+        else if (savePoint == SavePoint.SavePoint_2)
+        {
+            dataManager.datas.savePos = checkPoint_2;
+            dataManager.datas.saveSceneName = checkScene_1;
+            dataManager.DataSave();
+        }
 
     }
 
