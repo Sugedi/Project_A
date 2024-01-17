@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum SaveSwitchNumber
 {
@@ -10,7 +11,7 @@ public enum SaveSwitchNumber
 }
 public class SaveSwitch : MonoBehaviour
 {
-    public SaveSwitchNumber switchNumber;
+    static public SaveSwitchNumber switchNumber;
 
     static public Vector3 checkPoint_1 = new Vector3(-32f, 0.5f, 36f);
     static public Vector3 checkPoint_2 = new Vector3(0f, 0.5f, 36f); // 아직 미정
@@ -18,7 +19,7 @@ public class SaveSwitch : MonoBehaviour
     static public string checkScene_1 = "Stage";
     static public int saveNumber = 1;
 
-    private void Start()
+    public static void Start()
     {
         if (switchNumber == SaveSwitchNumber.SaveSwitch_1)
         {
@@ -58,7 +59,9 @@ public class SaveSwitch : MonoBehaviour
         }
         Debug.Log("저장되었습니다.");
         GameObject.Find("Player").GetComponent<Player>().SaveHeal();
+
     }
+
 }
 
 // 세이브_1 (-32f, 0.5f, 36f)

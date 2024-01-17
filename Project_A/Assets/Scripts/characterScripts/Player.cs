@@ -57,6 +57,8 @@ public class Player : MonoBehaviour
     private string KeyName = "Datas";
     public SaveSwitch save;
 
+    public CanvasGroup SaveCanvas;
+
     // 초기화 시키는 거
     void Awake()
     {              
@@ -70,7 +72,9 @@ public class Player : MonoBehaviour
     public void SaveHeal()
     {
         health = maxHealth;
+
     }
+
     private void Start()
     {
         ES3.LoadInto(KeyName, datas);
@@ -78,11 +82,13 @@ public class Player : MonoBehaviour
         maxHealth = datas.maxHP;
         health = maxHealth;
         EquipWeapon(0);
+        
 
         // 스테이지에 입장하면 위치를 저장된 세이브 위치 혹은 초기 위치로 복귀
         if (SceneManager.GetActiveScene().name == "Stage")
         {
             transform.position = datas.savePos;
+            SaveCanvas = GameObject.Find("SaveSwitchCanvas").GetComponent<CanvasGroup>();
         }
 
         // 백스테이지에 돌아오면 저장 위치는 백스테이지 0,0,0
@@ -145,6 +151,10 @@ public class Player : MonoBehaviour
                 //GameObject.Find("Switch").GetComponent<SaveSwitch>().SwitchFunc();
                 SaveSwitch.SwitchFunc();
                 //GameObject.Find("Switch").GetComponent<SaveSwitch>().SaveData();
+                Time.timeScale = 0;
+                SaveCanvas.alpha = 1;
+                SaveCanvas.interactable = true;
+                SaveCanvas.blocksRaycasts = true;
             }
 
             if (collider.CompareTag("Treasure"))
