@@ -41,7 +41,7 @@ public class SaveSwitch : MonoBehaviour
         if (saveNumber == 1)
         {
             DataManager.instance.datas.savePos = checkPoint_1;
-            DataManager.instance.datas.saveSceneName= checkScene_1;
+            DataManager.instance.datas.saveSceneName = checkScene_1;
             DataManager.instance.DataSave();
         }
         else if (saveNumber == 2)
@@ -57,8 +57,8 @@ public class SaveSwitch : MonoBehaviour
             DataManager.instance.DataSave();
         }
         Debug.Log("저장되었습니다.");
+        GameObject.Find("Player").GetComponent<Player>().SaveHeal();
     }
-
 }
 
 // 세이브_1 (-32f, 0.5f, 36f)

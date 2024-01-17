@@ -67,6 +67,10 @@ public class Player : MonoBehaviour
     }
 
     // 승호 추가 시작
+    public void SaveHeal()
+    {
+        health = maxHealth;
+    }
     private void Start()
     {
         ES3.LoadInto(KeyName, datas);
