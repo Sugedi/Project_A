@@ -8,9 +8,6 @@ public class SkillTreeBtn : MonoBehaviour
 {
     public SkillBtn skillBtn;
 
-    public List<Skill> unlockedSkillList;
-    public Player player;
-
     public Datas datas;
     private string KeyName = "Datas";
 
@@ -18,6 +15,15 @@ public class SkillTreeBtn : MonoBehaviour
     public CanvasGroup ammoInfoCanvas;
     public CanvasGroup speedInfoCanvas;
     public CanvasGroup reloadInfoCanvas;
+
+    public TextMeshProUGUI powerInfo;
+    public TextMeshProUGUI ammoInfo;
+    public TextMeshProUGUI speedInfo;
+    public TextMeshProUGUI reloadInfo;
+    public TextMeshProUGUI gem;
+
+    public int soul;
+
 
 
     // Start is called before the first frame update
@@ -28,7 +34,8 @@ public class SkillTreeBtn : MonoBehaviour
 
         // 데이터 매니저에서 바로 불러오는 방식 - 장기적으로는 이게 유리할 수 밖에 없음 - 근데 리스트에 스킬 애드를 못해서 못씀
         ES3.LoadInto(KeyName, datas);
-        unlockedSkillList = datas.skillHave;
+        soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
+        gem.text = $"재화: {soul}";
 
         // 캐릭터가 소지한 스킬을 불러오는 방식 
         // 아니 AddSkill 어케 쓰는 건데 ~~~
@@ -46,6 +53,28 @@ public class SkillTreeBtn : MonoBehaviour
             }
         }
 
+        List<Skill> powerList = GameObject.Find("DataManager").GetComponent<DataManager>().datas.skillHave;
+        foreach (Skill skill in powerList)
+        {
+
+            if (skill.skillName == "PowerUp1")
+            {
+                powerInfo.text = "필요 재화: 50";
+            }
+            else if (skill.skillName == "PowerUp2")
+            {
+                powerInfo.text = "필요 재화: 70";
+            }
+            else if (skill.skillName == "PowerUp3")
+            {
+                powerInfo.text = "필요 재화: 90";
+            }
+            else if (skill.skillName == "PowerUp4")
+            {
+                powerInfo.text = "최고 레벨";
+            }
+
+        }
     }
 
     void UnlockedSkillColor()
@@ -57,6 +86,7 @@ public class SkillTreeBtn : MonoBehaviour
             //cg.color = ();
         }
     }
+
 
     void SkillLV()
     {
@@ -93,10 +123,14 @@ public class SkillTreeBtn : MonoBehaviour
     public void OnBtnClick()
     {
 
+
         switch (skillBtn)
         {
             case SkillBtn.Power:
-                if(powerInfoCanvas.alpha == 1)
+
+                List<Skill> powerList = GameObject.Find("DataManager").GetComponent<DataManager>().datas.skillHave;
+
+                if (powerInfoCanvas.alpha == 1)
                 {
 
                 }
@@ -106,11 +140,40 @@ public class SkillTreeBtn : MonoBehaviour
                     CanvasGroupOff(ammoInfoCanvas);
                     CanvasGroupOff(speedInfoCanvas);
                     CanvasGroupOff(reloadInfoCanvas);
+
+
+                    foreach (Skill skill in powerList)
+                    {
+
+                        if (skill.skillName == "PowerUp1")
+                        {
+                            powerInfo.text = "필요 재화: 50";
+                            break;
+                        }
+                        else if (skill.skillName == "PowerUp2")
+                        {
+                            powerInfo.text = "필요 재화: 70";
+                            break;
+                        }
+                        else if (skill.skillName == "PowerUp3")
+                        {
+                            powerInfo.text = "필요 재화: 90";
+                            break;
+                        }
+                        else if (skill.skillName == "PowerUp4")
+                        {
+                            powerInfo.text = "최고 레벨";
+                            break;
+                        }
+                    }
                 }
                 break;
 
             case SkillBtn.Ammo:
-                if(ammoInfoCanvas.alpha == 1)
+
+                List<Skill> ammoList = GameObject.Find("DataManager").GetComponent<DataManager>().datas.skillHave;
+
+                if (ammoInfoCanvas.alpha == 1)
                 {
 
                 }
@@ -120,11 +183,39 @@ public class SkillTreeBtn : MonoBehaviour
                     CanvasGroupOff(powerInfoCanvas);
                     CanvasGroupOff(speedInfoCanvas);
                     CanvasGroupOff(reloadInfoCanvas);
+
+                    foreach (Skill skill in ammoList)
+                    {
+
+                        if (skill.skillName == "AmmoUp1")
+                        {
+                            ammoInfo.text = "필요 재화: 50";
+                            break;
+                        }
+                        else if (skill.skillName == "AmmoUp2")
+                        {
+                            ammoInfo.text = "필요 재화: 70";
+                            break;
+                        }
+                        else if (skill.skillName == "AmmoUp3")
+                        {
+                            ammoInfo.text = "필요 재화: 90";
+                            break;
+                        }
+                        else if (skill.skillName == "AmmoUp4")
+                        {
+                            ammoInfo.text = "최고 레벨";
+                            break;
+                        }
+                    }
                 }
                 break;
 
             case SkillBtn.Speed:
-                if(speedInfoCanvas.alpha == 1)
+
+                List<Skill> speedList = GameObject.Find("DataManager").GetComponent<DataManager>().datas.skillHave;
+
+                if (speedInfoCanvas.alpha == 1)
                 {
 
                 }
@@ -134,11 +225,40 @@ public class SkillTreeBtn : MonoBehaviour
                     CanvasGroupOff(ammoInfoCanvas);
                     CanvasGroupOff(powerInfoCanvas);
                     CanvasGroupOff(reloadInfoCanvas);
+
+
+                    foreach (Skill skill in speedList)
+                    {
+
+                        if (skill.skillName == "SpeedUp1")
+                        {
+                            speedInfo.text = "필요 재화: 50";
+                            break;
+                        }
+                        else if (skill.skillName == "SpeedUp2")
+                        {
+                            speedInfo.text = "필요 재화: 70";
+                            break;
+                        }
+                        else if (skill.skillName == "SpeedUp3")
+                        {
+                            speedInfo.text = "필요 재화: 90";
+                            break;
+                        }
+                        else if (skill.skillName == "SpeedUp4")
+                        {
+                            speedInfo.text = "최고 레벨";
+                            break;
+                        }
+                    }
                 }
                 break;
 
             case SkillBtn.Reload:
-                if(reloadInfoCanvas.alpha == 1)
+
+                List<Skill> reloadList = GameObject.Find("DataManager").GetComponent<DataManager>().datas.skillHave;
+
+                if (reloadInfoCanvas.alpha == 1)
                 {
 
                 }
@@ -148,6 +268,32 @@ public class SkillTreeBtn : MonoBehaviour
                     CanvasGroupOff(ammoInfoCanvas);
                     CanvasGroupOff(speedInfoCanvas);
                     CanvasGroupOff(powerInfoCanvas);
+
+
+                    foreach (Skill skill in reloadList)
+                    {
+
+                        if (skill.skillName == "ReloadUp1")
+                        {
+                            reloadInfo.text = "필요 재화: 50";
+                            break;
+                        }
+                        else if (skill.skillName == "ReloadUp2")
+                        {
+                            reloadInfo.text = "필요 재화: 70";
+                            break;
+                        }
+                        else if (skill.skillName == "ReloadUp3")
+                        {
+                            reloadInfo.text = "필요 재화: 90";
+                            break;
+                        }
+                        else if (skill.skillName == "ReloadUp4")
+                        {
+                            reloadInfo.text = "최고 레벨";
+                            break;
+                        }
+                    }
                 }
                 break;
 
@@ -159,39 +305,74 @@ public class SkillTreeBtn : MonoBehaviour
                 
                 foreach (Skill skill in powerskillList )
                 {
+                    soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
                     Skill powerUp2 = Resources.Load<Skill>("PowerUp2");
                     Skill powerUp3 = Resources.Load<Skill>("PowerUp3");
                     Skill powerUp4 = Resources.Load<Skill>("PowerUp4");
 
                     if (skill.skillName == "PowerUp1")
                     {
-                        powerskillList.Remove(skill);
-                        DataManager.instance.datas.skillHave.Add(powerUp2);
-                        DataManager.instance.DataSave();
-                        GameObject.Find("Player").GetComponent<Player>().SkillGet();
-                        // GameObject.Find("Player").GetComponent<Player>().gem -= 300;
-                        powerSkillCheck += 1;
-                        break;
+                        if (soul < 50)
+                        {
+                            powerSkillCheck += 1;
+                            break;
+                        }
+                        else
+                        {
+                            powerskillList.Remove(skill);
+                            DataManager.instance.datas.skillHave.Add(powerUp2);
+                            DataManager.instance.DataSave();
+                            GameObject.Find("Player").GetComponent<Player>().SkillGet();
+                            GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 50;
+                            soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
+                            gem.text = $"재화: {soul}";
+                            DataManager.instance.DataSave();
+                            powerInfo.text = "필요 재화: 70";
+                            powerSkillCheck += 1;
+                            break;
+                        }
                     }
                     else if (skill.skillName == "PowerUp2")
                     {
-                        powerskillList.Remove(skill);
-                        DataManager.instance.datas.skillHave.Add(powerUp3);
-                        DataManager.instance.DataSave();
-                        GameObject.Find("Player").GetComponent<Player>().SkillGet();
-                        // GameObject.Find("Player").GetComponent<Player>().gem -= 500;
-                        powerSkillCheck += 1;
-                        break;
+                        if (soul < 70)
+                        {
+                            powerSkillCheck += 1;
+                            break;
+                        }
+                        else
+                        {
+                            powerskillList.Remove(skill);
+                            DataManager.instance.datas.skillHave.Add(powerUp3);
+                            DataManager.instance.DataSave();
+                            GameObject.Find("Player").GetComponent<Player>().SkillGet();
+                            GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 70;
+                            soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
+                            gem.text = $"재화: {soul}";
+                            powerInfo.text = "필요 재화: 90";
+                            powerSkillCheck += 1;
+                            break;
+                        }
                     }
                     else if (skill.skillName == "PowerUp3")
                     {
-                        powerskillList.Remove(skill);
-                        DataManager.instance.datas.skillHave.Add(powerUp4);
-                        DataManager.instance.DataSave();
-                        GameObject.Find("Player").GetComponent<Player>().SkillGet();
-                        // GameObject.Find("Player").GetComponent<Player>().gem -= 700;
-                        powerSkillCheck += 1;
-                        break;
+                        if (soul < 90)
+                        {
+                            powerSkillCheck += 1;
+                            break;
+                        }
+                        else
+                        {
+                            powerskillList.Remove(skill);
+                            DataManager.instance.datas.skillHave.Add(powerUp4);
+                            DataManager.instance.DataSave();
+                            GameObject.Find("Player").GetComponent<Player>().SkillGet();
+                            GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 90;
+                            soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
+                            gem.text = $"재화: {soul}";
+                            powerInfo.text = "최고 레벨";
+                            powerSkillCheck += 1;
+                            break;
+                        }
                     }
                     else if(skill.skillName == "PowerUp4")
                     {
@@ -203,12 +384,23 @@ public class SkillTreeBtn : MonoBehaviour
                 }
                 if (powerSkillCheck == 0)
                 {
-                    Skill powerUp1 = Resources.Load<Skill>("PowerUp1");
-                    Debug.Log(powerUp1);
-                    DataManager.instance.datas.skillHave.Add(powerUp1);
-                    DataManager.instance.DataSave();
-                    GameObject.Find("Player").GetComponent<Player>().SkillGet();
-                    break;
+                    if (soul < 30)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Skill powerUp1 = Resources.Load<Skill>("PowerUp1");
+                        Debug.Log(powerUp1);
+                        DataManager.instance.datas.skillHave.Add(powerUp1);
+                        DataManager.instance.DataSave();
+                        GameObject.Find("Player").GetComponent<Player>().SkillGet();
+                        GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 30;
+                        soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
+                        gem.text = $"재화: {soul}";
+                        powerInfo.text = "필요 재화: 50";
+                        break;
+                    }
                 }
                 break;
 
@@ -219,39 +411,77 @@ public class SkillTreeBtn : MonoBehaviour
 
                 foreach (Skill skill in ammoskillList)
                 {
+                    soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
                     Skill ammoUp2 = Resources.Load<Skill>("AmmoUp2");
                     Skill ammoUp3 = Resources.Load<Skill>("AmmoUp3");
                     Skill ammoUp4 = Resources.Load<Skill>("AmmoUp4");
 
                     if (skill.skillName == "AmmoUp1")
                     {
-                        ammoskillList.Remove(skill);
-                        DataManager.instance.datas.skillHave.Add(ammoUp2);
-                        DataManager.instance.DataSave();
-                        GameObject.Find("Player").GetComponent<Player>().SkillGet();
-                        // GameObject.Find("Player").GetComponent<Player>().gem -= 300;
-                        ammoSkillCheck += 1;
-                        break;
+
+                        if (soul < 50)
+                        {
+                            ammoSkillCheck += 1;
+                            break;
+                        }
+                        else
+                        {
+                            ammoskillList.Remove(skill);
+                            DataManager.instance.datas.skillHave.Add(ammoUp2);
+                            DataManager.instance.DataSave();
+                            GameObject.Find("Player").GetComponent<Player>().SkillGet();
+                            GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 50;
+                            soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
+                            gem.text = $"재화: {soul}";
+                            DataManager.instance.DataSave();
+                            ammoInfo.text = "필요 재화: 70";
+                            ammoSkillCheck += 1;
+                            break;
+                        }
                     }
                     else if (skill.skillName == "AmmoUp2")
                     {
-                        ammoskillList.Remove(skill);
-                        DataManager.instance.datas.skillHave.Add(ammoUp3);
-                        DataManager.instance.DataSave();
-                        GameObject.Find("Player").GetComponent<Player>().SkillGet();
-                        // GameObject.Find("Player").GetComponent<Player>().gem -= 500;
-                        ammoSkillCheck += 1;
-                        break;
+                        if (soul < 70)
+                        {
+                            ammoSkillCheck += 1;
+                            break;
+                        }
+                        else
+                        {
+                            ammoskillList.Remove(skill);
+                            DataManager.instance.datas.skillHave.Add(ammoUp3);
+                            DataManager.instance.DataSave();
+                            GameObject.Find("Player").GetComponent<Player>().SkillGet();
+                            GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 70;
+                            soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
+                            gem.text = $"재화: {soul}";
+                            DataManager.instance.DataSave();
+                            ammoInfo.text = "필요 재화: 90";
+                            ammoSkillCheck += 1;
+                            break;
+                        }
                     }
                     else if (skill.skillName == "AmmoUp3")
                     {
-                        ammoskillList.Remove(skill);
-                        DataManager.instance.datas.skillHave.Add(ammoUp4);
-                        DataManager.instance.DataSave();
-                        GameObject.Find("Player").GetComponent<Player>().SkillGet();
-                        // GameObject.Find("Player").GetComponent<Player>().gem -= 700;
-                        ammoSkillCheck += 1;
-                        break;
+                        if (soul < 90)
+                        {
+                            ammoSkillCheck += 1;
+                            break;
+                        }
+                        else
+                        {
+                            ammoskillList.Remove(skill);
+                            DataManager.instance.datas.skillHave.Add(ammoUp4);
+                            DataManager.instance.DataSave();
+                            GameObject.Find("Player").GetComponent<Player>().SkillGet();
+                            GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 90;
+                            soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
+                            gem.text = $"재화: {soul}";
+                            DataManager.instance.DataSave();
+                            ammoInfo.text = "최고 레벨";
+                            ammoSkillCheck += 1;
+                            break;
+                        }
                     }
                     else if (skill.skillName == "AmmoUp4")
                     {
@@ -263,12 +493,24 @@ public class SkillTreeBtn : MonoBehaviour
                 }
                 if (ammoSkillCheck == 0)
                 {
-                    Skill ammoUp1 = Resources.Load<Skill>("AmmoUp1");
-                    Debug.Log(ammoUp1);
-                    DataManager.instance.datas.skillHave.Add(ammoUp1);
-                    DataManager.instance.DataSave();
-                    GameObject.Find("Player").GetComponent<Player>().SkillGet();
-                    break;
+                    if (soul < 30)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Skill ammoUp1 = Resources.Load<Skill>("AmmoUp1");
+                        Debug.Log(ammoUp1);
+                        DataManager.instance.datas.skillHave.Add(ammoUp1);
+                        DataManager.instance.DataSave();
+                        GameObject.Find("Player").GetComponent<Player>().SkillGet();
+                        GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 30;
+                        soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
+                        gem.text = $"재화: {soul}";
+                        DataManager.instance.DataSave();
+                        ammoInfo.text = "필요 재화: 50";
+                        break;
+                    }
                 }
                 break;
 
@@ -279,6 +521,7 @@ public class SkillTreeBtn : MonoBehaviour
 
                 foreach (Skill skill in reloadskillList)
                 {
+                    soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
                     Skill reloadUp2 = Resources.Load<Skill>("ReloadUp2");
                     Skill reloadUp3 = Resources.Load<Skill>("ReloadUp3");
                     Skill reloadUp4 = Resources.Load<Skill>("ReloadUp4");
@@ -287,33 +530,70 @@ public class SkillTreeBtn : MonoBehaviour
 
                     if (skill.skillName == "ReloadUp1")
                     {
-                        reloadskillList.Remove(skill);
-                        DataManager.instance.datas.skillHave.Add(reloadUp2);
-                        DataManager.instance.DataSave();
-                        GameObject.Find("Player").GetComponent<Player>().SkillGet();
-                        // GameObject.Find("Player").GetComponent<Player>().gem -= 300;
-                        reloadSkillCheck += 1;
-                        break;
+                        if (soul < 50)
+                        {
+                            reloadSkillCheck += 1;
+                            break;
+                        }
+                        else
+                        {
+                            reloadskillList.Remove(skill);
+                            DataManager.instance.datas.skillHave.Add(reloadUp2);
+                            DataManager.instance.DataSave();
+                            GameObject.Find("Player").GetComponent<Player>().SkillGet();
+                            GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 50;
+                            soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
+                            gem.text = $"재화: {soul}";
+                            DataManager.instance.DataSave();
+                            reloadInfo.text = "필요 재화: 70";
+                            reloadSkillCheck += 1;
+                            break;
+                        }
+                        
                     }
                     else if (skill.skillName == "ReloadUp2")
                     {
-                        reloadskillList.Remove(skill);
-                        DataManager.instance.datas.skillHave.Add(reloadUp3);
-                        DataManager.instance.DataSave();
-                        GameObject.Find("Player").GetComponent<Player>().SkillGet();
-                        // GameObject.Find("Player").GetComponent<Player>().gem -= 500;
-                        reloadSkillCheck += 1;
-                        break;
+                        if (soul < 70)
+                        {
+                            reloadSkillCheck += 1;
+                            break;
+                        }
+                        else
+                        {
+                            reloadskillList.Remove(skill);
+                            DataManager.instance.datas.skillHave.Add(reloadUp3);
+                            DataManager.instance.DataSave();
+                            GameObject.Find("Player").GetComponent<Player>().SkillGet();
+                            GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 70;
+                            soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
+                            gem.text = $"재화: {soul}";
+                            DataManager.instance.DataSave();
+                            reloadInfo.text = "필요 재화: 90";
+                            reloadSkillCheck += 1;
+                            break;
+                        }
                     }
                     else if (skill.skillName == "ReloadUp3")
                     {
-                        reloadskillList.Remove(skill);
-                        DataManager.instance.datas.skillHave.Add(reloadUp4);
-                        DataManager.instance.DataSave();
-                        GameObject.Find("Player").GetComponent<Player>().SkillGet();
-                        // GameObject.Find("Player").GetComponent<Player>().gem -= 700;
-                        reloadSkillCheck += 1;
-                        break;
+                        if (soul < 90)
+                        {
+                            reloadSkillCheck += 1;
+                            break;
+                        }
+                        else
+                        {
+                            reloadskillList.Remove(skill);
+                            DataManager.instance.datas.skillHave.Add(reloadUp4);
+                            DataManager.instance.DataSave();
+                            GameObject.Find("Player").GetComponent<Player>().SkillGet();
+                            GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 90;
+                            soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
+                            gem.text = $"재화: {soul}";
+                            DataManager.instance.DataSave();
+                            reloadInfo.text = "최고 레벨";
+                            reloadSkillCheck += 1;
+                            break;
+                        }
                     }
                     else if (skill.skillName == "ReloadUp4")
                     {
@@ -325,11 +605,23 @@ public class SkillTreeBtn : MonoBehaviour
                 }
                 if (reloadSkillCheck == 0)
                 {
-                    Skill reloadUp1 = Resources.Load<Skill>("ReloadUp1");
-                    DataManager.instance.datas.skillHave.Add(reloadUp1);
-                    DataManager.instance.DataSave();
-                    GameObject.Find("Player").GetComponent<Player>().SkillGet();
-                    break;
+                    if (soul < 30)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Skill reloadUp1 = Resources.Load<Skill>("ReloadUp1");
+                        DataManager.instance.datas.skillHave.Add(reloadUp1);
+                        DataManager.instance.DataSave();
+                        GameObject.Find("Player").GetComponent<Player>().SkillGet();
+                        GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 30;
+                        soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
+                        gem.text = $"재화: {soul}";
+                        DataManager.instance.DataSave();
+                        reloadInfo.text = "필요 재화: 50";
+                        break;
+                    }
                 }
                 break;
 
@@ -340,6 +632,7 @@ public class SkillTreeBtn : MonoBehaviour
 
                 foreach (Skill skill in speedskillList)
                 {
+                    soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
                     Skill speedUp2 = Resources.Load<Skill>("SpeedUp2");
                     Skill speedUp3 = Resources.Load<Skill>("SpeedUp3");
                     Skill speedUp4 = Resources.Load<Skill>("SpeedUp4");
@@ -348,33 +641,70 @@ public class SkillTreeBtn : MonoBehaviour
 
                     if (skill.skillName == "SpeedUp1")
                     {
-                        speedskillList.Remove(skill);
-                        DataManager.instance.datas.skillHave.Add(speedUp2);
-                        DataManager.instance.DataSave();
-                        GameObject.Find("Player").GetComponent<Player>().SkillGet();
-                        // GameObject.Find("Player").GetComponent<Player>().gem -= 300;
-                        speedSkillCheck += 1;
-                        break;
+                        //여기서 버그 터짐 이유를 모르겠네? 여기 부분만 돈 부족해도 통과해버리네
+                        if (soul < 50)
+                        {
+                            speedSkillCheck += 1;
+                            break;
+                        }
+                        else
+                        {
+                            speedskillList.Remove(skill);
+                            DataManager.instance.datas.skillHave.Add(speedUp2);
+                            DataManager.instance.DataSave();
+                            GameObject.Find("Player").GetComponent<Player>().SkillGet();
+                            GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 50;
+                            soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
+                            gem.text = $"재화: {soul}";
+                            DataManager.instance.DataSave();
+                            speedInfo.text = "필요 재화: 70";
+                            speedSkillCheck += 1;
+                            break;
+                        }
                     }
                     else if (skill.skillName == "SpeedUp2")
                     {
-                        speedskillList.Remove(skill);
-                        DataManager.instance.datas.skillHave.Add(speedUp3);
-                        DataManager.instance.DataSave();
-                        GameObject.Find("Player").GetComponent<Player>().SkillGet();
-                        // GameObject.Find("Player").GetComponent<Player>().gem -= 500;
-                        speedSkillCheck += 1;
-                        break;
+                        if (soul < 70)
+                        {
+                            speedSkillCheck += 1;
+                            break;
+                        }
+                        else
+                        {
+                            speedskillList.Remove(skill);
+                            DataManager.instance.datas.skillHave.Add(speedUp3);
+                            DataManager.instance.DataSave();
+                            GameObject.Find("Player").GetComponent<Player>().SkillGet();
+                            GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 70;
+                            soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
+                            gem.text = $"재화: {soul}";
+                            DataManager.instance.DataSave();
+                            speedInfo.text = "필요 재화: 90";
+                            speedSkillCheck += 1;
+                            break;
+                        }
                     }
                     else if (skill.skillName == "SpeedUp3")
                     {
-                        speedskillList.Remove(skill);
-                        DataManager.instance.datas.skillHave.Add(speedUp4);
-                        DataManager.instance.DataSave();
-                        GameObject.Find("Player").GetComponent<Player>().SkillGet();
-                        // GameObject.Find("Player").GetComponent<Player>().gem -= 700;
-                        speedSkillCheck += 1;
-                        break;
+                        if (soul < 90)
+                        {
+                            speedSkillCheck += 1;
+                            break;
+                        }
+                        else
+                        {
+                            speedskillList.Remove(skill);
+                            DataManager.instance.datas.skillHave.Add(speedUp4);
+                            DataManager.instance.DataSave();
+                            GameObject.Find("Player").GetComponent<Player>().SkillGet();
+                            GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 90;
+                            soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
+                            gem.text = $"재화: {soul}";
+                            DataManager.instance.DataSave();
+                            speedInfo.text = "최고 레벨";
+                            speedSkillCheck += 1;
+                            break;
+                        }
                     }
                     else if (skill.skillName == "SpeedUp4")
                     {
@@ -386,11 +716,23 @@ public class SkillTreeBtn : MonoBehaviour
                 }
                 if (speedSkillCheck == 0)
                 {
-                    Skill speedUp1 = Resources.Load<Skill>("SpeedUp1");
-                    DataManager.instance.datas.skillHave.Add(speedUp1);
-                    DataManager.instance.DataSave();
-                    GameObject.Find("Player").GetComponent<Player>().SkillGet();
-                    break;
+                    if (soul < 30)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Skill speedUp1 = Resources.Load<Skill>("SpeedUp1");
+                        DataManager.instance.datas.skillHave.Add(speedUp1);
+                        DataManager.instance.DataSave();
+                        GameObject.Find("Player").GetComponent<Player>().SkillGet();
+                        GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 30;
+                        soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
+                        gem.text = $"재화: {soul}";
+                        DataManager.instance.DataSave();
+                        speedInfo.text = "필요 재화: 50";
+                        break;
+                    }
                 }
                 break;
 
@@ -404,6 +746,9 @@ public class SkillTreeBtn : MonoBehaviour
                 MainUI.alpha = 1;
                 MainUI.interactable = true;
                 MainUI.blocksRaycasts = true;
+
+                DataManager.instance.DataSave();
+                DataManager.instance.DataLoad();
 
                 break;
 
@@ -462,6 +807,13 @@ public class SkillTreeBtn : MonoBehaviour
                 DataManager.instance.datas.skillHave.Add(basic);
                 DataManager.instance.DataSave();
                 GameObject.Find("Player").GetComponent<Player>().SkillGet();
+
+                powerInfo.text = "필요 재화: 30";
+                ammoInfo.text = "필요 재화: 30";
+                speedInfo.text = "필요 재화: 30";
+                reloadInfo.text = "필요 재화: 30";
+
+
 
                 break;
         }
