@@ -70,7 +70,8 @@ public class EnemyBoss : MonoBehaviour
         if (Vector3.Distance(btarget.position, transform.position) < 1f)
         {
             // 플레이어의 넉백 메서드를 호출
-            btarget.GetComponent<Player>().GetKnockedBack(-chargeDirection, 100f);
+            btarget.GetComponent<Player>().GetKnockedBack(-chargeDirection, 125f, 20);
+            //넉백 피해량 20
         }
 
         yield return new WaitForSeconds(chargeDuration);

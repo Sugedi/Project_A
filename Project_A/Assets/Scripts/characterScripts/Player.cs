@@ -498,8 +498,17 @@ public class Player : MonoBehaviour
             }
         }
     }
-    public void GetKnockedBack(Vector3 direction, float force)
+    // 넉백과 함께 피해 처리를 위해 피해량(damage) 인자를 추가합니다.
+    public void GetKnockedBack(Vector3 direction, float force, int damage)
     {
+        // 먼저 피해를 적용합니다.
+        if (!isDamage)
+        {
+            health -= damage;
+            StartCoroutine(OnDamage());
+        }
+
+        // 그 후에 넉백 효과를 적용합니다.
         Rigidbody playerRigidbody = GetComponent<Rigidbody>();
         if (playerRigidbody != null)
         {
