@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
     // 구성 요소
     Rigidbody rigid; // Rigidbody 컴포넌트
     Animator anim; // Animator 컴포넌트
-    MeshRenderer[] meshs; // MeshRenderer 배열
+    public SkinnedMeshRenderer[] meshs; // SkinnedMeshRenderer 배열
 
     // 장비 값
     GameObject nearObject; // 주변 오브젝트
@@ -64,7 +64,7 @@ public class Player : MonoBehaviour
     {              
         rigid = GetComponent<Rigidbody>(); // Rigidbody 컴포넌트 가져오기
         anim = GetComponentInChildren<Animator>(); // Animator 컴포넌트 가져오기
-        meshs = GetComponentsInChildren<MeshRenderer>(); // MeshRenderer 배열 가져오기
+        meshs = GetComponentsInChildren<SkinnedMeshRenderer>(); // MeshRenderer 배열 가져오기
         EquipWeapon(0);
     }
 
@@ -523,18 +523,41 @@ public class Player : MonoBehaviour
     IEnumerator OnDamage()
     {
         // 피격 상태를 활성화하고 메쉬들의 색상을 파란색으로 변경
-        isDamage = true;
-        foreach (MeshRenderer mesh in meshs)
-        {
-            mesh.material.color = Color.blue;
-        }
+        isDamage = true; // 피격 상태 활성화
 
-        // 1초 동안 대기
-        yield return new WaitForSeconds(1f);
+        // 깜빡임 효과를 위한 변수 설정
+        float blinkDuration = 1f; // 깜빡이는 총 시간
+        float blinkRate = 0.1f; // 깜빡임 간격
+        float elapsedTime = 0f; // 경과 시간
+
+        // 깜빡이는 동안의 반복 루프
+        while (elapsedTime < blinkDuration)
+        {
+            // 메쉬들의 색상을 파란색으로 변경
+            foreach (SkinnedMeshRenderer mesh in meshs)
+            {
+                mesh.material.color = Color.blue;
+            }
+
+            // 깜빡임 간격만큼 대기
+            yield return new WaitForSeconds(blinkRate);
+
+            // 메쉬들의 색상을 흰색으로 변경
+            foreach (SkinnedMeshRenderer mesh in meshs)
+            {
+                mesh.material.color = Color.white;
+            }
+
+            // 다시 깜빡임 간격만큼 대기
+            yield return new WaitForSeconds(blinkRate);
+
+            // 경과 시간 업데이트
+            elapsedTime += blinkRate * 2;
+        }
 
         // 피격 상태를 비활성화하고 메쉬들의 색상을 흰색으로 변경
         isDamage = false;
-        foreach (MeshRenderer mesh in meshs)
+        foreach (SkinnedMeshRenderer mesh in meshs)
         {
             mesh.material.color = Color.white;
         }
