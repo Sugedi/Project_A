@@ -50,6 +50,9 @@ public class QuestItemCounter : MonoBehaviour
             if (objectInteraction != null)
             {
                 objectInteraction.mainQuest++;
+                GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1MainQuest = objectInteraction.mainQuest;
+                DataManager.instance.DataSave();
+
                 Debug.Log("mainQuest °ª: " + objectInteraction.mainQuest);
             }
         }

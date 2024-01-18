@@ -7,13 +7,13 @@ public class Weapon : MonoBehaviour
 {
     public enum Type { Range }; // 무기 유형: 원거리
     public Type type; // 현재 무기의 유형    
-    public float baseAttackSpeed; // 무기의 기본 공격 속도    
+    public float baseAttackSpeed = 1.5f; // 무기의 기본 공격 속도    
     public float damageMultiplier = 1f; // 데미지 배율
     public float attackSpeedMultiplier = 1f; // 공격 속도 배율
 
     public int baseMaxAmmo = 20; // 기본 최대 탄약 수
-    public int maxAmmo; // 최대 탄약 수
-    public int curAmmo; // 현재 탄약 수
+    public int maxAmmo = 20; // 최대 탄약 수
+    public int curAmmo = 20; // 현재 탄약 수
 
     // 샷건1 스킬에 대한 속성
     public bool isShotGun1Active = false; // 샷건1 스킬 활성화 여부
@@ -46,7 +46,7 @@ public class Weapon : MonoBehaviour
     // 사이드샷 스킬에 대한 속성
     public bool isSideShotActive = false; // 사이드샷 스킬 활성화 여부    
 
-    public float bulletSpeed; // 총알 속도 기본값 설정
+    public float bulletSpeed = 7; // 총알 속도 기본값 설정
     public Transform bulletPos; // 총알 발사 위치
     public Transform bulletPosLeft; // 총알 발사 위치
     public Transform bulletPosRight; // 총알 발사 위치

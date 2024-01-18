@@ -36,10 +36,10 @@ using UnityEngine.SceneManagement;
 public class Datas
 {
     // 재화
-    public int soul;
+    public int soul = 0;
 
     // 유저 스탯
-    public int maxHP; // 최대체력만 저장해주고, 스위치 때는 현재 체력을 최대 체력으로 회복시키기
+    public int maxHP = 100; // 최대체력만 저장해주고, 스위치 때는 현재 체력을 최대 체력으로 회복시키기
     // public float attackDamage; 
     // public float attackSpeed;
     // public float moveSpeed;
@@ -58,7 +58,7 @@ public class Datas
     public bool stage1ItemBox2 = false; // 전시장 아이템 - true가 되면 
 
     // 퀘스트 진행 상황
-    public int stage1Quest1Pro = 0; // 0은 미수주, 1은 미완, 2는 완료/보상미수령 3은 보상수령
+    public int stage1MainQuest = 0; // 0은 미수주, 1은 미완, 2는 완료/보상미수령 3은 보상수령
     public int stage1Quest2Pro = 0;
 
     // 퍼즐 진행 상황 (문을 여는 등) / 숏컷이랑 통합하자

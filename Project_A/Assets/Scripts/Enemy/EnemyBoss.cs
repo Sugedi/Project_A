@@ -22,7 +22,7 @@ public class EnemyBoss : MonoBehaviour
     public float battackinterval = 2f; // 원거리공격 간격
                                        
     // 넉백 효과 관련 변수
-    public float knockbackForce = 100f; // 넉백의 강도
+    public float knockbackForce = 70f; // 넉백의 강도
     public float knockbackDuration = 0.5f; // 넉백 지속 시간
 
 
@@ -70,7 +70,7 @@ public class EnemyBoss : MonoBehaviour
         if (Vector3.Distance(btarget.position, transform.position) < 1f)
         {
             // 플레이어의 넉백 메서드를 호출
-            btarget.GetComponent<Player>().GetKnockedBack(-chargeDirection, 125f, 20);
+            btarget.GetComponent<Player>().GetKnockedBack(-chargeDirection, 75f, 20);
             //넉백 피해량 20
         }
 

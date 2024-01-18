@@ -9,13 +9,13 @@ public class Player : MonoBehaviour
     // 플레이어 속성값
     // 기본값을 적어줘야 할 듯
     public int gem;
-    public float speed; // 이동 속도 - 저장 안 함.
+    public float speed = 5; // 이동 속도 - 저장 안 함.
     public GameObject[] weapons; // 무기 배열 - 일단 저장해(Start에서 Equip해서 상관은 없을듯)
     public bool[] hasWeapons; // 보유한 무기 여부 배열 - 이것도 애매
     public Camera followCamera; // 카메라 - 안함
-    public int ammo; // 현재 총알 수량 - 이게 현재 총알인가?
+    public int ammo = 9999999; // 현재 총알 수량 - 이게 현재 총알인가?
     public int health; // 현재 체력 - 어차피 저장하면 회복 줌
-    public int maxAmmo; // 최대 총알 수량 - 스킬로 변동
+    public int maxAmmo = 9999999; // 최대 총알 수량 - 스킬로 변동
     public int maxHealth; // 최대 체력 - 저장 해
     public Image gameOverScreen;
 
@@ -684,7 +684,7 @@ public class Player : MonoBehaviour
                 }
                 totalAmmoIncrease += skill.ammoIncrease;
             }
-
+            Debug.Log("dd");
             equipWeapon.UpdateMaxAmmo(totalAmmoIncrease);
         }
 
