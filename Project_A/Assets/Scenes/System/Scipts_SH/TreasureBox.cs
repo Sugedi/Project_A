@@ -12,26 +12,26 @@ public class TreasureBox : MonoBehaviour
 {
     public Treasure treasure;
 
-    static public int treasureNo = 1;
-    static public bool treasure_1 = false;
-    static public bool treasure_2 = false;
+    //public int treasureNo = 1;
+    public bool treasure_1 = false;
+    public bool treasure_2 = false;
 
-    private void Start()
+    //private void Start()
+    //{
+    //    if (treasure == Treasure.BuckShot1)
+    //    {
+    //        treasureNo = 1;
+    //    }
+    //    else if (treasure == Treasure.PierceShot)
+    //    {
+    //        treasureNo = 2;
+    //    }
+
+    //}
+
+    public void TreasureFind()
     {
         if (treasure == Treasure.BuckShot1)
-        {
-            treasureNo = 1;
-        }
-        else if (treasure == Treasure.PierceShot)
-        {
-            treasureNo = 2;
-        }
-
-    }
-
-    public static void TreasureFind()
-    {
-        if (treasureNo == 1)
         {
             if (treasure_1 == false)
             {
@@ -43,7 +43,7 @@ public class TreasureBox : MonoBehaviour
 
         }
 
-        if (treasureNo == 2)
+        if (treasure == Treasure.PierceShot)
         {
             if (treasure_2 == false)
             {
