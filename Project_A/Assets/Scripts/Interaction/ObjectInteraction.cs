@@ -15,16 +15,18 @@ using UnityEngine.UI;
 public class ObjectInteraction : MonoBehaviour
 {
     public GameObject startBtn; // 'Dialogue StartBtn: 거울에 손을 뻗는다'
-
-    public GameObject dialogue1; // 첫 번째 질서의 신 대화창
-    public GameObject dialogue2; // 두 번째 질서의 신 대화창
-    public GameObject dialogue3; // 세 번째 질서의 신 대화창
+    public GameObject dialoguePanel1;
+    public GameObject dialoguePanel2;
+    public GameObject dialoguePanel3;
 
     // MainQuest Panels 참조
     public GameObject mainQuestPanel1;
     public GameObject mainQuestPanel2;
     public GameObject mainQuestPanel3;
 
+    public GameObject nextButton1;
+    public GameObject nextButton2;
+    public GameObject nextButton3;
 
     public GameObject questIcon; // 퀘스트 아이콘
 
@@ -54,20 +56,75 @@ public class ObjectInteraction : MonoBehaviour
             if (mainQuest == 0)
             {
                 startBtn.SetActive(true);
-
             }
 
             if (mainQuest == 1)
             {
-                Dialogue_2On();
+                dialoguePanel2.SetActive(true);
+                questIcon.SetActive(false); // questIcon을 비활성화
             }
 
             if (mainQuest == 2)
             {
-                Dialogue_3On();
-            }
+                dialoguePanel3.SetActive(true);
+                questIcon.SetActive(false); // questIcon을 비활성화
+            } 
 
         }
+    }
+    public void OnStartBtnClick()
+    {
+        if(mainQuest == 0)
+        {
+            dialoguePanel1.SetActive(true);
+        }
+        if(mainQuest == 1)
+        {
+            dialoguePanel2.SetActive(true);
+            questIcon.SetActive(false);
+        }
+        if(mainQuest == 2)
+        {
+            dialoguePanel3.SetActive(true);
+            questIcon.SetActive(false);
+        }
+    }
+
+    public void OnNextButton1Clicked()
+    {
+        Debug.Log("OnNextButton1Clicked() 메서드 호출됨"); // 로그 추가
+        
+        mainQuest++;
+        Debug.Log("mainQuest: " + mainQuest); // 로그 추가
+
+        startBtn.SetActive(false);
+        dialoguePanel1.SetActive(false);
+        questIcon.SetActive(true); // 퀘스트 아이콘 버튼을 활성화
+
+        // 여기에 실제로 전달하고 싶은 메시지를 입력하세요.
+        string message = "주요 대본 1이 활성화 되었습니다.";
+        ActivateSystemMessagePanel(message);        
+
+    }
+
+    public void OnNextButton2Clicked()
+    {
+        dialoguePanel2.SetActive(false);
+        questIcon.SetActive(true); // questIcon을 활성화
+    }
+
+    public void OnNextButton3Clicked()
+    {
+        mainQuest++;
+        dialoguePanel3.SetActive(false);
+        questIcon.SetActive(true); // questIcon을 활성화
+
+        mainQuestPanel2.SetActive(false);
+        mainQuestPanel3.SetActive(true);
+
+        // 여기에 실제로 전달하고 싶은 메시지를 입력하세요.
+        string message = "주요 대본 1을 완성하였습니다.";
+        ActivateSystemMessagePanel(message);
     }
 
 
@@ -76,66 +133,9 @@ public class ObjectInteraction : MonoBehaviour
         if (other.CompareTag("Player")) // 트리거를 빠져나간 오브젝트의 태그가 Player인 경우
         {
             isPlayerInRange = false; // 플레이어가 상호작용 범위 내에 없음을 표시
+            startBtn.SetActive(false);
         }
-    }
-
-
-    // 대화창 닫기 버튼이 눌렸을 때 호출되는 메서드
-    public void NextButtonOn()
-    {
-        if (mainQuest == 0)
-        {
-            Dialogue_1On();
-        }
-
-        if (mainQuest == 1)
-        {
-            Dialogue_2Off();
-        }
-
-        if (mainQuest == 2)
-        {
-            Dialogue_3Off();
-        }
-
-    }
-
-
-    public void Dialogue_1On() // 대화창 1이 켜질 때
-    {
-        dialogue1.SetActive(true); // 질서의 신 첫 번째 대화창 활성화
-        startBtn.SetActive(false); // 상호작용 버튼 비활성화
-    }
-
-    void Dialogue_1Off() // 대화창 1이 꺼질 때
-    {
-        dialogue1.SetActive(false); // 질서의 신 첫 번째 대화창 비활성
-        questIcon.SetActive(true);
-        ActivateSystemMessagePanel("주요 대본이 활성화 되었습니다."); // 메시지는 상황에 맞게 변경 가능
-        mainQuest++; // 메인 퀘스트 상태 업데이트
-
-    }
-
-    void Dialogue_2On() // 대화창 2가 켜질 때
-    {
-        dialogue2.SetActive(true); // 질서의 신 두 번째 대화창 활성화
-    }
-
-    void Dialogue_2Off() // 대화창 2가 꺼질 때
-    {
-        dialogue2.SetActive(false); // 질서의 신 두 번째 대화창 비활성
-    }
-
-
-    void Dialogue_3On() // 대화창 3이 켜질 때
-    {
-        dialogue3.SetActive(true); // 질서의 신 세 번째 대화창 활성화
-    }
-
-    void Dialogue_3Off() // 대화창 3이 꺼질 때
-    {
-        dialogue3.SetActive(false); // 질서의 신 세 번째 대화창 비활성
-    }
+    }  
 
     // 시스템 메시지 패널을 활성화하고, 지정된 시간 후에 비활성화하는 메서드
     private void ActivateSystemMessagePanel(string message)
@@ -146,12 +146,20 @@ public class ObjectInteraction : MonoBehaviour
     }
 
     // 시스템 메시지 패널을 표시하는 코루틴
-    private IEnumerator ShowSystemMessage(float displayTime)
+    IEnumerator ShowSystemMessage(float displayTime)
     {
         yield return new WaitForSeconds(displayTime); // 지정된 시간 동안 대기
         systemMessagePanel.SetActive(false); // 패널 비활성화
     }
+    public void RefreshItemCounter(int itemValue)
+    {
+        if (itemValue == 1)
+        {
+            mainQuestPanel1.SetActive(false);
+            mainQuestPanel2.SetActive(true);
+        }
 
+    }
 
 }
 

@@ -14,10 +14,7 @@ using Unity.VisualScripting;
 public class QuestItemCounter : MonoBehaviour
 {
     // 플레이어가 수집해야 하는 아이템의 현재 개수
-    public int itemValue = 0;
-
-    //UIManager에 대한 참조 : 해당 스크립트에서 아이템 값이 증가했을 때 'UIManager'의 메서드를 호출하여 퀘스트 구현
-    public UIManager uiManager;
+    public int itemValue = 0;    
 
     // ObjectInteraction에 대한 참조
     public ObjectInteraction objectInteraction;
@@ -47,15 +44,14 @@ public class QuestItemCounter : MonoBehaviour
             gameObject.SetActive(false); // 아이템 비활성화
             Debug.Log("먹었당~");
 
-            uiManager.RefreshItemCounter(itemValue); // UIManager의 메서드 호출
+            objectInteraction.RefreshItemCounter(itemValue);
 
             // ObjectInteraction의 mainQuest 값을 증가
-            // 아래 방법으로 QuestItemCounter 스크립트 내에서 ObjectInteraction의 mainQuest 변수를 업데이트 할 수 있음
             if (objectInteraction != null)
             {
                 objectInteraction.mainQuest++;
+                Debug.Log("mainQuest 값: " + objectInteraction.mainQuest);
             }
-
         }
     }
 
