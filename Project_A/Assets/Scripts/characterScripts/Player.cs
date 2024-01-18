@@ -120,7 +120,7 @@ public class Player : MonoBehaviour
 
     void SpaceFunction()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.01f);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 2f);
         foreach (Collider collider in hitColliders)
         {
             if (collider.CompareTag("NPC"))
