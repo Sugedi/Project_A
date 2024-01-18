@@ -19,7 +19,7 @@ MonoBehaviour:
   ammoIncrease: 0
   isShotGun1: 1
   shotGun1Count: 2
-  shotGun1SpreadAngle: 45
+  shotGun1SpreadAngle: 20
   isShotGun2: 0
   shotGun2Count: 3
   shotGun2SpreadAngle: 45
@@ -29,3 +29,8 @@ MonoBehaviour:
   isShotGun4: 0
   shotGun4Count: 5
   shotGun4SpreadAngle: 45
+  isPierceShot: 0
+  isBoomShot: 0
+  boomShotRadius: 0
+  boomShotDamage: 0
+  isSideShot: 0
