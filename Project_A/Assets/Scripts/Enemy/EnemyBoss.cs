@@ -67,10 +67,10 @@ public class EnemyBoss : MonoBehaviour
         banim.SetTrigger("doAttack02");
 
         // 충전 공격이 플레이어에게 닿는 순간을 가정한 시점
-        if (Vector3.Distance(btarget.position, transform.position) < 2f)
+        if (Vector3.Distance(btarget.position, transform.position) < 1f)
         {
             // 플레이어의 넉백 메서드를 호출
-            btarget.GetComponent<Player>().GetKnockedBack(-chargeDirection, 150f);
+            btarget.GetComponent<Player>().GetKnockedBack(-chargeDirection, 100f);
         }
 
         yield return new WaitForSeconds(chargeDuration);
@@ -280,18 +280,7 @@ public class EnemyBoss : MonoBehaviour
                 bTakeDamage(bullet, collision.contacts[0].point);
             }
         }
-
-        if (collision.collider.CompareTag("Player") && !bisChase)
-        {
-            // 플레이어에게 넉백 효과 적용
-            Rigidbody playerRigidbody = collision.collider.GetComponent<Rigidbody>();
-            if (playerRigidbody != null)
-            {
-                Vector3 knockbackDirection = (collision.transform.position - transform.position).normalized;
-                float knockbackForce = 150; // 적절한 넉백 강도로 조정하세요
-                playerRigidbody.AddForce(knockbackDirection * knockbackForce, ForceMode.Impulse);
-            }
-        }
+        
     }
 
     void OnTriggerEnter(Collider other)

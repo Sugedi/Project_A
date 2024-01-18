@@ -497,6 +497,14 @@ public class Player : MonoBehaviour
             }
         }
     }
+    public void GetKnockedBack(Vector3 direction, float force)
+    {
+        Rigidbody playerRigidbody = GetComponent<Rigidbody>();
+        if (playerRigidbody != null)
+        {
+            playerRigidbody.AddForce(direction.normalized * force, ForceMode.Impulse);
+        }
+    }
 
     // 죽음 처리 메서드
     void Die()
