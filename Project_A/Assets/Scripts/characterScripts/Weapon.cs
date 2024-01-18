@@ -243,16 +243,7 @@ public class Weapon : MonoBehaviour
                 closestDistanceSqr = dSqrToTarget;
                 closestTarget = potentialTarget.transform;
             }
-        }
-        // 선택된 가장 가까운 적의 이름을 콘솔에 출력합니다.
-        if (closestTarget != null)
-        {
-            Debug.Log("가장 가까운 적: " + closestTarget.name);
-        }
-        else
-        {
-            Debug.Log("적을 찾을 수 없음");
-        }
+        }       
 
         return closestTarget;
     }
