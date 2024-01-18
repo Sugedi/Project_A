@@ -220,7 +220,7 @@ public class EnemyBoss : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             GameObject instantBullet = Instantiate(bbullet, transform.position, transform.rotation);
             Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
-            rigidBullet.velocity = transform.forward * 20;
+            rigidBullet.velocity = transform.forward * 15;
 
             // 2√  ¥Î±‚
             yield return new WaitForSeconds(2f);
