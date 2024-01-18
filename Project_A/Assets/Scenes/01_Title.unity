@@ -1396,7 +1396,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   datas:
-    maxHP: 3
+    soul: 0
+    maxHP: 100
     skillHave: []
     stage1ItemBox1: 0
     stage1ItemBox2: 0
@@ -3058,6 +3059,7 @@ MonoBehaviour:
   meshs: []
   equipWeapon: {fileID: 0}
   datas:
+    soul: 0
     maxHP: 3
     skillHave: []
     stage1ItemBox1: 0
@@ -3386,6 +3388,7 @@ MonoBehaviour:
   maxHP: 0
   attackDamage: 0
   datas:
+    soul: 0
     maxHP: 3
     skillHave: []
     stage1ItemBox1: 0
@@ -3675,6 +3678,7 @@ MonoBehaviour:
   mainGroup: {fileID: 0}
   optionGroup: {fileID: 0}
   datas:
+    soul: 0
     maxHP: 3
     skillHave: []
     stage1ItemBox1: 0
@@ -4238,6 +4242,7 @@ MonoBehaviour:
   mainGroup: {fileID: 0}
   optionGroup: {fileID: 0}
   datas:
+    soul: 0
     maxHP: 3
     skillHave: []
     stage1ItemBox1: 0
@@ -4582,6 +4587,7 @@ MonoBehaviour:
   mainGroup: {fileID: 0}
   optionGroup: {fileID: 0}
   datas:
+    soul: 0
     maxHP: 3
     skillHave: []
     stage1ItemBox1: 0
@@ -4995,6 +5001,7 @@ MonoBehaviour:
   mainGroup: {fileID: 1392676447}
   optionGroup: {fileID: 1930492859}
   datas:
+    soul: 0
     maxHP: 3
     skillHave: []
     stage1ItemBox1: 0
@@ -5651,6 +5658,7 @@ MonoBehaviour:
   mainGroup: {fileID: 1392676447}
   optionGroup: {fileID: 1930492859}
   datas:
+    soul: 0
     maxHP: 3
     skillHave: []
     stage1ItemBox1: 0
@@ -5816,6 +5824,7 @@ MonoBehaviour:
   mainGroup: {fileID: 1392676447}
   optionGroup: {fileID: 1930492859}
   datas:
+    soul: 0
     maxHP: 3
     skillHave: []
     stage1ItemBox1: 0
