@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 // =============================================================================================================
 // 이 스크립트는 플레이어가 특정 오브젝트(퀘스트 아이템)와 충돌할 때(`OnTriggerEnter`)마다 작동합니다.
@@ -18,9 +19,13 @@ public class QuestItemCounter : MonoBehaviour
     //UIManager에 대한 참조 : 해당 스크립트에서 아이템 값이 증가했을 때 'UIManager'의 메서드를 호출하여 퀘스트 구현
     public UIManager uiManager;
 
+    // ObjectInteraction에 대한 참조
+    public ObjectInteraction objectInteraction;
+
     // 아이템이 이미 수집되었는지 여부를 확인하는 플래그
     // 작성한 이유: 플레이어에 콜라이더가 2개 존재하여 아이템이 1번 닿으면 2개씩 카운팅 됨
-    private bool alreadyCollected = false; 
+    private bool alreadyCollected = false;
+
 
     // 플레이어가 퀘스트 아이템과 충돌할 때 호출되는 메서드
     private void OnTriggerEnter(Collider other)
@@ -43,7 +48,13 @@ public class QuestItemCounter : MonoBehaviour
             Debug.Log("먹었당~");
 
             uiManager.RefreshItemCounter(itemValue); // UIManager의 메서드 호출
-            
+
+            // ObjectInteraction의 mainQuest 값을 증가
+            // 아래 방법으로 QuestItemCounter 스크립트 내에서 ObjectInteraction의 mainQuest 변수를 업데이트 할 수 있음
+            if (objectInteraction != null)
+            {
+                objectInteraction.mainQuest++;
+            }
 
         }
     }

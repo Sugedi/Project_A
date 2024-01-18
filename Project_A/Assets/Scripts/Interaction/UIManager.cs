@@ -33,23 +33,8 @@ public class UIManager : MonoBehaviour
         dialogue1UI.SetActive(false);
         nextButtonUI.SetActive(false); // Next 버튼을 비활성화
         questIconButton.SetActive(true); // 퀘스트 아이콘 버튼을 활성화
-        ActivateSystemMessagePanel("주요 대본이 활성화 되었습니다."); // 메시지는 상황에 맞게 변경 가능
     }
 
-    // 시스템 메시지 패널을 활성화하고, 3초 후에 비활성화하는 메서드
-    private void ActivateSystemMessagePanel(string message)
-    {
-        systemMessagePanel.SetActive(true);
-        systemMessageText.text = message; // 메시지 설정
-        StartCoroutine(ShowSystemMessagePanel(3f)); // 코루틴 시작
-    }
-
-    // 시스템 메시지 패널을 표시하는 코루틴
-    private IEnumerator ShowSystemMessagePanel(float displayTime)
-    {
-        yield return new WaitForSeconds(displayTime); // 지정된 시간 동안 대기
-        systemMessagePanel.SetActive(false); // 패널 비활성화
-    }
 
 
     // 아이템 카운터를 업데이트하는 메서드
