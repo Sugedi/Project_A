@@ -450,6 +450,8 @@ public class Player : MonoBehaviour
 
                 case Item.Type.Gem:
                     gem += item.value;
+                    GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul = gem;
+                    //DataManager.instance.DataSave();
                     break;
             }
             // 파괴하는 거
@@ -542,8 +544,11 @@ public class Player : MonoBehaviour
         // 게임 오버 화면을 활성화하고 회색으로 만듭니다.
         gameOverScreen.gameObject.SetActive(true);
 
+        DataManager.instance.datas.soul /= 2;
+
         // 씬의 모든 움직임을 멈춥니다. (필요한 경우)
         Time.timeScale = 0;
+        
     }
     // 데미지 표시 코루틴
     IEnumerator OnDamage()

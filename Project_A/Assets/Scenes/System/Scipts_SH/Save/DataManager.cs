@@ -116,8 +116,8 @@ public class DataManager : MonoBehaviour
         
 
         // 캐릭터 세이브 위치 저장 테스트 - 이건 스위치에다가 삽입하면 될듯
-        Transform playerTrans = GameObject.Find("Player").GetComponent<Transform>();
-        Vector3 playerPos = playerTrans.position;
+        //Transform playerTrans = GameObject.Find("Player").GetComponent<Transform>();
+        //Vector3 playerPos = playerTrans.position;
 
         // 자동저장 형
         //ES3AutoSaveMgr.Current.Save();
