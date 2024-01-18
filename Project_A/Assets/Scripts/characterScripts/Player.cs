@@ -506,6 +506,11 @@ public class Player : MonoBehaviour
         {
             health -= damage;
             StartCoroutine(OnDamage());
+
+            if (anim != null)
+            {
+                anim.SetTrigger("doSlip");
+            }
         }
 
         // 그 후에 넉백 효과를 적용합니다.
