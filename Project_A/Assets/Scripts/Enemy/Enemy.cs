@@ -120,7 +120,7 @@ public class Enemy : MonoBehaviour
         {
             case Type.A:
                 targetRadius = 1f;
-                targetRange = 1f;
+                targetRange = 0.8f;
                 break;
             case Type.B:
                 targetRadius = 1f;
@@ -131,8 +131,20 @@ public class Enemy : MonoBehaviour
                 targetRange = 8f;
                 break;
         }
-        // 플레이어를 감지하면 공격 시작
-        RaycastHit[] rayHits =
+
+        float distanceToPlayer = Vector3.Distance(transform.position, target.position);
+
+        // 플레이어가 근접 공격 범위 안에 있으면 Attack 코루틴 호출
+        if (distanceToPlayer <= targetRadius)
+        {
+            if (!isAttack)
+            {
+                StartCoroutine(Attack());
+            }
+        }
+
+    // 플레이어를 감지하면 공격 시작
+    RaycastHit[] rayHits =
             Physics.SphereCastAll(transform.position,
             targetRadius, transform.forward, targetRange,
             LayerMask.GetMask("Player"));
@@ -155,11 +167,11 @@ public class Enemy : MonoBehaviour
         {
             case Type.A:
                 // 0.2초 대기 후 근접 공격 범위 활성화
-                yield return new WaitForSeconds(0f);
+                yield return new WaitForSeconds(0.2f);
                 meleeArea.enabled = true;
 
                 // 1초 후 근접 공격 범위 비활성화
-                yield return new WaitForSeconds(0f);
+                 yield return new WaitForSeconds(0.7f);
                 meleeArea.enabled = false;
 
                 // 1초 대기
