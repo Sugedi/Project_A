@@ -71,17 +71,18 @@ public class Player : MonoBehaviour
     // 승호 추가 시작
     public void SaveHeal()
     {
-        health = maxHealth;
+        maxHealth = GameObject.Find("DataManager").GetComponent<DataManager>().datas.maxHP;
+        health = GameObject.Find("DataManager").GetComponent<DataManager>().datas.maxHP;
 
     }
 
     private void Start()
     {
         ES3.LoadInto(KeyName, datas);
-        activeSkills = datas.skillHave;
-        maxHealth = datas.maxHP;
-        health = maxHealth;
-        gem = datas.soul;
+        activeSkills = GameObject.Find("DataManager").GetComponent<DataManager>().datas.skillHave;
+        maxHealth = GameObject.Find("DataManager").GetComponent<DataManager>().datas.maxHP;
+        gem = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
+        health = GameObject.Find("DataManager").GetComponent<DataManager>().datas.maxHP;
         EquipWeapon(0);
 
 
@@ -107,17 +108,17 @@ public class Player : MonoBehaviour
     {
         // 씬이 바뀌었을 때, 플레이어의 스탯을 마지막으로 저장된 값으로 변경
         ES3.LoadInto(KeyName, datas);
-        activeSkills = datas.skillHave;
-        maxHealth = datas.maxHP;
-        gem = datas.soul;
+        activeSkills = GameObject.Find("DataManager").GetComponent<DataManager>().datas.skillHave;
+        maxHealth = GameObject.Find("DataManager").GetComponent<DataManager>().datas.maxHP;
+        gem = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
     }
 
     public void SkillGet()
     {
         ES3.LoadInto(KeyName, datas);
-        activeSkills = datas.skillHave;
-        maxHealth = datas.maxHP;
-        gem = datas.soul;
+        activeSkills = GameObject.Find("DataManager").GetComponent<DataManager>().datas.skillHave;
+        maxHealth = GameObject.Find("DataManager").GetComponent<DataManager>().datas.maxHP;
+        gem = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
         EquipWeapon(0);
     }
 
