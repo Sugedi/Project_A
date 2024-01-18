@@ -36,7 +36,7 @@ using UnityEngine.SceneManagement;
 public class Datas
 {
     // 재화
-    public static int Soul;
+    public int soul;
 
     // 유저 스탯
     public int maxHP = 3; // 최대체력만 저장해주고, 스위치 때는 현재 체력을 최대 체력으로 회복시키기

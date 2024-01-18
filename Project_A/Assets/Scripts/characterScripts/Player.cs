@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     bool jDown; // 점프 입력 여부
     bool fDown; // 공격 입력 여부
     bool rDown; // 재장전 입력 여부
-        
+
     // 상태 변수
     bool isDodge; // 회피 상태 여부    
     bool isReload; // 재장전 상태 여부
@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
 
     // 초기화 시키는 거
     void Awake()
-    {              
+    {
         rigid = GetComponent<Rigidbody>(); // Rigidbody 컴포넌트 가져오기
         anim = GetComponentInChildren<Animator>(); // Animator 컴포넌트 가져오기
         meshs = GetComponentsInChildren<SkinnedMeshRenderer>(); // MeshRenderer 배열 가져오기
@@ -81,9 +81,10 @@ public class Player : MonoBehaviour
         activeSkills = datas.skillHave;
         maxHealth = datas.maxHP;
         health = maxHealth;
+        gem = datas.soul;
         EquipWeapon(0);
 
-        
+
 
         // 스테이지에 입장하면 위치를 저장된 세이브 위치 혹은 초기 위치로 복귀
         if (SceneManager.GetActiveScene().name == "Stage")
@@ -108,6 +109,7 @@ public class Player : MonoBehaviour
         ES3.LoadInto(KeyName, datas);
         activeSkills = datas.skillHave;
         maxHealth = datas.maxHP;
+        gem = datas.soul;
     }
 
     public void SkillGet()
@@ -115,6 +117,7 @@ public class Player : MonoBehaviour
         ES3.LoadInto(KeyName, datas);
         activeSkills = datas.skillHave;
         maxHealth = datas.maxHP;
+        gem = datas.soul;
         EquipWeapon(0);
     }
 
@@ -128,7 +131,7 @@ public class Player : MonoBehaviour
 
                 // 비활성화된 게임 오브젝트 찾아오기 왤케 어려움?
                 //GameObject.Find("Skill").transform.Find("SkillCanvas").gameObject.SetActive(true);
-                
+
                 GameObject.Find("Workbench baked").GetComponent<SkillNPC>().Interact();
 
                 // 이거 비활성화 말고, 메인 메뉴에서 썼던 캔버스 그룹으로 껐다 켜는 게 나을 듯 하다.
@@ -168,8 +171,8 @@ public class Player : MonoBehaviour
                 {
                     collider.gameObject.GetComponent<TreasureBox>().TreasureFind();
                 }
-                
-                
+
+
             }
 
         }
@@ -202,7 +205,7 @@ public class Player : MonoBehaviour
         }
 
     }
-    
+
     void GetInput()
     {
         hAxis = Input.GetAxisRaw("Horizontal"); // 가로 축 입력값 받기
@@ -263,7 +266,7 @@ public class Player : MonoBehaviour
     public float Wallscope = 1f;
     bool CheckHitWall(List<Vector3> rayPositions, Vector3 movement)
     {
-        
+
 
         foreach (Vector3 pos in rayPositions)
         {
@@ -314,7 +317,7 @@ public class Player : MonoBehaviour
         isFireReady = (1f / (equipWeapon.baseAttackSpeed * equipWeapon.attackSpeedMultiplier)) < fireDelay; // 공격 딜레이 체크
 
         if (fDown && isFireReady && !isDodge)
-        {            
+        {
             equipWeapon.Use(); // 무기 사용
             anim.SetTrigger("doShot"); // 무기 종류에 따라 애니메이션 설정
             fireDelay = 0; // 딜레이 초기화
@@ -328,7 +331,7 @@ public class Player : MonoBehaviour
             return;
 
         if (rDown && !isDodge && isFireReady)
-        {            
+        {
             isReload = true; // 재장전 중 상태 설정
             float reloadTime = 3f * GetReloadTimeMultiplier(); // 재장전 시간을 계산합니다.
             Invoke("ReloadOut", reloadTime); // 3초 후 재장전 완료 처리
@@ -375,7 +378,7 @@ public class Player : MonoBehaviour
     {
         speed *= 0.5f; // 이동 속도 원래대로 감소
         isDodge = false; // 회피 완료 후 상태 설정
-    }   
+    }
 
     // 회전 고정 함수
     void FreezeRotation()
@@ -490,7 +493,7 @@ public class Player : MonoBehaviour
                 // 데미지 표시 코루틴 실행
                 StartCoroutine(OnDamage());
 
-                
+
             }
         }
     }
@@ -505,7 +508,7 @@ public class Player : MonoBehaviour
         anim.SetTrigger("Die");
 
         StartCoroutine(DieSequence());
-        
+
     }
 
     IEnumerator DieSequence()
@@ -515,7 +518,7 @@ public class Player : MonoBehaviour
 
         // 게임 오버 화면을 활성화하고 회색으로 만듭니다.
         gameOverScreen.gameObject.SetActive(true);
-        
+
         // 씬의 모든 움직임을 멈춥니다. (필요한 경우)
         Time.timeScale = 0;
     }
@@ -552,7 +555,7 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(blinkRate);
 
             // 경과 시간 업데이트
-            elapsedTime += blinkRate *9;
+            elapsedTime += blinkRate * 9;
         }
 
         // 피격 상태를 비활성화하고 메쉬들의 색상을 흰색으로 변경
@@ -594,7 +597,7 @@ public class Player : MonoBehaviour
         int totalAmmoIncrease = 0; // 최대 탄창 증가량을 기본 0으로 설정합니다.
         float boomShotRadius = 0f; // 붐샷 스킬 피해 범위
         float boomShotDamage = 0f; // 붐샷 스킬 피해량
-        
+
 
         // 활성화된 스킬들을 순회하며 데미지 및 공격 속도 배율을 계산합니다.
         foreach (var skill in activeSkills)
@@ -649,10 +652,10 @@ public class Player : MonoBehaviour
                 // SideShot 스킬 적용 로직
                 if (skill != null && skill.isSideShot)
                 {
-                    sideShotActive = true;                    
+                    sideShotActive = true;
                 }
                 totalAmmoIncrease += skill.ammoIncrease;
-            } 
+            }
 
             equipWeapon.UpdateMaxAmmo(totalAmmoIncrease);
         }
@@ -726,8 +729,8 @@ public class Player : MonoBehaviour
             // 샷건2 스킬이 비활성화되면 기본값으로 재설정합니다.
             equipWeapon.shotGun4Bullets = 0;
             equipWeapon.shotGun4SpreadAngle = 0f;
-        }        
-       
+        }
+
     }
 
     // 새로운 스킬을 추가하는 메서드입니다.
@@ -760,5 +763,5 @@ public class Player : MonoBehaviour
         if (other.tag == "Weapon")
             nearObject = null;
     }
-    
+
 }

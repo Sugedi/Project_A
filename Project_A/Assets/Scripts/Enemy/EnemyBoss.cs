@@ -22,7 +22,7 @@ public class EnemyBoss : MonoBehaviour
     public float battackinterval = 2f; // 원거리공격 간격
                                        
     // 넉백 효과 관련 변수
-    public float knockbackForce = 5f; // 넉백의 강도
+    public float knockbackForce = 100f; // 넉백의 강도
     public float knockbackDuration = 0.5f; // 넉백 지속 시간
 
 
@@ -59,26 +59,24 @@ public class EnemyBoss : MonoBehaviour
     IEnumerator ChargeAttack()
     {
         bisChase = false;
-
-        
-
         yield return new WaitForSeconds(0.1f);
 
-        // Add force for the charge attack
+        // 충전 방향 계산
         Vector3 chargeDirection = (btarget.position - transform.position).normalized;
-        // brigid.AddForce(transform.forward * chargeSpeed * Time.deltaTime, ForceMode.Impulse);
         brigid.AddForce(chargeDirection * chargeSpeed * Time.deltaTime, ForceMode.Impulse);
         banim.SetTrigger("doAttack02");
 
+        // 충전 공격이 플레이어에게 닿는 순간을 가정한 시점
+        if (Vector3.Distance(btarget.position, transform.position) < 2f)
+        {
+            // 플레이어의 넉백 메서드를 호출
+            btarget.GetComponent<Player>().GetKnockedBack(-chargeDirection, 150f);
+        }
+
         yield return new WaitForSeconds(chargeDuration);
-
-        // Stop the rigidbody velocity after the charge
         brigid.velocity = Vector3.zero;
-
         yield return new WaitForSeconds(0.2f);
-
         bisChase = true;
-
 
         StartCoroutine(ChargeCooldown());
     }
@@ -282,6 +280,18 @@ public class EnemyBoss : MonoBehaviour
                 bTakeDamage(bullet, collision.contacts[0].point);
             }
         }
+
+        if (collision.collider.CompareTag("Player") && !bisChase)
+        {
+            // 플레이어에게 넉백 효과 적용
+            Rigidbody playerRigidbody = collision.collider.GetComponent<Rigidbody>();
+            if (playerRigidbody != null)
+            {
+                Vector3 knockbackDirection = (collision.transform.position - transform.position).normalized;
+                float knockbackForce = 150; // 적절한 넉백 강도로 조정하세요
+                playerRigidbody.AddForce(knockbackDirection * knockbackForce, ForceMode.Impulse);
+            }
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -297,22 +307,7 @@ public class EnemyBoss : MonoBehaviour
         }
         else if (other.CompareTag("Player"))
         {
-            // 돌진 공격 중이고 넉백 쿨다운이 아닐 때만 넉백을 적용합니다.
-            if (isCharging && !chargeOnCooldown)
-            {
-                Rigidbody playerRigidbody = other.GetComponent<Rigidbody>();
-                if (playerRigidbody != null)
-                {
-                    // 넉백 방향은 보스에서 플레이어를 향하는 방향입니다.
-                    Vector3 knockbackDirection = (other.transform.position - transform.position).normalized;
-                    knockbackDirection.y = 0; // 상하방향 넉백 제외 (필요에 따라 조정)
-
-                    // 넉백 효과를 플레이어에게 적용합니다.
-                    playerRigidbody.velocity = Vector3.zero; // 플레이어의 현재 운동 상태를 초기화합니다.
-                    playerRigidbody.AddForce(knockbackDirection * knockbackForce, ForceMode.Impulse);
-                }
-            }
-
+           
             bisChase = true;
             // banim.SetBool("isWalk", true); // 필요하다면 애니메이션 상태도 변경할 수 있습니다.
         }
