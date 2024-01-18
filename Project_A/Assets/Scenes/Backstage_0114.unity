@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17276956, g: 0.21589413, b: 0.29782727, a: 1}
+  m_IndirectSpecularColor: {r: 0.17276905, g: 0.2158935, b: 0.2978262, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -21681,7 +21681,7 @@ GameObject:
   - component: {fileID: 1290707317}
   m_Layer: 0
   m_Name: Workbench baked
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21712,7 +21712,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1290707313}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1.1
@@ -23745,6 +23745,10 @@ PrefabInstance:
     - target: {fileID: 1762766438536454, guid: 4d71afa5402df401cae5bef0cc65d5e8, type: 3}
       propertyPath: m_Name
       value: door-house-simple
+      objectReference: {fileID: 0}
+    - target: {fileID: 1762766438536454, guid: 4d71afa5402df401cae5bef0cc65d5e8, type: 3}
+      propertyPath: m_TagString
+      value: Door
       objectReference: {fileID: 0}
     - target: {fileID: 4321685144267452, guid: 4d71afa5402df401cae5bef0cc65d5e8, type: 3}
       propertyPath: m_RootOrder

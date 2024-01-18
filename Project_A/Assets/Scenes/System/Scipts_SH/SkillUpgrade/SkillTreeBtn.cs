@@ -400,7 +400,7 @@ public class SkillTreeBtn : MonoBehaviour
                 skillTree.interactable = false;
                 skillTree.blocksRaycasts = false;
 
-                CanvasGroup MainUI = GameObject.Find("MainCanvas").GetComponent<CanvasGroup>();
+                CanvasGroup MainUI = GameObject.Find("StageUI").GetComponent<CanvasGroup>();
                 MainUI.alpha = 1;
                 MainUI.interactable = true;
                 MainUI.blocksRaycasts = true;

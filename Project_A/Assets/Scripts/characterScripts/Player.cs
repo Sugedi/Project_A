@@ -120,7 +120,7 @@ public class Player : MonoBehaviour
 
     void SpaceFunction()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 2f);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.01f);
         foreach (Collider collider in hitColliders)
         {
             if (collider.CompareTag("NPC"))
@@ -129,7 +129,7 @@ public class Player : MonoBehaviour
                 // 비활성화된 게임 오브젝트 찾아오기 왤케 어려움?
                 //GameObject.Find("Skill").transform.Find("SkillCanvas").gameObject.SetActive(true);
                 
-                GameObject.Find("SkillNPC").GetComponent<SkillNPC>().Interact();
+                GameObject.Find("Workbench baked").GetComponent<SkillNPC>().Interact();
 
                 // 이거 비활성화 말고, 메인 메뉴에서 썼던 캔버스 그룹으로 껐다 켜는 게 나을 듯 하다.
                 // 웬만하면 비활성화 안 시키는 게 좋을지도..?
@@ -552,7 +552,7 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(blinkRate);
 
             // 경과 시간 업데이트
-            elapsedTime += blinkRate * 2;
+            elapsedTime += blinkRate *9;
         }
 
         // 피격 상태를 비활성화하고 메쉬들의 색상을 흰색으로 변경
