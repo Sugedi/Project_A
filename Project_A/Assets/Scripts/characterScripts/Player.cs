@@ -86,7 +86,6 @@ public class Player : MonoBehaviour
         EquipWeapon(0);
 
 
-
         // 스테이지에 입장하면 위치를 저장된 세이브 위치 혹은 초기 위치로 복귀
         if (SceneManager.GetActiveScene().name == "Stage")
         {

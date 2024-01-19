@@ -60,6 +60,8 @@ public class Weapon : MonoBehaviour
     private ObjectPool<GameObject> pierceBulletPool;
     private ObjectPool<GameObject> sideBulletPool; // 추적 총알을 위한 오브젝트 풀
 
+    public Weapon weapon;
+
     void Awake()
     {
         // 총알 풀을 초기화합니다.
@@ -109,6 +111,11 @@ public class Weapon : MonoBehaviour
             maxSize: 120       // 사이드샷 총알의 최대 용량
         );
 
+    }
+
+    void Start()
+    {
+        weapon.curAmmo = GameObject.Find("DataManager").GetComponent<Weapon>().maxAmmo;
     }
 
     // 스킬에 의해 변경된 최대 탄창을 적용하는 메서드

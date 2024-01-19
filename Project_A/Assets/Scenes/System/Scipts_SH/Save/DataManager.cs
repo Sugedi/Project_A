@@ -94,12 +94,16 @@ public class DataManager : MonoBehaviour
 
     //public GameObject stat;
 
+    private void Awake()
+    {
+        DataLoad();
+    }
+
     void Start()
     {
         instance = this;
 
         // 게임 접속 시 저장된 데이터 로드
-        DataLoad();
         //SkillUpdate();
     }
 
