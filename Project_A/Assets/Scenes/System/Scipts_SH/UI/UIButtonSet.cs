@@ -12,6 +12,9 @@ public enum ButtonType
     Option,
     Sound,
     Back,
+    DataResetUI,
+    DataReset,
+    DataResetBack,
     Quit
 }
 

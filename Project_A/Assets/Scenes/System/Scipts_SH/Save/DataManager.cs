@@ -40,14 +40,6 @@ public class Datas
 
     // 유저 스탯
     public int maxHP = 100; // 최대체력만 저장해주고, 스위치 때는 현재 체력을 최대 체력으로 회복시키기
-    // public float attackDamage; 
-    // public float attackSpeed;
-    // public float moveSpeed;
-
-    // 총기 & 스킬 - 스킬에서 저장해서 쓸모가 없는듯
-    //public int maxBullet;
-    //public float reloadTime;
-    //public float range;
 
     // 스킬 에셋을 불러와 저장해야 함.
     public List<Skill> skillHave;
@@ -59,11 +51,7 @@ public class Datas
 
     // 퀘스트 진행 상황
     public int stage1MainQuest = 0; // 0은 미수주, 1은 미완, 2는 완료/보상미수령 3은 보상수령
-    public int stage1Quest2Pro = 0;
-
-    // 퍼즐 진행 상황 (문을 여는 등) / 숏컷이랑 통합하자
-    public bool stage1Puzzle1 = false;
-    public bool stage1Puzzle2 = false;
+    // public int stage1Quest2Pro = 0; //현재 미사용
 
     // 보스 최초 처치 여부 (보상 지급용)
     public bool stage1BossClear = false;
@@ -73,12 +61,7 @@ public class Datas
 
     // 세이브 위치
     public Vector3 savePos = new Vector3(0, 0, 0); // 스위치에서 이 변수를 불러와 바꾼다.
-    //public Scene saveScene;
     public string saveSceneName = "Backstage_0114"; //일단 저장한 게 없어서 초기값
-
-    //나중에 다 합치면 엄청 길어질 듯? 스테이지별로 쪼개거나 방법을 생각해야겠는데??
-    //저장 중 원형 슬라이더 넣으면 좋을 것 같다. 로딩창처럼
-    
 
 }
 
@@ -96,6 +79,7 @@ public class DataManager : MonoBehaviour
 
     private void Awake()
     {
+        // 데이터 폴더에 아무 파일이 없다면, 데이터 파일 생성
         if (!ES3.FileExists(fileName))
         {
             // 초기 저장 데이터 생성
@@ -107,29 +91,20 @@ public class DataManager : MonoBehaviour
     void Start()
     {
         instance = this;
-
-        // 게임 접속 시 저장된 데이터 로드
-        //SkillUpdate();
     }
 
 
     public void DataSave() 
     {
         // 기본 형
-        // Datas 클래스에 있는 모든 변수값을 저장
+        // Datas 클래스에 있는 모든 변수값을 저장 - 더 효율적으로는 Datas의 일부를 저장하면 좋긴한데...
+        // 사용자 클래스를 저장하기 위해 저장 세팅 변경
         var settings = new ES3Settings { memberReferenceMode = ES3.ReferenceMode.ByRefAndValue };
-        ES3.Save(KeyName,datas, settings);  // <-------------------------------------- A
-        //stat = GameObject.Find("Player");
-        //stat.GetComponent<Player>().ChangeScene();
-        GameObject.Find("Player").GetComponent<Player>().ChangeScene();
+        ES3.Save(KeyName,datas, settings);
         
+        // 저장 시, 캐릭터 오브젝트에 해당 정보를 업데이트
+        GameObject.Find("Player").GetComponent<Player>().ChangeScene();
 
-        // 캐릭터 세이브 위치 저장 테스트 - 이건 스위치에다가 삽입하면 될듯
-        //Transform playerTrans = GameObject.Find("Player").GetComponent<Transform>();
-        //Vector3 playerPos = playerTrans.position;
-
-        // 자동저장 형
-        //ES3AutoSaveMgr.Current.Save();
     }
     public void DataLoad()
     {
@@ -137,20 +112,20 @@ public class DataManager : MonoBehaviour
         // Skill 이름은 못 불러오네. 정확히 파일은 들어가있는 듯 해
         var settings = new ES3Settings { memberReferenceMode = ES3.ReferenceMode.ByRefAndValue };
         ES3.LoadInto(KeyName, datas, settings);
-        //ES3.Load(KeyName, datas);
+        // ES3.Load(KeyName, datas);
+        // Load, Loadinto의 차이점을 잘 모르겠다.
 
         // 캐릭터 스탯에 동기화
-        //stat = GameObject.Find("Player");
-        //stat.GetComponent<Player>().ChangeScene();
         GameObject.Find("Player").GetComponent<Player>().ChangeScene();
 
     }
 
+    // 데이터 초기화 또는 새 게임 기능에 넣을 수 있음. 옵션에서 선택할 수 있게 할까? - 테스트 용도로도 좋음.
     public void DataRemove()
     {
         ES3.DeleteFile(fileName);
     }
 
+    // 현재 사용되는 곳 없음. 근데, 전수 조사는 못해서 남겨놓음.
     public List<Skill> tempList;
-
 }

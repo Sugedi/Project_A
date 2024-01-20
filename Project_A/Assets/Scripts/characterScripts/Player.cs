@@ -730,7 +730,6 @@ public class Player : MonoBehaviour
                 }
                 totalAmmoIncrease += skill.ammoIncrease;
             }
-            Debug.Log("dd");
             equipWeapon.UpdateMaxAmmo(totalAmmoIncrease);
         }
 
