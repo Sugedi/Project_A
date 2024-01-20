@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
     
     public float sightRange = 10f; // 타겟이 유저 인식
 
-
+    bool isReturningToInitialPosition; // 몬스터가 초기 위치로 돌아가고 있는지 여부를 나타내는 변수
 
     //==============================================================
     public GameObject itemPrefab; // 드랍 아이템 프리펩 등록
@@ -33,6 +33,8 @@ public class Enemy : MonoBehaviour
     NavMeshAgent nav; // NavMeshAgent 컴포넌트
     Animator anim; // Animator 컴포넌트
 
+    Vector3 initialPosition; // 몬스터의 초기 위치 저장 변수
+
     void Awake()
     {
         rigid = GetComponent<Rigidbody>();
@@ -42,7 +44,7 @@ public class Enemy : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
 
         target = FindObjectOfType<Player>().GetComponent<Transform>();
-
+        initialPosition = transform.position; // 초기 위치 저장
 
         // Invoke("ChaseStart", 1);  // 1초 뒤에 추격 시작
     }
@@ -52,7 +54,6 @@ public class Enemy : MonoBehaviour
 
     }
 
-    
     void ChaseStart()
     {
         if (curHealth > 0)  // Only start chasing if health is greater than 0
@@ -78,7 +79,6 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-
         float distanceToPlayer = Vector3.Distance(transform.position, target.position);
 
         if (distanceToPlayer <= sightRange)
@@ -87,19 +87,64 @@ public class Enemy : MonoBehaviour
             {
                 ChaseStart();
             }
-
-            
         }
         else
         {
-            isChase = false;
-
-            anim.SetBool("isAttack", false);
-            anim.SetBool("isWalk", false);
+            if (isChase)
+            {
+                StopChase();
+            }
         }
     }
 
+    void StopChase()
+    {
+        isChase = false;
+        anim.SetBool("isAttack", false);
+        anim.SetBool("isWalk", false);
 
+        // 추가된 부분: 초기 위치로 돌아가기
+        StartCoroutine(ReturnToInitialPosition());
+    }
+
+    IEnumerator ReturnToInitialPosition()
+    {
+        isReturningToInitialPosition = true; // 초기 위치로 돌아가는 중임을 표시
+
+        yield return null;
+
+        // 추가된 부분: isWalk 애니메이션 재생
+        if (!anim.GetBool("isWalk") && !anim.GetCurrentAnimatorStateInfo(0).IsName("isWalk"))
+        {
+            // "isWalk" 애니메이션이 재생 중이 아니라면 재생
+            anim.SetBool("isWalk", true);
+        }
+
+        while (Vector3.Distance(transform.position, initialPosition) > 0.1f)
+        {
+            nav.SetDestination(initialPosition);
+            yield return null;
+        }
+
+        nav.isStopped = true;
+        transform.position = initialPosition;
+
+        isChase = true;
+
+        // 추가된 부분: isWalk 애니메이션 종료
+        anim.SetBool("isWalk", false);
+
+        // 초기 위치로 돌아갔을 때 플레이어가 다시 인식 범위 안으로 들어오면 추격 재개
+        while (Vector3.Distance(transform.position, target.position) > sightRange)
+        {
+            yield return null;
+        }
+
+        // 추가된 부분: 플레이어가 인식 범위 안으로 들어왔을 때 추격 재개
+        ChaseStart();
+
+        isReturningToInitialPosition = false; // 초기 위치로 돌아가는 동작이 끝났음을 표시
+    }
 
     void FreezeVelocity()
     {
@@ -231,8 +276,8 @@ public class Enemy : MonoBehaviour
         float damageToApply = bullet.isExplosion ? bullet.boomShotDamage : bullet.damage;
         curHealth -= damageToApply; // Apply damage
 
-    // 공격으로 받은 위치 벡터 계산
-    Vector3 reactVec = transform.position - hitPoint;
+        // 공격으로 받은 위치 벡터 계산
+        Vector3 reactVec = transform.position - hitPoint;
 
         // OnDamage 코루틴 실행
         StartCoroutine(OnDamage(reactVec));
@@ -274,19 +319,20 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    //private void OnTriggerExit(Collider other)
-    //{
-    //   if (other.tag == "Player")
-    //    {
-    //        isChase = false;
-    //        anim.SetBool("isWalk", false);
-    //    }
-    //}
+    /*
+    private void OnTriggerExit(Collider other)
+    {
+       if (other.tag == "Player")
+        {
+            isChase = false;
+            anim.SetBool("isWalk", false);
+        }
+    }
+    */
 
     // 피격 시 발생하는 코루틴 함수
     IEnumerator OnDamage(Vector3 reactVec)
     {
-
         // 피격 시 일시적으로 캐릭터 색상을 빨간색으로 변경
         mat.color = Color.red;
         yield return new WaitForSeconds(0.1f);
@@ -310,7 +356,6 @@ public class Enemy : MonoBehaviour
 
             isChase = true;
             nav.enabled = true;
-            
         }
         // 현재 체력이 0 이하인 경우
         else
