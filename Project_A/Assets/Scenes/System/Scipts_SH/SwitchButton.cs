@@ -9,7 +9,8 @@ public enum SwitchUI
     Next2,
     Next3,
     Backstage,
-    Continue
+    Continue,
+    TreasureBoxNext
 }
 
 public class SwitchButton : MonoBehaviour
@@ -20,6 +21,7 @@ public class SwitchButton : MonoBehaviour
     public CanvasGroup no3; 
     public CanvasGroup no4; 
     public CanvasGroup saveConvas; 
+    public CanvasGroup treasureCanvas; 
     public void OnClick()
     {
         switch (switchUI)
@@ -59,6 +61,13 @@ public class SwitchButton : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
                 break;
+            case SwitchUI.TreasureBoxNext:
+
+                CanvasGroupOff(treasureCanvas);
+                Time.timeScale = 1f;
+
+                break;
+
 
         }
     }

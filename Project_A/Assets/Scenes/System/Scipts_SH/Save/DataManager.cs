@@ -96,6 +96,11 @@ public class DataManager : MonoBehaviour
 
     private void Awake()
     {
+        if (!ES3.FileExists(fileName))
+        {
+            // 초기 저장 데이터 생성
+            DataSave();
+        }
         DataLoad();
     }
 

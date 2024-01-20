@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public enum Treasure
 {
@@ -12,22 +13,17 @@ public class TreasureBox : MonoBehaviour
 {
     public Treasure treasure;
 
-    //public int treasureNo = 1;
-    public bool treasure_1 = false;
-    public bool treasure_2 = false;
+    public bool treasure_1; 
+    public bool treasure_2; 
 
-    //private void Start()
-    //{
-    //    if (treasure == Treasure.BuckShot1)
-    //    {
-    //        treasureNo = 1;
-    //    }
-    //    else if (treasure == Treasure.PierceShot)
-    //    {
-    //        treasureNo = 2;
-    //    }
+    public CanvasGroup treasureBox;
+    public TextMeshProUGUI tresaureMSG;
 
-    //}
+    private void Start()
+    {
+        treasure_1 = GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1ItemBox1;
+        treasure_2 = GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1ItemBox2;
+    }
 
     public void TreasureFind()
     {
@@ -35,10 +31,16 @@ public class TreasureBox : MonoBehaviour
         {
             if (treasure_1 == false)
             {
+                Time.timeScale = 0;
+                tresaureMSG.text = "벅샷 스킬을 획득하였습니다!";
+                CanvasGroupOn(treasureBox);
+                // System MSG 라는 캔버스를 활성화하는 것으로
                 DataManager.instance.datas.skillHave.Add(Resources.Load<Skill>("BuckShot1"));
                 DataManager.instance.DataSave();
                 GameObject.Find("Player").GetComponent<Player>().SkillGet();
-                treasure_1 = true;
+                treasure_1 = true; // false일 때는 열린 상자, true일 때는 닫힌 상자 
+                DataManager.instance.datas.stage1ItemBox1 = true;
+                DataManager.instance.DataSave();
             }
 
         }
@@ -47,12 +49,32 @@ public class TreasureBox : MonoBehaviour
         {
             if (treasure_2 == false)
             {
+                Time.timeScale = 0;
+                tresaureMSG.text = "관통샷 스킬을 획득하였습니다!";
+                CanvasGroupOn(treasureBox);
                 DataManager.instance.datas.skillHave.Add(Resources.Load<Skill>("PierceShot"));
                 DataManager.instance.DataSave();
                 GameObject.Find("Player").GetComponent<Player>().SkillGet();
                 treasure_2 = true;
+                DataManager.instance.datas.stage1ItemBox2 = true;
+                DataManager.instance.DataSave();
             }
 
         }
+    }
+
+    public void CanvasGroupOn(CanvasGroup cg)
+    {
+        cg.alpha = 1;
+        cg.interactable = true;
+        cg.blocksRaycasts = true;
+    }
+
+    public void CanvasGroupOff(CanvasGroup cg)
+    {
+        cg.alpha = 0;
+        cg.interactable = false;
+        cg.blocksRaycasts = false;
+
     }
 }
