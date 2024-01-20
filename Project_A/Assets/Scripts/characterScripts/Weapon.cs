@@ -60,7 +60,7 @@ public class Weapon : MonoBehaviour
     private ObjectPool<GameObject> pierceBulletPool;
     private ObjectPool<GameObject> sideBulletPool; // 추적 총알을 위한 오브젝트 풀
 
-    public Weapon weapon;
+    //public Weapon weapon;
 
     void Awake()
     {
@@ -115,7 +115,7 @@ public class Weapon : MonoBehaviour
 
     void Start()
     {
-        weapon.curAmmo = GameObject.Find("DataManager").GetComponent<Weapon>().maxAmmo;
+        //weapon.curAmmo = GameObject.Find("Weapon HandGun").GetComponent<Weapon>().maxAmmo;
     }
 
     // 스킬에 의해 변경된 최대 탄창을 적용하는 메서드
