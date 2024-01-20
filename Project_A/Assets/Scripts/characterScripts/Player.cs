@@ -233,7 +233,7 @@ public class Player : MonoBehaviour
         if (isDodge)
             moveVec = dodgeVec;
 
-        if (isReload || !isFireReady)
+        else if (!isFireReady)
             moveVec = Vector3.zero;
 
         if (!isBorder)
@@ -259,7 +259,7 @@ public class Player : MonoBehaviour
             rigid.MoveRotation(moveQuat);
         }
 
-        anim.SetBool("isRun", moveVec != Vector3.zero);
+        anim.SetBool("isRun", moveVec != Vector3.zero && !isReload);
         anim.SetBool("isWalk", wDown);
     }
 
@@ -318,23 +318,41 @@ public class Player : MonoBehaviour
 
         if (fDown && isFireReady && !isDodge)
         {
+            if (isReload) // 재장전 중이면 재장전을 취소합니다.
+            {
+                CancelReload();
+            }
             equipWeapon.Use(); // 무기 사용
             anim.SetTrigger("doShot"); // 무기 종류에 따라 애니메이션 설정
             fireDelay = 0; // 딜레이 초기화
         }
     }
-
+    void CancelReload()
+    {
+        if (isReload)
+        {
+            anim.SetBool("isReload", false); // 재장전 애니메이션 비활성화
+            
+            isReload = false; // 재장전 상태 해제
+                              // 재장전이 취소되면 캐릭터의 속도를 원래대로 복구합니다.
+            speed = 5;
+            CancelInvoke("ReloadOut"); // 이미 예약된 ReloadOut 호출을 취소합니다.
+        }
+    }
     // 재장전
     void Reload()
     {
-        if (equipWeapon == null || ammo == 0)
+        if (equipWeapon == null || ammo == 0 || isReload || equipWeapon.curAmmo == equipWeapon.maxAmmo)
             return;
 
         if (rDown && !isDodge && isFireReady)
         {
+            anim.SetBool("isReload", true);
+            
             isReload = true; // 재장전 중 상태 설정
-            float reloadTime = 3f * GetReloadTimeMultiplier(); // 재장전 시간을 계산합니다.
-            Invoke("ReloadOut", reloadTime); // 3초 후 재장전 완료 처리
+            speed = 2;
+            float reloadTime = 2f * GetReloadTimeMultiplier(); // 재장전 시간을 계산합니다.
+            Invoke("ReloadOut", reloadTime); // 2초 후 재장전 완료 처리
         }
     }
     float GetReloadTimeMultiplier()
@@ -357,27 +375,56 @@ public class Player : MonoBehaviour
         equipWeapon.curAmmo = reAmmo;
         ammo -= reAmmo;
         isReload = false; // 재장전 완료 후 상태 설정
+        anim.SetBool("isReload", false);
+
+        speed = 5;
+        anim.SetBool("isRun", moveVec != Vector3.zero);
+
+
     }
 
     // 회피 구현
     void Dodge()
     {
         if (jDown && moveVec != Vector3.zero && !isDodge)
-        {
+        {            
+            // 공격 또는 재장전 상태를 취소합니다.
+            if (isFireReady)
+            {
+                isFireReady = false; // 공격 딜레이 초기화
+                anim.ResetTrigger("doShot"); // 공격 애니메이션 트리거 리셋
+
+            }
+
+            if (isReload)
+            {
+                CancelReload();
+            }
+
             dodgeVec = moveVec; // 회피 방향 설정
             speed *= 2; // 이동 속도 증가
             anim.SetTrigger("doDodge"); // 회피 애니메이션 활성화
             isDodge = true; // 회피 중 상태 설정
+            isDamage = true; // 무적 상태 활성화
 
             Invoke("DodgeOut", 0.5f); // 0.5초 후 회피 완료 처리
+            Invoke("EndInvulnerability", 0.2f); // 0.2초 후 무적 상태 해제
         }
     }
-
+    // 무적 상태 해제
+    void EndInvulnerability()
+    {
+        isDamage = false;
+    }
     // 회피 완료 처리
     void DodgeOut()
-    {
+    {        
         speed *= 0.5f; // 이동 속도 원래대로 감소
         isDodge = false; // 회피 완료 후 상태 설정
+                         
+        // 무적 상태가 아직 해제되지 않았다면 해제
+        if (isDamage)
+            isDamage = false;
     }
 
     // 회전 고정 함수
