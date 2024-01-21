@@ -47,7 +47,18 @@ public class Bullet : MonoBehaviour
         damage = baseDamage;
         lifeTimer = lifeTime; // 타이머를 최대 생명 시간으로 초기화합니다.
         isExplosion = false; // 폭발 여부를 false로 재설정
+        if (bulletRigidbody != null)
+        {
+            bulletRigidbody.velocity = Vector3.zero;
+            bulletRigidbody.angularVelocity = Vector3.zero;
+        }
+        isHoming = false;
+        target = null;
+        isPenetrating = false;
+        isBoomShotActive = false;
+
         // 파티클 시스템이 있다면 비활성화했다가 다시 활성화
+
         if (explosionPrefab != null)
         {
             ParticleSystem ps = explosionPrefab.GetComponent<ParticleSystem>();
@@ -55,7 +66,7 @@ public class Bullet : MonoBehaviour
             {
                 ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
             }
-        }
+        }        
     }
 
     // 오브젝트 풀에 반환하는 메서드를 추가합니다.
@@ -99,6 +110,32 @@ public class Bullet : MonoBehaviour
             bulletRigidbody.AddForce(transform.forward * acceleration, ForceMode.Acceleration);
         }       
 
+    }
+    void OnDisable()
+    {
+        // Rigidbody의 속도와 각속도를 초기화합니다.
+        if (bulletRigidbody != null)
+        {
+            bulletRigidbody.velocity = Vector3.zero;
+            bulletRigidbody.angularVelocity = Vector3.zero;
+        }
+
+        // 총알의 다른 속성들을 기본값으로 재설정합니다.
+        isPenetrating = false;
+        isBoomShotActive = false;
+        isExplosion = false;
+        isHoming = false;
+        target = null;
+
+        // 폭발 효과가 있다면 초기화합니다.
+        if (explosionPrefab != null)
+        {
+            ParticleSystem ps = explosionPrefab.GetComponent<ParticleSystem>();
+            if (ps != null)
+            {
+                ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            }
+        }        
     }
     void FixedUpdate()
     {        
@@ -219,4 +256,5 @@ public class Bullet : MonoBehaviour
         }
         ReturnToPool(); // 폭발 후 총알을 오브젝트 풀로 반환
     }
+    
 }

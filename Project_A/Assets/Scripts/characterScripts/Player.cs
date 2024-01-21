@@ -547,6 +547,11 @@ public class Player : MonoBehaviour
                 // 적 총알에 맞았을 때 체력 감소 및 총알 파괴
                 EnemyBullet enemyBullet = other.GetComponent<EnemyBullet>();
                 health -= enemyBullet.damage;
+                if (health < 0)
+                {
+                    health = 0;
+                    Die();
+                }
                 if (other.GetComponent<Rigidbody>() != null)
                     Destroy(other.gameObject);
 
@@ -565,6 +570,11 @@ public class Player : MonoBehaviour
         if (!isDamage)
         {
             health -= damage;
+            if (health < 0)
+            {
+                health = 0;
+                Die();
+            }
             StartCoroutine(OnDamage());
 
             if (anim != null)

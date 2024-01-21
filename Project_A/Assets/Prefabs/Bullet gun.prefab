@@ -137,3 +137,7 @@ MonoBehaviour:
   boomShotRadius: 0
   boomShotDamage: 0
   isExplosion: 0
+  isHoming: 0
+  target: {fileID: 0}
+  homingSpeed: 5
+  homingRotateSpeed: 200
