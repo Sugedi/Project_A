@@ -57,7 +57,7 @@ public class TitleBtn : MonoBehaviour
                 //2번 방법
                 //Vector3 lastPos = datas.savePos;
                 string lastScene = GameObject.Find("DataManager").GetComponent<DataManager>().datas.saveSceneName;
-                SceneManager.LoadScene(lastScene); // 저장된 씬으로 이동
+                SceneManager.LoadScene("Loading"); // 저장된 씬으로 이동
                 
                 // 맵 위치 저장 즉, 세이브 스위치에서 해당 코드 주기
                 // string a = SceneManager.GetActiveScene().name;
