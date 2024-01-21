@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
     public int minDropCount; // 드랍 아이템의 최소 개수
     public int maxDropCount; // 드랍 아이템의 최대 개수
     public float targetRange = 0;
-    
+
     public float sightRange = 10f; // 타겟이 유저 인식
 
     bool isReturningToInitialPosition; // 몬스터가 초기 위치로 돌아가고 있는지 여부를 나타내는 변수
@@ -40,23 +40,19 @@ public class Enemy : MonoBehaviour
         rigid = GetComponent<Rigidbody>();
         boxCollider = GetComponent<BoxCollider>();
         mat = GetComponentInChildren<SkinnedMeshRenderer>().material;
-        nav = GetComponent<NavMeshAgent>();
         anim = GetComponentInChildren<Animator>();
 
         target = FindObjectOfType<Player>().GetComponent<Transform>();
         initialPosition = transform.position; // 초기 위치 저장
 
+        nav = GetComponent<NavMeshAgent>();
+
         // Invoke("ChaseStart", 1);  // 1초 뒤에 추격 시작
-    }
-
-    void Start()
-    {
-
     }
 
     void ChaseStart()
     {
-        if (curHealth > 0)  // Only start chasing if health is greater than 0
+        if (curHealth > 0)
         {
             isChase = true;
             anim.SetBool("isWalk", true);
@@ -69,11 +65,18 @@ public class Enemy : MonoBehaviour
     {
         while (isChase)
         {
+            // NavMeshAgent가 멈춰있는 경우에만 재개
+            if (!nav.isActiveAndEnabled || !nav.isOnNavMesh)
+            {
+                yield return null;
+                continue;
+            }
+
+            // NavMeshAgent의 상태가 올바른 경우에만 목적지 설정
             nav.SetDestination(target.position);
-            nav.isStopped = !isChase;
             transform.LookAt(target);
 
-            yield return null;  // Yielding null allows the coroutine to continue indefinitely
+            yield return null;
         }
     }
 
@@ -103,17 +106,24 @@ public class Enemy : MonoBehaviour
         anim.SetBool("isAttack", false);
         anim.SetBool("isWalk", false);
 
-        // 추가된 부분: 초기 위치로 돌아가기
-        StartCoroutine(ReturnToInitialPosition());
+        // 초기 위치로 돌아가기
+        // StartCoroutine(ReturnToInitialPosition());
     }
 
-    IEnumerator ReturnToInitialPosition()
+    /* IEnumerator ReturnToInitialPosition()
     {
         isReturningToInitialPosition = true; // 초기 위치로 돌아가는 중임을 표시
 
-        yield return null;
+        if (!nav.enabled)
+            nav.enabled = true;
 
-        // 추가된 부분: isWalk 애니메이션 재생
+        if (!nav.isOnNavMesh)
+        {
+            // NavMesh에 없는 경우 초기 위치를 목적지로 설정
+            nav.Warp(initialPosition); // 이 부분 수정
+        }
+
+        // isWalk 애니메이션 재생
         if (!anim.GetBool("isWalk") && !anim.GetCurrentAnimatorStateInfo(0).IsName("isWalk"))
         {
             // "isWalk" 애니메이션이 재생 중이 아니라면 재생
@@ -131,7 +141,7 @@ public class Enemy : MonoBehaviour
 
         isChase = true;
 
-        // 추가된 부분: isWalk 애니메이션 종료
+        // isWalk 애니메이션 종료
         anim.SetBool("isWalk", false);
 
         // 초기 위치로 돌아갔을 때 플레이어가 다시 인식 범위 안으로 들어오면 추격 재개
@@ -140,11 +150,13 @@ public class Enemy : MonoBehaviour
             yield return null;
         }
 
-        // 추가된 부분: 플레이어가 인식 범위 안으로 들어왔을 때 추격 재개
+        // ChaseStart 메서드를 호출하여 플레이어 추격을 재개
         ChaseStart();
 
-        isReturningToInitialPosition = false; // 초기 위치로 돌아가는 동작이 끝났음을 표시
+        // 초기 위치로 돌아가는 동작이 끝났음을 표시
+        isReturningToInitialPosition = false;
     }
+    */
 
     void FreezeVelocity()
     {
@@ -187,11 +199,11 @@ public class Enemy : MonoBehaviour
             }
         }
 
-    // 플레이어를 감지하면 공격 시작
-    RaycastHit[] rayHits =
-            Physics.SphereCastAll(transform.position,
-            targetRadius, transform.forward, targetRange,
-            LayerMask.GetMask("Player"));
+        // 플레이어를 감지하면 공격 시작
+        RaycastHit[] rayHits =
+                Physics.SphereCastAll(transform.position,
+                targetRadius, transform.forward, targetRange,
+                LayerMask.GetMask("Player"));
         if (rayHits.Length > 0 && !isAttack)
         {
             StartCoroutine(Attack());
@@ -215,7 +227,7 @@ public class Enemy : MonoBehaviour
                 meleeArea.enabled = true;
 
                 // 1초 후 근접 공격 범위 비활성화
-                 yield return new WaitForSeconds(0.7f);
+                yield return new WaitForSeconds(0.7f);
                 meleeArea.enabled = false;
 
                 // 1초 대기

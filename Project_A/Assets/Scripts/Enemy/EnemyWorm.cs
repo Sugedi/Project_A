@@ -13,14 +13,14 @@ public class EnemyWorm : MonoBehaviour
     public BoxCollider meleeArea; // 근접 공격 범위 Collider
     public GameObject bullet; // 원거리 공격에 사용되는 총알
     public bool isChase; // 추격 상태 여부
-    public bool isAttack; // 공격 상태 여부
+    public bool isAttack; // 공격 상태 여부   
     public int minDropCount; // 드랍 아이템의 최소 개수
     public int maxDropCount; // 드랍 아이템의 최대 개수
     public float targetRange = 0;
 
     public float sightRange = 10f; // 타겟이 유저 인식
 
-
+    bool isReturningToInitialPosition; // 몬스터가 초기 위치로 돌아가고 있는지 여부를 나타내는 변수
 
     //==============================================================
     public GameObject itemPrefab; // 드랍 아이템 프리펩 등록
@@ -33,32 +33,29 @@ public class EnemyWorm : MonoBehaviour
     NavMeshAgent nav; // NavMeshAgent 컴포넌트
     Animator anim; // Animator 컴포넌트
 
+    Vector3 initialPosition; // 몬스터의 초기 위치 저장 변수
+
     void Awake()
     {
         rigid = GetComponent<Rigidbody>();
         boxCollider = GetComponent<BoxCollider>();
         mat = GetComponentInChildren<SkinnedMeshRenderer>().material;
-        nav = GetComponent<NavMeshAgent>();
         anim = GetComponentInChildren<Animator>();
 
         target = FindObjectOfType<Player>().GetComponent<Transform>();
+        initialPosition = transform.position; // 초기 위치 저장
 
+        nav = GetComponent<NavMeshAgent>();
 
         // Invoke("ChaseStart", 1);  // 1초 뒤에 추격 시작
     }
 
-    void Start()
-    {
-
-    }
-
-
     void ChaseStart()
     {
-        if (curHealth > 0)  // Only start chasing if health is greater than 0
+        if (curHealth > 0)
         {
             isChase = true;
-            
+            anim.SetBool("isWalk", true);
 
             StartCoroutine(ChasePlayer());
         }
@@ -68,17 +65,23 @@ public class EnemyWorm : MonoBehaviour
     {
         while (isChase)
         {
+            // NavMeshAgent가 멈춰있는 경우에만 재개
+            if (!nav.isActiveAndEnabled || !nav.isOnNavMesh)
+            {
+                yield return null;
+                continue;
+            }
+
+            // NavMeshAgent의 상태가 올바른 경우에만 목적지 설정
             nav.SetDestination(target.position);
-            nav.isStopped = !isChase;
             transform.LookAt(target);
 
-            yield return null;  // Yielding null allows the coroutine to continue indefinitely
+            yield return null;
         }
     }
 
     void Update()
     {
-
         float distanceToPlayer = Vector3.Distance(transform.position, target.position);
 
         if (distanceToPlayer <= sightRange)
@@ -87,19 +90,73 @@ public class EnemyWorm : MonoBehaviour
             {
                 ChaseStart();
             }
-
-
         }
         else
         {
-            isChase = false;
-
-            anim.SetBool("isAttack", false);
-            
+            if (isChase)
+            {
+                StopChase();
+            }
         }
     }
 
+    void StopChase()
+    {
+        isChase = false;
+        anim.SetBool("isAttack", false);
+        anim.SetBool("isWalk", false);
 
+        // 초기 위치로 돌아가기
+        // StartCoroutine(ReturnToInitialPosition());
+    }
+
+    /* IEnumerator ReturnToInitialPosition()
+    {
+        isReturningToInitialPosition = true; // 초기 위치로 돌아가는 중임을 표시
+
+        if (!nav.enabled)
+            nav.enabled = true;
+
+        if (!nav.isOnNavMesh)
+        {
+            // NavMesh에 없는 경우 초기 위치를 목적지로 설정
+            nav.Warp(initialPosition); // 이 부분 수정
+        }
+
+        // isWalk 애니메이션 재생
+        if (!anim.GetBool("isWalk") && !anim.GetCurrentAnimatorStateInfo(0).IsName("isWalk"))
+        {
+            // "isWalk" 애니메이션이 재생 중이 아니라면 재생
+            anim.SetBool("isWalk", true);
+        }
+
+        while (Vector3.Distance(transform.position, initialPosition) > 0.1f)
+        {
+            nav.SetDestination(initialPosition);
+            yield return null;
+        }
+
+        nav.isStopped = true;
+        transform.position = initialPosition;
+
+        isChase = true;
+
+        // isWalk 애니메이션 종료
+        anim.SetBool("isWalk", false);
+
+        // 초기 위치로 돌아갔을 때 플레이어가 다시 인식 범위 안으로 들어오면 추격 재개
+        while (Vector3.Distance(transform.position, target.position) > sightRange)
+        {
+            yield return null;
+        }
+
+        // ChaseStart 메서드를 호출하여 플레이어 추격을 재개
+        ChaseStart();
+
+        // 초기 위치로 돌아가는 동작이 끝났음을 표시
+        isReturningToInitialPosition = false;
+    }
+    */
 
     void FreezeVelocity()
     {
@@ -119,7 +176,7 @@ public class EnemyWorm : MonoBehaviour
         {
             case Type.A:
                 targetRadius = 1f;
-                targetRange = 1f;
+                targetRange = 0.8f;
                 break;
             case Type.B:
                 targetRadius = 1f;
@@ -127,14 +184,26 @@ public class EnemyWorm : MonoBehaviour
                 break;
             case Type.C:
                 targetRadius = 0.5f;
-                targetRange = 20f;
+                targetRange = 15f;
                 break;
         }
+
+        float distanceToPlayer = Vector3.Distance(transform.position, target.position);
+
+        // 플레이어가 근접 공격 범위 안에 있으면 Attack 코루틴 호출
+        if (distanceToPlayer <= targetRadius)
+        {
+            if (!isAttack)
+            {
+                StartCoroutine(Attack());
+            }
+        }
+
         // 플레이어를 감지하면 공격 시작
         RaycastHit[] rayHits =
-            Physics.SphereCastAll(transform.position,
-            targetRadius, transform.forward, targetRange,
-            LayerMask.GetMask("Player"));
+                Physics.SphereCastAll(transform.position,
+                targetRadius, transform.forward, targetRange,
+                LayerMask.GetMask("Player"));
         if (rayHits.Length > 0 && !isAttack)
         {
             StartCoroutine(Attack());
@@ -154,11 +223,11 @@ public class EnemyWorm : MonoBehaviour
         {
             case Type.A:
                 // 0.2초 대기 후 근접 공격 범위 활성화
-                yield return new WaitForSeconds(0f);
+                yield return new WaitForSeconds(0.2f);
                 meleeArea.enabled = true;
 
                 // 1초 후 근접 공격 범위 비활성화
-                yield return new WaitForSeconds(0f);
+                yield return new WaitForSeconds(0.7f);
                 meleeArea.enabled = false;
 
                 // 1초 대기
@@ -258,22 +327,24 @@ public class EnemyWorm : MonoBehaviour
         else if (other.tag == "Player")
         {
             isChase = true;
+            anim.SetBool("isWalk", true);
         }
     }
 
-    //private void OnTriggerExit(Collider other)
-    //{
-    //   if (other.tag == "Player")
-    //    {
-    //        isChase = false;
-    //        anim.SetBool("isWalk", false);
-    //    }
-    //}
+    /*
+    private void OnTriggerExit(Collider other)
+    {
+       if (other.tag == "Player")
+        {
+            isChase = false;
+            anim.SetBool("isWalk", false);
+        }
+    }
+    */
 
     // 피격 시 발생하는 코루틴 함수
     IEnumerator OnDamage(Vector3 reactVec)
     {
-
         // 피격 시 일시적으로 캐릭터 색상을 빨간색으로 변경
         mat.color = Color.red;
         yield return new WaitForSeconds(0.1f);
@@ -284,6 +355,7 @@ public class EnemyWorm : MonoBehaviour
             mat.color = Color.white;
             isChase = false;
             nav.enabled = false;
+            // yield return new WaitForSeconds(0.5f);
 
             // Play doGetHit animation
             anim.SetBool("doGetHit", true);
@@ -304,22 +376,21 @@ public class EnemyWorm : MonoBehaviour
             // mat.color = Color.gray;
             StopAllCoroutines();
             isChase = true;
-            //nav.enabled = false;
-            //anim.SetBool("doGetHit", true);
+            nav.enabled = false;
 
             gameObject.layer = 12; // 레이어를 변경하여 다시 공격을 받지 않도록 설정
 
             // 추격 중지, 네비게이션 비활성화, 죽음 애니메이션 재생
             isChase = false;
-            // nav.enabled = false;
             anim.SetTrigger("doDie");
+            // nav.enabled = false;
 
             // 피격된 방향 벡터를 정규화하고 위로 조금 이동시켜줌
-            // reactVec = reactVec.normalized; 이거 수정함 !!!!!!!!!!!!!!!!!! 주석 달았음
-            // reactVec += Vector3.up; 이거 수정함 !!!!!!!!!!!!!!! 주석 달았음
+            reactVec = reactVec.normalized;
+            reactVec += Vector3.up;
 
             // 리지드바디에 피격 방향으로의 작은 힘을 가하고
-            // rigid.AddForce(reactVec * 5, ForceMode.Impulse); 이것도 주석 달았음!!!!!!!!!!!!!
+            rigid.AddForce(reactVec * 5, ForceMode.Impulse);
 
             // _item이라는 게임 오브젝트 변수 선언 + itemPrefab을 생성해서 _item에 할당
             GameObject _item;
@@ -331,7 +402,7 @@ public class EnemyWorm : MonoBehaviour
             }
 
             // 2초 뒤 몹 사망
-            Destroy(gameObject, 2);
+            Destroy(gameObject, 1);
         }
     }
 }
