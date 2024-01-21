@@ -19,9 +19,11 @@ public class EnemyBoss : MonoBehaviour
     public float btargetRadius = 0f;
     public float bsightRange = 10f; // 타겟이 유저 인식
     public float battackinterval = 2f; // 원거리공격 간격
-                                       
+    private bool isAttackHit = false; // 일반 공격이 성공적으로 적중했는지 여부
+    public float attackHitCooldown = 0.5f; // 다음 일반 공격이 적중할 수 있는 쿨다운 시간
+
     // 넉백 효과 관련 변수
-    public float knockbackForce = 70f; // 넉백의 강도
+    public float knockbackForce = 95f; // 넉백의 강도
     public float knockbackDuration = 0.5f; // 넉백 지속 시간
 
 
@@ -45,9 +47,9 @@ public class EnemyBoss : MonoBehaviour
     public float chargeCooldownDuration = 8f;
 
     public float chargeSpeed = 1f; // 돌진 강도
-    public float chargeDuration = 0.3f; // 돌진 시간
+    public float chargeDuration = 0.5f; // 돌진 시간
     // Reference to the arrow prefab
-
+    private bool isChargeDamage = false;
 
     void Start()
     {
@@ -57,27 +59,20 @@ public class EnemyBoss : MonoBehaviour
 
     IEnumerator ChargeAttack()
     {
+        isChargeDamage = false;
         bisChase = false;
+        isCharging = true;
         yield return new WaitForSeconds(0.1f);
 
-        // 충전 방향 계산
         Vector3 chargeDirection = (btarget.position - transform.position).normalized;
-        brigid.AddForce(chargeDirection * chargeSpeed * Time.deltaTime, ForceMode.Impulse);
+        brigid.AddForce(chargeDirection * chargeSpeed, ForceMode.Impulse);
         banim.SetTrigger("doAttack02");
 
-        // 충전 공격이 플레이어에게 닿는 순간을 가정한 시점
-        if (Vector3.Distance(btarget.position, transform.position) < 1f)
-        {
-            // 플레이어의 넉백 메서드를 호출
-            btarget.GetComponent<Player>().GetKnockedBack(-chargeDirection, 75f, 20);
-            //넉백 피해량 20
-        }
-
         yield return new WaitForSeconds(chargeDuration);
-        brigid.velocity = Vector3.zero;
-        yield return new WaitForSeconds(0.2f);
-        bisChase = true;
 
+        isCharging = false;
+        brigid.velocity = Vector3.zero;
+        bisChase = true;
         StartCoroutine(ChargeCooldown());
     }
 
@@ -211,29 +206,29 @@ public class EnemyBoss : MonoBehaviour
         bisAttack = true;
         banim.SetTrigger("doAttack03");
 
-        if (bcurHealth > 0)
+        if (bcurHealth > 0 && !isAttackHit)
         {
-
-
-            // 0.5초 대기 후 총알 생성 및 발사
             yield return new WaitForSeconds(0.5f);
             GameObject instantBullet = Instantiate(bbullet, transform.position, transform.rotation);
             Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
             rigidBullet.velocity = transform.forward * 15;
 
-            // 2초 대기
+            isAttackHit = true;  // 공격이 성공적으로 적중했다고 표시
+            StartCoroutine(ResetAttackHit());  // 공격 적중 상태 초기화 코루틴 실행
             yield return new WaitForSeconds(2f);
-
         }
 
-
-            // 추격 상태로 전환 및 공격 상태 종료
+        // 추격 상태로 전환 및 공격 상태 종료
         bisChase = true;
         bisAttack = false;
         //banim.SetBool("isAttack", false);
         yield break;
     }
-
+    IEnumerator ResetAttackHit()
+    {
+        yield return new WaitForSeconds(attackHitCooldown); // 설정한 시간 동안 대기
+        isAttackHit = false; // 공격 적중 상태 초기화
+    }
     // FixedUpdate 함수
     void FixedUpdate()
     {
@@ -241,6 +236,15 @@ public class EnemyBoss : MonoBehaviour
         bTargerting();
         // 움직임을 억제하는 함수 호출
         bFreezeVelocity();
+    }
+    private void StopCharging()
+    {
+        if (isCharging)
+        {
+            isCharging = false;
+            brigid.velocity = Vector3.zero;
+            bisChase = true;
+        }
     }
 
     // 받는 피해 관리하는 함수
@@ -271,7 +275,23 @@ public class EnemyBoss : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Bullet")
+        // 'Wall' 태그를 가진 벽 또는 'Player' 태그를 가진 플레이어와 충돌했는지 확인
+        if (isCharging && (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Player"))
+        {
+            StopCharging();
+
+            if (collision.gameObject.tag == "Player" && !isChargeDamage)
+            {
+                Player player = collision.gameObject.GetComponent<Player>();
+                if (player != null)
+                {
+                    Vector3 knockbackDirection = (player.transform.position - transform.position).normalized;
+                    player.GetKnockedBack(knockbackDirection, knockbackForce, 20);
+                    isChargeDamage = true;
+                }
+            }
+        }
+        else if (collision.gameObject.tag == "Bullet")
         {
             Bullet bullet = collision.gameObject.GetComponent<Bullet>();
             if (bullet != null)
@@ -280,7 +300,7 @@ public class EnemyBoss : MonoBehaviour
                 bTakeDamage(bullet, collision.contacts[0].point);
             }
         }
-        
+
     }
 
     void OnTriggerEnter(Collider other)

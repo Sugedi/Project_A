@@ -73,7 +73,7 @@ public class Weapon : MonoBehaviour
             },
             actionOnGet: (obj) => {
                 obj.SetActive(true); // 활성화 상태로 변경합니다.
-                Debug.Log($"총알 활성화: {obj.name}, 활성화 상태: {obj.activeSelf}");
+                
             },
             actionOnRelease: (obj) => {
                 obj.SetActive(false); // 비활성화 상태로 변경합니다.                
@@ -206,9 +206,8 @@ public class Weapon : MonoBehaviour
                     bulletRigidbody.angularVelocity = Vector3.zero;
                 }
 
-                instantBullet.SetActive(true);
+                instantBullet.SetActive(true);                
                 
-                Debug.Log($"총알 가져옴: {instantBullet.name}, 활성화 상태: {instantBullet.activeSelf}, 위치: {instantBullet.transform.position}");
 
                 Bullet bulletScript = instantBullet.GetComponent<Bullet>();
                 bulletScript.isPenetrating = isPierceShotActive; // 관통샷 여부 설정                                            
