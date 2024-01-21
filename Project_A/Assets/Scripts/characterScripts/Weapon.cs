@@ -46,7 +46,7 @@ public class Weapon : MonoBehaviour
     // 사이드샷 스킬에 대한 속성
     public bool isSideShotActive = false; // 사이드샷 스킬 활성화 여부    
 
-    public float bulletSpeed = 7; // 총알 속도 기본값 설정
+    public float bulletSpeed = 8; // 총알 속도 기본값 설정
     public Transform bulletPos; // 총알 발사 위치
     public Transform bulletPosLeft; // 총알 발사 위치
     public Transform bulletPosRight; // 총알 발사 위치

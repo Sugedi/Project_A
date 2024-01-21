@@ -2979,7 +2979,7 @@ MonoBehaviour:
   boomShotRadius: 0
   boomShotDamage: 0
   isSideShotActive: 0
-  bulletSpeed: 7
+  bulletSpeed: 8
   bulletPos: {fileID: 750851398}
   bulletPosLeft: {fileID: 2074869986}
   bulletPosRight: {fileID: 1489422375}
@@ -3978,9 +3978,9 @@ MonoBehaviour:
   - {fileID: 981313778}
   hasWeapons: 00
   followCamera: {fileID: 1882126065}
-  ammo: 1000
+  ammo: 999999
   health: 100
-  maxAmmo: 1000
+  maxAmmo: 999999
   maxHealth: 100
   gameOverScreen: {fileID: 0}
   activeSkills:

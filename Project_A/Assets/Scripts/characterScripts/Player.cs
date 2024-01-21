@@ -65,7 +65,7 @@ public class Player : MonoBehaviour
         rigid = GetComponent<Rigidbody>(); // Rigidbody 컴포넌트 가져오기
         anim = GetComponentInChildren<Animator>(); // Animator 컴포넌트 가져오기
         meshs = GetComponentsInChildren<SkinnedMeshRenderer>(); // MeshRenderer 배열 가져오기
-        EquipWeapon(0);
+        //EquipWeapon(0);
     }
 
     // 승호 추가 시작

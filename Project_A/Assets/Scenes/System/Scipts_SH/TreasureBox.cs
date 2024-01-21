@@ -35,7 +35,7 @@ public class TreasureBox : MonoBehaviour
                 tresaureMSG.text = "벅샷 스킬을 획득하였습니다!";
                 CanvasGroupOn(treasureBox);
                 // System MSG 라는 캔버스를 활성화하는 것으로
-                DataManager.instance.datas.skillHave.Add(Resources.Load<Skill>("BuckShot1"));
+                DataManager.instance.datas.skillHave.Add(Resources.Load<Skill>("BuckShot2"));
                 DataManager.instance.DataSave();
                 GameObject.Find("Player").GetComponent<Player>().SkillGet();
                 treasure_1 = true; // false일 때는 열린 상자, true일 때는 닫힌 상자 
