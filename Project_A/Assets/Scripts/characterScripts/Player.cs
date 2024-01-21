@@ -387,7 +387,16 @@ public class Player : MonoBehaviour
     void Dodge()
     {
         if (jDown && moveVec != Vector3.zero && !isDodge)
-        {            
+        {
+            // 회피 경로에 벽이나 "RedTag" 태그가 있는지 레이캐스트로 확인
+            if (Physics.Raycast(transform.position, moveVec, out RaycastHit hit, 1f))
+            {
+                // 벽 또는 "RedTag" 태그가 있다면 회피 취소
+                if (hit.collider.CompareTag("Wall") || hit.collider.CompareTag("RedTag"))
+                {
+                    return;
+                }
+            }
             // 공격 또는 재장전 상태를 취소합니다.
             if (isFireReady)
             {
@@ -402,7 +411,7 @@ public class Player : MonoBehaviour
             }
 
             dodgeVec = moveVec; // 회피 방향 설정
-            speed *= 2; // 이동 속도 증가
+            speed *= 1.6f; // 이동 속도 증가
             anim.SetTrigger("doDodge"); // 회피 애니메이션 활성화
             isDodge = true; // 회피 중 상태 설정
             isDamage = true; // 무적 상태 활성화
@@ -419,7 +428,7 @@ public class Player : MonoBehaviour
     // 회피 완료 처리
     void DodgeOut()
     {        
-        speed *= 0.5f; // 이동 속도 원래대로 감소
+        speed /= 1.6f; // 이동 속도 원래대로 감소
         isDodge = false; // 회피 완료 후 상태 설정
                          
         // 무적 상태가 아직 해제되지 않았다면 해제
@@ -531,6 +540,8 @@ public class Player : MonoBehaviour
         // 적 총알과 충돌했을 때 처리
         else if (other.tag == "EnemyBullet")
         {
+            if (isDead) return;
+
             if (!isDamage)
             {
                 // 적 총알에 맞았을 때 체력 감소 및 총알 파괴
@@ -549,6 +560,7 @@ public class Player : MonoBehaviour
     // 넉백과 함께 피해 처리를 위해 피해량(damage) 인자를 추가합니다.
     public void GetKnockedBack(Vector3 direction, float force, int damage)
     {
+        if (isDead) return;
         // 먼저 피해를 적용합니다.
         if (!isDamage)
         {
