@@ -159,76 +159,56 @@ public class Bullet : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         // 총알이 적과 충돌했을 경우
-        if (collision.gameObject.tag == "Enemy")
+        if (!isPenetrating && collision.gameObject.tag == "Enemy")
         {
-            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-            if (enemy != null)
-            {
-                // 적에게 데미지를 입힙니다.
-                enemy.TakeDamage(this, collision.contacts[0].point);
-
-                // 붐샷이 활성화되어 있고 관통샷이 활성화되어 있지 않다면 폭발합니다.
-                if (isBoomShotActive && !isPenetrating)
-                {
-                    Explode();
-                }
-                else if (!isPenetrating) // 관통샷이 활성화되어 있지 않다면 총알을 반환합니다.
-                {
-                    ReturnToPool();
-                }
-            }            
+            // 관통샷이 아닐 때만 적과의 충돌을 처리합니다.
+            HandleCollisionWithEnemy(collision.gameObject, collision.contacts[0].point);
         }
         else if (collision.gameObject.tag == "Floor" || collision.gameObject.tag == "Wall")
         {
-            // 붐샷이 활성화되어 있으면 폭발합니다.
-            if (isBoomShotActive)
-            {
-                Explode();
-            }
-            else // 붐샷이 활성화되어 있지 않다면 총알을 반환합니다.
-            {
-                ReturnToPool();
-            }
+            HandleCollisionWithEnvironment();
         }
     }
 
     // 트리거 충돌 시 호출되는 메서드
     void OnTriggerEnter(Collider other)
     {
-        // 총알이 적과 충돌했을 경우
-        if (other.CompareTag("Enemy"))
+        if (isPenetrating && other.CompareTag("Enemy"))
         {
-            Enemy enemy = other.GetComponent<Enemy>();
-            if (enemy != null)
-            {
-                // 적에게 데미지를 입힙니다.
-                enemy.TakeDamage(this, other.ClosestPointOnBounds(transform.position));
-
-                // 붐샷이 활성화되어 있고 관통샷이 활성화되어 있지 않다면 폭발합니다.
-                if (isBoomShotActive && !isPenetrating)
-                {
-                    Explode();
-                }
-            }
-            else if (!isPenetrating) // 관통샷이 활성화되어 있지 않다면 총알을 반환합니다.
-            {
-                ReturnToPool();
-            }
+            // 관통샷일 때만 적과의 충돌을 처리합니다.
+            HandleCollisionWithEnemy(other.gameObject, other.ClosestPointOnBounds(transform.position));
         }
-        else if (other.CompareTag("Wall") || other.CompareTag("Floor"))
+    }
+    void HandleCollisionWithEnemy(GameObject enemyObject, Vector3 hitPoint)
+    {
+        Debug.Log("HandleCollisionWithEnemy called"); // 디버그 로그 추가
+        Enemy enemy = enemyObject.GetComponent<Enemy>();
+        if (enemy != null)
         {
-            // 붐샷이 활성화되어 있으면 폭발합니다.
+            enemy.TakeDamage(this, hitPoint);
+
             if (isBoomShotActive)
             {
                 Explode();
             }
-            else // 붐샷이 활성화되어 있지 않다면 총알을 반환합니다.
+            else if (!isPenetrating)
             {
                 ReturnToPool();
             }
         }
     }
 
+    void HandleCollisionWithEnvironment()
+    {
+        if (isBoomShotActive)
+        {
+            Explode();
+        }
+        else
+        {
+            ReturnToPool();
+        }
+    }
     // 폭발 처리 메서드
     private void Explode()
     {

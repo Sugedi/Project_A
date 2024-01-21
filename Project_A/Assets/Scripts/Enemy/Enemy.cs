@@ -287,6 +287,7 @@ public class Enemy : MonoBehaviour
 
         float damageToApply = bullet.isExplosion ? bullet.boomShotDamage : bullet.damage;
         curHealth -= damageToApply; // Apply damage
+        Debug.Log(gameObject.name + "가 데미지를 받았습니다. 데미지: " + damageToApply + ", 남은 체력: " + curHealth);
 
         // 공격으로 받은 위치 벡터 계산
         Vector3 reactVec = transform.position - hitPoint;
@@ -302,29 +303,13 @@ public class Enemy : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Bullet")
-        {
-            Bullet bullet = collision.gameObject.GetComponent<Bullet>();
-            if (bullet != null)
-            {
-                // TakeDamage 메서드를 호출하여 데미지 처리를 합니다.
-                TakeDamage(bullet, collision.contacts[0].point);
-            }
-        }
+        
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Bullet"))
-        {
-            Bullet bullet = other.GetComponent<Bullet>();
-            if (bullet != null)
-            {
-                // TakeDamage 메서드를 호출하여 데미지 처리를 합니다.
-                TakeDamage(bullet, other.transform.position);
-            }
-        }
-        else if (other.tag == "Player")
+        
+        if (other.tag == "Player")
         {
             isChase = true;
             anim.SetBool("isWalk", true);

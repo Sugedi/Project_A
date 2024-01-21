@@ -290,31 +290,13 @@ public class EnemyBoss : MonoBehaviour
                     isChargeDamage = true;
                 }
             }
-        }
-        else if (collision.gameObject.tag == "Bullet")
-        {
-            Bullet bullet = collision.gameObject.GetComponent<Bullet>();
-            if (bullet != null)
-            {
-                // TakeDamage 메서드를 호출하여 데미지 처리를 합니다.
-                bTakeDamage(bullet, collision.contacts[0].point);
-            }
-        }
+        }        
 
     }
 
     void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Bullet"))
-        {
-            Bullet bullet = other.GetComponent<Bullet>();
-            if (bullet != null)
-            {
-                // TakeDamage 메서드를 호출하여 데미지 처리를 합니다.
-                bTakeDamage(bullet, other.transform.position);
-            }
-        }
-        else if (other.CompareTag("Player"))
+    {       
+        if (other.CompareTag("Player"))
         {
            
             bisChase = true;
