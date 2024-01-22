@@ -340,7 +340,7 @@ public class Player : MonoBehaviour
         }
     }
     // ¿Á¿Â¿¸
-    void Reload()
+    public void Reload()
     {
         if (equipWeapon == null || ammo == 0 || isReload || equipWeapon.curAmmo == equipWeapon.maxAmmo)
             return;

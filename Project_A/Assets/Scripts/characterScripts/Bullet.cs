@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
 {
     public float baseDamage; // 총알의 기본 공격력
     public float damage; // 총알의 공격력  
-    public float lifeTime; // 총알의 최대 생명 시간 (사거리 제한)
+    public float lifeTime = 1; // 총알의 최대 생명 시간 (사거리 제한)
     private float lifeTimer; // 현재까지의 생명 시간을 추적하는 타이머
     public float acceleration; // 총알의 가속도
     private Rigidbody bulletRigidbody; // 총알의 Rigidbody 참조
