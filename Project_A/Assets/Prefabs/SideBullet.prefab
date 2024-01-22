@@ -662,7 +662,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseDamage: 10
   damage: 0
-  lifeTime: 0
+  lifeTime: 3
   acceleration: 0
   explosionPrefab: {fileID: 0}
   isPenetrating: 0
