@@ -191,9 +191,23 @@ public class Bullet : MonoBehaviour
     {
         Debug.Log("HandleCollisionWithEnemy called"); // 디버그 로그 추가
         Enemy enemy = enemyObject.GetComponent<Enemy>();
+        EnemyBoss enemyBoss = enemyObject.GetComponent<EnemyBoss>();
         if (enemy != null)
         {
             enemy.TakeDamage(this, hitPoint);
+
+            if (isBoomShotActive)
+            {
+                Explode();
+            }
+            else if (!isPenetrating)
+            {
+                ReturnToPool();
+            }
+        }
+        if (enemyBoss != null)
+        {
+            enemyBoss.bTakeDamage(this, hitPoint); // EnemyBoss에 대한 데미지 처리
 
             if (isBoomShotActive)
             {
