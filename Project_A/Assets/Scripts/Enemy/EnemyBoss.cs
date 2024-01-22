@@ -47,7 +47,7 @@ public class EnemyBoss : MonoBehaviour
     public float chargeCooldownDuration = 8f;
 
     public float chargeSpeed = 1f; // 돌진 강도
-    public float chargeDuration = 0.5f; // 돌진 시간
+    public float chargeDuration = 1.5f; // 돌진 시간
     // Reference to the arrow prefab
     private bool isChargeDamage = false;
 
@@ -260,7 +260,7 @@ public class EnemyBoss : MonoBehaviour
 
         float damageToApply = bullet.isExplosion ? bullet.boomShotDamage : bullet.damage;
         bcurHealth -= damageToApply; // Apply damage
-
+        Debug.Log(gameObject.name + "가 데미지를 받았습니다. 데미지:" + damageToApply + "남은 체력" + bcurHealth);
     // 공격으로 받은 위치 벡터 계산
     Vector3 reactVec = transform.position - hitPoint;
 
