@@ -58,7 +58,7 @@ public class Bullet : MonoBehaviour
         isBoomShotActive = false;
 
         // 파티클 시스템이 있다면 비활성화했다가 다시 활성화
-
+       
         if (explosionPrefab != null)
         {
             ParticleSystem ps = explosionPrefab.GetComponent<ParticleSystem>();

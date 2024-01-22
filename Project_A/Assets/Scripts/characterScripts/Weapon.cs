@@ -226,7 +226,14 @@ public class Weapon : MonoBehaviour
                 }
                 bulletScript.SetPool(isPierceShotActive ? pierceBulletPool : bulletPool);
                 bulletScript.damage = bulletScript.baseDamage * damageMultiplier;
-                bulletScript.lifeTime = 1f; // 총알의 생명 시간 설정
+                if (isPierceShotActive)
+                {
+                    bulletScript.lifeTime = 0.6f; // 피어스샷 총알의 생명 주기를 0.5초로 설정
+                }
+                else
+                {
+                    bulletScript.lifeTime = 1f; // 일반 총알의 생명 주기를 1초로 설정
+                } // 총알의 생명 시간 설정
 
                 Rigidbody bulletRigid = instantBullet.GetComponent<Rigidbody>();
                 Quaternion spreadRotation = Quaternion.identity;
