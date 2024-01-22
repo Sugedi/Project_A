@@ -5,12 +5,9 @@ using UnityEngine.AI;
 
 public class EnemyDragon : MonoBehaviour
 {
-    public enum Type { A, B, C };
-    public Type enemyType; // 적 종류
     public float maxHealth; // 최대 체력
     public float curHealth; // 현재 체력
     public Transform target; // 플레이어의 Transform
-    public BoxCollider meleeArea; // 근접 공격 범위 Collider
     public GameObject bullet; // 원거리 공격에 사용되는 총알
     public GameObject bullet2; // 원거리 공격에 사용되는 총알
     public GameObject bullet3; // 원거리 공격에 사용되는 총알
@@ -19,6 +16,16 @@ public class EnemyDragon : MonoBehaviour
     public int minDropCount; // 드랍 아이템의 최소 개수
     public int maxDropCount; // 드랍 아이템의 최대 개수
     public float targetRange = 0;
+    public float targetRadius = 0;
+    public float attackDuration = 1f; // 공격이 지속되는 시간
+    private bool isAttackHit = false; // 일반 공격이 성공적으로 적중했는지 여부
+    public float attackHitCooldown = 0.5f; // 다음 일반 공격이 적중할 수 있는 쿨다운 시간
+
+    public GameObject projectilePrefab; // 투사체 프리팹
+    public Transform firePoint; // 발사 위치
+    public float projectileSpeed = 5f; // 투사체 속도
+    public int numberOfProjectiles = 12; // 투사체 개수
+    public float spreadAngle = 360f; // 투사체 각도 범위
 
     public float sightRange = 10f; // 타겟이 유저 인식
 
@@ -36,6 +43,27 @@ public class EnemyDragon : MonoBehaviour
     Animator anim; // Animator 컴포넌트
 
     Vector3 initialPosition; // 몬스터의 초기 위치 저장 변수
+
+    void Start()
+    {
+        StartCoroutine(FireProjectiles());
+    }
+
+    IEnumerator FireProjectiles()
+    {
+        float angleStep = spreadAngle / numberOfProjectiles;
+
+        for (int i = 0; i < numberOfProjectiles; i++)
+        {
+            float angle = i * angleStep;
+            Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
+            GameObject projectile = Instantiate(projectilePrefab, firePoint.position, rotation);
+            Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
+            rb.velocity = rotation * Vector2.right * projectileSpeed;
+
+            yield return new WaitForSeconds(0.1f); // 투사체 간 딜레이
+        }
+    }
 
     void Awake()
     {
@@ -179,24 +207,7 @@ public class EnemyDragon : MonoBehaviour
 
     void Targerting()
     {
-        float targetRadius = 0;
-
-        // 적 종류에 따라 탐지 범위 조정
-        switch (enemyType)
-        {
-            case Type.A:
-                targetRadius = 1f;
-                targetRange = 0.8f;
-                break;
-            case Type.B:
-                targetRadius = 1f;
-                targetRange = 12f;
-                break;
-            case Type.C:
-                targetRadius = 0.5f;
-                targetRange = 8f;
-                break;
-        }
+        /*
 
         float distanceToPlayer = Vector3.Distance(transform.position, target.position);
 
@@ -208,6 +219,7 @@ public class EnemyDragon : MonoBehaviour
                 StartCoroutine(Attack());
             }
         }
+        */
 
         // 플레이어를 감지하면 공격 시작
         RaycastHit[] rayHits =
@@ -228,51 +240,74 @@ public class EnemyDragon : MonoBehaviour
         isAttack = true;
         anim.SetBool("isAttack", true);
 
-        // 적 유형에 따른 공격 동작 처리
-        switch (enemyType)
-        {
-            case Type.A:
-                // 0.2초 대기 후 근접 공격 범위 활성화
-                yield return new WaitForSeconds(0.2f);
-                meleeArea.enabled = true;
-
-                // 1초 후 근접 공격 범위 비활성화
-                yield return new WaitForSeconds(0.7f);
-                meleeArea.enabled = false;
-
-                // 1초 대기
-                yield return new WaitForSeconds(0f);
-                break;
-            case Type.B:
-                // 0.1초 대기 후 앞으로 이동하는 힘을 가하고 근접 공격 범위 활성화
-                yield return new WaitForSeconds(0.1f);
-                rigid.AddForce(transform.forward * 20, ForceMode.Impulse);
-                meleeArea.enabled = true;
-
-                // 0.5초 후 움직임을 제거하고 근접 공격 범위 비활성화
-                yield return new WaitForSeconds(0.5f);
-                rigid.velocity = Vector3.zero;
-                meleeArea.enabled = false;
-
-                // 2초 대기
-                yield return new WaitForSeconds(2f);
-                break;
-            case Type.C:
-                // 0.5초 대기 후 총알 생성 및 발사
-                yield return new WaitForSeconds(0.5f);
-                GameObject instantBullet = Instantiate(bullet, transform.position, transform.rotation);
-                Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
-                rigidBullet.velocity = transform.forward * 10;
-
-                // 2초 대기
-                yield return new WaitForSeconds(1.5f);
-                break;
-        }
+        // 일정 시간 동안 대기
+        yield return new WaitForSeconds(attackDuration);
 
         // 추격 상태로 전환 및 공격 상태 종료
         isChase = true;
         isAttack = false;
         anim.SetBool("isAttack", false);
+
+        if (curHealth > 0 && !isAttackHit)
+        {
+            yield return new WaitForSeconds(0.5f);
+            GameObject instantBullet = Instantiate(bullet, transform.position, transform.rotation);
+            Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
+            rigidBullet.velocity = transform.forward * 20;
+
+            isAttackHit = true;  // 공격이 성공적으로 적중했다고 표시
+            StartCoroutine(ResetAttackHit());  // 공격 적중 상태 초기화 코루틴 실행
+            yield return new WaitForSeconds(2f);
+        }
+
+        // 추격 중지 및 공격 상태로 전환
+        isChase = false;
+        isAttack = true;
+        anim.SetBool("isAttack2", true);
+
+        if (curHealth > 0 && !isAttackHit)
+        {
+            yield return new WaitForSeconds(0.5f);
+            GameObject instantBullet = Instantiate(bullet, transform.position, transform.rotation);
+            Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
+            rigidBullet.velocity = transform.forward * 20;
+
+            isAttackHit = true;  // 공격이 성공적으로 적중했다고 표시
+            StartCoroutine(ResetAttackHit());  // 공격 적중 상태 초기화 코루틴 실행
+            yield return new WaitForSeconds(2f);
+        }
+
+        // 추격 상태로 전환 및 공격 상태 종료
+        isChase = true;
+        isAttack = false;
+        anim.SetBool("isAttack2", false);
+
+        // 추격 중지 및 공격 상태로 전환
+        isChase = false;
+        isAttack = true;
+        anim.SetBool("isAttack3", true);
+
+        {
+            yield return new WaitForSeconds(0.5f);
+            GameObject instantBullet = Instantiate(bullet, transform.position, transform.rotation);
+            Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
+            rigidBullet.velocity = transform.forward * 20;
+
+            isAttackHit = true;  // 공격이 성공적으로 적중했다고 표시
+            StartCoroutine(ResetAttackHit());  // 공격 적중 상태 초기화 코루틴 실행
+            yield return new WaitForSeconds(2f);
+        }
+
+        // 추격 상태로 전환 및 공격 상태 종료
+        isChase = true;
+        isAttack = false;
+        anim.SetBool("isAttack3", false);
+    }
+
+    IEnumerator ResetAttackHit()
+    {
+        yield return new WaitForSeconds(attackHitCooldown); // 설정한 시간 동안 대기
+        isAttackHit = false; // 공격 적중 상태 초기화
     }
 
     // FixedUpdate 함수
@@ -353,13 +388,13 @@ public class EnemyDragon : MonoBehaviour
             // yield return new WaitForSeconds(0.5f);
 
             // Play doGetHit animation
-            anim.SetBool("doGetHit", true);
+            // anim.SetBool("doGetHit", true);
 
             // Wait for the doGetHit animation to finish
             yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
 
             // Reset the doGetHit animation state
-            anim.SetBool("doGetHit", false);
+            // anim.SetBool("doGetHit", false);
 
             isChase = true;
             nav.enabled = true;
@@ -385,7 +420,7 @@ public class EnemyDragon : MonoBehaviour
             reactVec += Vector3.up;
 
             // 리지드바디에 피격 방향으로의 작은 힘을 가하고
-            rigid.AddForce(reactVec * 5, ForceMode.Impulse);
+            // rigid.AddForce(reactVec * 5, ForceMode.Impulse);
 
             // _item이라는 게임 오브젝트 변수 선언 + itemPrefab을 생성해서 _item에 할당
             GameObject _item;
@@ -397,7 +432,7 @@ public class EnemyDragon : MonoBehaviour
             }
 
             // 2초 뒤 몹 사망
-            Destroy(gameObject, 1);
+            Destroy(gameObject, 10);
         }
     }
 }
