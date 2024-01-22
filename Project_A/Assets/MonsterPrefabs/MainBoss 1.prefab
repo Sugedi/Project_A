@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5041074556346836801}
   - component: {fileID: 5041074556332679681}
   - component: {fileID: 5041074556332776353}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: Sparkles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4621,11 +4621,11 @@ GameObject:
   - component: {fileID: 5041074556332776357}
   - component: {fileID: -8240825595075231100}
   - component: {fileID: 5303062143261486182}
-  - component: {fileID: -6660993448130603159}
   - component: {fileID: 5041074556358086277}
-  m_Layer: 9
+  - component: {fileID: -7375750404159485140}
+  m_Layer: 16
   m_Name: MainBoss 1
-  m_TagString: EnemyBullet
+  m_TagString: EnemyLong
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9350,20 +9350,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.3159223, y: 4.4832973, z: 6.711685}
   m_Center: {x: 0.14968976, y: 1.7416487, z: 3.1395226}
---- !u!114 &-6660993448130603159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5041074556347333477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30353af62a23cf04ca7e63cac88d26cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 20
-  isMelee: 0
 --- !u!114 &5041074556358086277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9377,6 +9363,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnlyDeactivate: 0
+--- !u!114 &-7375750404159485140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5041074556347333477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1af2e6c106760c642b47e9bbde821931, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 20
+  isMelee: 0
 --- !u!1 &5041074556347333479
 GameObject:
   m_ObjectHideFlags: 0
@@ -9388,7 +9388,7 @@ GameObject:
   - component: {fileID: 5041074556346836807}
   - component: {fileID: 5041074556332679687}
   - component: {fileID: 5041074556332776359}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: Flames
   m_TagString: Untagged
   m_Icon: {fileID: 0}

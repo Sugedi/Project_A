@@ -108,6 +108,14 @@ public class EnemyDragon : MonoBehaviour
         anim.SetBool("isAttack", false);
         anim.SetBool("isWalk", false);
 
+        isChase = false;
+        anim.SetBool("isAttack2", false);
+        anim.SetBool("isWalk", false);
+
+        isChase = false;
+        anim.SetBool("isAttack3", false);
+        anim.SetBool("isWalk", false);
+
         // 초기 위치로 돌아가기
         // StartCoroutine(ReturnToInitialPosition());
     }

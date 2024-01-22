@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 8349975073753270232}
   - component: {fileID: 9092892869685271889}
   - component: {fileID: -2643927323211340616}
-  - component: {fileID: 2403054350698463396}
   - component: {fileID: 8349975073778324218}
-  m_Layer: 9
+  - component: {fileID: 7982982746282074174}
+  m_Layer: 16
   m_Name: MainBoss 2
-  m_TagString: EnemyBullet
+  m_TagString: EnemyLong
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4678,20 +4678,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0.5}
---- !u!114 &2403054350698463396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8349975073767040792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30353af62a23cf04ca7e63cac88d26cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
-  isMelee: 0
 --- !u!114 &8349975073778324218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4705,6 +4691,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnlyDeactivate: 0
+--- !u!114 &7982982746282074174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8349975073767040792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1af2e6c106760c642b47e9bbde821931, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 20
+  isMelee: 0
 --- !u!1 &8349975073767040794
 GameObject:
   m_ObjectHideFlags: 0
@@ -4716,7 +4716,7 @@ GameObject:
   - component: {fileID: 8349975073767537466}
   - component: {fileID: 8349975073753382522}
   - component: {fileID: 8349975073753270234}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: Sparkles
   m_TagString: Untagged
   m_Icon: {fileID: 0}

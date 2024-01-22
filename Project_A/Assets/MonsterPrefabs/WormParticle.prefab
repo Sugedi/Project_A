@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 638195515400247325}
   - component: {fileID: 750422715799229457}
   - component: {fileID: 727221354708928119}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: Ef_GlowExParticle_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4808,7 +4808,7 @@ GameObject:
   - component: {fileID: 638195520655904895}
   - component: {fileID: 750422712598042099}
   - component: {fileID: 727221355350506411}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: Ef_SmokeParticle_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9569,7 +9569,7 @@ GameObject:
   - component: {fileID: 638195513081249543}
   - component: {fileID: 750422712859425807}
   - component: {fileID: 727221360035156067}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: Ef_SmokeParticle_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14332,11 +14332,11 @@ GameObject:
   - component: {fileID: 727221354475095253}
   - component: {fileID: 3933046590718653335}
   - component: {fileID: 3446574354831746702}
-  - component: {fileID: 5961057522379251369}
   - component: {fileID: 1564544706742378071}
-  m_Layer: 9
+  - component: {fileID: -2074015296645540426}
+  m_Layer: 16
   m_Name: WormParticle
-  m_TagString: EnemyBullet
+  m_TagString: EnemyLong
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19134,20 +19134,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.47522482, y: 0.35683838, z: 0.3626813}
   m_Center: {x: 0.010770813, y: -0.00040975958, z: 0.08351916}
---- !u!114 &5961057522379251369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 636954836966932781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30353af62a23cf04ca7e63cac88d26cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
-  isMelee: 0
 --- !u!96 &1564544706742378071
 TrailRenderer:
   serializedVersion: 2
@@ -19256,3 +19242,17 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &-2074015296645540426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636954836966932781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1af2e6c106760c642b47e9bbde821931, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 20
+  isMelee: 0

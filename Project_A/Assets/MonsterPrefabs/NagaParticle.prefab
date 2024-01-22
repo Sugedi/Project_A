@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 6218710878202777996}
   - component: {fileID: -3531895301930467400}
   - component: {fileID: 9001177275895778069}
-  - component: {fileID: 7074610426041375159}
-  m_Layer: 9
+  - component: {fileID: -6766679987158607253}
+  m_Layer: 16
   m_Name: NagaParticle
-  m_TagString: EnemyBullet
+  m_TagString: EnemyLong
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4785,7 +4785,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7074610426041375159
+--- !u!114 &-6766679987158607253
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4794,7 +4794,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6092310831281864228}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30353af62a23cf04ca7e63cac88d26cc, type: 3}
+  m_Script: {fileID: 11500000, guid: 1af2e6c106760c642b47e9bbde821931, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 20
@@ -4810,7 +4810,7 @@ GameObject:
   - component: {fileID: 6089293376789911318}
   - component: {fileID: 6210708085021560030}
   - component: {fileID: 6218710877719338818}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: Ef_GlowExParticle_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

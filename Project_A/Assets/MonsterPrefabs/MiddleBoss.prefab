@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 8107271953011322553}
   - component: {fileID: 9105824548529620402}
   - component: {fileID: 845528257469943155}
-  - component: {fileID: -1067930791159098843}
   - component: {fileID: 3781343338867323642}
-  m_Layer: 9
+  - component: {fileID: -61110061736710136}
+  m_Layer: 16
   m_Name: MiddleBoss
-  m_TagString: EnemyBullet
+  m_TagString: EnemyLong
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4826,20 +4826,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.5, z: -0.15}
---- !u!114 &-1067930791159098843
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8233600560646915925}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30353af62a23cf04ca7e63cac88d26cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 20
-  isMelee: 0
 --- !u!96 &3781343338867323642
 TrailRenderer:
   serializedVersion: 2
@@ -4948,6 +4934,20 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &-61110061736710136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8233600560646915925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1af2e6c106760c642b47e9bbde821931, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 20
+  isMelee: 0
 --- !u!1 &8233600561369261847
 GameObject:
   m_ObjectHideFlags: 0
@@ -4959,7 +4959,7 @@ GameObject:
   - component: {fileID: 8236547614867901017}
   - component: {fileID: 8142299637414856857}
   - component: {fileID: 8107271950782046987}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: Ef_SmokeParticle_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9720,7 +9720,7 @@ GameObject:
   - component: {fileID: 8236547616828608397}
   - component: {fileID: 8142299638035754255}
   - component: {fileID: 8107271953836512137}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: Ef_FireSparksParticle_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14598,7 +14598,7 @@ GameObject:
   - component: {fileID: 8236547612948201455}
   - component: {fileID: 8142299638696029721}
   - component: {fileID: 8107271953176581399}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: Ef_GlowExParticle_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19395,7 +19395,7 @@ GameObject:
   - component: {fileID: 8236547615856520915}
   - component: {fileID: 8142299640077427309}
   - component: {fileID: 8107271951112755839}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: Ef_SmokeParticle_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24156,7 +24156,7 @@ GameObject:
   - component: {fileID: 8236547616832900769}
   - component: {fileID: 8142299640290907359}
   - component: {fileID: 8107271951477740443}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: Ef_SmokeParticle_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28917,7 +28917,7 @@ GameObject:
   - component: {fileID: 8236547612935331241}
   - component: {fileID: 8142299639033371511}
   - component: {fileID: 8107271952236685427}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: Ef_FireSparksParticle_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33795,7 +33795,7 @@ GameObject:
   - component: {fileID: 8236547613753908661}
   - component: {fileID: 8142299639490524259}
   - component: {fileID: 8107271954896257207}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: Ef_FireBig2Particle_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38587,7 +38587,7 @@ GameObject:
   - component: {fileID: 8236547612628070123}
   - component: {fileID: 8142299638720972429}
   - component: {fileID: 8107271951712235833}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: Ef_GlowExParticle_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43384,7 +43384,7 @@ GameObject:
   - component: {fileID: 8236547613182425333}
   - component: {fileID: 8142299638396306801}
   - component: {fileID: 8107271951672139997}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: Ef_SmokeParticle_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

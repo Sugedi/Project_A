@@ -17,6 +17,7 @@ TagManager:
   - Door
   - Switch
   - Treasure
+  - EnemyLong
   layers:
   - Default
   - TransparentFX
@@ -34,7 +35,7 @@ TagManager:
   - Item
   - Wall
   - Floor
-  - 
+  - EnemyLong
   - 
   - 
   - 

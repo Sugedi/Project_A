@@ -561,6 +561,29 @@ public class Player : MonoBehaviour
 
             }
         }
+
+        // 적 총알과 충돌했을 때 처리
+        else if (other.tag == "EnemyLong")
+        {
+            if (isDead) return;
+
+            if (!isDamage)
+            {
+                // 적 총알에 맞았을 때 체력 감소 및 총알 파괴
+                EnemyLongAttack enemyLong = other.GetComponent<EnemyLongAttack>();
+                health -= enemyLong.damage;
+                if (health < 0)
+                {
+                    health = 0;
+                    Die();
+                }
+                if (other.GetComponent<Rigidbody>() != null)
+                    Destroy(other.gameObject);
+
+                // 데미지 표시 코루틴 실행
+                StartCoroutine(OnDamage());
+            }
+        }
     }
     // 넉백과 함께 피해 처리를 위해 피해량(damage) 인자를 추가합니다.
     public void GetKnockedBack(Vector3 direction, float force, int damage)
