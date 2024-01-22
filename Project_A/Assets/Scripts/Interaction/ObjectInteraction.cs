@@ -14,6 +14,11 @@ using UnityEngine.UI;
 
 public class ObjectInteraction : MonoBehaviour
 {
+    public GameObject talk1Panel;
+    public GameObject talk2Panel;
+
+    public GameObject stageUI;
+
     public GameObject startBtn; // 'Dialogue StartBtn: 거울에 손을 뻗는다'
     public GameObject dialoguePanel1;
     public GameObject dialoguePanel2;
@@ -24,6 +29,7 @@ public class ObjectInteraction : MonoBehaviour
     public GameObject mainQuestPanel2;
     public GameObject mainQuestPanel3;
 
+    public GameObject talkNextBtn; // 1-1부터 1-4까지 넘겨주는 버튼
     public GameObject nextButton1;
     public GameObject nextButton2;
     public GameObject nextButton3;
@@ -45,6 +51,13 @@ public class ObjectInteraction : MonoBehaviour
         systemMessagePanel.SetActive(false); // 시스템 메시지 패널을 비활성화 상태로 설정
         mainQuestPanel1.SetActive(true); // 첫 번째 메인 퀘스트 패널을 활성화 상태로 설정
         mainQuest = GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1MainQuest;
+
+        talk1Panel.SetActive(true); // 맨 처음 주인공 대사가 켜지면
+        stageUI.SetActive(false);
+
+        talk2Panel.SetActive(false); // 맨 처음 주인공 대사가 꺼지면
+        stageUI.SetActive(true);
+
     }
 
 
@@ -56,7 +69,10 @@ public class ObjectInteraction : MonoBehaviour
 
             if (mainQuest == 0)
             {
+                talk2Panel.SetActive(false); // 맨 처음 주인공 대사가 꺼지면
                 startBtn.SetActive(true);
+
+                dialoguePanel2.SetActive(true); // 질서의 신 첫 번째 대사창을 활성화 상태로 설정
             }
 
             if (mainQuest == 1)
