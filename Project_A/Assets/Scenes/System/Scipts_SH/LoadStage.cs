@@ -9,8 +9,22 @@ public class LoadStage : MonoBehaviour
 {
     public Slider progressbar;
     public TextMeshProUGUI loadText;
+    public TextMeshProUGUI loadInfo;
+
+    private List<string> gameHoneyTip = new List<string>()
+    {
+        "맵 곳곳에는 숨겨진 스킬이 존재합니다.\n새로운 스킬을 획득하고 더욱 강해져보세요!",
+        "재장전 중에 이동 외에 다른 행동을 하면 장전이 취소됩니다.",
+        "죽지 않도록 조심하세요.\n사망 시에는 보유한 젬의 절반을 잃습니다.",
+        "관객들은 당신이 다시 인간이 되길 기대하고 있습니다.",
+        "혼란의 신은 참 장난꾸러기네요.",
+        "몬스터들이 너무 강력하다면 \n백스테이지에서 능력을 강화해보세요!",
+        "로딩이 빨라서 글을 못 읽겠다고요?\n별로 중요한 이야기는 없습니다."
+    };
     private void Start()
     {
+        int random = Random.Range(0, gameHoneyTip.Count);
+        loadInfo.text = gameHoneyTip[random];
         StartCoroutine(GoToStage());
     }
     IEnumerator GoToStage()
