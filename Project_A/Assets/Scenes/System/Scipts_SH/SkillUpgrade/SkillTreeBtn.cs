@@ -15,11 +15,13 @@ public class SkillTreeBtn : MonoBehaviour
     public CanvasGroup ammoInfoCanvas;
     public CanvasGroup speedInfoCanvas;
     public CanvasGroup reloadInfoCanvas;
+    public CanvasGroup healthInfoCanvas;
 
     public TextMeshProUGUI powerInfo;
     public TextMeshProUGUI ammoInfo;
     public TextMeshProUGUI speedInfo;
     public TextMeshProUGUI reloadInfo;
+    public TextMeshProUGUI healthInfo;
     public TextMeshProUGUI gem;
 
     public int soul;
@@ -140,6 +142,7 @@ public class SkillTreeBtn : MonoBehaviour
                     CanvasGroupOff(ammoInfoCanvas);
                     CanvasGroupOff(speedInfoCanvas);
                     CanvasGroupOff(reloadInfoCanvas);
+                    CanvasGroupOff(healthInfoCanvas);
 
 
                     foreach (Skill skill in powerList)
@@ -183,6 +186,7 @@ public class SkillTreeBtn : MonoBehaviour
                     CanvasGroupOff(powerInfoCanvas);
                     CanvasGroupOff(speedInfoCanvas);
                     CanvasGroupOff(reloadInfoCanvas);
+                    CanvasGroupOff(healthInfoCanvas);
 
                     foreach (Skill skill in ammoList)
                     {
@@ -225,6 +229,7 @@ public class SkillTreeBtn : MonoBehaviour
                     CanvasGroupOff(ammoInfoCanvas);
                     CanvasGroupOff(powerInfoCanvas);
                     CanvasGroupOff(reloadInfoCanvas);
+                    CanvasGroupOff(healthInfoCanvas);
 
 
                     foreach (Skill skill in speedList)
@@ -268,6 +273,7 @@ public class SkillTreeBtn : MonoBehaviour
                     CanvasGroupOff(ammoInfoCanvas);
                     CanvasGroupOff(speedInfoCanvas);
                     CanvasGroupOff(powerInfoCanvas);
+                    CanvasGroupOff(healthInfoCanvas);
 
 
                     foreach (Skill skill in reloadList)
@@ -291,6 +297,49 @@ public class SkillTreeBtn : MonoBehaviour
                         else if (skill.skillName == "ReloadUp4")
                         {
                             reloadInfo.text = "최고 레벨";
+                            break;
+                        }
+                    }
+                }
+                break;
+            case SkillBtn.Health:
+
+                List<Skill> healthList = GameObject.Find("DataManager").GetComponent<DataManager>().datas.skillHave;
+
+                if (healthInfoCanvas.alpha == 1)
+                {
+
+                }
+                else
+                {
+                    CanvasGroupOn(healthInfoCanvas);
+                    CanvasGroupOff(reloadInfoCanvas);
+                    CanvasGroupOff(ammoInfoCanvas);
+                    CanvasGroupOff(speedInfoCanvas);
+                    CanvasGroupOff(powerInfoCanvas);
+
+
+                    foreach (Skill skill in healthList)
+                    {
+
+                        if (skill.skillName == "HealthUp1")
+                        {
+                            healthInfo.text = "필요 재화: 50";
+                            break;
+                        }
+                        else if (skill.skillName == "HealthUp2")
+                        {
+                            healthInfo.text = "필요 재화: 70";
+                            break;
+                        }
+                        else if (skill.skillName == "HealthUp3")
+                        {
+                            healthInfo.text = "필요 재화: 90";
+                            break;
+                        }
+                        else if (skill.skillName == "HealthUp4")
+                        {
+                            healthInfo.text = "최고 레벨";
                             break;
                         }
                     }
@@ -735,6 +784,194 @@ public class SkillTreeBtn : MonoBehaviour
                     }
                 }
                 break;
+
+            case SkillBtn.HealthUp:
+
+                int curHealth = GameObject.Find("DataManager").GetComponent<DataManager>().datas.maxHP;
+                soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
+
+                if (curHealth == 100)
+                {
+                    if(soul < 30)
+                    {
+
+                    }
+                    else
+                    {
+                        DataManager.instance.datas.maxHP = 130;
+                        DataManager.instance.DataSave();
+                        GameObject.Find("Player").GetComponent<Player>().SkillGet();
+                        GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 30;
+                        soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
+                        gem.text = $"재화: {soul}";
+                        DataManager.instance.DataSave();
+                        healthInfo.text = "필요 재화: 50";
+                    }
+                }
+                else if (curHealth == 130)
+                {
+                    if(soul < 50)
+                    {
+
+                    }
+                    else
+                    {
+                        DataManager.instance.datas.maxHP = 160;
+                        DataManager.instance.DataSave();
+                        GameObject.Find("Player").GetComponent<Player>().SkillGet();
+                        GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 50;
+                        soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
+                        gem.text = $"재화: {soul}";
+                        DataManager.instance.DataSave();
+                        healthInfo.text = "필요 재화: 70";
+                    }
+                }
+                else if (curHealth == 160)
+                {
+                    if(soul < 70)
+                    {
+
+                    }
+                    else
+                    {
+                        DataManager.instance.datas.maxHP = 190;
+                        DataManager.instance.DataSave();
+                        GameObject.Find("Player").GetComponent<Player>().SkillGet();
+                        GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 70;
+                        soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
+                        gem.text = $"재화: {soul}";
+                        DataManager.instance.DataSave();
+                        healthInfo.text = "필요 재화: 90";
+                    }
+                }
+                else if (curHealth == 190)
+                {
+                    if(soul < 90)
+                    {
+
+                    }
+                    else
+                    {
+                        DataManager.instance.datas.maxHP = 210;
+                        DataManager.instance.DataSave();
+                        GameObject.Find("Player").GetComponent<Player>().SkillGet();
+                        GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 90;
+                        soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
+                        gem.text = $"재화: {soul}";
+                        DataManager.instance.DataSave();
+                        healthInfo.text = "최고 레벨";
+                    }
+                    
+                }
+                break;
+            // 스킬용
+            //int healthSkillCheck = 0;
+            //List<Skill> healthskillList = GameObject.Find("DataManager").GetComponent<DataManager>().datas.skillHave;
+
+            //foreach (Skill skill in healthskillList)
+            //{
+            //    soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
+            //    Skill healthUp2 = Resources.Load<Skill>("HealthUp2");
+            //    Skill healthUp3 = Resources.Load<Skill>("HealthUp3");
+            //    Skill healthUp4 = Resources.Load<Skill>("HealthUp4");
+
+            //    Debug.Log(skill.skillName);
+
+            //    if (skill.skillName == "HealthUp1")
+            //    {
+            //        if (soul < 50)
+            //        {
+            //            healthSkillCheck += 1;
+            //            break;
+            //        }
+            //        else
+            //        {
+            //            healthskillList.Remove(skill);
+            //            DataManager.instance.datas.skillHave.Add(healthUp2);
+            //            DataManager.instance.DataSave();
+            //            GameObject.Find("Player").GetComponent<Player>().SkillGet();
+            //            GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 50;
+            //            soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
+            //            gem.text = $"재화: {soul}";
+            //            DataManager.instance.DataSave();
+            //            healthInfo.text = "필요 재화: 70";
+            //            healthSkillCheck += 1;
+            //            break;
+            //        }
+            //    }
+            //    else if (skill.skillName == "HealthUp2")
+            //    {
+            //        if (soul < 70)
+            //        {
+            //            healthSkillCheck += 1;
+            //            break;
+            //        }
+            //        else
+            //        {
+            //            healthskillList.Remove(skill);
+            //            DataManager.instance.datas.skillHave.Add(healthUp3);
+            //            DataManager.instance.DataSave();
+            //            GameObject.Find("Player").GetComponent<Player>().SkillGet();
+            //            GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 70;
+            //            soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
+            //            gem.text = $"재화: {soul}";
+            //            DataManager.instance.DataSave();
+            //            healthInfo.text = "필요 재화: 90";
+            //            healthSkillCheck += 1;
+            //            break;
+            //        }
+            //    }
+            //    else if (skill.skillName == "HealthUp3")
+            //    {
+            //        if (soul < 90)
+            //        {
+            //            healthSkillCheck += 1;
+            //            break;
+            //        }
+            //        else
+            //        {
+            //            healthskillList.Remove(skill);
+            //            DataManager.instance.datas.skillHave.Add(healthUp4);
+            //            DataManager.instance.DataSave();
+            //            GameObject.Find("Player").GetComponent<Player>().SkillGet();
+            //            GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 90;
+            //            soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
+            //            gem.text = $"재화: {soul}";
+            //            DataManager.instance.DataSave();
+            //            healthInfo.text = "최고 레벨";
+            //            healthSkillCheck += 1;
+            //            break;
+            //        }
+            //    }
+            //    else if (skill.skillName == "HealthUp1")
+            //    {
+            //        Debug.Log("더 이상 강화 불가");
+            //        healthSkillCheck += 1;
+            //        break;
+            //    }
+
+            //}
+            //if (healthSkillCheck == 0)
+            //{
+            //    if (soul < 30)
+            //    {
+            //        break;
+            //    }
+            //    else
+            //    {
+            //        Skill healthUp1 = Resources.Load<Skill>("HealthUp1");
+            //        DataManager.instance.datas.skillHave.Add(healthUp1);
+            //        DataManager.instance.DataSave();
+            //        GameObject.Find("Player").GetComponent<Player>().SkillGet();
+            //        GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 30;
+            //        soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
+            //        gem.text = $"재화: {soul}";
+            //        DataManager.instance.DataSave();
+            //        healthInfo.text = "필요 재화: 50";
+            //        break;
+            //    }
+            //}
+            //break;
 
             case SkillBtn.Quit:
                 CanvasGroup skillTree = GameObject.Find("SkillCanvas").GetComponent<CanvasGroup>();

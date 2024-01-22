@@ -30,7 +30,9 @@ public enum SkillBtn
     Speed,
     SpeedUp,
     Reload,
-    ReloadUp
+    ReloadUp,
+    Health,
+    HealthUp
 
 }
 
