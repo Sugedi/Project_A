@@ -52,11 +52,18 @@ public class ObjectInteraction : MonoBehaviour
         mainQuestPanel1.SetActive(true); // 첫 번째 메인 퀘스트 패널을 활성화 상태로 설정
         mainQuest = GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1MainQuest;
 
-        talk1Panel.SetActive(true); // 맨 처음 주인공 대사가 켜지면
-        stageUI.SetActive(false);
+        talk1Panel.SetActive(true); // "뭐야, 여긴 어디야...????"
+        stageUI.SetActive(false); // 3개 스크립트로 각각 관리 중이던데 한꺼번에 끌 수 있는 방법 찾아야 함 ###############
+        Debug.Log("스테이지 UI 버튼 가려졌당~");
 
-        talk2Panel.SetActive(false); // 맨 처음 주인공 대사가 꺼지면
+        startBtn.SetActive(false);
+        Debug.Log("대화 시작 버튼 가려졌당~");
+
+
+        talk2Panel.SetActive(false); // "일단 빛이 나는 쪽으로 가보자."
         stageUI.SetActive(true);
+        startBtn.SetActive(true);
+
 
     }
 
@@ -72,7 +79,7 @@ public class ObjectInteraction : MonoBehaviour
                 talk2Panel.SetActive(false); // 맨 처음 주인공 대사가 꺼지면
                 startBtn.SetActive(true);
 
-                dialoguePanel2.SetActive(true); // 질서의 신 첫 번째 대사창을 활성화 상태로 설정
+                dialoguePanel1.SetActive(true); // 질서의 신 첫 번째 대사창을 활성화 상태로 설정
             }
 
             if (mainQuest == 1)
