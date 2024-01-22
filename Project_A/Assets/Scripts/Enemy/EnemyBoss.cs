@@ -211,7 +211,7 @@ public class EnemyBoss : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             GameObject instantBullet = Instantiate(bbullet, transform.position, transform.rotation);
             Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
-            rigidBullet.velocity = transform.forward * 15;
+            rigidBullet.velocity = transform.forward * 20;
 
             isAttackHit = true;  // 공격이 성공적으로 적중했다고 표시
             StartCoroutine(ResetAttackHit());  // 공격 적중 상태 초기화 코루틴 실행
