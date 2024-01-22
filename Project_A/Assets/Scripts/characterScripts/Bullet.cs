@@ -40,8 +40,7 @@ public class Bullet : MonoBehaviour
     {
         this.pool = pool;
     }
-    
-    void OnEnable()
+    public void Initialize()
     {
         // 총알이 활성화될 때마다 기본 데미지로 초기화합니다.
         damage = baseDamage;
@@ -58,7 +57,7 @@ public class Bullet : MonoBehaviour
         isBoomShotActive = false;
 
         // 파티클 시스템이 있다면 비활성화했다가 다시 활성화
-       
+
         if (explosionPrefab != null)
         {
             ParticleSystem ps = explosionPrefab.GetComponent<ParticleSystem>();
@@ -66,7 +65,11 @@ public class Bullet : MonoBehaviour
             {
                 ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
             }
-        }        
+        }
+    }
+    void OnEnable()
+    {
+        Initialize();
     }
 
     // 오브젝트 풀에 반환하는 메서드를 추가합니다.
@@ -178,6 +181,11 @@ public class Bullet : MonoBehaviour
             // 관통샷일 때만 적과의 충돌을 처리합니다.
             HandleCollisionWithEnemy(other.gameObject, other.ClosestPointOnBounds(transform.position));
         }
+        else if (other.CompareTag("Wall") || other.CompareTag("Floor"))
+        {
+            // 관통샷이 벽이나 바닥과 충돌했을 때를 처리합니다.
+            HandleCollisionWithEnvironment();
+        }
     }
     void HandleCollisionWithEnemy(GameObject enemyObject, Vector3 hitPoint)
     {
@@ -204,10 +212,8 @@ public class Bullet : MonoBehaviour
         {
             Explode();
         }
-        else
-        {
-            ReturnToPool();
-        }
+
+        ReturnToPool();
     }
     // 폭발 처리 메서드
     private void Explode()

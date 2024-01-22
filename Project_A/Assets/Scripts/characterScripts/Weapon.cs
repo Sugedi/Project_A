@@ -180,8 +180,11 @@ public class Weapon : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             var bullet = pool.Get();
-            // 필요하다면 여기서 총알을 초기화합니다.
-            // 예: bullet.transform.position = Vector3.zero;
+            Bullet bulletScript = bullet.GetComponent<Bullet>();
+            if (bulletScript != null)
+            {
+                bulletScript.Initialize();
+            }
             pool.Release(bullet);
         }
     }
