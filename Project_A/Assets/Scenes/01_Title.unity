@@ -1175,7 +1175,7 @@ MonoBehaviour:
   currentType: 5
   mainGroup: {fileID: 0}
   optionGroup: {fileID: 1930492859}
-  DataResetGroup: {fileID: 877504849}
+  DataResetGroup: {fileID: 1337669245}
   NO1: {fileID: 0}
   NO2: {fileID: 0}
   datas:
