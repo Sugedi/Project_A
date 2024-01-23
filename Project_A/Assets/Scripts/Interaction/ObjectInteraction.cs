@@ -36,6 +36,7 @@ public class ObjectInteraction : MonoBehaviour
     public GameObject nextButton3;
 
     public GameObject questIcon; // 퀘스트 아이콘
+    public Button questBtn;
 
     public bool isPlayerInRange = false; // 플레이어가 상호작용 범위 내에 있는지 여부
 
@@ -56,7 +57,6 @@ public class ObjectInteraction : MonoBehaviour
 
             talk1Panel.SetActive(true);
             dialoguePanel1.SetActive(false); // 질서의 신 첫 번째 대사창을 비활성화 상태로 설정
-
         }
         if (mainQuest == 1)
         {
@@ -64,8 +64,28 @@ public class ObjectInteraction : MonoBehaviour
 
             dialoguePanel1.SetActive(false);
             dialoguePanel2.SetActive(false);
-
         }
+
+        questBtn.onClick.AddListener(ShowMainQuestPanel); // questBtn에 클릭 이벤트 리스너 추가
+
+    }
+
+    // questIcon 버튼을 클릭했을 때 호출될 메서드
+    public void ShowMainQuestPanel()
+    {
+        if (mainQuest == 1)
+        {
+            mainQuestPanel1.SetActive(true); // MainQuest Panel (1) 활성화
+        }
+        if (mainQuest == 2)
+        {
+            mainQuestPanel2.SetActive(true);
+        }
+        if(mainQuest == 3) 
+        {
+            mainQuestPanel3.SetActive(true);
+        }
+        
     }
 
 
@@ -126,10 +146,6 @@ public class ObjectInteraction : MonoBehaviour
     {
         Debug.Log("OnNextButton1Clicked() 메서드 호출됨"); // 로그 추가
 
-        mainQuest++;
-        GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1MainQuest = mainQuest;
-        DataManager.instance.DataSave();
-        Debug.Log("mainQuest: " + mainQuest); // 로그 추가
 
         //startBtn.SetActive(false);
         dialoguePanel1.SetActive(false);
@@ -141,17 +157,41 @@ public class ObjectInteraction : MonoBehaviour
         string message = "주요 대본 1이 활성화 되었습니다.";
         ActivateSystemMessagePanel(message);
 
+        mainQuest++;
+        GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1MainQuest = mainQuest;
+        DataManager.instance.DataSave();
+        Debug.Log("mainQuest: " + mainQuest); // 로그 추가
+
+        // mainQuest가 1일 때, MainQuest Panel (1)을 활성화 상태로 유지
+        if (mainQuest == 1)
+        {
+            mainQuestPanel1.SetActive(true);
+            // 다른 UI 요소의 상태를 여기서 제어할 수 있습니다.
+        }
+
     }
 
     public void OnNextButton2Clicked()
     {
         dialoguePanel2.SetActive(false);
         questIcon.SetActive(true); // questIcon을 활성화
+
+        // mainQuest가 2일 때, MainQuest Panel (2)을 활성화 상태로 유지
+        if (mainQuest == 2)
+        {
+            mainQuestPanel2.SetActive(true);
+            // 다른 UI 요소의 상태를 여기서 제어할 수 있습니다.
+        }
+
     }
 
     public void OnNextButton3Clicked()
     {
         mainQuest++;
+        GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1MainQuest = mainQuest;
+        DataManager.instance.DataSave();
+        Debug.Log("mainQuest: " + mainQuest); // 로그 추가
+
         dialoguePanel3.SetActive(false);
         questIcon.SetActive(true); // questIcon을 활성화
 
@@ -161,6 +201,14 @@ public class ObjectInteraction : MonoBehaviour
         // 여기에 실제로 전달하고 싶은 메시지를 입력하세요.
         string message = "주요 대본 1을 완성하였습니다.";
         ActivateSystemMessagePanel(message);
+
+        // mainQuest가 3일 때, MainQuest Panel (3)을 활성화 상태로 유지
+        if (mainQuest == 3)
+        {
+            mainQuestPanel3.SetActive(true);
+            // 다른 UI 요소의 상태를 여기서 제어할 수 있습니다.
+        }
+
     }
 
 
