@@ -32,6 +32,7 @@ MonoBehaviour:
     assemblyNames:
     - Assembly-CSharp
     - Assembly-CSharp-firstpass
+    - Cinemachine
     - Polyperfect.Common
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0

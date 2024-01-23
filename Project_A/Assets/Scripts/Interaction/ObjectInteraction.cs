@@ -16,6 +16,7 @@ public class ObjectInteraction : MonoBehaviour
 {
     public GameObject talk1Panel;
     public GameObject talk2Panel;
+    public GameObject talkCanvas;
 
     public GameObject stageUI;
 
@@ -44,7 +45,6 @@ public class ObjectInteraction : MonoBehaviour
     public TextMeshProUGUI systemMessageText; // 'TextMeshProUGUI' 컴포넌트
 
 
-    
     private void Start() // 게임 시작 시 호출되는 Start 함수
     {
         questIcon.SetActive(false); // 퀘스트 아이콘 버튼을 비활성화 상태로 설정
@@ -52,10 +52,13 @@ public class ObjectInteraction : MonoBehaviour
         mainQuestPanel1.SetActive(true); // 첫 번째 메인 퀘스트 패널을 활성화 상태로 설정
         mainQuest = GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1MainQuest;
 
-        talk1Panel.SetActive(true); // "뭐야, 여긴 어디야...????"
-        stageUI.SetActive(false);
 
-        talk2Panel.SetActive(false); // "일단 빛이 나는 쪽으로 가보자."
+        if (mainQuest == 0) // 게임 시작 시 talk1Panel과 talk2Panel을 활성화 BUT, mainQuest가 0일 때만!
+        {
+            talk1Panel.SetActive(true);
+            dialoguePanel1.SetActive(false); // 질서의 신 첫 번째 대사창을 비활성화 상태로 설정
+
+        }
 
     }
 
@@ -68,29 +71,33 @@ public class ObjectInteraction : MonoBehaviour
 
             if (mainQuest == 0)
             {
+                talkCanvas.SetActive(false);
                 startBtn.SetActive(true);
-                dialoguePanel1.SetActive(true); // 질서의 신 첫 번째 대사창을 활성화 상태로 설정
+                dialoguePanel1.SetActive(false); // 질서의 신 첫 번째 대사창을 비활성화 상태로 설정
             }
 
             if (mainQuest == 1)
             {
-                dialoguePanel2.SetActive(true);
-                questIcon.SetActive(false); // questIcon을 비활성화
+                dialoguePanel2.SetActive(false);
+                //questIcon.SetActive(false); // questIcon을 비활성화
             }
 
             if (mainQuest == 2)
             {
-                dialoguePanel3.SetActive(true);
-                questIcon.SetActive(false); // questIcon을 비활성화
-            } 
+                dialoguePanel3.SetActive(false);
+                //questIcon.SetActive(false); // questIcon을 비활성화
+            }
 
         }
     }
     public void OnStartBtnClick()
     {
-        if(mainQuest == 0)
+        Debug.Log("Start Button Clicked"); // 로그를 추가하여 이 메서드가 호출되는지 확인합니다
+        if (mainQuest == 0)
         {
             dialoguePanel1.SetActive(true);
+            startBtn.SetActive(false);
+
             stageUI.SetActive(true); // 체력, 총알, 젬 UI 활성화
 
         }
@@ -99,7 +106,7 @@ public class ObjectInteraction : MonoBehaviour
             dialoguePanel2.SetActive(true);
             questIcon.SetActive(false);
         }
-        if(mainQuest == 2)
+        if (mainQuest == 2)
         {
             dialoguePanel3.SetActive(true);
             questIcon.SetActive(false);
@@ -109,7 +116,7 @@ public class ObjectInteraction : MonoBehaviour
     public void OnNextButton1Clicked()
     {
         Debug.Log("OnNextButton1Clicked() 메서드 호출됨"); // 로그 추가
-        
+
         mainQuest++;
         GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1MainQuest = mainQuest;
         DataManager.instance.DataSave();
@@ -121,7 +128,7 @@ public class ObjectInteraction : MonoBehaviour
 
         // 여기에 실제로 전달하고 싶은 메시지를 입력하세요.
         string message = "주요 대본 1이 활성화 되었습니다.";
-        ActivateSystemMessagePanel(message);        
+        ActivateSystemMessagePanel(message);
 
     }
 
@@ -153,7 +160,7 @@ public class ObjectInteraction : MonoBehaviour
             isPlayerInRange = false; // 플레이어가 상호작용 범위 내에 없음을 표시
             startBtn.SetActive(false);
         }
-    }  
+    }
 
     // 시스템 메시지 패널을 활성화하고, 지정된 시간 후에 비활성화하는 메서드
     private void ActivateSystemMessagePanel(string message)
