@@ -47,19 +47,28 @@ public class ObjectInteraction : MonoBehaviour
 
     private void Start() // 게임 시작 시 호출되는 Start 함수
     {
-        questIcon.SetActive(false); // 퀘스트 아이콘 버튼을 비활성화 상태로 설정
         systemMessagePanel.SetActive(false); // 시스템 메시지 패널을 비활성화 상태로 설정
-        mainQuestPanel1.SetActive(true); // 첫 번째 메인 퀘스트 패널을 활성화 상태로 설정
+        //mainQuestPanel1.SetActive(true); // 첫 번째 메인 퀘스트 패널을 활성화 상태로 설정
         mainQuest = GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1MainQuest;
 
 
         if (mainQuest == 0) // 게임 시작 시 talk1Panel과 talk2Panel을 활성화 BUT, mainQuest가 0일 때만!
         {
+            questIcon.SetActive(false); // 퀘스트 아이콘 버튼을 비활성화 상태로 설정
+
             talk1Panel.SetActive(true);
             dialoguePanel1.SetActive(false); // 질서의 신 첫 번째 대사창을 비활성화 상태로 설정
 
         }
+        if (mainQuest == 1)
+        {
+            questIcon.SetActive(true); // 퀘스트 아이콘 버튼을 비활성화 상태로 설정
 
+            //talk1Panel.SetActive(false);
+            dialoguePanel1.SetActive(false);
+            dialoguePanel2.SetActive(false);
+
+        }
     }
 
 
@@ -73,17 +82,21 @@ public class ObjectInteraction : MonoBehaviour
             {
                 talkCanvas.SetActive(false);
                 startBtn.SetActive(true);
-                dialoguePanel1.SetActive(false); // 질서의 신 첫 번째 대사창을 비활성화 상태로 설정
+                //dialoguePanel1.SetActive(false); // 질서의 신 첫 번째 대사창을 비활성화 상태로 설정 ########
             }
 
             if (mainQuest == 1)
             {
+                startBtn.SetActive(true);
+
                 dialoguePanel2.SetActive(false);
                 //questIcon.SetActive(false); // questIcon을 비활성화
             }
 
             if (mainQuest == 2)
             {
+                startBtn.SetActive(true);
+
                 dialoguePanel3.SetActive(false);
                 //questIcon.SetActive(false); // questIcon을 비활성화
             }
@@ -97,19 +110,16 @@ public class ObjectInteraction : MonoBehaviour
         {
             dialoguePanel1.SetActive(true);
             startBtn.SetActive(false);
-
-            stageUI.SetActive(true); // 체력, 총알, 젬 UI 활성화
-
         }
         if (mainQuest == 1)
         {
             dialoguePanel2.SetActive(true);
-            questIcon.SetActive(false);
+            //questIcon.SetActive(false); #########
         }
         if (mainQuest == 2)
         {
             dialoguePanel3.SetActive(true);
-            questIcon.SetActive(false);
+            //questIcon.SetActive(false); #########
         }
     }
 
@@ -122,7 +132,7 @@ public class ObjectInteraction : MonoBehaviour
         DataManager.instance.DataSave();
         Debug.Log("mainQuest: " + mainQuest); // 로그 추가
 
-        startBtn.SetActive(false);
+        //startBtn.SetActive(false);
         dialoguePanel1.SetActive(false);
         questIcon.SetActive(true); // 퀘스트 아이콘 버튼을 활성화
 

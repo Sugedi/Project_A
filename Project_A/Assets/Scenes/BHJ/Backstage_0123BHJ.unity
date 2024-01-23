@@ -252,7 +252,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1504164
 RectTransform:
   m_ObjectHideFlags: 0
@@ -26437,7 +26437,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC9C4\uD589\uD558\uAE30"
+  m_text: "\uD655\uC778"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4fbe0bac5d173504bb469ab724136c18, type: 2}
   m_sharedMaterial: {fileID: 5648920840867920971, guid: 4fbe0bac5d173504bb469ab724136c18, type: 2}
@@ -31644,7 +31644,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC9C4\uD589\uD558\uAE30"
+  m_text: "\uD655\uC778"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4fbe0bac5d173504bb469ab724136c18, type: 2}
   m_sharedMaterial: {fileID: 5648920840867920971, guid: 4fbe0bac5d173504bb469ab724136c18, type: 2}
@@ -36965,19 +36965,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   talk1Panel: {fileID: 1625982041}
   talk2Panel: {fileID: 377273563}
-  talkCanvas: {fileID: 0}
+  talkCanvas: {fileID: 1800100241}
   stageUI: {fileID: 982045805}
   startBtn: {fileID: 1647865886}
   dialoguePanel1: {fileID: 1504163}
-  dialoguePanel2: {fileID: 0}
-  dialoguePanel3: {fileID: 0}
+  dialoguePanel2: {fileID: 539584659}
+  dialoguePanel3: {fileID: 864218219}
   mainQuestPanel1: {fileID: 2092158960}
   mainQuestPanel2: {fileID: 1882565125}
   mainQuestPanel3: {fileID: 65066454}
   talkNextBtn: {fileID: 1576085137}
   nextButton1: {fileID: 1913604327}
-  nextButton2: {fileID: 0}
-  nextButton3: {fileID: 0}
+  nextButton2: {fileID: 291672061}
+  nextButton3: {fileID: 1263718066}
   questIcon: {fileID: 210475928}
   isPlayerInRange: 1
   mainQuest: 0
