@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class EnemyBoss : MonoBehaviour
 {
-
     public float bmaxHealth; // 최대 체력
     public float bcurHealth; // 현재 체력
     public Transform btarget; // 플레이어의 Transform
@@ -107,9 +106,6 @@ public class EnemyBoss : MonoBehaviour
         banim = GetComponentInChildren<Animator>();
 
         btarget = FindObjectOfType<Player>().GetComponent<Transform>();
-
-
-        // Invoke("ChaseStart", 1);  // 1초 뒤에 추격 시작
     }
 
  

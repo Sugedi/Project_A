@@ -21,8 +21,6 @@ public class EnemyDragon : MonoBehaviour
 
     public float sightRange = 10f; // 타겟이 유저 인식
 
-    bool isReturningToInitialPosition; // 몬스터가 초기 위치로 돌아가고 있는지 여부를 나타내는 변수
-
     //==============================================================
     public GameObject itemPrefab; // 드랍 아이템 프리펩 등록
     [SerializeField] Transform dropPosition; // 드랍 아이템을 생성 시킬 위치
@@ -34,8 +32,6 @@ public class EnemyDragon : MonoBehaviour
     NavMeshAgent nav; // NavMeshAgent 컴포넌트
     Animator anim; // Animator 컴포넌트
 
-    Vector3 initialPosition; // 몬스터의 초기 위치 저장 변수
-
     void Awake()
     {
         rigid = GetComponent<Rigidbody>();
@@ -44,11 +40,8 @@ public class EnemyDragon : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
 
         target = FindObjectOfType<Player>().GetComponent<Transform>();
-        initialPosition = transform.position; // 초기 위치 저장
 
         nav = GetComponent<NavMeshAgent>();
-
-        // Invoke("ChaseStart", 1);  // 1초 뒤에 추격 시작
     }
 
     void ChaseStart()
@@ -309,21 +302,21 @@ public class EnemyDragon : MonoBehaviour
 
     public void TakeDamage(Bullet bullet, Vector3 hitPoint)
     {
-        // Check if the monster is in the 'Enemydead' layer
         if (gameObject.layer == LayerMask.NameToLayer("Enemydead"))
         {
-            // If in the 'Enemydead' layer, do nothing (or handle it as needed)
             return;
         }
 
-        float damageToApply = bullet.isExplosion ? bullet.boomShotDamage : bullet.damage;
+        // 라이트닝 스킬이 활성화되어 있으면 기본 데미지에 라이트닝 데미지를 합산합니다.
+        float totalDamage = bullet.damage + (bullet.isLightningActive ? bullet.lightningDamage : 0);
+
+        // 폭발 효과가 있는지 확인하고, 있으면 해당 데미지를 적용합니다.
+        float damageToApply = bullet.isExplosion ? bullet.boomShotDamage : totalDamage;
         curHealth -= damageToApply; // Apply damage
+
         Debug.Log(gameObject.name + "가 데미지를 받았습니다. 데미지: " + damageToApply + ", 남은 체력: " + curHealth);
 
-        // 공격으로 받은 위치 벡터 계산
         Vector3 reactVec = transform.position - hitPoint;
-
-        // OnDamage 코루틴 실행
         StartCoroutine(OnDamage(reactVec));
 
         if (!bullet.isPenetrating) // 관통 총알이 아니면 총알을 오브젝트 풀로 반환합니다.
