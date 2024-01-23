@@ -97,8 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 08195de80b6d98a46859e555cf8f6510, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: bdc996758b79ba34c8a4eaa8e2de1f78, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -726,10 +726,12 @@ MonoBehaviour:
   ammoInfoCanvas: {fileID: 1705939819}
   speedInfoCanvas: {fileID: 1175575441}
   reloadInfoCanvas: {fileID: 1218495224}
+  healthInfoCanvas: {fileID: 0}
   powerInfo: {fileID: 1418592864}
   ammoInfo: {fileID: 1825681433}
   speedInfo: {fileID: 1294051517}
   reloadInfo: {fileID: 1185049673}
+  healthInfo: {fileID: 0}
   gem: {fileID: 10407143}
   soul: 0
 --- !u!1 &20773921
@@ -6099,6 +6101,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11542dee4515e234882ea1746807e830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talk1Panel: {fileID: 0}
+  talk2Panel: {fileID: 0}
+  stageUI: {fileID: 0}
   startBtn: {fileID: 1647865886}
   dialoguePanel1: {fileID: 1504163}
   dialoguePanel2: {fileID: 1571688337}
@@ -6106,6 +6111,7 @@ MonoBehaviour:
   mainQuestPanel1: {fileID: 2092158960}
   mainQuestPanel2: {fileID: 1882565125}
   mainQuestPanel3: {fileID: 65066454}
+  talkNextBtn: {fileID: 0}
   nextButton1: {fileID: 1913604327}
   nextButton2: {fileID: 1150788748}
   nextButton3: {fileID: 1472346471}
@@ -9926,6 +9932,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 1762766438536454, guid: 4d71afa5402df401cae5bef0cc65d5e8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4321685144267452, guid: 4d71afa5402df401cae5bef0cc65d5e8, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -12297,6 +12307,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 1762766438536454, guid: 4d71afa5402df401cae5bef0cc65d5e8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4321685144267452, guid: 4d71afa5402df401cae5bef0cc65d5e8, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -12487,7 +12501,7 @@ GameObject:
   m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &650677296
 Transform:
@@ -13022,6 +13036,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 1762766438536454, guid: 4d71afa5402df401cae5bef0cc65d5e8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4321685144267452, guid: 4d71afa5402df401cae5bef0cc65d5e8, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -13174,6 +13192,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11542dee4515e234882ea1746807e830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talk1Panel: {fileID: 0}
+  talk2Panel: {fileID: 0}
+  stageUI: {fileID: 0}
   startBtn: {fileID: 1647865886}
   dialoguePanel1: {fileID: 1504163}
   dialoguePanel2: {fileID: 1571688337}
@@ -13181,6 +13202,7 @@ MonoBehaviour:
   mainQuestPanel1: {fileID: 2092158960}
   mainQuestPanel2: {fileID: 1882565125}
   mainQuestPanel3: {fileID: 65066454}
+  talkNextBtn: {fileID: 0}
   nextButton1: {fileID: 1913604327}
   nextButton2: {fileID: 1150788748}
   nextButton3: {fileID: 1472346471}
@@ -14908,10 +14930,12 @@ MonoBehaviour:
   ammoInfoCanvas: {fileID: 0}
   speedInfoCanvas: {fileID: 0}
   reloadInfoCanvas: {fileID: 0}
+  healthInfoCanvas: {fileID: 0}
   powerInfo: {fileID: 0}
   ammoInfo: {fileID: 0}
   speedInfo: {fileID: 0}
   reloadInfo: {fileID: 0}
+  healthInfo: {fileID: 0}
   gem: {fileID: 0}
   soul: 0
 --- !u!114 &782668345
@@ -16789,6 +16813,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 7671782619594804990, guid: 4f01ce5b18ac83844a92dc7f2713fa67, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f01ce5b18ac83844a92dc7f2713fa67, type: 3}
 --- !u!4 &887119105 stripped
@@ -17350,10 +17378,12 @@ MonoBehaviour:
   ammoInfoCanvas: {fileID: 0}
   speedInfoCanvas: {fileID: 0}
   reloadInfoCanvas: {fileID: 0}
+  healthInfoCanvas: {fileID: 0}
   powerInfo: {fileID: 0}
   ammoInfo: {fileID: 0}
   speedInfo: {fileID: 0}
   reloadInfo: {fileID: 0}
+  healthInfo: {fileID: 0}
   gem: {fileID: 0}
   soul: 0
 --- !u!1 &918786516
@@ -21098,10 +21128,12 @@ MonoBehaviour:
   ammoInfoCanvas: {fileID: 1705939819}
   speedInfoCanvas: {fileID: 1175575441}
   reloadInfoCanvas: {fileID: 1218495224}
+  healthInfoCanvas: {fileID: 0}
   powerInfo: {fileID: 1418592864}
   ammoInfo: {fileID: 1825681433}
   speedInfo: {fileID: 1294051517}
   reloadInfo: {fileID: 1185049673}
+  healthInfo: {fileID: 0}
   gem: {fileID: 10407143}
   soul: 0
 --- !u!1001 &954137545
@@ -21170,6 +21202,10 @@ PrefabInstance:
     - target: {fileID: 7671782619594804990, guid: 4f01ce5b18ac83844a92dc7f2713fa67, type: 3}
       propertyPath: m_TagString
       value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7671782619594804990, guid: 4f01ce5b18ac83844a92dc7f2713fa67, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f01ce5b18ac83844a92dc7f2713fa67, type: 3}
@@ -23725,10 +23761,12 @@ MonoBehaviour:
   ammoInfoCanvas: {fileID: 1705939819}
   speedInfoCanvas: {fileID: 1175575441}
   reloadInfoCanvas: {fileID: 1218495224}
+  healthInfoCanvas: {fileID: 0}
   powerInfo: {fileID: 1418592864}
   ammoInfo: {fileID: 1825681433}
   speedInfo: {fileID: 1294051517}
   reloadInfo: {fileID: 1185049673}
+  healthInfo: {fileID: 0}
   gem: {fileID: 10407143}
   soul: 0
 --- !u!1 &1115850945
@@ -24892,6 +24930,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11542dee4515e234882ea1746807e830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talk1Panel: {fileID: 0}
+  talk2Panel: {fileID: 0}
+  stageUI: {fileID: 0}
   startBtn: {fileID: 1647865886}
   dialoguePanel1: {fileID: 1504163}
   dialoguePanel2: {fileID: 1571688337}
@@ -24899,6 +24940,7 @@ MonoBehaviour:
   mainQuestPanel1: {fileID: 2092158960}
   mainQuestPanel2: {fileID: 1882565125}
   mainQuestPanel3: {fileID: 65066454}
+  talkNextBtn: {fileID: 0}
   nextButton1: {fileID: 1913604327}
   nextButton2: {fileID: 1150788748}
   nextButton3: {fileID: 1472346471}
@@ -30099,6 +30141,7 @@ MonoBehaviour:
     saveSceneName: Backstage_0114
   save: {fileID: 0}
   SaveCanvas: {fileID: 0}
+  joystick: {fileID: 0}
   Wallscope: 1
 --- !u!95 &1407338180
 Animator:
@@ -30691,6 +30734,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 1762766438536454, guid: 4d71afa5402df401cae5bef0cc65d5e8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4321685144267452, guid: 4d71afa5402df401cae5bef0cc65d5e8, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -31059,6 +31106,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 1762766438536454, guid: 4d71afa5402df401cae5bef0cc65d5e8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4321685144267452, guid: 4d71afa5402df401cae5bef0cc65d5e8, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -31347,6 +31398,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11542dee4515e234882ea1746807e830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talk1Panel: {fileID: 0}
+  talk2Panel: {fileID: 0}
+  stageUI: {fileID: 0}
   startBtn: {fileID: 1647865886}
   dialoguePanel1: {fileID: 1504163}
   dialoguePanel2: {fileID: 1571688337}
@@ -31354,6 +31408,7 @@ MonoBehaviour:
   mainQuestPanel1: {fileID: 2092158960}
   mainQuestPanel2: {fileID: 1882565125}
   mainQuestPanel3: {fileID: 65066454}
+  talkNextBtn: {fileID: 0}
   nextButton1: {fileID: 1913604327}
   nextButton2: {fileID: 1150788748}
   nextButton3: {fileID: 1472346471}
@@ -32503,10 +32558,12 @@ MonoBehaviour:
   ammoInfoCanvas: {fileID: 0}
   speedInfoCanvas: {fileID: 0}
   reloadInfoCanvas: {fileID: 0}
+  healthInfoCanvas: {fileID: 0}
   powerInfo: {fileID: 1418592864}
   ammoInfo: {fileID: 1825681433}
   speedInfo: {fileID: 1294051517}
   reloadInfo: {fileID: 1185049673}
+  healthInfo: {fileID: 0}
   gem: {fileID: 10407143}
   soul: 0
 --- !u!1 &1527368055
@@ -32658,6 +32715,10 @@ PrefabInstance:
     - target: {fileID: 1762766438536454, guid: 4d71afa5402df401cae5bef0cc65d5e8, type: 3}
       propertyPath: m_TagString
       value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1762766438536454, guid: 4d71afa5402df401cae5bef0cc65d5e8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4321685144267452, guid: 4d71afa5402df401cae5bef0cc65d5e8, type: 3}
       propertyPath: m_RootOrder
@@ -33613,10 +33674,12 @@ MonoBehaviour:
   ammoInfoCanvas: {fileID: 0}
   speedInfoCanvas: {fileID: 0}
   reloadInfoCanvas: {fileID: 0}
+  healthInfoCanvas: {fileID: 0}
   powerInfo: {fileID: 1418592864}
   ammoInfo: {fileID: 1825681433}
   speedInfo: {fileID: 1294051517}
   reloadInfo: {fileID: 1185049673}
+  healthInfo: {fileID: 0}
   gem: {fileID: 10407143}
   soul: 0
 --- !u!1001 &1589531961
@@ -34340,6 +34403,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 7671782619594804990, guid: 4f01ce5b18ac83844a92dc7f2713fa67, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f01ce5b18ac83844a92dc7f2713fa67, type: 3}
 --- !u!4 &1615367488 stripped
@@ -34873,6 +34940,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11542dee4515e234882ea1746807e830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talk1Panel: {fileID: 0}
+  talk2Panel: {fileID: 0}
+  stageUI: {fileID: 0}
   startBtn: {fileID: 1647865886}
   dialoguePanel1: {fileID: 1504163}
   dialoguePanel2: {fileID: 1571688337}
@@ -34880,6 +34950,7 @@ MonoBehaviour:
   mainQuestPanel1: {fileID: 2092158960}
   mainQuestPanel2: {fileID: 1882565125}
   mainQuestPanel3: {fileID: 65066454}
+  talkNextBtn: {fileID: 0}
   nextButton1: {fileID: 1913604327}
   nextButton2: {fileID: 1150788748}
   nextButton3: {fileID: 1472346471}
@@ -36413,10 +36484,12 @@ MonoBehaviour:
   ammoInfoCanvas: {fileID: 0}
   speedInfoCanvas: {fileID: 0}
   reloadInfoCanvas: {fileID: 0}
+  healthInfoCanvas: {fileID: 0}
   powerInfo: {fileID: 1418592864}
   ammoInfo: {fileID: 1825681433}
   speedInfo: {fileID: 1294051517}
   reloadInfo: {fileID: 1185049673}
+  healthInfo: {fileID: 0}
   gem: {fileID: 10407143}
   soul: 0
 --- !u!1 &1715874700
@@ -39206,10 +39279,12 @@ MonoBehaviour:
   ammoInfoCanvas: {fileID: 0}
   speedInfoCanvas: {fileID: 0}
   reloadInfoCanvas: {fileID: 0}
+  healthInfoCanvas: {fileID: 0}
   powerInfo: {fileID: 1418592864}
   ammoInfo: {fileID: 1825681433}
   speedInfo: {fileID: 1294051517}
   reloadInfo: {fileID: 1185049673}
+  healthInfo: {fileID: 0}
   gem: {fileID: 10407143}
   soul: 0
 --- !u!1 &1840916028
@@ -40180,10 +40255,12 @@ MonoBehaviour:
   ammoInfoCanvas: {fileID: 0}
   speedInfoCanvas: {fileID: 0}
   reloadInfoCanvas: {fileID: 0}
+  healthInfoCanvas: {fileID: 0}
   powerInfo: {fileID: 1418592864}
   ammoInfo: {fileID: 1825681433}
   speedInfo: {fileID: 1294051517}
   reloadInfo: {fileID: 1185049673}
+  healthInfo: {fileID: 0}
   gem: {fileID: 10407143}
   soul: 0
 --- !u!1 &1882565125
@@ -40851,6 +40928,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11542dee4515e234882ea1746807e830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talk1Panel: {fileID: 0}
+  talk2Panel: {fileID: 0}
+  stageUI: {fileID: 0}
   startBtn: {fileID: 1647865886}
   dialoguePanel1: {fileID: 1504163}
   dialoguePanel2: {fileID: 1571688337}
@@ -40858,6 +40938,7 @@ MonoBehaviour:
   mainQuestPanel1: {fileID: 2092158960}
   mainQuestPanel2: {fileID: 1882565125}
   mainQuestPanel3: {fileID: 65066454}
+  talkNextBtn: {fileID: 0}
   nextButton1: {fileID: 1913604327}
   nextButton2: {fileID: 1150788748}
   nextButton3: {fileID: 1472346471}
@@ -41123,10 +41204,12 @@ MonoBehaviour:
   ammoInfoCanvas: {fileID: 1705939819}
   speedInfoCanvas: {fileID: 1175575441}
   reloadInfoCanvas: {fileID: 1218495224}
+  healthInfoCanvas: {fileID: 0}
   powerInfo: {fileID: 1418592864}
   ammoInfo: {fileID: 1825681433}
   speedInfo: {fileID: 1294051517}
   reloadInfo: {fileID: 1185049673}
+  healthInfo: {fileID: 0}
   gem: {fileID: 10407143}
   soul: 0
 --- !u!1 &1922178480
@@ -44702,10 +44785,12 @@ MonoBehaviour:
   ammoInfoCanvas: {fileID: 1705939819}
   speedInfoCanvas: {fileID: 1175575441}
   reloadInfoCanvas: {fileID: 1218495224}
+  healthInfoCanvas: {fileID: 0}
   powerInfo: {fileID: 1418592864}
   ammoInfo: {fileID: 1825681433}
   speedInfo: {fileID: 1294051517}
   reloadInfo: {fileID: 1185049673}
+  healthInfo: {fileID: 0}
   gem: {fileID: 10407143}
   soul: 0
 --- !u!1 &2142885694
