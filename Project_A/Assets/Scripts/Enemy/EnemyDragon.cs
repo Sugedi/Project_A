@@ -21,12 +21,6 @@ public class EnemyDragon : MonoBehaviour
     private bool isAttackHit = false; // 일반 공격이 성공적으로 적중했는지 여부
     public float attackHitCooldown = 0.5f; // 다음 일반 공격이 적중할 수 있는 쿨다운 시간
 
-    public GameObject projectilePrefab; // 투사체 프리팹
-    public Transform firePoint; // 발사 위치
-    public float projectileSpeed = 5f; // 투사체 속도
-    public int numberOfProjectiles = 12; // 투사체 개수
-    public float spreadAngle = 360f; // 투사체 각도 범위
-
     public float sightRange = 10f; // 타겟이 유저 인식
 
     bool isReturningToInitialPosition; // 몬스터가 초기 위치로 돌아가고 있는지 여부를 나타내는 변수
@@ -43,27 +37,6 @@ public class EnemyDragon : MonoBehaviour
     Animator anim; // Animator 컴포넌트
 
     Vector3 initialPosition; // 몬스터의 초기 위치 저장 변수
-
-    void Start()
-    {
-        StartCoroutine(FireProjectiles());
-    }
-
-    IEnumerator FireProjectiles()
-    {
-        float angleStep = spreadAngle / numberOfProjectiles;
-
-        for (int i = 0; i < numberOfProjectiles; i++)
-        {
-            float angle = i * angleStep;
-            Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
-            GameObject projectile = Instantiate(projectilePrefab, firePoint.position, rotation);
-            Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
-            rb.velocity = rotation * Vector2.right * projectileSpeed;
-
-            yield return new WaitForSeconds(0.1f); // 투사체 간 딜레이
-        }
-    }
 
     void Awake()
     {
@@ -243,41 +216,59 @@ public class EnemyDragon : MonoBehaviour
         // 일정 시간 동안 대기
         yield return new WaitForSeconds(attackDuration);
 
-        // 추격 상태로 전환 및 공격 상태 종료
+        if (curHealth > 0 && !isAttackHit)
+        {
+            // 부채꼴 형태로 총알 3개 발사
+            for (int i = 0; i < 3; i++)
+            {
+                // 총알 발사 각도를 계산합니다.
+                Quaternion bulletRotation = Quaternion.Euler(0, -10 + (i * 10), 0) * transform.rotation;
+                GameObject instantBullet = Instantiate(bullet, transform.position, bulletRotation);
+
+                Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
+                rigidBullet.velocity = instantBullet.transform.forward * 15;
+            }
+
+            isAttackHit = true; // 공격이 성공적으로 적중했다고 표시
+            StartCoroutine(ResetAttackHit()); // 공격 적중 상태 초기화 코루틴 실행
+            yield return new WaitForSeconds(2f);
+        }
+
+        // 공격 상태 종료
         isChase = true;
         isAttack = false;
         anim.SetBool("isAttack", false);
-
-        if (curHealth > 0 && !isAttackHit)
-        {
-            yield return new WaitForSeconds(0.5f);
-            GameObject instantBullet = Instantiate(bullet, transform.position, transform.rotation);
-            Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
-            rigidBullet.velocity = transform.forward * 20;
-
-            isAttackHit = true;  // 공격이 성공적으로 적중했다고 표시
-            StartCoroutine(ResetAttackHit());  // 공격 적중 상태 초기화 코루틴 실행
-            yield return new WaitForSeconds(2f);
-        }
 
         // 추격 중지 및 공격 상태로 전환
         isChase = false;
         isAttack = true;
         anim.SetBool("isAttack2", true);
 
+        // 일정 시간 동안 대기
+        yield return new WaitForSeconds(attackDuration);
+
         if (curHealth > 0 && !isAttackHit)
         {
-            yield return new WaitForSeconds(0.5f);
-            GameObject instantBullet = Instantiate(bullet, transform.position, transform.rotation);
-            Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
-            rigidBullet.velocity = transform.forward * 20;
+            // 부채꼴 형태로 총알 5개 발사
+            for (int i = 0; i < 5; i++)
+            {
+                // 총알 발사 각도를 계산합니다.
+                Quaternion bulletRotation = Quaternion.Euler(0, -20 + (i * 10), 0) * transform.rotation;
+                GameObject instantBullet = Instantiate(bullet, transform.position, bulletRotation);
 
-            isAttackHit = true;  // 공격이 성공적으로 적중했다고 표시
-            StartCoroutine(ResetAttackHit());  // 공격 적중 상태 초기화 코루틴 실행
+                Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
+                rigidBullet.velocity = instantBullet.transform.forward * 15;
+
+                // 다음 총알 발사 전에 잠시 대기
+                yield return new WaitForSeconds(0.5f); // 이 값을 조절하여 총알 발사 간격을 변경할 수 있습니다.
+            }
+
+            isAttackHit = true; // 공격이 성공적으로 적중했다고 표시
+            StartCoroutine(ResetAttackHit()); // 공격 적중 상태 초기화 코루틴 실행
             yield return new WaitForSeconds(2f);
         }
 
-        // 추격 상태로 전환 및 공격 상태 종료
+        // 공격 상태 종료
         isChase = true;
         isAttack = false;
         anim.SetBool("isAttack2", false);
@@ -287,18 +278,31 @@ public class EnemyDragon : MonoBehaviour
         isAttack = true;
         anim.SetBool("isAttack3", true);
 
-        {
-            yield return new WaitForSeconds(0.5f);
-            GameObject instantBullet = Instantiate(bullet, transform.position, transform.rotation);
-            Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
-            rigidBullet.velocity = transform.forward * 20;
+        // 일정 시간 동안 대기
+        yield return new WaitForSeconds(attackDuration);
 
-            isAttackHit = true;  // 공격이 성공적으로 적중했다고 표시
-            StartCoroutine(ResetAttackHit());  // 공격 적중 상태 초기화 코루틴 실행
+        if (curHealth > 0 && !isAttackHit)
+        {
+            // 부채꼴 형태로 총알 8개 발사
+            for (int i = 0; i < 40; i++)
+            {
+                // 총알 발사 각도를 계산합니다.
+                Quaternion bulletRotation = Quaternion.Euler(0, -30 + (i * 20), 0) * transform.rotation;
+                GameObject instantBullet = Instantiate(bullet, transform.position, bulletRotation);
+
+                Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
+                rigidBullet.velocity = instantBullet.transform.forward * 15;
+
+                // 다음 총알 발사 전에 잠시 대기
+                yield return new WaitForSeconds(0.2f); // 이 값을 조절하여 총알 발사 간격을 변경할 수 있습니다.
+            }
+
+            isAttackHit = true; // 공격이 성공적으로 적중했다고 표시
+            StartCoroutine(ResetAttackHit()); // 공격 적중 상태 초기화 코루틴 실행
             yield return new WaitForSeconds(2f);
         }
 
-        // 추격 상태로 전환 및 공격 상태 종료
+        // 공격 상태 종료
         isChase = true;
         isAttack = false;
         anim.SetBool("isAttack3", false);
