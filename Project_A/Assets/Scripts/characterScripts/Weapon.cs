@@ -54,6 +54,7 @@ public class Weapon : MonoBehaviour
     public int maxTargets;
     public ParticleSystem lightningEffectPrefab; // 번개 스킬 이펙트 프리팹
     private ParticleSystem lightningEffectInstance;
+    
 
     public float bulletSpeed = 8; // 총알 속도 기본값 설정
     public Transform bulletPos; // 총알 발사 위치
@@ -421,17 +422,13 @@ public class Weapon : MonoBehaviour
         StartCoroutine(LightningEffectCoroutine());
     }
     private IEnumerator LightningEffectCoroutine()
-    {
-        if (lightningEffectPrefab != null && lightningEffectInstance == null)
-        {
-            lightningEffectInstance = Instantiate(lightningEffectPrefab, transform.position, Quaternion.identity, transform);
-            lightningEffectInstance.Play();
-        }
+    {        
+        float spawnHeight = 3f;
+
         while (isLightningActive)
         {
-            // 주변의 적을 탐색하여 피해를 주는 로직
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, lightningRadius);
-            int hitCount = 0; // 현재 타겟에 피해를 준 적의 수
+            int hitCount = 0;
 
             foreach (Collider hitCollider in hitColliders)
             {
@@ -440,32 +437,66 @@ public class Weapon : MonoBehaviour
                     break;
                 }
 
-                // 일반 적에게 피해를 입히는 부분
+                Vector3 spawnPosition = hitCollider.transform.position + Vector3.up * spawnHeight;
+
+                // 적에 대한 처리
                 Enemy enemy = hitCollider.GetComponent<Enemy>();
                 if (enemy != null && enemy.gameObject.layer != LayerMask.NameToLayer("Enemydead"))
                 {
                     Debug.Log("Applying lightning damage to: " + hitCollider.gameObject.name);
                     Vector3 reactVec = hitCollider.transform.position - transform.position;
+
+                    // 각 번개 발동마다 새로운 파티클 인스턴스를 생성하고 재생합니다.
+                    ParticleSystem tempInstance = Instantiate(lightningEffectPrefab, spawnPosition, Quaternion.identity);
+                    tempInstance.Play();
+
+                    Destroy(tempInstance.gameObject, tempInstance.main.duration); // 파티클이 끝나면 자동으로 파괴되도록 합니다.
+
                     enemy.TakeDamage(lightningDamage, reactVec);
                     hitCount++;
                 }
-                // 보스 적에게 피해를 입히는 부분
                 else
                 {
+                    // 보스 적에 대한 처리
                     EnemyBoss enemyBoss = hitCollider.GetComponent<EnemyBoss>();
                     if (enemyBoss != null && enemyBoss.gameObject.layer != LayerMask.NameToLayer("Enemydead"))
                     {
                         Debug.Log("Applying lightning damage to: " + hitCollider.gameObject.name);
+                        // EnemyBoss의 경우 높이를 추가적으로 조정합니다.
+                        float bossSpawnHeight = spawnHeight + 5; // additionalHeight는 조정하고자 하는 추가 높이입니다.
+                        Vector3 bossSpawnPosition = hitCollider.transform.position + Vector3.up * bossSpawnHeight;
+                        // 각 번개 발동마다 새로운 파티클 인스턴스를 생성하고 재생합니다.
+                        ParticleSystem tempInstance = Instantiate(lightningEffectPrefab, spawnPosition, Quaternion.identity);
+                        tempInstance.Play();
+
+                        Destroy(tempInstance.gameObject, tempInstance.main.duration); // 파티클이 끝나면 자동으로 파괴되도록 합니다.
+
                         enemyBoss.bTakeDamage(lightningDamage, hitCollider.transform.position);
                         hitCount++;
+                    }
+                    else
+                    {
+                        // 웜 적에 대한 처리
+                        EnemyWorm enemyWorm = hitCollider.GetComponent<EnemyWorm>();
+                        if (enemyWorm != null && enemyWorm.gameObject.layer != LayerMask.NameToLayer("Enemydead"))
+                        {
+                            Debug.Log("Applying lightning damage to: " + hitCollider.gameObject.name);
+                            Vector3 reactVec = hitCollider.transform.position - transform.position;
+
+                            // 각 번개 발동마다 새로운 파티클 인스턴스를 생성하고 재생합니다.
+                            ParticleSystem tempInstance = Instantiate(lightningEffectPrefab, spawnPosition, Quaternion.identity);
+                            tempInstance.Play();
+
+                            Destroy(tempInstance.gameObject, tempInstance.main.duration); // 파티클이 끝나면 자동으로 파괴되도록 합니다.
+                            
+                            enemyWorm.TakeDamage(lightningDamage, reactVec);
+                            hitCount++;
+                        }
                     }
                 }
 
             }
-            if (lightningEffectInstance != null)
-            {
-                lightningEffectInstance.transform.position = transform.position;                
-            }
+
             // 다음 번개 발동까지 대기
             yield return new WaitForSeconds(lightningInterval);
         }
@@ -475,5 +506,10 @@ public class Weapon : MonoBehaviour
             Destroy(lightningEffectInstance.gameObject, lightningEffectInstance.main.duration);
             lightningEffectInstance = null;
         }
+    }
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, lightningRadius);
     }
 }
