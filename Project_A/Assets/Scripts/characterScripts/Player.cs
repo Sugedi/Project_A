@@ -823,6 +823,12 @@ public class Player : MonoBehaviour
                     sideShotActive = true;
                 }
                 totalAmmoIncrease += skill.ammoIncrease;
+
+                if (skill.isLightning)
+                {
+                    Debug.Log("Lightning skill is active.");
+                    equipWeapon.ActivateLightningEffect(skill);
+                }
             }
             equipWeapon.UpdateMaxAmmo(totalAmmoIncrease);
         }

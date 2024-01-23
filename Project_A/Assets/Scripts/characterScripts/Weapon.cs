@@ -44,7 +44,16 @@ public class Weapon : MonoBehaviour
     public float boomShotDamage; // 붐샷 폭발 때 주는 피해량
 
     // 사이드샷 스킬에 대한 속성
-    public bool isSideShotActive = false; // 사이드샷 스킬 활성화 여부    
+    public bool isSideShotActive = false; // 사이드샷 스킬 활성화 여부
+
+    // 번개 스킬에 대한 속성
+    public bool isLightningActive = false;
+    public float lightningRadius;
+    public float lightningDamage;
+    public float lightningInterval;
+    public int maxTargets;
+    public ParticleSystem lightningEffectPrefab; // 번개 스킬 이펙트 프리팹
+    private ParticleSystem lightningEffectInstance;
 
     public float bulletSpeed = 8; // 총알 속도 기본값 설정
     public Transform bulletPos; // 총알 발사 위치
@@ -399,5 +408,72 @@ public class Weapon : MonoBehaviour
             bulletCollider.enabled = true;
         }
     }
-    
+    public void ActivateLightningEffect(Skill lightningSkill)
+    {
+        Debug.Log("Activating lightning effect.");
+        isLightningActive = true;
+        lightningRadius = lightningSkill.lightningRadius;
+        lightningDamage = lightningSkill.lightningDamage;
+        lightningInterval = lightningSkill.lightningInterval;
+        maxTargets = lightningSkill.maxTargets;
+
+        // 번개 스킬 코루틴 시작
+        StartCoroutine(LightningEffectCoroutine());
+    }
+    private IEnumerator LightningEffectCoroutine()
+    {
+        if (lightningEffectPrefab != null && lightningEffectInstance == null)
+        {
+            lightningEffectInstance = Instantiate(lightningEffectPrefab, transform.position, Quaternion.identity, transform);
+            lightningEffectInstance.Play();
+        }
+        while (isLightningActive)
+        {
+            // 주변의 적을 탐색하여 피해를 주는 로직
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, lightningRadius);
+            int hitCount = 0; // 현재 타겟에 피해를 준 적의 수
+
+            foreach (Collider hitCollider in hitColliders)
+            {
+                if (hitCount >= maxTargets)
+                {
+                    break;
+                }
+
+                // 일반 적에게 피해를 입히는 부분
+                Enemy enemy = hitCollider.GetComponent<Enemy>();
+                if (enemy != null && enemy.gameObject.layer != LayerMask.NameToLayer("Enemydead"))
+                {
+                    Debug.Log("Applying lightning damage to: " + hitCollider.gameObject.name);
+                    Vector3 reactVec = hitCollider.transform.position - transform.position;
+                    enemy.TakeDamage(lightningDamage, reactVec);
+                    hitCount++;
+                }
+                // 보스 적에게 피해를 입히는 부분
+                else
+                {
+                    EnemyBoss enemyBoss = hitCollider.GetComponent<EnemyBoss>();
+                    if (enemyBoss != null && enemyBoss.gameObject.layer != LayerMask.NameToLayer("Enemydead"))
+                    {
+                        Debug.Log("Applying lightning damage to: " + hitCollider.gameObject.name);
+                        enemyBoss.bTakeDamage(lightningDamage, hitCollider.transform.position);
+                        hitCount++;
+                    }
+                }
+
+            }
+            if (lightningEffectInstance != null)
+            {
+                lightningEffectInstance.transform.position = transform.position;                
+            }
+            // 다음 번개 발동까지 대기
+            yield return new WaitForSeconds(lightningInterval);
+        }
+        if (lightningEffectInstance != null)
+        {
+            lightningEffectInstance.Stop();
+            Destroy(lightningEffectInstance.gameObject, lightningEffectInstance.main.duration);
+            lightningEffectInstance = null;
+        }
+    }
 }

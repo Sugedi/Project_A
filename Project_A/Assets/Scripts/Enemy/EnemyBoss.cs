@@ -272,6 +272,23 @@ public class EnemyBoss : MonoBehaviour
             bullet.ReturnToPool(); // 총알 반환
         }
     }
+    public void bTakeDamage(float damage, Vector3 hitPoint)
+    {
+        if (gameObject.layer == LayerMask.NameToLayer("Enemydead"))
+        {
+            return;
+        }
+
+        bcurHealth -= damage;
+        Debug.Log(gameObject.name + "가 데미지를 받았습니다. 데미지: " + damage + ", 남은 체력: " + bcurHealth);
+        Debug.Log(gameObject.name + " took lightning damage: " + damage);
+        // 여기서 추가적인 피해 처리 로직을 구현할 수 있습니다.   
+        Vector3 reactVec = transform.position - hitPoint;
+
+        // OnDamage 코루틴 실행
+        StartCoroutine(bOnDamage(reactVec));
+        // 예를 들어, 적이 피해를 받을 때 반응하는 애니메이션을 실행하거나, 체력이 0 이하가 되면 적을 파괴하는 등의 로직을 추가할 수 있습니다.
+    }
 
     void OnCollisionEnter(Collision collision)
     {
