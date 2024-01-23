@@ -9,8 +9,6 @@ public class EnemyDragon : MonoBehaviour
     public float curHealth; // 현재 체력
     public Transform target; // 플레이어의 Transform
     public GameObject bullet; // 원거리 공격에 사용되는 총알
-    public GameObject bullet2; // 원거리 공격에 사용되는 총알
-    public GameObject bullet3; // 원거리 공격에 사용되는 총알
     public bool isChase; // 추격 상태 여부
     public bool isAttack; // 공격 상태 여부   
     public int minDropCount; // 드랍 아이템의 최소 개수
@@ -117,57 +115,10 @@ public class EnemyDragon : MonoBehaviour
         anim.SetBool("isAttack3", false);
         anim.SetBool("isWalk", false);
 
-        // 초기 위치로 돌아가기
-        // StartCoroutine(ReturnToInitialPosition());
-    }
-
-    /* IEnumerator ReturnToInitialPosition()
-    {
-        isReturningToInitialPosition = true; // 초기 위치로 돌아가는 중임을 표시
-
-        if (!nav.enabled)
-            nav.enabled = true;
-
-        if (!nav.isOnNavMesh)
-        {
-            // NavMesh에 없는 경우 초기 위치를 목적지로 설정
-            nav.Warp(initialPosition); // 이 부분 수정
-        }
-
-        // isWalk 애니메이션 재생
-        if (!anim.GetBool("isWalk") && !anim.GetCurrentAnimatorStateInfo(0).IsName("isWalk"))
-        {
-            // "isWalk" 애니메이션이 재생 중이 아니라면 재생
-            anim.SetBool("isWalk", true);
-        }
-
-        while (Vector3.Distance(transform.position, initialPosition) > 0.1f)
-        {
-            nav.SetDestination(initialPosition);
-            yield return null;
-        }
-
-        nav.isStopped = true;
-        transform.position = initialPosition;
-
-        isChase = true;
-
-        // isWalk 애니메이션 종료
+        isChase = false;
+        anim.SetBool("isAttack4", false);
         anim.SetBool("isWalk", false);
-
-        // 초기 위치로 돌아갔을 때 플레이어가 다시 인식 범위 안으로 들어오면 추격 재개
-        while (Vector3.Distance(transform.position, target.position) > sightRange)
-        {
-            yield return null;
-        }
-
-        // ChaseStart 메서드를 호출하여 플레이어 추격을 재개
-        ChaseStart();
-
-        // 초기 위치로 돌아가는 동작이 끝났음을 표시
-        isReturningToInitialPosition = false;
     }
-    */
 
     void FreezeVelocity()
     {
@@ -222,7 +173,7 @@ public class EnemyDragon : MonoBehaviour
             for (int i = 0; i < 3; i++)
             {
                 // 총알 발사 각도를 계산합니다.
-                Quaternion bulletRotation = Quaternion.Euler(0, -10 + (i * 10), 0) * transform.rotation;
+                Quaternion bulletRotation = Quaternion.Euler(0, -20 + (i * 20), 0) * transform.rotation;
                 GameObject instantBullet = Instantiate(bullet, transform.position, bulletRotation);
 
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
@@ -260,7 +211,7 @@ public class EnemyDragon : MonoBehaviour
                 rigidBullet.velocity = instantBullet.transform.forward * 15;
 
                 // 다음 총알 발사 전에 잠시 대기
-                yield return new WaitForSeconds(0.5f); // 이 값을 조절하여 총알 발사 간격을 변경할 수 있습니다.
+                yield return new WaitForSeconds(0.3f); // 이 값을 조절하여 총알 발사 간격을 변경할 수 있습니다.
             }
 
             isAttackHit = true; // 공격이 성공적으로 적중했다고 표시
@@ -283,8 +234,8 @@ public class EnemyDragon : MonoBehaviour
 
         if (curHealth > 0 && !isAttackHit)
         {
-            // 부채꼴 형태로 총알 8개 발사
-            for (int i = 0; i < 40; i++)
+            // 부채꼴 형태로 총알 50개 발사
+            for (int i = 0; i < 50; i++)
             {
                 // 총알 발사 각도를 계산합니다.
                 Quaternion bulletRotation = Quaternion.Euler(0, -30 + (i * 20), 0) * transform.rotation;
@@ -306,6 +257,37 @@ public class EnemyDragon : MonoBehaviour
         isChase = true;
         isAttack = false;
         anim.SetBool("isAttack3", false);
+
+        // 추격 중지 및 공격 상태로 전환
+        isChase = false;
+        isAttack = true;
+        anim.SetBool("isAttack4", true);
+
+        // 일정 시간 동안 대기
+        yield return new WaitForSeconds(attackDuration);
+
+        if (curHealth > 0 && !isAttackHit)
+        {
+            // 부채꼴 형태로 총알 20개 발사
+            for (int i = 0; i < 20; i++)
+            {
+                // 총알 발사 각도를 계산합니다.
+                Quaternion bulletRotation = Quaternion.Euler(0, -20 + (i * 20), 0) * transform.rotation;
+                GameObject instantBullet = Instantiate(bullet, transform.position, bulletRotation);
+
+                Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
+                rigidBullet.velocity = instantBullet.transform.forward * 15;
+            }
+
+            isAttackHit = true; // 공격이 성공적으로 적중했다고 표시
+            StartCoroutine(ResetAttackHit()); // 공격 적중 상태 초기화 코루틴 실행
+            yield return new WaitForSeconds(2f);
+        }
+
+        // 공격 상태 종료
+        isChase = true;
+        isAttack = false;
+        anim.SetBool("isAttack4", false);
     }
 
     IEnumerator ResetAttackHit()
@@ -366,6 +348,7 @@ public class EnemyDragon : MonoBehaviour
     }
 
     /*
+
     private void OnTriggerExit(Collider other)
     {
        if (other.tag == "Player")
@@ -374,6 +357,7 @@ public class EnemyDragon : MonoBehaviour
             anim.SetBool("isWalk", false);
         }
     }
+
     */
 
     // 피격 시 발생하는 코루틴 함수
@@ -392,13 +376,13 @@ public class EnemyDragon : MonoBehaviour
             // yield return new WaitForSeconds(0.5f);
 
             // Play doGetHit animation
-            // anim.SetBool("doGetHit", true);
+            anim.SetBool("doGetHit", true);
 
             // Wait for the doGetHit animation to finish
             yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
 
             // Reset the doGetHit animation state
-            // anim.SetBool("doGetHit", false);
+            anim.SetBool("doGetHit", false);
 
             isChase = true;
             nav.enabled = true;
