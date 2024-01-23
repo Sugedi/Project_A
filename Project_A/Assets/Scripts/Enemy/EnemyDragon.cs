@@ -338,6 +338,10 @@ public class EnemyDragon : MonoBehaviour
             isChase = true;
             anim.SetBool("isWalk", true);
         }
+        else if (other.tag == "Bullet")
+        {
+            TakeDamage(other.GetComponent<Bullet>(), other.transform.position);
+        }
     }
 
     /*
