@@ -278,43 +278,27 @@ public class EnemyWorm : MonoBehaviour
 
     public void TakeDamage(Bullet bullet, Vector3 hitPoint)
     {
-        // Check if the monster is in the 'Enemydead' layer
         if (gameObject.layer == LayerMask.NameToLayer("Enemydead"))
         {
-            // If in the 'Enemydead' layer, do nothing (or handle it as needed)
             return;
         }
 
-        float damageToApply = bullet.isExplosion ? bullet.boomShotDamage : bullet.damage;
+        // 라이트닝 스킬이 활성화되어 있으면 기본 데미지에 라이트닝 데미지를 합산합니다.
+        float totalDamage = bullet.damage + (bullet.isLightningActive ? bullet.lightningDamage : 0);
+
+        // 폭발 효과가 있는지 확인하고, 있으면 해당 데미지를 적용합니다.
+        float damageToApply = bullet.isExplosion ? bullet.boomShotDamage : totalDamage;
         curHealth -= damageToApply; // Apply damage
 
-        // 공격으로 받은 위치 벡터 계산
-        Vector3 reactVec = transform.position - hitPoint;
+        Debug.Log(gameObject.name + "가 데미지를 받았습니다. 데미지: " + damageToApply + ", 남은 체력: " + curHealth);
 
-        // OnDamage 코루틴 실행
+        Vector3 reactVec = transform.position - hitPoint;
         StartCoroutine(OnDamage(reactVec));
 
         if (!bullet.isPenetrating) // 관통 총알이 아니면 총알을 오브젝트 풀로 반환합니다.
         {
             bullet.ReturnToPool(); // 총알 반환
         }
-    }
-    public void TakeDamage(float damage, Vector3 hitPoint)
-    {
-        if (gameObject.layer == LayerMask.NameToLayer("Enemydead"))
-        {
-            return;
-        }
-
-        curHealth -= damage;
-        Debug.Log(gameObject.name + "가 데미지를 받았습니다. 데미지: " + damage + ", 남은 체력: " + curHealth);
-        Debug.Log(gameObject.name + " took lightning damage: " + damage);
-        // 여기서 추가적인 피해 처리 로직을 구현할 수 있습니다.   
-        Vector3 reactVec = transform.position - hitPoint;
-
-        // OnDamage 코루틴 실행
-        StartCoroutine(OnDamage(reactVec));
-        // 예를 들어, 적이 피해를 받을 때 반응하는 애니메이션을 실행하거나, 체력이 0 이하가 되면 적을 파괴하는 등의 로직을 추가할 수 있습니다.
     }
 
     void OnCollisionEnter(Collision collision)

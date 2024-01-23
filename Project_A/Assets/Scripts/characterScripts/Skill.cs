@@ -58,9 +58,6 @@ public class Skill : ScriptableObject
     public bool isSideShot = false; // 사이드샷 스킬 활성화 여부입니다.
 
     // 라이트닝 스킬 속성
-    public bool isLightning = false;
-    public float lightningRadius;
-    public float lightningDamage;
-    public float lightningInterval;
-    public int maxTargets;
+    public bool isLightning = false;   
+    public float lightningDamage;    
 }

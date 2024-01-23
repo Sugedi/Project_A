@@ -47,14 +47,9 @@ public class Weapon : MonoBehaviour
     public bool isSideShotActive = false; // 사이드샷 스킬 활성화 여부
 
     // 번개 스킬에 대한 속성
-    public bool isLightningActive = false;
-    public float lightningRadius;
-    public float lightningDamage;
-    public float lightningInterval;
-    public int maxTargets;
-    public ParticleSystem lightningEffectPrefab; // 번개 스킬 이펙트 프리팹
-    private ParticleSystem lightningEffectInstance;
-    
+    public bool isLightningActive = false;    
+    public float lightningDamage;   
+    public ParticleSystem lightningEffectPrefab; // 번개 스킬 이펙트 프리팹   
 
     public float bulletSpeed = 8; // 총알 속도 기본값 설정
     public Transform bulletPos; // 총알 발사 위치
@@ -285,8 +280,14 @@ public class Weapon : MonoBehaviour
                     bulletScript.boomShotRadius = boomShotRadius;
                     bulletScript.boomShotDamage = boomShotDamage;
 
-                    // 총알 충돌을 일시적으로 비활성화
-                    Collider bulletCollider = instantBullet.GetComponent<Collider>();
+                    // 번개 스킬이 활성화된 경우, 총알에 번개 효과를 적용
+                    if (isLightningActive)
+                    {
+                        bulletScript.isLightningActive = true;
+                    }
+
+                // 총알 충돌을 일시적으로 비활성화
+                Collider bulletCollider = instantBullet.GetComponent<Collider>();
                     if (bulletCollider)
                     {
                         bulletCollider.enabled = false;
@@ -408,108 +409,5 @@ public class Weapon : MonoBehaviour
         {
             bulletCollider.enabled = true;
         }
-    }
-    public void ActivateLightningEffect(Skill lightningSkill)
-    {
-        Debug.Log("Activating lightning effect.");
-        isLightningActive = true;
-        lightningRadius = lightningSkill.lightningRadius;
-        lightningDamage = lightningSkill.lightningDamage;
-        lightningInterval = lightningSkill.lightningInterval;
-        maxTargets = lightningSkill.maxTargets;
-
-        // 번개 스킬 코루틴 시작
-        StartCoroutine(LightningEffectCoroutine());
-    }
-    private IEnumerator LightningEffectCoroutine()
-    {        
-        float spawnHeight = 3f;
-
-        while (isLightningActive)
-        {
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, lightningRadius);
-            int hitCount = 0;
-
-            foreach (Collider hitCollider in hitColliders)
-            {
-                if (hitCount >= maxTargets)
-                {
-                    break;
-                }
-
-                Vector3 spawnPosition = hitCollider.transform.position + Vector3.up * spawnHeight;
-
-                // 적에 대한 처리
-                Enemy enemy = hitCollider.GetComponent<Enemy>();
-                if (enemy != null && enemy.gameObject.layer != LayerMask.NameToLayer("Enemydead"))
-                {
-                    Debug.Log("Applying lightning damage to: " + hitCollider.gameObject.name);
-                    Vector3 reactVec = hitCollider.transform.position - transform.position;
-
-                    // 각 번개 발동마다 새로운 파티클 인스턴스를 생성하고 재생합니다.
-                    ParticleSystem tempInstance = Instantiate(lightningEffectPrefab, spawnPosition, Quaternion.identity);
-                    tempInstance.Play();
-
-                    Destroy(tempInstance.gameObject, tempInstance.main.duration); // 파티클이 끝나면 자동으로 파괴되도록 합니다.
-
-                    enemy.TakeDamage(lightningDamage, reactVec);
-                    hitCount++;
-                }
-                else
-                {
-                    // 보스 적에 대한 처리
-                    EnemyBoss enemyBoss = hitCollider.GetComponent<EnemyBoss>();
-                    if (enemyBoss != null && enemyBoss.gameObject.layer != LayerMask.NameToLayer("Enemydead"))
-                    {
-                        Debug.Log("Applying lightning damage to: " + hitCollider.gameObject.name);
-                        // EnemyBoss의 경우 높이를 추가적으로 조정합니다.
-                        float bossSpawnHeight = spawnHeight + 5; // additionalHeight는 조정하고자 하는 추가 높이입니다.
-                        Vector3 bossSpawnPosition = hitCollider.transform.position + Vector3.up * bossSpawnHeight;
-                        // 각 번개 발동마다 새로운 파티클 인스턴스를 생성하고 재생합니다.
-                        ParticleSystem tempInstance = Instantiate(lightningEffectPrefab, spawnPosition, Quaternion.identity);
-                        tempInstance.Play();
-
-                        Destroy(tempInstance.gameObject, tempInstance.main.duration); // 파티클이 끝나면 자동으로 파괴되도록 합니다.
-
-                        enemyBoss.bTakeDamage(lightningDamage, hitCollider.transform.position);
-                        hitCount++;
-                    }
-                    else
-                    {
-                        // 웜 적에 대한 처리
-                        EnemyWorm enemyWorm = hitCollider.GetComponent<EnemyWorm>();
-                        if (enemyWorm != null && enemyWorm.gameObject.layer != LayerMask.NameToLayer("Enemydead"))
-                        {
-                            Debug.Log("Applying lightning damage to: " + hitCollider.gameObject.name);
-                            Vector3 reactVec = hitCollider.transform.position - transform.position;
-
-                            // 각 번개 발동마다 새로운 파티클 인스턴스를 생성하고 재생합니다.
-                            ParticleSystem tempInstance = Instantiate(lightningEffectPrefab, spawnPosition, Quaternion.identity);
-                            tempInstance.Play();
-
-                            Destroy(tempInstance.gameObject, tempInstance.main.duration); // 파티클이 끝나면 자동으로 파괴되도록 합니다.
-                            
-                            enemyWorm.TakeDamage(lightningDamage, reactVec);
-                            hitCount++;
-                        }
-                    }
-                }
-
-            }
-
-            // 다음 번개 발동까지 대기
-            yield return new WaitForSeconds(lightningInterval);
-        }
-        if (lightningEffectInstance != null)
-        {
-            lightningEffectInstance.Stop();
-            Destroy(lightningEffectInstance.gameObject, lightningEffectInstance.main.duration);
-            lightningEffectInstance = null;
-        }
-    }
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, lightningRadius);
-    }
+    }   
 }

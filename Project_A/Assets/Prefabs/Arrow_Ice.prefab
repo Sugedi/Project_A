@@ -315,6 +315,10 @@ MonoBehaviour:
   target: {fileID: 0}
   homingSpeed: 5
   homingRotateSpeed: 200
+  isLightningActive: 0
+  lightningEffectPrefab: {fileID: 5775563345041098227, guid: fc481507187ec7d44b66921fe7036f19, type: 3}
+  lightningDamage: 10
+  spawnHeight: 3
 --- !u!135 &-2103552645622150403
 SphereCollider:
   m_ObjectHideFlags: 0

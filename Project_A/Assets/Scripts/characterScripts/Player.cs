@@ -753,6 +753,8 @@ public class Player : MonoBehaviour
         bool pierceShotActive = false; // 관통샷 스킬 활성화 여부
         bool boomShotActive = false; // 붐샷 스킬 활성화 여부
         bool sideShotActive = false; // 사이드샷 스킬 활성화 여부
+        bool lightningActive = false; // 라이트닝 스킬 활성화 여부
+        float lightningDamage = 0f;
 
         int shotGun1Bullets = 0; // 샷건1 시 발사될 추가 총알 수
         float shotGun1Angle = 0f; // 샷건1의 총알 간 각도
@@ -804,11 +806,11 @@ public class Player : MonoBehaviour
                     shotGun4Angle = skill.shotGun4SpreadAngle; // 총알 간의 각도
                 }
 
+                // 피어스샷 스킬 적용 로직
                 if (skill.isPierceShot)
                 {
                     pierceShotActive = true;
-                }
-                // 총알 증가 스킬이 활성화된 경우, 증가량을 더합니다.
+                }                
 
                 // 붐샷 스킬 적용 로직
                 if (skill.isBoomShot)
@@ -826,8 +828,8 @@ public class Player : MonoBehaviour
 
                 if (skill.isLightning)
                 {
-                    Debug.Log("Lightning skill is active.");
-                    equipWeapon.ActivateLightningEffect(skill);
+                    lightningActive = true;
+                    lightningDamage = skill.lightningDamage;
                 }
             }
             equipWeapon.UpdateMaxAmmo(totalAmmoIncrease);
@@ -856,6 +858,10 @@ public class Player : MonoBehaviour
 
         // 장착된 무기에 SideShot 스킬 속성 설정
         equipWeapon.isSideShotActive = sideShotActive;
+
+        // 장착된 무기에 Lightning 스킬 속성 설정
+        equipWeapon.isLightningActive = lightningActive;
+        equipWeapon.lightningDamage = lightningDamage;
 
         if (shotGun1Active)
         {

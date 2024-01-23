@@ -31,6 +31,12 @@ public class Bullet : MonoBehaviour
     public float homingSpeed = 20f; // 추적 속도
     public float homingRotateSpeed = 200f; // 추적 회전 속도
 
+    // 번개 스킬 관련 속성
+    public bool isLightningActive = false;
+    public ParticleSystem lightningEffectPrefab;
+    public float lightningDamage;
+    public float spawnHeight;
+
     void Awake()
     {
         bulletRigidbody = GetComponent<Rigidbody>();
@@ -54,6 +60,7 @@ public class Bullet : MonoBehaviour
         isHoming = false;
         target = null;
         isPenetrating = false;
+        isLightningActive = false;
         isBoomShotActive = false;
 
         // 파티클 시스템이 있다면 비활성화했다가 다시 활성화
@@ -125,6 +132,7 @@ public class Bullet : MonoBehaviour
 
         // 총알의 다른 속성들을 기본값으로 재설정합니다.
         isPenetrating = false;
+        isLightningActive = false;
         isBoomShotActive = false;
         isExplosion = false;
         isHoming = false;
@@ -187,36 +195,37 @@ public class Bullet : MonoBehaviour
             HandleCollisionWithEnvironment();
         }
     }
+
+    // 충돌 시 번개 효과를 발동하는 메서드
+    void TriggerLightningEffect(Vector3 hitPoint)
+    {
+        // 번개 파티클 효과 생성 및 재생
+        ParticleSystem lightningEffect = Instantiate(lightningEffectPrefab, hitPoint, Quaternion.identity);
+        lightningEffect.Play();
+        Destroy(lightningEffect.gameObject, lightningEffect.main.duration);
+    }
+
     void HandleCollisionWithEnemy(GameObject enemyObject, Vector3 hitPoint)
     {
         Debug.Log("HandleCollisionWithEnemy called"); // 디버그 로그 추가
-        Enemy enemy = enemyObject.GetComponent<Enemy>();
-        EnemyBoss enemyBoss = enemyObject.GetComponent<EnemyBoss>();
-        if (enemy != null)
-        {
-            enemy.TakeDamage(this, hitPoint);
 
-            if (isBoomShotActive)
-            {
-                Explode();
-            }
-            else if (!isPenetrating)
-            {
-                ReturnToPool();
-            }
+        // 번개 효과 발동
+        if (isLightningActive)
+        {
+            TriggerLightningEffect(hitPoint);
         }
-        if (enemyBoss != null)
-        {
-            enemyBoss.bTakeDamage(this, hitPoint); // EnemyBoss에 대한 데미지 처리
 
-            if (isBoomShotActive)
-            {
-                Explode();
-            }
-            else if (!isPenetrating)
-            {
-                ReturnToPool();
-            }
+        // 적에게 데미지를 적용합니다.
+        ApplyDamageToEnemy(enemyObject, this, hitPoint);
+
+        // 폭발 효과 및 총알 회수 로직
+        if (isBoomShotActive)
+        {
+            Explode();
+        }
+        else if (!isPenetrating)
+        {
+            ReturnToPool();
         }
     }
 
@@ -228,6 +237,28 @@ public class Bullet : MonoBehaviour
         }
 
         ReturnToPool();
+    }
+    void ApplyDamageToEnemy(GameObject enemyObject, Bullet bullet, Vector3 hitPoint)
+    {
+        Enemy enemy = enemyObject.GetComponent<Enemy>();
+        if (enemy != null)
+        {
+            enemy.TakeDamage(bullet, hitPoint);
+            return;
+        }
+
+        EnemyWorm enemyWorm = enemyObject.GetComponent<EnemyWorm>();
+        if (enemyWorm != null)
+        {            
+            enemyWorm.TakeDamage(bullet, hitPoint);
+            return;
+        }
+
+        EnemyBoss enemyBoss = enemyObject.GetComponent<EnemyBoss>();
+        if (enemyBoss != null)
+        {            
+            enemyBoss.bTakeDamage(bullet, hitPoint);
+        }
     }
     // 폭발 처리 메서드
     private void Explode()

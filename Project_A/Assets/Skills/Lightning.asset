@@ -35,7 +35,4 @@ MonoBehaviour:
   boomShotDamage: 0
   isSideShot: 0
   isLightning: 1
-  lightningRadius: 10
-  lightningDamage: 20
-  lightningInterval: 1
-  maxTargets: 3
+  lightningDamage: 10
