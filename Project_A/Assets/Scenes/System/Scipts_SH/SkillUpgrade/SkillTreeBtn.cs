@@ -61,15 +61,15 @@ public class SkillTreeBtn : MonoBehaviour
 
             if (skill.skillName == "PowerUp1")
             {
-                powerInfo.text = "필요 재화: 50";
+                powerInfo.text = "50";
             }
             else if (skill.skillName == "PowerUp2")
             {
-                powerInfo.text = "필요 재화: 70";
+                powerInfo.text = "70";
             }
             else if (skill.skillName == "PowerUp3")
             {
-                powerInfo.text = "필요 재화: 90";
+                powerInfo.text = "90";
             }
             else if (skill.skillName == "PowerUp4")
             {
@@ -193,22 +193,22 @@ public class SkillTreeBtn : MonoBehaviour
 
                         if (skill.skillName == "AmmoUp1")
                         {
-                            ammoInfo.text = "필요 재화: 50";
+                            ammoInfo.text = "50";
                             break;
                         }
                         else if (skill.skillName == "AmmoUp2")
                         {
-                            ammoInfo.text = "필요 재화: 70";
+                            ammoInfo.text = "70";
                             break;
                         }
                         else if (skill.skillName == "AmmoUp3")
                         {
-                            ammoInfo.text = "필요 재화: 90";
+                            ammoInfo.text = "90";
                             break;
                         }
                         else if (skill.skillName == "AmmoUp4")
                         {
-                            ammoInfo.text = "최고 레벨";
+                            ammoInfo.text = "";
                             break;
                         }
                     }
@@ -483,7 +483,7 @@ public class SkillTreeBtn : MonoBehaviour
                             soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
                             gem.text = $"재화: {soul}";
                             DataManager.instance.DataSave();
-                            ammoInfo.text = "필요 재화: 70";
+                            ammoInfo.text = "70";
                             ammoSkillCheck += 1;
                             break;
                         }
@@ -505,7 +505,7 @@ public class SkillTreeBtn : MonoBehaviour
                             soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
                             gem.text = $"재화: {soul}";
                             DataManager.instance.DataSave();
-                            ammoInfo.text = "필요 재화: 90";
+                            ammoInfo.text = "90";
                             ammoSkillCheck += 1;
                             break;
                         }
@@ -527,7 +527,7 @@ public class SkillTreeBtn : MonoBehaviour
                             soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
                             gem.text = $"재화: {soul}";
                             DataManager.instance.DataSave();
-                            ammoInfo.text = "최고 레벨";
+                            ammoInfo.text = "";
                             ammoSkillCheck += 1;
                             break;
                         }
@@ -557,7 +557,7 @@ public class SkillTreeBtn : MonoBehaviour
                         soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
                         gem.text = $"재화: {soul}";
                         DataManager.instance.DataSave();
-                        ammoInfo.text = "필요 재화: 50";
+                        ammoInfo.text = "50";
                         break;
                     }
                 }
