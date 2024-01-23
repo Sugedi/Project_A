@@ -13,14 +13,17 @@ public class Enemy : MonoBehaviour
     public BoxCollider meleeArea; // 근접 공격 범위 Collider
     public GameObject bullet; // 원거리 공격에 사용되는 총알
     public bool isChase; // 추격 상태 여부
-    public bool isAttack; // 공격 상태 여부   
+    public bool isAttack; // 공격 상태 여부
+    public bool isReturn;
+    public float chaseRange;
     public int minDropCount; // 드랍 아이템의 최소 개수
     public int maxDropCount; // 드랍 아이템의 최대 개수
     public float targetRange = 0;
 
     public float sightRange = 10f; // 타겟이 유저 인식
 
-    bool isReturningToInitialPosition; // 몬스터가 초기 위치로 돌아가고 있는지 여부를 나타내는 변수
+    public Vector3 homePosition; // 몬스터의 초기 위치
+    public float homeRange = 10f; // 홈 위치에서 몬스터가 이동할 수 있는 최대 거리
 
     //==============================================================
     public GameObject itemPrefab; // 드랍 아이템 프리펩 등록
@@ -33,21 +36,17 @@ public class Enemy : MonoBehaviour
     NavMeshAgent nav; // NavMeshAgent 컴포넌트
     Animator anim; // Animator 컴포넌트
 
-    Vector3 initialPosition; // 몬스터의 초기 위치 저장 변수
-
     void Awake()
     {
+        homePosition = transform.position;
         rigid = GetComponent<Rigidbody>();
         boxCollider = GetComponent<BoxCollider>();
         mat = GetComponentInChildren<SkinnedMeshRenderer>().material;
         anim = GetComponentInChildren<Animator>();
 
         target = FindObjectOfType<Player>().GetComponent<Transform>();
-        initialPosition = transform.position; // 초기 위치 저장
 
         nav = GetComponent<NavMeshAgent>();
-
-        // Invoke("ChaseStart", 1);  // 1초 뒤에 추격 시작
     }
 
     void ChaseStart()
@@ -84,18 +83,26 @@ public class Enemy : MonoBehaviour
     {
         float distanceToPlayer = Vector3.Distance(transform.position, target.position);
 
-        if (distanceToPlayer <= sightRange)
+        if (isReturn)
         {
-            if (!isChase)
-            {
-                ChaseStart();
-            }
+            Return();
         }
         else
         {
-            if (isChase)
+            isReturn = chaseRange < Vector3.Distance(transform.position, homePosition);
+            if (distanceToPlayer <= sightRange)
             {
-                StopChase();
+                if (!isChase)
+                {
+                    ChaseStart();
+                }
+            }
+            else
+            {
+                if (isChase)
+                {
+                    StopChase();
+                }
             }
         }
     }
@@ -105,22 +112,19 @@ public class Enemy : MonoBehaviour
         isChase = false;
         anim.SetBool("isAttack", false);
         anim.SetBool("isWalk", false);
-
-        // 초기 위치로 돌아가기
-        // StartCoroutine(ReturnToInitialPosition());
     }
 
-    /* IEnumerator ReturnToInitialPosition()
+    void Return()
     {
-        isReturningToInitialPosition = true; // 초기 위치로 돌아가는 중임을 표시
-
+        isChase = false;
+        anim.SetBool("isAttack", false);
         if (!nav.enabled)
             nav.enabled = true;
 
         if (!nav.isOnNavMesh)
         {
             // NavMesh에 없는 경우 초기 위치를 목적지로 설정
-            nav.Warp(initialPosition); // 이 부분 수정
+            nav.Warp(homePosition); // 이 부분 수정
         }
 
         // isWalk 애니메이션 재생
@@ -130,33 +134,15 @@ public class Enemy : MonoBehaviour
             anim.SetBool("isWalk", true);
         }
 
-        while (Vector3.Distance(transform.position, initialPosition) > 0.1f)
+        nav.SetDestination(homePosition);
+
+        if (Vector3.Distance(transform.position, homePosition) < 2f)
         {
-            nav.SetDestination(initialPosition);
-            yield return null;
+            isReturn = false;
+            anim.SetBool("isWalk", false);
         }
 
-        nav.isStopped = true;
-        transform.position = initialPosition;
-
-        isChase = true;
-
-        // isWalk 애니메이션 종료
-        anim.SetBool("isWalk", false);
-
-        // 초기 위치로 돌아갔을 때 플레이어가 다시 인식 범위 안으로 들어오면 추격 재개
-        while (Vector3.Distance(transform.position, target.position) > sightRange)
-        {
-            yield return null;
-        }
-
-        // ChaseStart 메서드를 호출하여 플레이어 추격을 재개
-        ChaseStart();
-
-        // 초기 위치로 돌아가는 동작이 끝났음을 표시
-        isReturningToInitialPosition = false;
     }
-    */
 
     void FreezeVelocity()
     {
@@ -317,6 +303,7 @@ public class Enemy : MonoBehaviour
     }
 
     /*
+
     private void OnTriggerExit(Collider other)
     {
        if (other.tag == "Player")
@@ -325,6 +312,7 @@ public class Enemy : MonoBehaviour
             anim.SetBool("isWalk", false);
         }
     }
+
     */
 
     // 피격 시 발생하는 코루틴 함수
