@@ -14,6 +14,7 @@ public class Bullet : MonoBehaviour
     private Rigidbody bulletRigidbody; // 총알의 Rigidbody 참조
 
     public GameObject explosionPrefab; // 폭발 효과 프리팹
+    public GameObject hitEffectPrefab;
 
     private ObjectPool<GameObject> pool;
 
@@ -215,6 +216,9 @@ public class Bullet : MonoBehaviour
             TriggerLightningEffect(hitPoint);
         }
 
+        // 피격 이펙트 발동
+        TriggerHitEffect(hitPoint);
+
         // 적에게 데미지를 적용합니다.
         ApplyDamageToEnemy(enemyObject, this, hitPoint);
 
@@ -227,6 +231,19 @@ public class Bullet : MonoBehaviour
         {
             ReturnToPool();
         }
+    }
+    void TriggerHitEffect(Vector3 position)
+    {
+        // 피격 이펙트 파티클을 생성하거나 재생하는 코드
+        // 예를 들어, 피격 이펙트 파티클 프리팹의 인스턴스를 생성하고 위치를 설정합니다.
+        GameObject hitEffectInstance = Instantiate(hitEffectPrefab, position, Quaternion.identity);
+        ParticleSystem hitParticles = hitEffectInstance.GetComponent<ParticleSystem>();
+        if (hitParticles && !hitParticles.isPlaying)
+        {
+            hitParticles.Play();
+        }
+
+        Destroy(hitEffectInstance, hitParticles.main.duration); // 파티클 재생이 끝나면 오브젝트 파괴
     }
 
     void HandleCollisionWithEnvironment()

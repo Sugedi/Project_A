@@ -665,6 +665,7 @@ MonoBehaviour:
   lifeTime: 3
   acceleration: 0
   explosionPrefab: {fileID: 0}
+  hitEffectPrefab: {fileID: 5712349568112478501, guid: 53a2006df07d7a14283da2858897c4d6, type: 3}
   isPenetrating: 0
   isBoomShotActive: 0
   boomShotRadius: 0
@@ -674,6 +675,10 @@ MonoBehaviour:
   target: {fileID: 0}
   homingSpeed: 20
   homingRotateSpeed: 200
+  isLightningActive: 0
+  lightningEffectPrefab: {fileID: 0}
+  lightningDamage: 0
+  spawnHeight: 0
 --- !u!54 &1457506180027487736
 Rigidbody:
   m_ObjectHideFlags: 0

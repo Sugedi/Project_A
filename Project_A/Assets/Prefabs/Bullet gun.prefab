@@ -132,6 +132,7 @@ MonoBehaviour:
   lifeTime: 1
   acceleration: 0
   explosionPrefab: {fileID: 1492150453470785163, guid: 53a6f78dd7de3f74988067d455af3f17, type: 3}
+  hitEffectPrefab: {fileID: 5712349568112478501, guid: 86185d6331ff6f64a8e19e9844a800a9, type: 3}
   isPenetrating: 0
   isBoomShotActive: 0
   boomShotRadius: 0
