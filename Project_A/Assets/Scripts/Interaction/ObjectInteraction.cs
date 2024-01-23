@@ -48,9 +48,7 @@ public class ObjectInteraction : MonoBehaviour
     private void Start() // 게임 시작 시 호출되는 Start 함수
     {
         systemMessagePanel.SetActive(false); // 시스템 메시지 패널을 비활성화 상태로 설정
-        //mainQuestPanel1.SetActive(true); // 첫 번째 메인 퀘스트 패널을 활성화 상태로 설정
         mainQuest = GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1MainQuest;
-
 
         if (mainQuest == 0) // 게임 시작 시 talk1Panel과 talk2Panel을 활성화 BUT, mainQuest가 0일 때만!
         {
@@ -64,7 +62,6 @@ public class ObjectInteraction : MonoBehaviour
         {
             questIcon.SetActive(true); // 퀘스트 아이콘 버튼을 비활성화 상태로 설정
 
-            //talk1Panel.SetActive(false);
             dialoguePanel1.SetActive(false);
             dialoguePanel2.SetActive(false);
 
@@ -114,12 +111,14 @@ public class ObjectInteraction : MonoBehaviour
         if (mainQuest == 1)
         {
             dialoguePanel2.SetActive(true);
-            //questIcon.SetActive(false); #########
+            startBtn.SetActive(false);
+
         }
         if (mainQuest == 2)
         {
             dialoguePanel3.SetActive(true);
-            //questIcon.SetActive(false); #########
+            startBtn.SetActive(false);
+
         }
     }
 
@@ -135,6 +134,8 @@ public class ObjectInteraction : MonoBehaviour
         //startBtn.SetActive(false);
         dialoguePanel1.SetActive(false);
         questIcon.SetActive(true); // 퀘스트 아이콘 버튼을 활성화
+        mainQuestPanel1.SetActive(true); // 첫 번째 메인 퀘스트 패널을 활성화 상태로 설정
+
 
         // 여기에 실제로 전달하고 싶은 메시지를 입력하세요.
         string message = "주요 대본 1이 활성화 되었습니다.";
