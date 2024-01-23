@@ -12,6 +12,5 @@ public class MonsterRangeView : Editor
         Handles.color = Color.red;
 
         Handles.DrawWireArc(mon.homePosition, Vector3.up, Vector3.forward, 360f, mon.chaseRange);
-
     }
 }

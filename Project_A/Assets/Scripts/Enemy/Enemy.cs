@@ -86,6 +86,7 @@ public class Enemy : MonoBehaviour
         if (isReturn)
         {
             Return();
+            Targerting(); // 플레이어 감지 함수 호출
         }
         else
         {
@@ -116,6 +117,9 @@ public class Enemy : MonoBehaviour
 
     void Return()
     {
+        // BoxCollider 비활성화
+        boxCollider.enabled = false;
+
         isChase = false;
         anim.SetBool("isAttack", false);
         if (!nav.enabled)
@@ -124,7 +128,7 @@ public class Enemy : MonoBehaviour
         if (!nav.isOnNavMesh)
         {
             // NavMesh에 없는 경우 초기 위치를 목적지로 설정
-            nav.Warp(homePosition); // 이 부분 수정
+            nav.Warp(homePosition);
         }
 
         // isWalk 애니메이션 재생
@@ -140,8 +144,10 @@ public class Enemy : MonoBehaviour
         {
             isReturn = false;
             anim.SetBool("isWalk", false);
-        }
 
+            // BoxCollider 활성화
+            boxCollider.enabled = true;
+        }
     }
 
     void FreezeVelocity()
