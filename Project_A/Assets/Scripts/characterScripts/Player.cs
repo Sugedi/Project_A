@@ -60,6 +60,9 @@ public class Player : MonoBehaviour
     public CanvasGroup SaveCanvas;
     public FloatingJoystick joystick; //0122
 
+    public CanvasGroup joy;
+    public CanvasGroup joy2;
+
     // 초기화 시키는 거
     void Awake()
     {
@@ -153,6 +156,8 @@ public class Player : MonoBehaviour
 
             if (collider.CompareTag("Switch"))
             {
+                CanvasGroupOff(joy);
+                CanvasGroupOff(joy2);
                 //GameObject.Find("Switch").GetComponent<SaveSwitch>().SwitchFunc();
                 SaveSwitch.SwitchFunc();
                 //GameObject.Find("Switch").GetComponent<SaveSwitch>().SaveData();
@@ -160,6 +165,7 @@ public class Player : MonoBehaviour
                 SaveCanvas.alpha = 1;
                 SaveCanvas.interactable = true;
                 SaveCanvas.blocksRaycasts = true;
+                
             }
 
             if (collider.CompareTag("Treasure"))
@@ -179,6 +185,15 @@ public class Player : MonoBehaviour
         }
 
     }
+
+    public void CanvasGroupOff(CanvasGroup cg)
+    {
+        cg.alpha = 0;
+        cg.interactable = false;
+        cg.blocksRaycasts = false;
+
+    }
+
     //승호 추가 끝
 
 

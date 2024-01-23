@@ -19,6 +19,9 @@ public class TreasureBox : MonoBehaviour
     public CanvasGroup treasureBox;
     public TextMeshProUGUI tresaureMSG;
 
+    public CanvasGroup joy;
+    public CanvasGroup joy2;
+
     private void Start()
     {
         treasure_1 = GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1ItemBox1;
@@ -31,6 +34,8 @@ public class TreasureBox : MonoBehaviour
         {
             if (treasure_1 == false)
             {
+                CanvasGroupOff(joy);
+                CanvasGroupOff(joy2);
                 Time.timeScale = 0;
                 tresaureMSG.text = "¹÷¼¦ ½ºÅ³À» È¹µæÇÏ¿´½À´Ï´Ù!";
                 CanvasGroupOn(treasureBox);
@@ -49,6 +54,8 @@ public class TreasureBox : MonoBehaviour
         {
             if (treasure_2 == false)
             {
+                CanvasGroupOff(joy);
+                CanvasGroupOff(joy2);
                 Time.timeScale = 0;
                 tresaureMSG.text = "°üÅë¼¦ ½ºÅ³À» È¹µæÇÏ¿´½À´Ï´Ù!";
                 CanvasGroupOn(treasureBox);

@@ -18,7 +18,6 @@ public class TitleBtn : MonoBehaviour
     // instance로 불러오면서 필요 없어짐. 혹시 기능 동작 안 할 것을 대비하여 살려놓을게
     // public Datas datas;
     // private string KeyName = "Datas";
-    private string fileName = "SaveData.txt";
 
     public Datas datas;
     private Player player;
