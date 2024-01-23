@@ -17,6 +17,24 @@ public class SkillTreeBtn : MonoBehaviour
     public CanvasGroup reloadInfoCanvas;
     public CanvasGroup healthInfoCanvas;
 
+    public CanvasGroup powerUpEndCanvas;
+    public CanvasGroup ammoUpEndCanvas;
+    public CanvasGroup speedUpEndCanvas;
+    public CanvasGroup reloadUpEndCanvas;
+    public CanvasGroup healthUpEndCanvas;
+
+    public CanvasGroup powerGemCanvas;
+    public CanvasGroup ammoGemCanvas;
+    public CanvasGroup speedGemCanvas;
+    public CanvasGroup reloadGemCanvas;
+    public CanvasGroup healthGemCanvas;
+
+    public CanvasGroup powerBtnCanvas;
+    public CanvasGroup ammoBtnCanvas;
+    public CanvasGroup speedBtnCanvas;
+    public CanvasGroup reloadBtnCanvas;
+    public CanvasGroup healthBtnCanvas;
+
     public TextMeshProUGUI powerInfo;
     public TextMeshProUGUI ammoInfo;
     public TextMeshProUGUI speedInfo;
@@ -24,10 +42,23 @@ public class SkillTreeBtn : MonoBehaviour
     public TextMeshProUGUI healthInfo;
     public TextMeshProUGUI gem;
 
+    public TextMeshProUGUI powerLevel;
+    public TextMeshProUGUI ammoLevel;
+    public TextMeshProUGUI speedLevel;
+    public TextMeshProUGUI reloadLevel;
+    public TextMeshProUGUI healthLevel;
+
+    public int LV1 = 1;
+    public int LV2 = 2;
+    public int LV3 = 3;
+    public int LV4 = 4;
+
     public int soul;
 
-
-
+    void LevelNotice(TextMeshProUGUI text1, int level)
+    {
+        text1.text = $"LV. {level}";
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -62,21 +93,110 @@ public class SkillTreeBtn : MonoBehaviour
             if (skill.skillName == "PowerUp1")
             {
                 powerInfo.text = "50";
+                LevelNotice(powerLevel, LV1);
             }
             else if (skill.skillName == "PowerUp2")
             {
                 powerInfo.text = "70";
+                LevelNotice(powerLevel, LV2);
             }
             else if (skill.skillName == "PowerUp3")
             {
                 powerInfo.text = "90";
+                LevelNotice(powerLevel, LV3);
             }
             else if (skill.skillName == "PowerUp4")
             {
-                powerInfo.text = "최고 레벨";
+                powerInfo.text = "";
+                LevelNotice(powerLevel, LV4);
+                CanvasGroupOff(powerGemCanvas);
+                CanvasGroupOff(powerBtnCanvas);
+                CanvasGroupOn(powerUpEndCanvas);
             }
-
         }
+        List<Skill> ammoList = GameObject.Find("DataManager").GetComponent<DataManager>().datas.skillHave;
+        foreach (Skill skill in ammoList)
+        {
+
+            if (skill.skillName == "AmmoUp1")
+            {
+                LevelNotice(ammoLevel, LV1);
+            }
+            else if (skill.skillName == "AmmoUp2")
+            {
+                LevelNotice(ammoLevel, LV2);
+            }
+            else if (skill.skillName == "AmmoUp3")
+            {
+                LevelNotice(ammoLevel, LV3);
+            }
+            else if (skill.skillName == "AmmoUp4")
+            {
+                LevelNotice(ammoLevel, LV4);
+            }
+        }
+        List<Skill> speedList = GameObject.Find("DataManager").GetComponent<DataManager>().datas.skillHave;
+        foreach (Skill skill in speedList)
+        {
+
+            if (skill.skillName == "SpeedUp1")
+            {
+                LevelNotice(speedLevel, LV1);
+            }
+            else if (skill.skillName == "SpeedUp2")
+            {
+                LevelNotice(speedLevel, LV2);
+            }
+            else if (skill.skillName == "SpeedUp3")
+            {
+                LevelNotice(speedLevel, LV3);
+            }
+            else if (skill.skillName == "SpeedUp4")
+            {
+                LevelNotice(speedLevel, LV4);
+            }
+        }
+        List<Skill> reloadList = GameObject.Find("DataManager").GetComponent<DataManager>().datas.skillHave;
+        foreach (Skill skill in reloadList)
+        {
+
+            if (skill.skillName == "ReloadUp1")
+            {
+                LevelNotice(reloadLevel, LV1);
+            }
+            else if (skill.skillName == "ReloadUp2")
+            {
+                LevelNotice(reloadLevel, LV2);
+            }
+            else if (skill.skillName == "ReloadUp3")
+            {
+                LevelNotice(reloadLevel, LV3);
+            }
+            else if (skill.skillName == "ReloadUp4")
+            {
+                LevelNotice(reloadLevel, LV4);
+            }
+        }
+        int charHealth = GameObject.Find("DataManager").GetComponent<DataManager>().datas.maxHP;
+
+        if (charHealth == 100)
+        {
+            LevelNotice(healthLevel, LV1);
+        }
+        else if (charHealth == 130)
+        {
+            LevelNotice(healthLevel, LV2);
+        }
+        else if (charHealth == 160)
+        {
+            LevelNotice(healthLevel, LV3);
+        }
+        else if (charHealth == 190)
+        {
+            LevelNotice(healthLevel, LV4);
+        }
+
+
     }
 
     void UnlockedSkillColor()
@@ -150,22 +270,29 @@ public class SkillTreeBtn : MonoBehaviour
 
                         if (skill.skillName == "PowerUp1")
                         {
-                            powerInfo.text = "필요 재화: 50";
+                            powerInfo.text = "50";
+                            LevelNotice(powerLevel, LV1);
                             break;
                         }
                         else if (skill.skillName == "PowerUp2")
                         {
-                            powerInfo.text = "필요 재화: 70";
+                            powerInfo.text = "70";
+                            LevelNotice(powerLevel, LV2);
                             break;
                         }
                         else if (skill.skillName == "PowerUp3")
                         {
-                            powerInfo.text = "필요 재화: 90";
+                            powerInfo.text = "90";
+                            LevelNotice(powerLevel, LV3);
                             break;
                         }
                         else if (skill.skillName == "PowerUp4")
                         {
-                            powerInfo.text = "최고 레벨";
+                            powerInfo.text = "";
+                            LevelNotice(powerLevel, LV4);
+                            CanvasGroupOff(powerGemCanvas);
+                            CanvasGroupOff(powerBtnCanvas);
+                            CanvasGroupOn(powerUpEndCanvas);
                             break;
                         }
                     }
@@ -194,21 +321,28 @@ public class SkillTreeBtn : MonoBehaviour
                         if (skill.skillName == "AmmoUp1")
                         {
                             ammoInfo.text = "50";
+                            LevelNotice(ammoLevel, LV1);
                             break;
                         }
                         else if (skill.skillName == "AmmoUp2")
                         {
                             ammoInfo.text = "70";
+                            LevelNotice(ammoLevel, LV2);
                             break;
                         }
                         else if (skill.skillName == "AmmoUp3")
                         {
                             ammoInfo.text = "90";
+                            LevelNotice(ammoLevel, LV3);
                             break;
                         }
                         else if (skill.skillName == "AmmoUp4")
                         {
                             ammoInfo.text = "";
+                            LevelNotice(ammoLevel, LV4);
+                            CanvasGroupOff(ammoGemCanvas);
+                            CanvasGroupOff(ammoBtnCanvas);
+                            CanvasGroupOn(ammoUpEndCanvas);
                             break;
                         }
                     }
@@ -237,22 +371,29 @@ public class SkillTreeBtn : MonoBehaviour
 
                         if (skill.skillName == "SpeedUp1")
                         {
-                            speedInfo.text = "필요 재화: 50";
+                            speedInfo.text = "50";
+                            LevelNotice(speedLevel, LV1);
                             break;
                         }
                         else if (skill.skillName == "SpeedUp2")
                         {
-                            speedInfo.text = "필요 재화: 70";
+                            speedInfo.text = "70";
+                            LevelNotice(speedLevel, LV2);
                             break;
                         }
                         else if (skill.skillName == "SpeedUp3")
                         {
-                            speedInfo.text = "필요 재화: 90";
+                            speedInfo.text = "90";
+                            LevelNotice(speedLevel, LV3);
                             break;
                         }
                         else if (skill.skillName == "SpeedUp4")
                         {
-                            speedInfo.text = "최고 레벨";
+                            speedInfo.text = "";
+                            LevelNotice(speedLevel, LV4);
+                            CanvasGroupOff(speedGemCanvas);
+                            CanvasGroupOff(speedBtnCanvas);
+                            CanvasGroupOn(speedUpEndCanvas);
                             break;
                         }
                     }
@@ -281,22 +422,29 @@ public class SkillTreeBtn : MonoBehaviour
 
                         if (skill.skillName == "ReloadUp1")
                         {
-                            reloadInfo.text = "필요 재화: 50";
+                            reloadInfo.text = "50";
+                            LevelNotice(reloadLevel, LV1);
                             break;
                         }
                         else if (skill.skillName == "ReloadUp2")
                         {
-                            reloadInfo.text = "필요 재화: 70";
+                            reloadInfo.text = "70";
+                            LevelNotice(reloadLevel, LV2);
                             break;
                         }
                         else if (skill.skillName == "ReloadUp3")
                         {
-                            reloadInfo.text = "필요 재화: 90";
+                            reloadInfo.text = "90";
+                            LevelNotice(reloadLevel, LV3);
                             break;
                         }
                         else if (skill.skillName == "ReloadUp4")
                         {
-                            reloadInfo.text = "최고 레벨";
+                            reloadInfo.text = "";
+                            LevelNotice(reloadLevel, LV4);
+                            CanvasGroupOff(reloadGemCanvas);
+                            CanvasGroupOff(reloadBtnCanvas);
+                            CanvasGroupOn(reloadUpEndCanvas);
                             break;
                         }
                     }
@@ -304,8 +452,7 @@ public class SkillTreeBtn : MonoBehaviour
                 break;
             case SkillBtn.Health:
 
-                List<Skill> healthList = GameObject.Find("DataManager").GetComponent<DataManager>().datas.skillHave;
-
+                int nowHealth = GameObject.Find("DataManager").GetComponent<DataManager>().datas.maxHP;
                 if (healthInfoCanvas.alpha == 1)
                 {
 
@@ -318,30 +465,28 @@ public class SkillTreeBtn : MonoBehaviour
                     CanvasGroupOff(speedInfoCanvas);
                     CanvasGroupOff(powerInfoCanvas);
 
-
-                    foreach (Skill skill in healthList)
+                    if (nowHealth == 100)
                     {
-
-                        if (skill.skillName == "HealthUp1")
-                        {
-                            healthInfo.text = "필요 재화: 50";
-                            break;
-                        }
-                        else if (skill.skillName == "HealthUp2")
-                        {
-                            healthInfo.text = "필요 재화: 70";
-                            break;
-                        }
-                        else if (skill.skillName == "HealthUp3")
-                        {
-                            healthInfo.text = "필요 재화: 90";
-                            break;
-                        }
-                        else if (skill.skillName == "HealthUp4")
-                        {
-                            healthInfo.text = "최고 레벨";
-                            break;
-                        }
+                        healthInfo.text = "50";
+                        LevelNotice(healthLevel, LV1);
+                    }
+                    else if (nowHealth == 130)
+                    {
+                        healthInfo.text = "70";
+                        LevelNotice(healthLevel, LV2);
+                    }
+                    else if (nowHealth == 160)
+                    {
+                        healthInfo.text = "90";
+                        LevelNotice(healthLevel, LV3);
+                    }
+                    else if (nowHealth == 190)
+                    {
+                        healthInfo.text = "";
+                        LevelNotice(healthLevel, LV4);
+                        CanvasGroupOff(healthGemCanvas);
+                        CanvasGroupOff(healthBtnCanvas);
+                        CanvasGroupOn(healthUpEndCanvas);
                     }
                 }
                 break;
@@ -376,7 +521,8 @@ public class SkillTreeBtn : MonoBehaviour
                             soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
                             gem.text = $"재화: {soul}";
                             DataManager.instance.DataSave();
-                            powerInfo.text = "필요 재화: 70";
+                            powerInfo.text = "70";
+                            LevelNotice(powerLevel, LV2);
                             powerSkillCheck += 1;
                             break;
                         }
@@ -397,7 +543,8 @@ public class SkillTreeBtn : MonoBehaviour
                             GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 70;
                             soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
                             gem.text = $"재화: {soul}";
-                            powerInfo.text = "필요 재화: 90";
+                            powerInfo.text = "90";
+                            LevelNotice(powerLevel, LV3);
                             powerSkillCheck += 1;
                             break;
                         }
@@ -418,7 +565,11 @@ public class SkillTreeBtn : MonoBehaviour
                             GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 90;
                             soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
                             gem.text = $"재화: {soul}";
-                            powerInfo.text = "최고 레벨";
+                            powerInfo.text = "";
+                            LevelNotice(powerLevel, LV4);
+                            CanvasGroupOff(powerGemCanvas);
+                            CanvasGroupOff(powerBtnCanvas);
+                            CanvasGroupOn(powerUpEndCanvas);
                             powerSkillCheck += 1;
                             break;
                         }
@@ -447,7 +598,8 @@ public class SkillTreeBtn : MonoBehaviour
                         GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 30;
                         soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
                         gem.text = $"재화: {soul}";
-                        powerInfo.text = "필요 재화: 50";
+                        powerInfo.text = "50";
+                        LevelNotice(powerLevel, LV1);
                         break;
                     }
                 }
@@ -484,6 +636,7 @@ public class SkillTreeBtn : MonoBehaviour
                             gem.text = $"재화: {soul}";
                             DataManager.instance.DataSave();
                             ammoInfo.text = "70";
+                            LevelNotice(ammoLevel, LV2);
                             ammoSkillCheck += 1;
                             break;
                         }
@@ -506,6 +659,7 @@ public class SkillTreeBtn : MonoBehaviour
                             gem.text = $"재화: {soul}";
                             DataManager.instance.DataSave();
                             ammoInfo.text = "90";
+                            LevelNotice(ammoLevel, LV3);
                             ammoSkillCheck += 1;
                             break;
                         }
@@ -528,6 +682,10 @@ public class SkillTreeBtn : MonoBehaviour
                             gem.text = $"재화: {soul}";
                             DataManager.instance.DataSave();
                             ammoInfo.text = "";
+                            LevelNotice(ammoLevel, LV4);
+                            CanvasGroupOff(ammoGemCanvas);
+                            CanvasGroupOff(ammoBtnCanvas);
+                            CanvasGroupOn(ammoUpEndCanvas);
                             ammoSkillCheck += 1;
                             break;
                         }
@@ -558,6 +716,7 @@ public class SkillTreeBtn : MonoBehaviour
                         gem.text = $"재화: {soul}";
                         DataManager.instance.DataSave();
                         ammoInfo.text = "50";
+                        LevelNotice(ammoLevel, LV1);
                         break;
                     }
                 }
@@ -594,7 +753,8 @@ public class SkillTreeBtn : MonoBehaviour
                             soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
                             gem.text = $"재화: {soul}";
                             DataManager.instance.DataSave();
-                            reloadInfo.text = "필요 재화: 70";
+                            reloadInfo.text = "70";
+                            LevelNotice(reloadLevel, LV2);
                             reloadSkillCheck += 1;
                             break;
                         }
@@ -617,7 +777,8 @@ public class SkillTreeBtn : MonoBehaviour
                             soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
                             gem.text = $"재화: {soul}";
                             DataManager.instance.DataSave();
-                            reloadInfo.text = "필요 재화: 90";
+                            reloadInfo.text = "90";
+                            LevelNotice(reloadLevel, LV3);
                             reloadSkillCheck += 1;
                             break;
                         }
@@ -639,7 +800,12 @@ public class SkillTreeBtn : MonoBehaviour
                             soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
                             gem.text = $"재화: {soul}";
                             DataManager.instance.DataSave();
-                            reloadInfo.text = "최고 레벨";
+                            reloadInfo.text = "";
+                            LevelNotice(reloadLevel, LV4);
+                            CanvasGroupOff(reloadGemCanvas);
+                            CanvasGroupOff(reloadBtnCanvas);
+                            CanvasGroupOn(reloadUpEndCanvas);
+
                             reloadSkillCheck += 1;
                             break;
                         }
@@ -668,7 +834,8 @@ public class SkillTreeBtn : MonoBehaviour
                         soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
                         gem.text = $"재화: {soul}";
                         DataManager.instance.DataSave();
-                        reloadInfo.text = "필요 재화: 50";
+                        reloadInfo.text = "50";
+                        LevelNotice(reloadLevel, LV1);
                         break;
                     }
                 }
@@ -706,7 +873,8 @@ public class SkillTreeBtn : MonoBehaviour
                             soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
                             gem.text = $"재화: {soul}";
                             DataManager.instance.DataSave();
-                            speedInfo.text = "필요 재화: 70";
+                            speedInfo.text = "70";
+                            LevelNotice(speedLevel, LV2);
                             speedSkillCheck += 1;
                             break;
                         }
@@ -728,7 +896,8 @@ public class SkillTreeBtn : MonoBehaviour
                             soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
                             gem.text = $"재화: {soul}";
                             DataManager.instance.DataSave();
-                            speedInfo.text = "필요 재화: 90";
+                            speedInfo.text = "90";
+                            LevelNotice(speedLevel, LV3);
                             speedSkillCheck += 1;
                             break;
                         }
@@ -750,7 +919,11 @@ public class SkillTreeBtn : MonoBehaviour
                             soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
                             gem.text = $"재화: {soul}";
                             DataManager.instance.DataSave();
-                            speedInfo.text = "최고 레벨";
+                            speedInfo.text = "";
+                            LevelNotice(speedLevel, LV4);
+                            CanvasGroupOff(speedGemCanvas);
+                            CanvasGroupOff(speedBtnCanvas);
+                            CanvasGroupOn(speedUpEndCanvas);
                             speedSkillCheck += 1;
                             break;
                         }
@@ -779,7 +952,8 @@ public class SkillTreeBtn : MonoBehaviour
                         soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
                         gem.text = $"재화: {soul}";
                         DataManager.instance.DataSave();
-                        speedInfo.text = "필요 재화: 50";
+                        speedInfo.text = "50";
+                        LevelNotice(speedLevel, LV1);
                         break;
                     }
                 }
@@ -805,7 +979,8 @@ public class SkillTreeBtn : MonoBehaviour
                         soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
                         gem.text = $"재화: {soul}";
                         DataManager.instance.DataSave();
-                        healthInfo.text = "필요 재화: 50";
+                        healthInfo.text = "50";
+                        LevelNotice(healthLevel, LV1);
                     }
                 }
                 else if (curHealth == 130)
@@ -823,7 +998,8 @@ public class SkillTreeBtn : MonoBehaviour
                         soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
                         gem.text = $"재화: {soul}";
                         DataManager.instance.DataSave();
-                        healthInfo.text = "필요 재화: 70";
+                        healthInfo.text = "70";
+                        LevelNotice(healthLevel, LV2);
                     }
                 }
                 else if (curHealth == 160)
@@ -841,7 +1017,8 @@ public class SkillTreeBtn : MonoBehaviour
                         soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
                         gem.text = $"재화: {soul}";
                         DataManager.instance.DataSave();
-                        healthInfo.text = "필요 재화: 90";
+                        healthInfo.text = "90";
+                        LevelNotice(healthLevel, LV3);
                     }
                 }
                 else if (curHealth == 190)
@@ -859,7 +1036,11 @@ public class SkillTreeBtn : MonoBehaviour
                         soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
                         gem.text = $"재화: {soul}";
                         DataManager.instance.DataSave();
-                        healthInfo.text = "최고 레벨";
+                        healthInfo.text = "";
+                        LevelNotice(healthLevel, LV4);
+                        CanvasGroupOff(healthGemCanvas);
+                        CanvasGroupOff(healthBtnCanvas);
+                        CanvasGroupOn(healthUpEndCanvas);
                     }
                     
                 }
