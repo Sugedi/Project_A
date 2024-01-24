@@ -24,7 +24,6 @@ public class SwitchButton : MonoBehaviour
     public CanvasGroup treasureCanvas; 
 
     public CanvasGroup joystick; 
-    public CanvasGroup joystick2; 
 
     public void OnClick()
     {
@@ -51,11 +50,10 @@ public class SwitchButton : MonoBehaviour
             case SwitchUI.Backstage:
 
                 CanvasGroupOff(saveConvas);
+                CanvasGroupOn(joystick); //
                 Time.timeScale = 1f;
                 DataManager.instance.DataSave();
                 SceneManager.LoadScene("BackStage_0114");
-                CanvasGroupOn(joystick);
-                CanvasGroupOn(joystick2);
 
                 break;
             case SwitchUI.Continue:
@@ -63,18 +61,16 @@ public class SwitchButton : MonoBehaviour
                 CanvasGroupOff(saveConvas);
                 CanvasGroupOn(no1);
                 CanvasGroupOff(no4);
+                CanvasGroupOn(joystick); //
                 Time.timeScale = 1f;
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-                CanvasGroupOn(joystick);
-                CanvasGroupOn(joystick2);
 
                 break;
             case SwitchUI.TreasureBoxNext:
 
                 CanvasGroupOff(treasureCanvas);
+                CanvasGroupOn(joystick); //
                 Time.timeScale = 1f;
-                CanvasGroupOn(joystick);
-                CanvasGroupOn(joystick2);
 
                 break;
 

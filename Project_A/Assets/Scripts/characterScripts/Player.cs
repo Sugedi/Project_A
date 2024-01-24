@@ -61,7 +61,6 @@ public class Player : MonoBehaviour
     public FloatingJoystick joystick; //0122
 
     public CanvasGroup joy;
-    public CanvasGroup joy2;
 
     // 초기화 시키는 거
     void Awake()
@@ -157,7 +156,6 @@ public class Player : MonoBehaviour
             if (collider.CompareTag("Switch"))
             {
                 CanvasGroupOff(joy);
-                CanvasGroupOff(joy2);
                 //GameObject.Find("Switch").GetComponent<SaveSwitch>().SwitchFunc();
                 SaveSwitch.SwitchFunc();
                 //GameObject.Find("Switch").GetComponent<SaveSwitch>().SaveData();
