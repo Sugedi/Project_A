@@ -240,8 +240,8 @@ public class Enemy : MonoBehaviour
                 yield return new WaitForSeconds(2f);
                 break;
             case Type.C:
-                // 0.5초 대기 후 총알 생성 및 발사
-                yield return new WaitForSeconds(0.5f);
+                // 0.8초 대기 후 총알 생성 및 발사
+                yield return new WaitForSeconds(0.8f);
                 GameObject instantBullet = Instantiate(bullet, transform.position, transform.rotation);
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
                 rigidBullet.velocity = transform.forward * 10;
