@@ -382,7 +382,7 @@ public class Weapon : MonoBehaviour
                 bulletScript.target = FindClosestEnemy(sideShotPos); // 가장 가까운 적을 타겟으로 설정
                 bulletScript.SetPool(sideBulletPool); // 해당 오브젝트 풀 설정
                 bulletScript.damage = bulletScript.baseDamage * damageMultiplier; // 데미지 설정
-                bulletScript.lifeTime = 3f; // 생명주기 설정
+                bulletScript.lifeTime = 2f; // 생명주기 설정
 
                 // 총알의 Rigidbody 설정
                 Rigidbody bulletRigid = instantBullet.GetComponent<Rigidbody>();

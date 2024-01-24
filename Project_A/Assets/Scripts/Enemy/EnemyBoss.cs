@@ -48,8 +48,8 @@ public class EnemyBoss : MonoBehaviour
     bool chargeOnCooldown;
     public float chargeCooldownDuration = 8f;
 
-    public float chargeSpeed = 100f; // 돌진 강도
-    public float chargeDuration = 2f; // 돌진 시간
+    public float chargeSpeed = 10f; // 돌진 강도
+    public float chargeDuration = 1f; // 돌진 시간
     // Reference to the arrow prefab
     private bool isChargeDamage = false;
 
@@ -73,7 +73,7 @@ public class EnemyBoss : MonoBehaviour
         banim.SetTrigger("doAttack02");
 
         yield return new WaitForSeconds(chargeDuration);
-        
+
         brigid.velocity = Vector3.zero;
         isCharging = false;
         bisChase = true;
@@ -87,20 +87,28 @@ public class EnemyBoss : MonoBehaviour
         chargeOnCooldown = false;
     }
 
-
-
-
     //==============================================================
+    IEnumerator ShakeCamera(float duration, float magnitude)
+    {
+        Vector3 originalPosition = Camera.main.transform.position;
+
+        float elapsedTime = 0.0f;
+
+        while (elapsedTime < duration)
+        {
+            float x = Random.Range(-1f, 1f) * magnitude;
+            float y = Random.Range(-1f, 1f) * magnitude;
+
+            Camera.main.transform.position = new Vector3(Camera.main.transform.position.x + x, Camera.main.transform.position.y + y, originalPosition.z);
 
 
+            elapsedTime += Time.deltaTime;
 
+            yield return null;
+        }
 
-
-
-
-
-
-
+        Camera.main.transform.position = originalPosition;
+    }
 
     void Awake()
     {
@@ -323,6 +331,9 @@ public class EnemyBoss : MonoBehaviour
                     Vector3 knockbackDirection = (player.transform.position - transform.position).normalized;
                     player.GetKnockedBack(knockbackDirection, knockbackForce, 20);
                     isChargeDamage = true;
+
+                    // 돌진 공격에 맞았을 때 카메라 흔들림 효과를 줍니다.
+                    StartCoroutine(ShakeCamera(0.5f, 0.5f));
                 }
             }
         }        
