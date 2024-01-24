@@ -136,7 +136,7 @@ public class Player : MonoBehaviour
 
                 // 비활성화된 게임 오브젝트 찾아오기 왤케 어려움?
                 //GameObject.Find("Skill").transform.Find("SkillCanvas").gameObject.SetActive(true);
-
+                CanvasGroupOff(joy);
                 GameObject.Find("Workbench baked").GetComponent<SkillNPC>().Interact();
 
                 // 이거 비활성화 말고, 메인 메뉴에서 썼던 캔버스 그룹으로 껐다 켜는 게 나을 듯 하다.

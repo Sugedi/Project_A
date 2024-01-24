@@ -55,6 +55,8 @@ public class SkillTreeBtn : MonoBehaviour
 
     public int soul;
 
+    public CanvasGroup joy;
+
     void LevelNotice(TextMeshProUGUI text1, int level)
     {
         text1.text = $"LV. {level}";
@@ -1164,7 +1166,7 @@ public class SkillTreeBtn : MonoBehaviour
                 MainUI.alpha = 1;
                 MainUI.interactable = true;
                 MainUI.blocksRaycasts = true;
-
+                CanvasGroupOn(joy);
                 DataManager.instance.DataSave();
                 DataManager.instance.DataLoad();
 
