@@ -695,6 +695,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
         // 게임 오버 화면을 활성화하고 회색으로 만듭니다.
+        CanvasGroupOff(joy);
         gameOverScreen.gameObject.SetActive(true);
 
         DataManager.instance.datas.soul /= 2;

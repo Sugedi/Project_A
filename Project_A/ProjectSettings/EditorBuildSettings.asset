@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/System/Loading.unity
     guid: 919958b7e2bd9654ea6c7aec82415a56
   - enabled: 1
+    path: Assets/Scenes/System/LoadingBackstage.unity
+    guid: c1fd9cc56257b2d49acc4084e39cdd98
+  - enabled: 1
     path: Assets/Scenes/System/LoadingStage.unity
     guid: ce70011849399d447914201a23efc741
   - enabled: 1
