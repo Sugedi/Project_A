@@ -27,12 +27,13 @@ public class CameraManager : MonoBehaviour
 
     private void SwitchCameras()
     {
+
+        // 게임 타임을 일시정지 (Time.timeScale = 0)
+        //Time.timeScale = 0;
+
         // 기본 버추얼 카메라 비활성화, 전환 버추얼 카메라 활성화
         defaultVirtualCamera.Priority = 0;
-        switchVirtualCamera.Priority = 1;
-
-        // 플레이어 움직임을 일시 정지 (Time.timeScale = 0)
-        //Time.timeScale = 0;
+        switchVirtualCamera.Priority = 9;
 
         // 일정 시간 후에 다시 전환 버추얼 카메라를 비활성화하고 기본 버추얼 카메라를 활성화
         StartCoroutine(SwitchBackAfterDelay());
