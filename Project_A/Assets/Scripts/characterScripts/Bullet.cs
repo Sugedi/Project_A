@@ -276,6 +276,12 @@ public class Bullet : MonoBehaviour
         {
             enemyBoss.bTakeDamage(bullet, hitPoint);
         }
+        EnemyDragon enemyDragon = enemyObject.GetComponent<EnemyDragon>();
+        if (enemyDragon != null)
+        {
+            enemyDragon.TakeDamage(bullet, hitPoint);
+            return;
+        }
     }
     // 폭발 처리 메서드
     private void Explode()

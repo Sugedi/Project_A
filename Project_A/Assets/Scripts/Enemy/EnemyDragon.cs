@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemyDragon : MonoBehaviour
 {
@@ -25,7 +26,9 @@ public class EnemyDragon : MonoBehaviour
     public GameObject itemPrefab; // 드랍 아이템 프리펩 등록
     [SerializeField] Transform dropPosition; // 드랍 아이템을 생성 시킬 위치
     //==============================================================
-
+    public Slider healthBarSlider;
+    public GameObject healthBarUI;
+    public float HealthBarRange = 15f; // 체력바가 활성화될 플레이어와의 거리
     Rigidbody rigid; // Rigidbody 컴포넌트
     BoxCollider boxCollider; // BoxCollider 컴포넌트
     Material mat; // Material 컴포넌트
@@ -42,6 +45,9 @@ public class EnemyDragon : MonoBehaviour
         target = FindObjectOfType<Player>().GetComponent<Transform>();
 
         nav = GetComponent<NavMeshAgent>();
+        healthBarSlider.maxValue = maxHealth; // Slider의 최대값을 보스의 최대 체력으로 설정합니다.
+        healthBarSlider.value = curHealth; // Slider의 현재값을 보스의 현재 체력으로 설정합니다.
+        healthBarUI.SetActive(false);
     }
 
     void ChaseStart()
@@ -77,6 +83,22 @@ public class EnemyDragon : MonoBehaviour
     void Update()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, target.position);
+        if (curHealth > 0 && distanceToPlayer <= HealthBarRange)
+        {
+            if (!healthBarUI.activeSelf)
+            {
+                // 플레이어가 체력바 활성화 범위 내에 들어오면 체력바를 활성화합니다.
+                healthBarUI.SetActive(true);
+            }
+        }
+        else
+        {
+            if (healthBarUI.activeSelf)
+            {
+                // 플레이어가 체력바 활성화 범위 밖으로 나가면 체력바를 비활성화합니다.
+                healthBarUI.SetActive(false);
+            }
+        }
 
         if (distanceToPlayer <= sightRange)
         {
@@ -296,7 +318,7 @@ public class EnemyDragon : MonoBehaviour
         Targerting();
         // 움직임을 억제하는 함수 호출
         FreezeVelocity();
-    }
+    }    
 
     // 받는 피해 관리하는 함수
 
@@ -312,7 +334,18 @@ public class EnemyDragon : MonoBehaviour
 
         // 폭발 효과가 있는지 확인하고, 있으면 해당 데미지를 적용합니다.
         float damageToApply = bullet.isExplosion ? bullet.boomShotDamage : totalDamage;
+        
         curHealth -= damageToApply; // Apply damage
+        
+        // 체력바 업데이트
+        healthBarSlider.value = curHealth;
+        
+        // 체력이 0 이하이면 체력바 UI를 비활성화합니다.
+        if (curHealth <= 0)
+        {
+            healthBarUI.SetActive(false);  // 체력바 비활성화
+        }
+
 
         Debug.Log(gameObject.name + "가 데미지를 받았습니다. 데미지: " + damageToApply + ", 남은 체력: " + curHealth);
 
@@ -332,11 +365,22 @@ public class EnemyDragon : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        // 몬스터가 죽었는지 확인합니다.
+        if (gameObject.layer == LayerMask.NameToLayer("Enemydead"))
+        {
+            return; // 몬스터가 죽었으면 아무것도 하지 않습니다.
+        }
 
         if (other.tag == "Player")
         {
             isChase = true;
             anim.SetBool("isWalk", true);
+
+            // 죽지 않았을 때만 체력바를 활성화합니다.
+            if (curHealth > 0)
+            {
+                healthBarUI.SetActive(true);
+            }
         }
         else if (other.tag == "Bullet")
         {
@@ -387,6 +431,9 @@ public class EnemyDragon : MonoBehaviour
         // 현재 체력이 0 이하인 경우
         else
         {
+            // 체력바를 0으로 설정
+            healthBarSlider.value = 0;
+
             // 색상을 회색으로 변경하고 레이어를 "Dead"로 설정
             // mat.color = Color.gray;
             StopAllCoroutines();

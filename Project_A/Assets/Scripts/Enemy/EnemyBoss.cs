@@ -15,9 +15,9 @@ public class EnemyBoss : MonoBehaviour
     bool bisAttack; // 공격 상태 여부   
     public int bminDropCount; // 드랍 아이템의 최소 개수
     public int bmaxDropCount; // 드랍 아이템의 최대 개수
-    public float btargetRange = 0f;
-    public float btargetRadius = 0f;
-    public float bsightRange = 10f; // 타겟이 유저 인식
+    public float btargetRange = 0.5f;
+    public float btargetRadius = 15f;
+    public float bsightRange = 15f; // 타겟이 유저 인식
     public float battackinterval = 2f; // 원거리공격 간격
     private bool isAttackHit = false; // 일반 공격이 성공적으로 적중했는지 여부
     public float attackHitCooldown = 0.5f; // 다음 일반 공격이 적중할 수 있는 쿨다운 시간
@@ -48,8 +48,8 @@ public class EnemyBoss : MonoBehaviour
     bool chargeOnCooldown;
     public float chargeCooldownDuration = 8f;
 
-    public float chargeSpeed = 1f; // 돌진 강도
-    public float chargeDuration = 1.5f; // 돌진 시간
+    public float chargeSpeed = 100f; // 돌진 강도
+    public float chargeDuration = 2f; // 돌진 시간
     // Reference to the arrow prefab
     private bool isChargeDamage = false;
 
@@ -61,19 +61,21 @@ public class EnemyBoss : MonoBehaviour
 
     IEnumerator ChargeAttack()
     {
+        Debug.Log("ChargeAttack 시작됨");
+        //bisChase = false;        
         isChargeDamage = false;
-        bisChase = false;
         isCharging = true;
+
         yield return new WaitForSeconds(0.1f);
 
-        Vector3 chargeDirection = (btarget.position - transform.position).normalized;
-        brigid.AddForce(chargeDirection * chargeSpeed, ForceMode.Impulse);
+        Vector3 chargeDirection = (btarget.position - transform.position).normalized * chargeSpeed;
+        brigid.velocity = chargeDirection; // 돌진 시작 시점에 속도를 설정합니다.
         banim.SetTrigger("doAttack02");
 
         yield return new WaitForSeconds(chargeDuration);
-
-        isCharging = false;
+        
         brigid.velocity = Vector3.zero;
+        isCharging = false;
         bisChase = true;
         StartCoroutine(ChargeCooldown());
     }
@@ -148,7 +150,7 @@ public class EnemyBoss : MonoBehaviour
 
         float distanceToPlayer = Vector3.Distance(transform.position, btarget.position);
 
-        if (distanceToPlayer <= bHealthBarRange)
+        if (bcurHealth > 0 && distanceToPlayer <= bHealthBarRange)
         {
             if (!healthBarUI.activeSelf)
             {
@@ -184,19 +186,26 @@ public class EnemyBoss : MonoBehaviour
         {
             StartCoroutine(ChargeAttack());
         }
-        
-    }
-
-
-
-    void bFreezeVelocity()
-    {
-        if (bisChase)
+        else if (!isCharging && distanceToPlayer <= bsightRange)
         {
-            brigid.velocity = Vector3.zero;
-            brigid.angularVelocity = Vector3.zero;
+            if (!bisChase)
+            {
+                bChaseStart();
+            }
+            bTargerting();
         }
     }
+
+
+
+    //void bFreezeVelocity()
+    //{
+    //    if (bisChase)
+    //    {
+    //        brigid.velocity = Vector3.zero;
+    //        brigid.angularVelocity = Vector3.zero;
+    //    }
+    //}
 
     void bTargerting()
     {
@@ -250,7 +259,7 @@ public class EnemyBoss : MonoBehaviour
         // 목표를 향해 이동하는 함수 호출
         bTargerting();
         // 움직임을 억제하는 함수 호출
-        bFreezeVelocity();
+        //bFreezeVelocity();
     }
     private void StopCharging()
     {
@@ -262,13 +271,9 @@ public class EnemyBoss : MonoBehaviour
         }
     }
 
+    
+
     // 받는 피해 관리하는 함수
-    // 체력바를 비활성화하는 코루틴
-    IEnumerator DisableHealthBarAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        healthBarUI.SetActive(false);
-    }
     public void bTakeDamage(Bullet bullet, Vector3 hitPoint)
     {
         if (gameObject.layer == LayerMask.NameToLayer("Enemydead"))
@@ -286,10 +291,10 @@ public class EnemyBoss : MonoBehaviour
         // 체력바 업데이트
         healthBarSlider.value = bcurHealth;
 
-        // 체력이 0 이하이면 체력바 UI를 지연시키고 비활성화합니다.
+        // 체력이 0 이하이면 체력바 UI를 비활성화합니다.
         if (bcurHealth <= 0)
         {
-            StartCoroutine(DisableHealthBarAfterDelay(5f)); // 5초 후에 체력바 비활성화
+            healthBarUI.SetActive(false);  // 체력바 비활성화
         }
 
         Debug.Log(gameObject.name + "가 데미지를 받았습니다. 데미지: " + damageToApply + ", 남은 체력: " + bcurHealth);
@@ -325,12 +330,29 @@ public class EnemyBoss : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other)
-    {       
+    {
+        // 몬스터가 죽었는지 확인합니다.
+        if (gameObject.layer == LayerMask.NameToLayer("Enemydead"))
+        {
+            return; // 몬스터가 죽었으면 아무것도 하지 않습니다.
+        }
+
         if (other.CompareTag("Player"))
         {
            
             bisChase = true;
             // banim.SetBool("isWalk", true); // 필요하다면 애니메이션 상태도 변경할 수 있습니다.
+            
+            // 죽지 않았을 때만 체력바를 활성화합니다.
+            if (bcurHealth > 0)
+            {
+                healthBarUI.SetActive(true);
+            }
+        }
+
+        else if (other.tag == "Bullet")
+        {
+            bTakeDamage(other.GetComponent<Bullet>(), other.transform.position);
         }
     }
 
