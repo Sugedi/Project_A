@@ -16,7 +16,7 @@ public class PlayerGemUI : MonoBehaviour
     void Update()
     {
         // 플레이어의 현재 체력과 최대 체력을 TextMeshProUGUI에 표시
-        GetText.text = "Gem: " + Player.gem.ToString();
+        GetText.text = Player.gem.ToString();
     }
 }
 

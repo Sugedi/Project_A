@@ -15,6 +15,6 @@ public class PlayerAmmoUI : MonoBehaviour
     void Update()
     {
 
-       Ammotext.text = "Ammo: " + Weapon.curAmmo.ToString() + " / " + Weapon.maxAmmo.ToString();
+       Ammotext.text =  Weapon.curAmmo.ToString() + " / " + Weapon.maxAmmo.ToString();
     }
 }
