@@ -8,9 +8,11 @@ public class Bullet : MonoBehaviour
 {
     public float baseDamage; // 총알의 기본 공격력
     public float damage; // 총알의 공격력  
-    public float lifeTime = 1; // 총알의 최대 생명 시간 (사거리 제한)
+    public float lifeTime = 0.7f; // 총알의 최대 생명 시간 (사거리 제한)
     private float lifeTimer; // 현재까지의 생명 시간을 추적하는 타이머
-    public float acceleration; // 총알의 가속도
+    public float acceleration = 8; // 총알의 가속도
+    public float maxRange = 8f; // 최대 사거리
+    private float traveledDistance; // 총알이 이동한 거리
     private Rigidbody bulletRigidbody; // 총알의 Rigidbody 참조
 
     public GameObject explosionPrefab; // 폭발 효과 프리팹
@@ -114,12 +116,7 @@ public class Bullet : MonoBehaviour
             {
                 ReturnToPool();
             }
-        }
-        else if (isPenetrating)
-        {
-            // 피어스샷일 때 총알에 가속도를 적용합니다.
-            bulletRigidbody.AddForce(transform.forward * acceleration, ForceMode.Acceleration);
-        }       
+        }            
 
     }
     void OnDisable()
@@ -165,8 +162,20 @@ public class Bullet : MonoBehaviour
             bulletRigidbody.velocity += transform.forward * (homingSpeed * Time.fixedDeltaTime);
             bulletRigidbody.velocity = Vector3.ClampMagnitude(bulletRigidbody.velocity, homingSpeed); // 최대 속도를 제한합니다.
         }
-    }
+        bulletRigidbody.AddForce(transform.forward * acceleration, ForceMode.Acceleration);
 
+        // 이동한 거리를 업데이트합니다.
+        float moveDistance = bulletRigidbody.velocity.magnitude * Time.fixedDeltaTime;
+        traveledDistance += moveDistance;
+
+        // 이동한 거리가 최대 사거리를 초과했는지 확인합니다.
+        if (traveledDistance >= maxRange)
+        {
+            // 최대 사거리에 도달하면 총알을 비활성화하거나 파괴합니다.
+            ReturnToPool();
+        }
+    }
+   
     // 충돌 시 호출되는 메서드
     void OnCollisionEnter(Collision collision)
     {

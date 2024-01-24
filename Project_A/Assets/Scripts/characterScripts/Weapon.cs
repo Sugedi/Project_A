@@ -227,27 +227,27 @@ public class Weapon : MonoBehaviour
         {
         // 스킬이 활성화되었는지 확인합니다.
             float spreadAngle = 0f;
-            float currentBulletSpeed = bulletSpeed;
+            //float currentBulletSpeed = bulletSpeed;
 
             // 가장 최근에 활성화된 스킬을 기준으로 spreadAngle을 설정합니다.
             if (isShotGun4Active)
             {
-                currentBulletSpeed += 2f;
+                //currentBulletSpeed += 2f;
                 spreadAngle = shotGun4SpreadAngle;
             }
             else if (isShotGun3Active)
             {
-                currentBulletSpeed += 2f;
+                //currentBulletSpeed += 2f;
                 spreadAngle = shotGun3SpreadAngle;
             }
             else if (isShotGun2Active)
             {
-                currentBulletSpeed += 2f;
+                //currentBulletSpeed += 2f;
                 spreadAngle = shotGun2SpreadAngle;
             }
             else if (isShotGun1Active)
             {
-                currentBulletSpeed += 2f; // 인스펙터에서 설정한 속도에 2를 더합니다.
+                //currentBulletSpeed += 2f; // 인스펙터에서 설정한 속도에 2를 더합니다.
                 spreadAngle = shotGun1SpreadAngle;
             }
 
@@ -314,7 +314,7 @@ public class Weapon : MonoBehaviour
                         spreadRotation = Quaternion.Euler(0, angle, 0);
                     }
 
-                    bulletRigid.velocity = bulletPos.rotation * spreadRotation * Vector3.forward * currentBulletSpeed;
+                    bulletRigid.velocity = bulletPos.rotation * spreadRotation * Vector3.forward * bulletSpeed;
                
                     // 총알 발사 후 충돌을 다시 활성화
                     StartCoroutine(EnableColliderAfterDelay(bulletCollider));
