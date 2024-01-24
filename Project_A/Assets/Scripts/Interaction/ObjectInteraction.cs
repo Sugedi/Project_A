@@ -19,6 +19,10 @@ public class ObjectInteraction : MonoBehaviour
     public GameObject talkCanvas;
 
     public GameObject stageUI;
+    public GameObject joystickBtn;
+    public GameObject AttackBtn;
+    public GameObject RollBtn;
+    public GameObject ReloadBtn;
 
     public GameObject startBtn; // 'Dialogue StartBtn: 거울에 손을 뻗는다'
     public GameObject dialoguePanel1;
@@ -56,6 +60,12 @@ public class ObjectInteraction : MonoBehaviour
             questIcon.SetActive(false); // 퀘스트 아이콘 버튼을 비활성화 상태로 설정
 
             talk1Panel.SetActive(true);
+            startBtn.SetActive(false);
+            joystickBtn.SetActive(false);
+            AttackBtn.SetActive(false);
+            RollBtn.SetActive(false);
+            ReloadBtn.SetActive(false);
+
             dialoguePanel1.SetActive(false); // 질서의 신 첫 번째 대사창을 비활성화 상태로 설정
         }
         if (mainQuest == 1)
@@ -98,22 +108,23 @@ public class ObjectInteraction : MonoBehaviour
             if (mainQuest == 0)
             {
                 talkCanvas.SetActive(false);
+                AttackBtn.SetActive(false);
                 startBtn.SetActive(true);
                 //dialoguePanel1.SetActive(false); // 질서의 신 첫 번째 대사창을 비활성화 상태로 설정 ########
             }
 
             if (mainQuest == 1)
             {
+                AttackBtn.SetActive(false);
                 startBtn.SetActive(true);
-
                 dialoguePanel2.SetActive(false);
                 //questIcon.SetActive(false); // questIcon을 비활성화
             }
 
             if (mainQuest == 2)
             {
+                AttackBtn.SetActive(false);
                 startBtn.SetActive(true);
-
                 dialoguePanel3.SetActive(false);
                 //questIcon.SetActive(false); // questIcon을 비활성화
             }
@@ -127,17 +138,32 @@ public class ObjectInteraction : MonoBehaviour
         {
             dialoguePanel1.SetActive(true);
             startBtn.SetActive(false);
+            joystickBtn.SetActive(false);
+            AttackBtn.SetActive(false);
+            RollBtn.SetActive(false);
+            ReloadBtn.SetActive(false);
+
         }
         if (mainQuest == 1)
         {
             dialoguePanel2.SetActive(true);
             startBtn.SetActive(false);
+            joystickBtn.SetActive(false);
+            AttackBtn.SetActive(false);
+            RollBtn.SetActive(false);
+            ReloadBtn.SetActive(false);
+
 
         }
         if (mainQuest == 2)
         {
             dialoguePanel3.SetActive(true);
             startBtn.SetActive(false);
+            joystickBtn.SetActive(false);
+            AttackBtn.SetActive(false);
+            RollBtn.SetActive(false);
+            ReloadBtn.SetActive(false);
+
 
         }
     }
@@ -152,9 +178,14 @@ public class ObjectInteraction : MonoBehaviour
         questIcon.SetActive(true); // 퀘스트 아이콘 버튼을 활성화
         mainQuestPanel1.SetActive(true); // 첫 번째 메인 퀘스트 패널을 활성화 상태로 설정
 
+        joystickBtn.SetActive(true);
+        AttackBtn.SetActive(true);
+        RollBtn.SetActive(true);
+        ReloadBtn.SetActive(true);
+
 
         // 여기에 실제로 전달하고 싶은 메시지를 입력하세요.
-        string message = "주요 대본 1이 활성화 되었습니다.";
+        string message = "대본집이 활성화 되었습니다.";
         ActivateSystemMessagePanel(message);
 
         mainQuest++;
@@ -175,6 +206,12 @@ public class ObjectInteraction : MonoBehaviour
     {
         dialoguePanel2.SetActive(false);
         questIcon.SetActive(true); // questIcon을 활성화
+
+        joystickBtn.SetActive(true);
+        AttackBtn.SetActive(true);
+        RollBtn.SetActive(true);
+        ReloadBtn.SetActive(true);
+
 
         // mainQuest가 2일 때, MainQuest Panel (2)을 활성화 상태로 유지
         if (mainQuest == 2)
@@ -198,8 +235,14 @@ public class ObjectInteraction : MonoBehaviour
         mainQuestPanel2.SetActive(false);
         mainQuestPanel3.SetActive(true);
 
+        joystickBtn.SetActive(true);
+        AttackBtn.SetActive(true);
+        RollBtn.SetActive(true);
+        ReloadBtn.SetActive(true);
+
+
         // 여기에 실제로 전달하고 싶은 메시지를 입력하세요.
-        string message = "주요 대본 1을 완성하였습니다.";
+        string message = "대본집을 완성하였습니다.";
         ActivateSystemMessagePanel(message);
 
         // mainQuest가 3일 때, MainQuest Panel (3)을 활성화 상태로 유지
@@ -218,7 +261,24 @@ public class ObjectInteraction : MonoBehaviour
         {
             isPlayerInRange = false; // 플레이어가 상호작용 범위 내에 없음을 표시
             startBtn.SetActive(false);
+            AttackBtn.SetActive(true);
         }
+
+        //if (mainQuest == 0)
+        //{
+        //    dialoguePanel1.SetActive(false); // 질서의 신 첫 번째 대사창을 비활성화 상태로 설정 ########
+        //}
+
+        //if (mainQuest == 1)
+        //{
+        //    dialoguePanel2.SetActive(false);
+        //}
+
+        //if (mainQuest == 2)
+        //{
+        //    dialoguePanel3.SetActive(false);
+        //}
+
     }
 
     // 시스템 메시지 패널을 활성화하고, 지정된 시간 후에 비활성화하는 메서드
