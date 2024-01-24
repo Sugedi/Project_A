@@ -664,6 +664,7 @@ MonoBehaviour:
   damage: 0
   lifeTime: 3
   acceleration: 0
+  maxRange: 8
   explosionPrefab: {fileID: 0}
   hitEffectPrefab: {fileID: 5712349568112478501, guid: 53a2006df07d7a14283da2858897c4d6, type: 3}
   isPenetrating: 0
@@ -679,6 +680,7 @@ MonoBehaviour:
   lightningEffectPrefab: {fileID: 0}
   lightningDamage: 0
   spawnHeight: 0
+  targetPos: {x: 0, y: 0, z: 0}
 --- !u!54 &1457506180027487736
 Rigidbody:
   m_ObjectHideFlags: 0

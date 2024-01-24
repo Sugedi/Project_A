@@ -305,6 +305,7 @@ MonoBehaviour:
   damage: 0
   lifeTime: 0.7
   acceleration: 5
+  maxRange: 8
   explosionPrefab: {fileID: 4250278563349281309, guid: 9f381d5fdbbc7a1438b02ea137120a02, type: 3}
   hitEffectPrefab: {fileID: 5712349568112478501, guid: 74c230b03cd850b46822a79b3ec048ef, type: 3}
   isPenetrating: 0
@@ -320,6 +321,7 @@ MonoBehaviour:
   lightningEffectPrefab: {fileID: 2302143002549320714, guid: 2136fe4808d877040ad896f94d5e0649, type: 3}
   lightningDamage: 10
   spawnHeight: 3
+  targetPos: {x: 0, y: 0, z: 0}
 --- !u!135 &-2103552645622150403
 SphereCollider:
   m_ObjectHideFlags: 0

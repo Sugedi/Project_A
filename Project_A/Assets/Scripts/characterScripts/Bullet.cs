@@ -8,11 +8,9 @@ public class Bullet : MonoBehaviour
 {
     public float baseDamage; // 총알의 기본 공격력
     public float damage; // 총알의 공격력  
-    public float lifeTime = 0.7f; // 총알의 최대 생명 시간 (사거리 제한)
+    public float lifeTime = 1; // 총알의 최대 생명 시간 (사거리 제한)
     private float lifeTimer; // 현재까지의 생명 시간을 추적하는 타이머
-    public float acceleration = 8; // 총알의 가속도
-    public float maxRange = 8f; // 최대 사거리
-    private float traveledDistance; // 총알이 이동한 거리
+    public float acceleration; // 총알의 가속도
     private Rigidbody bulletRigidbody; // 총알의 Rigidbody 참조
 
     public GameObject explosionPrefab; // 폭발 효과 프리팹
@@ -21,7 +19,7 @@ public class Bullet : MonoBehaviour
     private ObjectPool<GameObject> pool;
 
     public bool isPenetrating; // 관통샷 여부
-    
+
     // BoomShot 스킬 속성
     public bool isBoomShotActive;
     public float boomShotRadius; // 붐샷 폭발 반경
@@ -83,7 +81,7 @@ public class Bullet : MonoBehaviour
     }
 
     // 오브젝트 풀에 반환하는 메서드를 추가합니다.
-    
+
     public void ReturnToPool()
     {
         // 오브젝트가 활성화 상태인 경우에만 풀로 반환합니다.
@@ -116,7 +114,12 @@ public class Bullet : MonoBehaviour
             {
                 ReturnToPool();
             }
-        }            
+        }
+        else if (isPenetrating)
+        {
+            // 피어스샷일 때 총알에 가속도를 적용합니다.
+            bulletRigidbody.AddForce(transform.forward * acceleration, ForceMode.Acceleration);
+        }
 
     }
     void OnDisable()
@@ -144,10 +147,10 @@ public class Bullet : MonoBehaviour
             {
                 ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
             }
-        }        
+        }
     }
     void FixedUpdate()
-    {        
+    {
         // 추적 기능이 활성화되어 있고, 타겟이 설정되어 있다면 추적 로직을 수행합니다.
         if (isHoming && target != null)
         {
@@ -162,20 +165,8 @@ public class Bullet : MonoBehaviour
             bulletRigidbody.velocity += transform.forward * (homingSpeed * Time.fixedDeltaTime);
             bulletRigidbody.velocity = Vector3.ClampMagnitude(bulletRigidbody.velocity, homingSpeed); // 최대 속도를 제한합니다.
         }
-        bulletRigidbody.AddForce(transform.forward * acceleration, ForceMode.Acceleration);
-
-        // 이동한 거리를 업데이트합니다.
-        float moveDistance = bulletRigidbody.velocity.magnitude * Time.fixedDeltaTime;
-        traveledDistance += moveDistance;
-
-        // 이동한 거리가 최대 사거리를 초과했는지 확인합니다.
-        if (traveledDistance >= maxRange)
-        {
-            // 최대 사거리에 도달하면 총알을 비활성화하거나 파괴합니다.
-            ReturnToPool();
-        }
     }
-   
+
     // 충돌 시 호출되는 메서드
     void OnCollisionEnter(Collision collision)
     {
@@ -275,14 +266,14 @@ public class Bullet : MonoBehaviour
 
         EnemyWorm enemyWorm = enemyObject.GetComponent<EnemyWorm>();
         if (enemyWorm != null)
-        {            
+        {
             enemyWorm.TakeDamage(bullet, hitPoint);
             return;
         }
 
         EnemyBoss enemyBoss = enemyObject.GetComponent<EnemyBoss>();
         if (enemyBoss != null)
-        {            
+        {
             enemyBoss.bTakeDamage(bullet, hitPoint);
         }
     }
@@ -299,7 +290,7 @@ public class Bullet : MonoBehaviour
             {
                 Enemy enemy = hitCollider.GetComponent<Enemy>();
                 if (enemy != null)
-                {                   
+                {
                     enemy.TakeDamage(this, transform.position); // 폭발로 인한 데미지 적용
                 }
             }
@@ -313,5 +304,4 @@ public class Bullet : MonoBehaviour
         }
         ReturnToPool(); // 폭발 후 총알을 오브젝트 풀로 반환
     }
-    
 }
