@@ -359,12 +359,7 @@ public class EnemyBoss : MonoBehaviour
             {
                 healthBarUI.SetActive(true);
             }
-        }
-
-        else if (other.tag == "Bullet")
-        {
-            bTakeDamage(other.GetComponent<Bullet>(), other.transform.position);
-        }
+        }        
     }
 
     //private void OnTriggerExit(Collider other)

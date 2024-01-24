@@ -170,6 +170,26 @@ public class EnemyDragon : MonoBehaviour
             StartCoroutine(Attack());
         }
     }
+    IEnumerator ShakeCamera(float duration, float magnitude)
+    {
+        Vector3 originalPosition = Camera.main.transform.position;
+
+        float elapsedTime = 0.0f;
+
+        while (elapsedTime < duration)
+        {
+            float x = Random.Range(-1f, 1f) * magnitude;
+            float y = Random.Range(-1f, 1f) * magnitude;
+
+            Camera.main.transform.position = new Vector3(Camera.main.transform.position.x + x, Camera.main.transform.position.y + y, originalPosition.z);
+
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
+        }
+
+        Camera.main.transform.position = originalPosition;
+    }
 
     // IEnumerator를 사용한 Attack 코루틴 함수
     IEnumerator Attack()
@@ -183,7 +203,8 @@ public class EnemyDragon : MonoBehaviour
         yield return new WaitForSeconds(attackDuration);
 
         if (curHealth > 0 && !isAttackHit)
-        {
+        {           
+
             // 부채꼴 형태로 총알 3개 발사
             for (int i = 0; i < 3; i++)
             {
@@ -249,6 +270,9 @@ public class EnemyDragon : MonoBehaviour
 
         if (curHealth > 0 && !isAttackHit)
         {
+            // 총알 50개를 발사하기 전에 카메라를 흔듭니다.
+            StartCoroutine(ShakeCamera(0.5f, 0.5f));
+
             // 부채꼴 형태로 총알 50개 발사
             for (int i = 0; i < 50; i++)
             {
@@ -381,11 +405,7 @@ public class EnemyDragon : MonoBehaviour
             {
                 healthBarUI.SetActive(true);
             }
-        }
-        else if (other.tag == "Bullet")
-        {
-            TakeDamage(other.GetComponent<Bullet>(), other.transform.position);
-        }
+        }        
     }
 
     /*

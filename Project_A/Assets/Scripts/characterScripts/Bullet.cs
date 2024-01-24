@@ -276,6 +276,7 @@ public class Bullet : MonoBehaviour
         {
             enemyBoss.bTakeDamage(bullet, hitPoint);
         }
+
         EnemyDragon enemyDragon = enemyObject.GetComponent<EnemyDragon>();
         if (enemyDragon != null)
         {
