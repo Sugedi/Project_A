@@ -53,7 +53,7 @@ public class SwitchButton : MonoBehaviour
                 CanvasGroupOn(joystick); //
                 Time.timeScale = 1f;
                 DataManager.instance.DataSave();
-                SceneManager.LoadScene("BackStage_0114");
+                SceneManager.LoadScene("LoadingBackstage");
 
                 break;
             case SwitchUI.Continue:
