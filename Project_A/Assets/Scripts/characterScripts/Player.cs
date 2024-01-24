@@ -57,10 +57,14 @@ public class Player : MonoBehaviour
     private string KeyName = "Datas";
     public SaveSwitch save;
 
+    // UI ON/OFF 담당
     public CanvasGroup SaveCanvas;
     public FloatingJoystick joystick; //0122
 
     public CanvasGroup joy;
+
+
+
 
     // 초기화 시키는 거
     void Awake()
@@ -184,11 +188,19 @@ public class Player : MonoBehaviour
 
     }
 
+
     public void CanvasGroupOff(CanvasGroup cg)
     {
         cg.alpha = 0;
         cg.interactable = false;
         cg.blocksRaycasts = false;
+
+    }
+    public void CanvasGroupOn(CanvasGroup cg)
+    {
+        cg.alpha = 1;
+        cg.interactable = true;
+        cg.blocksRaycasts = true;
 
     }
 
@@ -214,48 +226,61 @@ public class Player : MonoBehaviour
             Dodge();
 
             // 모바일 조작
-            //Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.01f);
-            //foreach (Collider collider in hitColliders)
-            //{
-            //    // 승호 - skill NPC 상호작용
-            //    if (collider.CompareTag("NPC") || collider.CompareTag("Door") || collider.CompareTag("Switch") || collider.CompareTag("Treasure"))
-            //    {
-            //        // 여기 부분에 공격 버튼 이미지 -> 상호작용 버튼 이미지로 바꾸는 거 넣으면 됨.
-            //        if(fDown == true)
-            //        {
-            //            SpaceFunction();
-                        
-            //        }
-            //        fDown = false;
-            //    }
-            //}
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.01f);
+            foreach (Collider collider in hitColliders)
             {
-                SpaceFunction();
+                
+                // 승호 - skill NPC 상호작용
+                if (collider.CompareTag("NPC") || collider.CompareTag("Door") || collider.CompareTag("Switch") || collider.CompareTag("Treasure"))
+                {
+                    // 여기 부분에 공격 버튼 이미지 -> 상호작용 버튼 이미지로 바꾸는 거 넣으면 됨.
+                    
+                    if (fDown == true)
+                    {
+                        SpaceFunction();
+
+                    }
+                    fDown = false;
+                }
+                else if(!collider.CompareTag("Switch"))
+                {
+                    //Debug.Log(!collider.CompareTag("NPC") && !collider.CompareTag("Door") && !collider.CompareTag("Switch") && !collider.CompareTag("Treasure"));
+                }
             }
+
+            // PC 조작
+
+            //if (Input.GetKeyDown(KeyCode.Space))
+            //{
+            //    SpaceFunction();
+            //}
 
             Attack();
         }
 
     }
 
+
+    
     void GetInput()
     {
         // PC 조작 (유니티 테스트용으로 사용)
-        hAxis = Input.GetAxisRaw("Horizontal"); // 가로 축 입력값 받기
-        vAxis = Input.GetAxisRaw("Vertical"); // 세로 축 입력값 받기
-        wDown = Input.GetButton("Walk"); // 걷기 입력 여부 받기
-        jDown = Input.GetButtonDown("Jump"); // 점프 입력 여부 받기
-        fDown = Input.GetButton("Fire1"); // 공격 입력 여부 받기
-        rDown = Input.GetButtonDown("Reload"); // 재장전 입력 여부 받기
+
+        //hAxis = Input.GetAxisRaw("Horizontal"); // 가로 축 입력값 받기
+        //vAxis = Input.GetAxisRaw("Vertical"); // 세로 축 입력값 받기
+        //wDown = Input.GetButton("Walk"); // 걷기 입력 여부 받기
+        //jDown = Input.GetButtonDown("Jump"); // 점프 입력 여부 받기
+        //fDown = Input.GetButton("Fire1"); // 공격 입력 여부 받기
+        //rDown = Input.GetButtonDown("Reload"); // 재장전 입력 여부 받기
 
         // 모바일 조작
+
         // 사용법: 1. 바로 위 PC 조작 부분 주석 처리 & 모바일 조작부분 주석 제거
         //         2. 스테이지 씬(현재는 여기만 넣었음)에서 Joystick 오브젝트를 활성화하면 됨.
-        //hAxis = joystick.Horizontal;
-        //vAxis = joystick.Vertical;
-        
+        hAxis = joystick.Horizontal;
+        vAxis = joystick.Vertical;
+
     }
 
     public void TouchAttack()
