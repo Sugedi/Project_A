@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemyBoss : MonoBehaviour
 {
@@ -30,7 +31,9 @@ public class EnemyBoss : MonoBehaviour
     public GameObject bitemPrefab; // 드랍 아이템 프리펩 등록
     [SerializeField] Transform bdropPosition; // 드랍 아이템을 생성 시킬 위치
     //==============================================================
-
+    public Slider healthBarSlider;
+    public GameObject healthBarUI;
+    public float bHealthBarRange = 15f; // 체력바가 활성화될 플레이어와의 거리
     Rigidbody brigid; // Rigidbody 컴포넌트
     BoxCollider bboxCollider; // BoxCollider 컴포넌트
     Material bmat; // Material 컴포넌트
@@ -106,6 +109,10 @@ public class EnemyBoss : MonoBehaviour
         banim = GetComponentInChildren<Animator>();
 
         btarget = FindObjectOfType<Player>().GetComponent<Transform>();
+
+        healthBarSlider.maxValue = bmaxHealth; // Slider의 최대값을 보스의 최대 체력으로 설정합니다.
+        healthBarSlider.value = bcurHealth; // Slider의 현재값을 보스의 현재 체력으로 설정합니다.
+        healthBarUI.SetActive(false);
     }
 
  
@@ -141,13 +148,30 @@ public class EnemyBoss : MonoBehaviour
 
         float distanceToPlayer = Vector3.Distance(transform.position, btarget.position);
 
+        if (distanceToPlayer <= bHealthBarRange)
+        {
+            if (!healthBarUI.activeSelf)
+            {
+                // 플레이어가 체력바 활성화 범위 내에 들어오면 체력바를 활성화합니다.
+                healthBarUI.SetActive(true);
+            }
+        }
+        else
+        {
+            if (healthBarUI.activeSelf)
+            {
+                // 플레이어가 체력바 활성화 범위 밖으로 나가면 체력바를 비활성화합니다.
+                healthBarUI.SetActive(false);
+            }
+        }
+
         if (distanceToPlayer <= bsightRange)
         {
             if (!bisChase)
             {
                 bChaseStart();
             }
-
+            
         }
         //else
         //{
@@ -156,16 +180,11 @@ public class EnemyBoss : MonoBehaviour
         //    //banim.SetBool("isAttack", false);
         //    //banim.SetBool("isWalk", false);
         //
-
-
-
-
-
         if (!isCharging && !chargeOnCooldown && distanceToPlayer <= btargetRadius)
         {
             StartCoroutine(ChargeAttack());
         }
-
+        
     }
 
 
@@ -244,7 +263,12 @@ public class EnemyBoss : MonoBehaviour
     }
 
     // 받는 피해 관리하는 함수
-
+    // 체력바를 비활성화하는 코루틴
+    IEnumerator DisableHealthBarAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        healthBarUI.SetActive(false);
+    }
     public void bTakeDamage(Bullet bullet, Vector3 hitPoint)
     {
         if (gameObject.layer == LayerMask.NameToLayer("Enemydead"))
@@ -258,6 +282,15 @@ public class EnemyBoss : MonoBehaviour
         // 폭발 효과가 있는지 확인하고, 있으면 해당 데미지를 적용합니다.
         float damageToApply = bullet.isExplosion ? bullet.boomShotDamage : totalDamage;
         bcurHealth -= damageToApply; // Apply damage
+
+        // 체력바 업데이트
+        healthBarSlider.value = bcurHealth;
+
+        // 체력이 0 이하이면 체력바 UI를 지연시키고 비활성화합니다.
+        if (bcurHealth <= 0)
+        {
+            StartCoroutine(DisableHealthBarAfterDelay(5f)); // 5초 후에 체력바 비활성화
+        }
 
         Debug.Log(gameObject.name + "가 데미지를 받았습니다. 데미지: " + damageToApply + ", 남은 체력: " + bcurHealth);
 
@@ -343,6 +376,9 @@ public class EnemyBoss : MonoBehaviour
         // 현재 체력이 0 이하인 경우
         else
         {
+            // 체력바를 0으로 설정
+            healthBarSlider.value = 0;
+
             // 색상을 회색으로 변경하고 레이어를 "Dead"로 설정
             // mat.color = Color.gray;
             StopAllCoroutines();
