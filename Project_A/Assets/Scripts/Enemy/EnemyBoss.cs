@@ -16,8 +16,8 @@ public class EnemyBoss : MonoBehaviour
     public int bminDropCount; // 드랍 아이템의 최소 개수
     public int bmaxDropCount; // 드랍 아이템의 최대 개수
     public float btargetRange = 0.5f;
-    public float btargetRadius = 15f;
-    public float bsightRange = 15f; // 타겟이 유저 인식
+    public float btargetRadius = 8f;
+    public float bsightRange = 10f; // 타겟이 유저 인식
     public float battackinterval = 2f; // 원거리공격 간격
     private bool isAttackHit = false; // 일반 공격이 성공적으로 적중했는지 여부
     public float attackHitCooldown = 0.5f; // 다음 일반 공격이 적중할 수 있는 쿨다운 시간
@@ -26,6 +26,9 @@ public class EnemyBoss : MonoBehaviour
     public float knockbackForce = 95f; // 넉백의 강도
     public float knockbackDuration = 0.5f; // 넉백 지속 시간
 
+    public Vector3 homePosition; // 몬스터의 초기 위치
+    public float chaseRange = 15f;
+    public bool bisReturn;
 
     //==============================================================
     public GameObject bitemPrefab; // 드랍 아이템 프리펩 등록
@@ -55,6 +58,7 @@ public class EnemyBoss : MonoBehaviour
 
     void Start()
     {
+        homePosition = transform.position;
         StartCoroutine(ChargeCooldown());
     }
 
@@ -112,6 +116,7 @@ public class EnemyBoss : MonoBehaviour
 
     void Awake()
     {
+        
         brigid = GetComponent<Rigidbody>();
         bboxCollider = GetComponent<BoxCollider>();
         bmat = GetComponentInChildren<SkinnedMeshRenderer>().material;
@@ -133,7 +138,8 @@ public class EnemyBoss : MonoBehaviour
         if (bcurHealth > 0)  // Only start chasing if health is greater than 0
         {
             bisChase = true;
-            //banim.SetBool("isWalk", true);
+            banim.SetBool("isWalk", true);
+            bnav.isStopped = false;
 
             StartCoroutine(bChasePlayer());
         }
@@ -143,11 +149,10 @@ public class EnemyBoss : MonoBehaviour
     {
         while (bisChase)
         {
-            if (bisChase == true)
+            if (bnav.isActiveAndEnabled && bnav.isOnNavMesh)
             {
-             bnav.SetDestination(btarget.position);
-             bnav.isStopped = !bisChase;
-             transform.LookAt(btarget);
+                bnav.SetDestination(btarget.position);
+                transform.LookAt(btarget);
             }
             yield return null;  // Yielding null allows the coroutine to continue indefinitely
         }
@@ -175,21 +180,6 @@ public class EnemyBoss : MonoBehaviour
             }
         }
 
-        if (distanceToPlayer <= bsightRange)
-        {
-            if (!bisChase)
-            {
-                bChaseStart();
-            }
-            
-        }
-        //else
-        //{
-        //    bisChase = false;
-
-        //    //banim.SetBool("isAttack", false);
-        //    //banim.SetBool("isWalk", false);
-        //
         if (!isCharging && !chargeOnCooldown && distanceToPlayer <= btargetRadius)
         {
             StartCoroutine(ChargeAttack());
@@ -202,10 +192,54 @@ public class EnemyBoss : MonoBehaviour
             }
             bTargerting();
         }
+
+        // 플레이어가 일정 범위 내에 있을 때 추격 시작
+        if (distanceToPlayer <= bsightRange && !bisChase && !bisReturn)
+        {
+            bChaseStart();
+        }
+        // 플레이어가 추격 범위를 벗어났을 때 추격 중지 및 제자리로 복귀
+        else if (distanceToPlayer > chaseRange && bisChase)
+        {
+            StopChase();
+            Return();
+        }
+    }
+    void StopChase()
+    {
+        bisChase = false;
+        banim.SetBool("isAttack", false);
+        banim.SetBool("isWalk", false);
+        bnav.isStopped = true;
     }
 
+    void Return()
+    {
+        bboxCollider.enabled = false;
+        // 제자리로 돌아가는 상태로 설정
+        bisReturn = true;
 
+        // 원래 위치로 이동
+        banim.SetBool("isWalk", true);
+        bnav.isStopped = false;
+        bnav.SetDestination(homePosition);
 
+        // 원래 위치에 도착했는지 확인
+        if (Vector3.Distance(transform.position, homePosition) <= 2f)
+        {
+            banim.SetBool("isWalk", false);
+            bnav.isStopped = true;
+            bisReturn = false; // 제자리로 돌아간 상태를 해제
+            bboxCollider.enabled = true;
+        }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        // 추격 범위를 빨간색 원으로 표시
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, chaseRange);
+    }
     //void bFreezeVelocity()
     //{
     //    if (bisChase)
