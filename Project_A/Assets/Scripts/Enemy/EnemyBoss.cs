@@ -16,7 +16,7 @@ public class EnemyBoss : MonoBehaviour
     public int bminDropCount; // 드랍 아이템의 최소 개수
     public int bmaxDropCount; // 드랍 아이템의 최대 개수
     public float btargetRange = 0.5f;
-    public float btargetRadius = 8f;
+    public float btargetRadius = 10f;
     public float bsightRange = 15f; // 타겟이 유저 인식
     public float battackinterval = 2f; // 원거리공격 간격
     private bool isAttackHit = false; // 일반 공격이 성공적으로 적중했는지 여부
@@ -47,39 +47,67 @@ public class EnemyBoss : MonoBehaviour
     //==============================================================
     //돌진 공격
 
-    bool isCharging;
+    bool isCharging = false;
     bool chargeOnCooldown;
     public float chargeCooldownDuration = 8f;
 
     public float chargeSpeed = 10f; // 돌진 강도
     public float chargeDuration = 1f; // 돌진 시간
+    public float chargeRange = 1f; // 공격 범위
+
     // Reference to the arrow prefab
     private bool isChargeDamage = false;
+    public ParticleSystem chargeAreaEffectPrefab;
+    private ParticleSystem chargeAreaEffectInstance;
 
     void Start()
     {
         homePosition = transform.position;
+        chargeAreaEffectInstance = Instantiate(chargeAreaEffectPrefab, transform.position, Quaternion.identity);
+        chargeAreaEffectInstance.Stop();
         StartCoroutine(ChargeCooldown());
     }
+    // 돌진 범위를 시각적으로 표시하는 메소드
+    void ShowChargeArea()
+    {
+        Debug.Log("범위 보여줘");
+        // 파티클 시스템의 위치와 크기를 돌진 범위에 맞게 설정합니다.
+        chargeAreaEffectInstance.transform.position = transform.position + (btarget.position - transform.position).normalized * 1f;
+        chargeAreaEffectInstance.transform.localScale = new Vector3(chargeRange, chargeAreaEffectInstance.transform.localScale.y, chargeRange);
+        chargeAreaEffectInstance.transform.rotation = Quaternion.LookRotation(btarget.position - transform.position);
 
+        // 파티클 시스템을 활성화합니다.
+        chargeAreaEffectInstance.Play();
+    }    
 
     IEnumerator ChargeAttack()
     {
         Debug.Log("ChargeAttack 시작됨");
+        isCharging = true;        
+
+        ShowChargeArea(); // 돌진 범위를 표시합니다.
+
+        // 돌진 방향을 고정시킵니다.
+        Vector3 chargeDirection = (btarget.position - transform.position).normalized;
+        transform.rotation = Quaternion.LookRotation(chargeDirection);
+
+        yield return new WaitForSeconds(1f); // 1초 동안 기다립니다.
+
+        // 파티클 시스템을 비활성화합니다.
+        chargeAreaEffectInstance.Stop();
+
         //bisChase = false;        
         isChargeDamage = false;
-        isCharging = true;
 
         yield return new WaitForSeconds(0.1f);
 
-        Vector3 chargeDirection = (btarget.position - transform.position).normalized * chargeSpeed;
-        brigid.velocity = chargeDirection; // 돌진 시작 시점에 속도를 설정합니다.
+        brigid.velocity = chargeDirection * chargeSpeed; // 돌진 시작 시점에 속도를 설정합니다.
         banim.SetTrigger("doAttack02");
 
         yield return new WaitForSeconds(chargeDuration);
 
         brigid.velocity = Vector3.zero;
-        isCharging = false;
+        isCharging = false;        
         bisChase = true;
         StartCoroutine(ChargeCooldown());
     }
@@ -152,7 +180,11 @@ public class EnemyBoss : MonoBehaviour
             if (bnav.isActiveAndEnabled && bnav.isOnNavMesh)
             {
                 bnav.SetDestination(btarget.position);
-                transform.LookAt(btarget);
+                // 돌진 중이 아닐 때만 캐릭터가 플레이어를 바라보도록 합니다.
+                if (!isCharging)
+                {
+                    transform.LookAt(btarget);
+                }
             }
             yield return null;  // Yielding null allows the coroutine to continue indefinitely
         }
@@ -186,20 +218,23 @@ public class EnemyBoss : MonoBehaviour
         }
         else if (!isCharging && distanceToPlayer <= bsightRange)
         {
-            if (!bisChase)
+            if (!bisChase && !isCharging)
             {
                 bChaseStart();
             }
-            bTargerting();
+            if (!isCharging)
+            {
+                bTargerting();
+            }
         }
 
         // 플레이어가 일정 범위 내에 있을 때 추격 시작
-        if (distanceToPlayer <= bsightRange && !bisChase && !bisReturn)
+        if (distanceToPlayer <= bsightRange && !bisChase && !bisReturn && !isCharging)
         {
             bChaseStart();
         }
         // 플레이어가 추격 범위를 벗어났을 때 추격 중지 및 제자리로 복귀
-        else if (distanceToPlayer > chaseRange && bisChase)
+        else if (distanceToPlayer > chaseRange && bisChase && !isCharging)
         {
             StopChase();
             Return();
@@ -258,7 +293,7 @@ public class EnemyBoss : MonoBehaviour
             Physics.SphereCastAll(transform.position,
             btargetRadius, transform.forward, btargetRange,
             LayerMask.GetMask("Player"));
-        if (rayHits.Length > 0 && !bisAttack)
+        if (rayHits.Length > 0 && !bisAttack && !isCharging) // 돌진 중이 아닐 때만 공격 시작
         {
             StartCoroutine(bAttack());
         }
@@ -297,9 +332,12 @@ public class EnemyBoss : MonoBehaviour
     }
     // FixedUpdate 함수
     void FixedUpdate()
-    {
+    {        
         // 목표를 향해 이동하는 함수 호출
-        bTargerting();
+        if (!isCharging)
+        {
+            bTargerting();
+        }
         // 움직임을 억제하는 함수 호출
         //bFreezeVelocity();
     }
