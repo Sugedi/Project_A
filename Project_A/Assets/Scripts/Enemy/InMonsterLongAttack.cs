@@ -192,7 +192,7 @@ public class InMonsterLongAttack : MonoBehaviour
                 GameObject instantBullet = Instantiate(bullet, transform.position, bulletRotation);
 
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
-                rigidBullet.velocity = instantBullet.transform.forward * 10;
+                rigidBullet.velocity = instantBullet.transform.forward * 15;
             }
 
             // isAttackHit = true; // 공격이 성공적으로 적중했다고 표시
