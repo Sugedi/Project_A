@@ -25,6 +25,17 @@ public class TreasureBox : MonoBehaviour
     {
         treasure_1 = GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1ItemBox1;
         treasure_2 = GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1ItemBox2;
+
+        //if(treasure_1 == false)
+        //{
+        //    GameObject.Find("chest1_opened").SetActive(false);
+        //    GameObject.Find("chest1_closed").SetActive(true);
+        //}
+        //else if(treasure_1 == true)
+        //{
+        //    GameObject.Find("chest1_opened").SetActive(true);
+        //    GameObject.Find("chest1_closed").SetActive(false);
+        //}
     }
 
     public void TreasureFind()
