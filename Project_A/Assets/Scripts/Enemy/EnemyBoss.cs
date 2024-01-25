@@ -17,7 +17,7 @@ public class EnemyBoss : MonoBehaviour
     public int bmaxDropCount; // 드랍 아이템의 최대 개수
     public float btargetRange = 0.5f;
     public float btargetRadius = 8f;
-    public float bsightRange = 10f; // 타겟이 유저 인식
+    public float bsightRange = 15f; // 타겟이 유저 인식
     public float battackinterval = 2f; // 원거리공격 간격
     private bool isAttackHit = false; // 일반 공격이 성공적으로 적중했는지 여부
     public float attackHitCooldown = 0.5f; // 다음 일반 공격이 적중할 수 있는 쿨다운 시간
