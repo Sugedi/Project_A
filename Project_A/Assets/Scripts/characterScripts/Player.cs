@@ -182,7 +182,12 @@ public class Player : MonoBehaviour
 
             if (collider.CompareTag("PyramidEnter"))
             {
-                GameObject.Find("Player").transform.position = new Vector3(-395f, 1, 80);
+                GameObject.Find("Player").transform.position = new Vector3(-395f, 1f, 75f);
+            }
+
+            if (collider.CompareTag("PyramidExit"))
+            {
+                GameObject.Find("Player").transform.position = new Vector3(-87f, 0.2f, 83f);
             }
 
         }
