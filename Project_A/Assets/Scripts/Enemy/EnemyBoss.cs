@@ -351,8 +351,14 @@ public class EnemyBoss : MonoBehaviour
         {
             bullet.ReturnToPool(); // 총알 반환
         }
+        StartCoroutine(KnockbackResistance());
     }
-
+    IEnumerator KnockbackResistance()
+    {
+        brigid.isKinematic = true; // 물리적 영향 제한
+        yield return new WaitForSeconds(0.2f); // 경직 지속 시간
+        brigid.isKinematic = false; // 물리적 영향 다시 허용
+    }
     void OnCollisionEnter(Collision collision)
     {
         // 'Wall' 태그를 가진 벽 또는 'Player' 태그를 가진 플레이어와 충돌했는지 확인
