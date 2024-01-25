@@ -18,6 +18,8 @@ TagManager:
   - Switch
   - Treasure
   - EnemyLong
+  - PyramidEnter
+  - PyramidExit
   layers:
   - Default
   - TransparentFX

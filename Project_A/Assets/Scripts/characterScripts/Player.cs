@@ -178,8 +178,11 @@ public class Player : MonoBehaviour
                 {
                     collider.gameObject.GetComponent<TreasureBox>().TreasureFind();
                 }
+            }
 
-
+            if (collider.CompareTag("PyramidEnter"))
+            {
+                GameObject.Find("Player").transform.position = new Vector3(-395f, 1, 80);
             }
 
         }
