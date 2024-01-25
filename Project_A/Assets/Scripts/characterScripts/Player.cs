@@ -159,7 +159,7 @@ public class Player : MonoBehaviour
             {
                 CanvasGroupOff(joy);
                 //GameObject.Find("Switch").GetComponent<SaveSwitch>().SwitchFunc();
-                SaveSwitch.SwitchFunc();
+                GameObject.Find("SwitchDoor").GetComponent<SaveSwitch>().SwitchFunc();
                 //GameObject.Find("Switch").GetComponent<SaveSwitch>().SaveData();
                 Time.timeScale = 0;
                 SaveCanvas.alpha = 1;

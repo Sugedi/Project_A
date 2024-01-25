@@ -5,21 +5,21 @@ using UnityEngine.UI;
 
 public enum SaveSwitchNumber
 {
-    SaveSwitch_1,
+    SaveSwitch_1, // 오아시스 세이브
     SaveSwitch_2,
     SaveSwitch_9,
 }
 public class SaveSwitch : MonoBehaviour
 {
-    static public SaveSwitchNumber switchNumber;
+    public SaveSwitchNumber switchNumber;
 
-    static public Vector3 checkPoint_1 = new Vector3(-32f, 0.5f, 36f);
-    static public Vector3 checkPoint_2 = new Vector3(0f, 0.5f, 36f); // 아직 미정
-    static public Vector3 checkPoint_9 = new Vector3(0f, 0f, 0f);
-    static public string checkScene_1 = "Stage";
-    static public int saveNumber = 1;
+    public Vector3 checkPoint_1 = new Vector3(-32f, 0.5f, 36f);
+    public Vector3 checkPoint_2 = new Vector3(0f, 0.5f, 36f); // 아직 미정
+    public Vector3 checkPoint_9 = new Vector3(0f, 0f, 0f);
+    public string checkScene_1 = "Stage";
+    public int saveNumber = 1;
 
-    public static void Start()
+    public void Start()
     {
         if (switchNumber == SaveSwitchNumber.SaveSwitch_1)
         {
@@ -37,7 +37,7 @@ public class SaveSwitch : MonoBehaviour
 
     }
 
-    public static void SwitchFunc()
+    public void SwitchFunc()
     {
         if (saveNumber == 1)
         {
