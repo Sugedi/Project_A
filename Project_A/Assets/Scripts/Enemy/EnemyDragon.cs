@@ -205,8 +205,8 @@ public class EnemyDragon : MonoBehaviour
         if (curHealth > 0 && !isAttackHit)
         {           
 
-            // 부채꼴 형태로 총알 3개 발사
-            for (int i = 0; i < 3; i++)
+            // 부채꼴 형태로 총알 15개 발사
+            for (int i = 0; i < 15; i++)
             {
                 // 총알 발사 각도를 계산합니다.
                 Quaternion bulletRotation = Quaternion.Euler(0, -20 + (i * 20), 0) * transform.rotation;
@@ -218,7 +218,7 @@ public class EnemyDragon : MonoBehaviour
 
             isAttackHit = true; // 공격이 성공적으로 적중했다고 표시
             StartCoroutine(ResetAttackHit()); // 공격 적중 상태 초기화 코루틴 실행
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1.5f);
         }
 
         // 공격 상태 종료
@@ -236,8 +236,8 @@ public class EnemyDragon : MonoBehaviour
 
         if (curHealth > 0 && !isAttackHit)
         {
-            // 부채꼴 형태로 총알 5개 발사
-            for (int i = 0; i < 5; i++)
+            // 부채꼴 형태로 총알 25개 발사
+            for (int i = 0; i < 25; i++)
             {
                 // 총알 발사 각도를 계산합니다.
                 Quaternion bulletRotation = Quaternion.Euler(0, -20 + (i * 10), 0) * transform.rotation;
@@ -247,12 +247,12 @@ public class EnemyDragon : MonoBehaviour
                 rigidBullet.velocity = instantBullet.transform.forward * 15;
 
                 // 다음 총알 발사 전에 잠시 대기
-                yield return new WaitForSeconds(0.3f); // 이 값을 조절하여 총알 발사 간격을 변경할 수 있습니다.
+                // yield return new WaitForSeconds(0.3f); // 이 값을 조절하여 총알 발사 간격을 변경할 수 있습니다.
             }
 
             isAttackHit = true; // 공격이 성공적으로 적중했다고 표시
             StartCoroutine(ResetAttackHit()); // 공격 적중 상태 초기화 코루틴 실행
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1.5f);
         }
 
         // 공격 상태 종료
@@ -270,7 +270,7 @@ public class EnemyDragon : MonoBehaviour
 
         if (curHealth > 0 && !isAttackHit)
         {
-            // 총알 50개를 발사하기 전에 카메라를 흔듭니다.
+            // 총알 60개를 발사하기 전에 카메라를 흔듭니다.
             StartCoroutine(ShakeCamera(0.5f, 0.5f));
 
             // 부채꼴 형태로 총알 50개 발사
@@ -284,12 +284,12 @@ public class EnemyDragon : MonoBehaviour
                 rigidBullet.velocity = instantBullet.transform.forward * 15;
 
                 // 다음 총알 발사 전에 잠시 대기
-                yield return new WaitForSeconds(0.2f); // 이 값을 조절하여 총알 발사 간격을 변경할 수 있습니다.
+                yield return new WaitForSeconds(0.15f); // 이 값을 조절하여 총알 발사 간격을 변경할 수 있습니다.
             }
 
             isAttackHit = true; // 공격이 성공적으로 적중했다고 표시
             StartCoroutine(ResetAttackHit()); // 공격 적중 상태 초기화 코루틴 실행
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1.5f);
         }
 
         // 공격 상태 종료
@@ -307,8 +307,8 @@ public class EnemyDragon : MonoBehaviour
 
         if (curHealth > 0 && !isAttackHit)
         {
-            // 부채꼴 형태로 총알 20개 발사
-            for (int i = 0; i < 20; i++)
+            // 부채꼴 형태로 총알 100개 발사
+            for (int i = 0; i < 100; i++)
             {
                 // 총알 발사 각도를 계산합니다.
                 Quaternion bulletRotation = Quaternion.Euler(0, -20 + (i * 20), 0) * transform.rotation;
@@ -320,7 +320,7 @@ public class EnemyDragon : MonoBehaviour
 
             isAttackHit = true; // 공격이 성공적으로 적중했다고 표시
             StartCoroutine(ResetAttackHit()); // 공격 적중 상태 초기화 코루틴 실행
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1.5f);
         }
 
         // 공격 상태 종료
