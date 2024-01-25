@@ -24,7 +24,6 @@ public class ObjectInteraction : MonoBehaviour
     public GameObject RollBtn;
     public GameObject ReloadBtn;
 
-    public GameObject startBtn; // 'Dialogue StartBtn: 거울에 손을 뻗는다'
     public GameObject dialoguePanel1;
     public GameObject dialoguePanel2;
     public GameObject dialoguePanel3;
@@ -59,8 +58,7 @@ public class ObjectInteraction : MonoBehaviour
         {
             questIcon.SetActive(false); // 퀘스트 아이콘 버튼을 비활성화 상태로 설정
 
-            talk1Panel.SetActive(true);
-            startBtn.SetActive(false);
+            talk1Panel.SetActive(true); // 처음에 주인공 독백 대사 2개 나오는 거! 대사 나올 때는 컨트롤러 다 비활성화 (아래 5개)
             joystickBtn.SetActive(false);
             AttackBtn.SetActive(false);
             RollBtn.SetActive(false);
@@ -71,7 +69,7 @@ public class ObjectInteraction : MonoBehaviour
 
         if (mainQuest == 1)
         {
-            questIcon.SetActive(true); // 퀘스트 아이콘 버튼을 비활성화 상태로 설정
+            questIcon.SetActive(true); // 퀘스트 아이콘 버튼을 활성화 상태로 설정
 
             mainQuestPanel1.SetActive(true);
             mainQuestPanel2.SetActive(false);
@@ -122,6 +120,7 @@ public class ObjectInteraction : MonoBehaviour
 
     }
 
+    // @@@@@ ~#~#~#~#~#~#~#~# 맞는 것 다 확인 함 but 수정 가능성 있음 #~#~#~#~#~#~#~#~ @@@@@
 
     void OnTriggerEnter(Collider other) // 오브젝트가 트리거에 진입할 때 호출되는 함수
     {
@@ -132,36 +131,32 @@ public class ObjectInteraction : MonoBehaviour
             if (mainQuest == 0)
             {
                 talkCanvas.SetActive(false);
-                AttackBtn.SetActive(false);
-                startBtn.SetActive(true);
+                //AttackBtn.SetActive(true);
                 //dialoguePanel1.SetActive(false); // 질서의 신 첫 번째 대사창을 비활성화 상태로 설정 ########
             }
 
             if (mainQuest == 1)
             {
-                AttackBtn.SetActive(false);
-                startBtn.SetActive(true);
                 dialoguePanel2.SetActive(false);
                 //questIcon.SetActive(false); // questIcon을 비활성화
             }
 
             if (mainQuest == 2)
             {
-                AttackBtn.SetActive(false);
-                startBtn.SetActive(true);
                 dialoguePanel3.SetActive(false);
                 //questIcon.SetActive(false); // questIcon을 비활성화
             }
 
         }
     }
-    public void OnStartBtnClick()
+
+    // @@@@@ ~#~#~#~#~#~#~#~# 맞는 것 다 확인 함 #~#~#~#~#~#~#~#~ @@@@@
+    public void OnAttackBtnClick() // 대화 시작버튼이 이제 공격버튼으로 바꼈삼미다!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     {
-        Debug.Log("Start Button Clicked"); // 로그를 추가하여 이 메서드가 호출되는지 확인합니다
+        Debug.Log("Attack Button Clicked"); // 로그를 추가하여 이 메서드가 호출되는지 확인합니다
         if (mainQuest == 0)
         {
             dialoguePanel1.SetActive(true);
-            startBtn.SetActive(false);
             joystickBtn.SetActive(false);
             AttackBtn.SetActive(false);
             RollBtn.SetActive(false);
@@ -171,7 +166,6 @@ public class ObjectInteraction : MonoBehaviour
         if (mainQuest == 1)
         {
             dialoguePanel2.SetActive(true);
-            startBtn.SetActive(false);
             joystickBtn.SetActive(false);
             AttackBtn.SetActive(false);
             RollBtn.SetActive(false);
@@ -182,7 +176,6 @@ public class ObjectInteraction : MonoBehaviour
         if (mainQuest == 2)
         {
             dialoguePanel3.SetActive(true);
-            startBtn.SetActive(false);
             joystickBtn.SetActive(false);
             AttackBtn.SetActive(false);
             RollBtn.SetActive(false);
@@ -196,8 +189,6 @@ public class ObjectInteraction : MonoBehaviour
     {
         Debug.Log("OnNextButton1Clicked() 메서드 호출됨"); // 로그 추가
 
-
-        //startBtn.SetActive(false);
         dialoguePanel1.SetActive(false);
         questIcon.SetActive(true); // 퀘스트 아이콘 버튼을 활성화
         mainQuestPanel1.SetActive(true); // 첫 번째 메인 퀘스트 패널을 활성화 상태로 설정
@@ -229,7 +220,7 @@ public class ObjectInteraction : MonoBehaviour
     public void OnNextButton2Clicked()
     {
         dialoguePanel2.SetActive(false);
-        questIcon.SetActive(true); // questIcon을 활성화
+        questIcon.SetActive(true);
 
         joystickBtn.SetActive(true);
         AttackBtn.SetActive(true);
@@ -284,7 +275,6 @@ public class ObjectInteraction : MonoBehaviour
         if (other.CompareTag("Player")) // 트리거를 빠져나간 오브젝트의 태그가 Player인 경우
         {
             isPlayerInRange = false; // 플레이어가 상호작용 범위 내에 없음을 표시
-            startBtn.SetActive(false);
             AttackBtn.SetActive(true);
         }
 
