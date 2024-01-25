@@ -59,7 +59,7 @@ public class SkillTreeBtn : MonoBehaviour
 
     void LevelNotice(TextMeshProUGUI text1, int level)
     {
-        text1.text = $"LV. {level}";
+        text1.text = $"LV.{level}";
     }
     // Start is called before the first frame update
     void Start()
@@ -70,7 +70,7 @@ public class SkillTreeBtn : MonoBehaviour
         // 데이터 매니저에서 바로 불러오는 방식 - 장기적으로는 이게 유리할 수 밖에 없음 - 근데 리스트에 스킬 애드를 못해서 못씀
         ES3.LoadInto(KeyName, datas);
         soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
-        gem.text = $"재화: {soul}";
+        gem.text = $"{soul}";
 
         // 캐릭터가 소지한 스킬을 불러오는 방식 
         // 아니 AddSkill 어케 쓰는 건데 ~~~
@@ -181,19 +181,19 @@ public class SkillTreeBtn : MonoBehaviour
         }
         int charHealth = GameObject.Find("DataManager").GetComponent<DataManager>().datas.maxHP;
 
-        if (charHealth == 100)
+        if (charHealth == 130)
         {
             LevelNotice(healthLevel, LV1);
         }
-        else if (charHealth == 130)
+        else if (charHealth == 160)
         {
             LevelNotice(healthLevel, LV2);
         }
-        else if (charHealth == 160)
+        else if (charHealth == 200)
         {
             LevelNotice(healthLevel, LV3);
         }
-        else if (charHealth == 190)
+        else if (charHealth == 240)
         {
             LevelNotice(healthLevel, LV4);
         }
@@ -467,22 +467,22 @@ public class SkillTreeBtn : MonoBehaviour
                     CanvasGroupOff(speedInfoCanvas);
                     CanvasGroupOff(powerInfoCanvas);
 
-                    if (nowHealth == 100)
+                    if (nowHealth == 130)
                     {
                         healthInfo.text = "50";
                         LevelNotice(healthLevel, LV1);
                     }
-                    else if (nowHealth == 130)
+                    else if (nowHealth == 160)
                     {
                         healthInfo.text = "70";
                         LevelNotice(healthLevel, LV2);
                     }
-                    else if (nowHealth == 160)
+                    else if (nowHealth == 200)
                     {
                         healthInfo.text = "90";
                         LevelNotice(healthLevel, LV3);
                     }
-                    else if (nowHealth == 190)
+                    else if (nowHealth == 240)
                     {
                         healthInfo.text = "";
                         LevelNotice(healthLevel, LV4);
@@ -521,7 +521,7 @@ public class SkillTreeBtn : MonoBehaviour
                             GameObject.Find("Player").GetComponent<Player>().SkillGet();
                             GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 50;
                             soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
-                            gem.text = $"재화: {soul}";
+                            gem.text = $"{soul}";
                             DataManager.instance.DataSave();
                             powerInfo.text = "70";
                             LevelNotice(powerLevel, LV2);
@@ -544,7 +544,7 @@ public class SkillTreeBtn : MonoBehaviour
                             GameObject.Find("Player").GetComponent<Player>().SkillGet();
                             GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 70;
                             soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
-                            gem.text = $"재화: {soul}";
+                            gem.text = $"{soul}";
                             powerInfo.text = "90";
                             LevelNotice(powerLevel, LV3);
                             powerSkillCheck += 1;
@@ -566,7 +566,7 @@ public class SkillTreeBtn : MonoBehaviour
                             GameObject.Find("Player").GetComponent<Player>().SkillGet();
                             GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 90;
                             soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
-                            gem.text = $"재화: {soul}";
+                            gem.text = $"{soul}";
                             powerInfo.text = "";
                             LevelNotice(powerLevel, LV4);
                             CanvasGroupOff(powerGemCanvas);
@@ -599,7 +599,7 @@ public class SkillTreeBtn : MonoBehaviour
                         GameObject.Find("Player").GetComponent<Player>().SkillGet();
                         GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 30;
                         soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
-                        gem.text = $"재화: {soul}";
+                        gem.text = $"{soul}";
                         powerInfo.text = "50";
                         LevelNotice(powerLevel, LV1);
                         break;
@@ -635,7 +635,7 @@ public class SkillTreeBtn : MonoBehaviour
                             GameObject.Find("Player").GetComponent<Player>().SkillGet();
                             GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 50;
                             soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
-                            gem.text = $"재화: {soul}";
+                            gem.text = $"{soul}";
                             DataManager.instance.DataSave();
                             ammoInfo.text = "70";
                             LevelNotice(ammoLevel, LV2);
@@ -658,7 +658,7 @@ public class SkillTreeBtn : MonoBehaviour
                             GameObject.Find("Player").GetComponent<Player>().SkillGet();
                             GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 70;
                             soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
-                            gem.text = $"재화: {soul}";
+                            gem.text = $"{soul}";
                             DataManager.instance.DataSave();
                             ammoInfo.text = "90";
                             LevelNotice(ammoLevel, LV3);
@@ -681,7 +681,7 @@ public class SkillTreeBtn : MonoBehaviour
                             GameObject.Find("Player").GetComponent<Player>().SkillGet();
                             GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 90;
                             soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
-                            gem.text = $"재화: {soul}";
+                            gem.text = $"{soul}";
                             DataManager.instance.DataSave();
                             ammoInfo.text = "";
                             LevelNotice(ammoLevel, LV4);
@@ -715,7 +715,7 @@ public class SkillTreeBtn : MonoBehaviour
                         GameObject.Find("Player").GetComponent<Player>().SkillGet();
                         GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 30;
                         soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
-                        gem.text = $"재화: {soul}";
+                        gem.text = $"{soul}";
                         DataManager.instance.DataSave();
                         ammoInfo.text = "50";
                         LevelNotice(ammoLevel, LV1);
@@ -753,7 +753,7 @@ public class SkillTreeBtn : MonoBehaviour
                             GameObject.Find("Player").GetComponent<Player>().SkillGet();
                             GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 50;
                             soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
-                            gem.text = $"재화: {soul}";
+                            gem.text = $"{soul}";
                             DataManager.instance.DataSave();
                             reloadInfo.text = "70";
                             LevelNotice(reloadLevel, LV2);
@@ -777,7 +777,7 @@ public class SkillTreeBtn : MonoBehaviour
                             GameObject.Find("Player").GetComponent<Player>().SkillGet();
                             GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 70;
                             soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
-                            gem.text = $"재화: {soul}";
+                            gem.text = $"{soul}";
                             DataManager.instance.DataSave();
                             reloadInfo.text = "90";
                             LevelNotice(reloadLevel, LV3);
@@ -800,7 +800,7 @@ public class SkillTreeBtn : MonoBehaviour
                             GameObject.Find("Player").GetComponent<Player>().SkillGet();
                             GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 90;
                             soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
-                            gem.text = $"재화: {soul}";
+                            gem.text = $"{soul}";
                             DataManager.instance.DataSave();
                             reloadInfo.text = "";
                             LevelNotice(reloadLevel, LV4);
@@ -834,7 +834,7 @@ public class SkillTreeBtn : MonoBehaviour
                         GameObject.Find("Player").GetComponent<Player>().SkillGet();
                         GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 30;
                         soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
-                        gem.text = $"재화: {soul}";
+                        gem.text = $"{soul}";
                         DataManager.instance.DataSave();
                         reloadInfo.text = "50";
                         LevelNotice(reloadLevel, LV1);
@@ -873,7 +873,7 @@ public class SkillTreeBtn : MonoBehaviour
                             GameObject.Find("Player").GetComponent<Player>().SkillGet();
                             GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 50;
                             soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
-                            gem.text = $"재화: {soul}";
+                            gem.text = $"{soul}";
                             DataManager.instance.DataSave();
                             speedInfo.text = "70";
                             LevelNotice(speedLevel, LV2);
@@ -896,7 +896,7 @@ public class SkillTreeBtn : MonoBehaviour
                             GameObject.Find("Player").GetComponent<Player>().SkillGet();
                             GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 70;
                             soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
-                            gem.text = $"재화: {soul}";
+                            gem.text = $"{soul}";
                             DataManager.instance.DataSave();
                             speedInfo.text = "90";
                             LevelNotice(speedLevel, LV3);
@@ -919,7 +919,7 @@ public class SkillTreeBtn : MonoBehaviour
                             GameObject.Find("Player").GetComponent<Player>().SkillGet();
                             GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 90;
                             soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
-                            gem.text = $"재화: {soul}";
+                            gem.text = $"{soul}";
                             DataManager.instance.DataSave();
                             speedInfo.text = "";
                             LevelNotice(speedLevel, LV4);
@@ -952,7 +952,7 @@ public class SkillTreeBtn : MonoBehaviour
                         GameObject.Find("Player").GetComponent<Player>().SkillGet();
                         GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 30;
                         soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
-                        gem.text = $"재화: {soul}";
+                        gem.text = $"{soul}";
                         DataManager.instance.DataSave();
                         speedInfo.text = "50";
                         LevelNotice(speedLevel, LV1);
@@ -979,7 +979,7 @@ public class SkillTreeBtn : MonoBehaviour
                         GameObject.Find("Player").GetComponent<Player>().SkillGet();
                         GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 30;
                         soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
-                        gem.text = $"재화: {soul}";
+                        gem.text = $"{soul}";
                         DataManager.instance.DataSave();
                         healthInfo.text = "50";
                         LevelNotice(healthLevel, LV1);
@@ -998,7 +998,7 @@ public class SkillTreeBtn : MonoBehaviour
                         GameObject.Find("Player").GetComponent<Player>().SkillGet();
                         GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 50;
                         soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
-                        gem.text = $"재화: {soul}";
+                        gem.text = $"{soul}";
                         DataManager.instance.DataSave();
                         healthInfo.text = "70";
                         LevelNotice(healthLevel, LV2);
@@ -1012,18 +1012,18 @@ public class SkillTreeBtn : MonoBehaviour
                     }
                     else
                     {
-                        DataManager.instance.datas.maxHP = 190;
+                        DataManager.instance.datas.maxHP = 200;
                         DataManager.instance.DataSave();
                         GameObject.Find("Player").GetComponent<Player>().SkillGet();
                         GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 70;
                         soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
-                        gem.text = $"재화: {soul}";
+                        gem.text = $"{soul}";
                         DataManager.instance.DataSave();
                         healthInfo.text = "90";
                         LevelNotice(healthLevel, LV3);
                     }
                 }
-                else if (curHealth == 190)
+                else if (curHealth == 200)
                 {
                     if(soul < 90)
                     {
@@ -1031,12 +1031,12 @@ public class SkillTreeBtn : MonoBehaviour
                     }
                     else
                     {
-                        DataManager.instance.datas.maxHP = 210;
+                        DataManager.instance.datas.maxHP = 240;
                         DataManager.instance.DataSave();
                         GameObject.Find("Player").GetComponent<Player>().SkillGet();
                         GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 90;
                         soul = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
-                        gem.text = $"재화: {soul}";
+                        gem.text = $"{soul}";
                         DataManager.instance.DataSave();
                         healthInfo.text = "";
                         LevelNotice(healthLevel, LV4);
@@ -1228,10 +1228,10 @@ public class SkillTreeBtn : MonoBehaviour
                 DataManager.instance.DataSave();
                 GameObject.Find("Player").GetComponent<Player>().SkillGet();
 
-                powerInfo.text = "필요 재화: 30";
-                ammoInfo.text = "필요 재화: 30";
-                speedInfo.text = "필요 재화: 30";
-                reloadInfo.text = "필요 재화: 30";
+                powerInfo.text = "30";
+                ammoInfo.text = "30";
+                speedInfo.text = "30";
+                reloadInfo.text = "30";
 
 
 
