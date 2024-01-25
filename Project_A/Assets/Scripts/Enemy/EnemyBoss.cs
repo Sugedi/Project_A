@@ -138,7 +138,7 @@ public class EnemyBoss : MonoBehaviour
         if (bcurHealth > 0)  // Only start chasing if health is greater than 0
         {
             bisChase = true;
-            banim.SetBool("isWalk", true);
+            //banim.SetBool("isWalk", true);
             bnav.isStopped = false;
 
             StartCoroutine(bChasePlayer());
@@ -209,7 +209,7 @@ public class EnemyBoss : MonoBehaviour
     {
         bisChase = false;
         banim.SetBool("isAttack", false);
-        banim.SetBool("isWalk", false);
+        //banim.SetBool("isWalk", false);
         bnav.isStopped = true;
     }
 
@@ -220,14 +220,14 @@ public class EnemyBoss : MonoBehaviour
         bisReturn = true;
 
         // 원래 위치로 이동
-        banim.SetBool("isWalk", true);
+        //banim.SetBool("isWalk", true);
         bnav.isStopped = false;
         bnav.SetDestination(homePosition);
 
         // 원래 위치에 도착했는지 확인
         if (Vector3.Distance(transform.position, homePosition) <= 2f)
         {
-            banim.SetBool("isWalk", false);
+            //banim.SetBool("isWalk", false);
             bnav.isStopped = true;
             bisReturn = false; // 제자리로 돌아간 상태를 해제
             bboxCollider.enabled = true;
@@ -240,14 +240,14 @@ public class EnemyBoss : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, chaseRange);
     }
-    //void bFreezeVelocity()
-    //{
-    //    if (bisChase)
-    //    {
-    //        brigid.velocity = Vector3.zero;
-    //        brigid.angularVelocity = Vector3.zero;
-    //    }
-    //}
+    void bFreezeVelocity()
+    {
+        if (bisChase)
+        {
+            brigid.velocity = Vector3.zero;
+            brigid.angularVelocity = Vector3.zero;
+        }
+    }
 
     void bTargerting()
     {
@@ -312,7 +312,6 @@ public class EnemyBoss : MonoBehaviour
             bisChase = true;
         }
     }
-
     
 
     // 받는 피해 관리하는 함수
@@ -330,6 +329,10 @@ public class EnemyBoss : MonoBehaviour
         float damageToApply = bullet.isExplosion ? bullet.boomShotDamage : totalDamage;
         bcurHealth -= damageToApply; // Apply damage
 
+        if (bcurHealth < 0)
+        {
+            bcurHealth = 0;
+        }
         // 체력바 업데이트
         healthBarSlider.value = bcurHealth;
 

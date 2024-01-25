@@ -366,14 +366,28 @@ public class Weapon : MonoBehaviour
             {
                 curAmmo--; // 탄약 소모
 
+                // 가장 가까운 적을 타겟으로 설정합니다.
+                Transform closestEnemy = FindClosestEnemy(sideShotPos);
+
                 // 사이드샷 총알 프리팹을 사용하여 인스턴스를 생성합니다.
                 GameObject instantBullet = sideBulletPool.Get();
                 instantBullet.transform.position = sideShotPos.position + sideShotPos.forward * 0.5f;
 
+                // 타겟 방향으로 초기 방향을 설정합니다.
+                Vector3 targetDirection;
+                if (closestEnemy != null)
+                {
+                    targetDirection = (closestEnemy.position - sideShotPos.position).normalized;
+                }
+                else
+                {
+                    targetDirection = sideShotPos.forward; // 타겟이 없다면 기본 앞 방향을 사용합니다.
+                }
+
                 // 사이드샷 총알의 발사 각도를 계산하고 적용합니다.
                 float angle = (bulletsToFire > 1) ? (-spreadAngle / 2) + (spreadAngle / (bulletsToFire - 1)) * i : 0f;
                 Quaternion sideShotRotation = Quaternion.Euler(0, sideShotPos.eulerAngles.y + angle, 0);
-                instantBullet.transform.rotation = sideShotRotation;
+                instantBullet.transform.rotation = Quaternion.LookRotation(targetDirection) * sideShotRotation;
 
                 // 총알 스크립트 설정
                 Bullet bulletScript = instantBullet.GetComponent<Bullet>();
@@ -387,7 +401,7 @@ public class Weapon : MonoBehaviour
                 // 총알의 Rigidbody 설정
                 Rigidbody bulletRigid = instantBullet.GetComponent<Rigidbody>();
                 // 총알에 초기 속도를 부여합니다. 추적 로직은 Bullet 스크립트 내에서 처리됩니다.
-                bulletRigid.velocity = sideShotPos.forward * bulletSpeed;
+                bulletRigid.velocity = targetDirection * bulletSpeed;
 
                 // 총알 충돌을 비활성화하고 지연 후 다시 활성화하는 코루틴 호출
                 StartCoroutine(EnableColliderAfterDelay(instantBullet.GetComponent<Collider>()));

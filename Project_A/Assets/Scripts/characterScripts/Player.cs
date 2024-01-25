@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
     bool isReload; // 재장전 상태 여부
     bool isFireReady = true; // 공격 가능 여부
     bool isBorder; // 벽과 충돌 여부
-    bool isDamage; // 데미지를 받은 상태 여부
+    public bool isDamage; // 데미지를 받은 상태 여부
     public bool isDead = false;
 
     Vector3 moveVec; // 이동 벡터
@@ -701,7 +701,7 @@ public class Player : MonoBehaviour
     }
 
     // 죽음 처리 메서드
-    void Die()
+    public void Die()
     {
         // 사망 상태를 true로 설정합니다.
         isDead = true;
@@ -729,7 +729,7 @@ public class Player : MonoBehaviour
         
     }
     // 데미지 표시 코루틴
-    IEnumerator OnDamage()
+    public IEnumerator OnDamage()
     {
         // 피격 상태를 활성화하고 메쉬들의 색상을 파란색으로 변경
         isDamage = true; // 피격 상태 활성화
