@@ -27,7 +27,7 @@ public class EnemyBoss : MonoBehaviour
     public float knockbackDuration = 0.5f; // 넉백 지속 시간
 
     public Vector3 homePosition; // 몬스터의 초기 위치
-    public float chaseRange = 15f;
+    public float chaseRange = 20f;
     public bool bisReturn;
 
     //==============================================================
