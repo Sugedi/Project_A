@@ -26,16 +26,28 @@ public class TreasureBox : MonoBehaviour
         treasure_1 = GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1ItemBox1;
         treasure_2 = GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1ItemBox2;
 
-        //if(treasure_1 == false)
-        //{
-        //    GameObject.Find("chest1_opened").SetActive(false);
-        //    GameObject.Find("chest1_closed").SetActive(true);
-        //}
-        //else if(treasure_1 == true)
-        //{
-        //    GameObject.Find("chest1_opened").SetActive(true);
-        //    GameObject.Find("chest1_closed").SetActive(false);
-        //}
+        if (treasure_1 == false)
+        {
+            GameObject.Find("TreasureBox1").SetActive(true);
+            GameObject.Find("TreasureBox1After").transform.Find("TreasureBox1_After").gameObject.SetActive(false);
+        }
+        else if (treasure_1 == true)
+        {
+            GameObject.Find("TreasureBox1").SetActive(false);
+            GameObject.Find("TreasureBox1After").transform.Find("TreasureBox1_After").gameObject.SetActive(true);
+        }
+
+        if (treasure_2 == false)
+        {
+            GameObject.Find("TreasureBox2").SetActive(true);
+            GameObject.Find("TreasureBox2After").transform.Find("TreasureBox2_After").gameObject.SetActive(false);
+        }
+        else if (treasure_2 == true)
+        {
+            GameObject.Find("TreasureBox2").SetActive(false);
+            GameObject.Find("TreasureBox2After").transform.Find("TreasureBox2_After").gameObject.SetActive(true);
+        }
+
     }
 
     public void TreasureFind()
@@ -45,6 +57,8 @@ public class TreasureBox : MonoBehaviour
             if (treasure_1 == false)
             {
                 CanvasGroupOff(joy);
+                GameObject.Find("TreasureBox1").SetActive(false);
+                GameObject.Find("TreasureBox1After").transform.Find("TreasureBox1_After").gameObject.SetActive(true);
                 Time.timeScale = 0;
                 tresaureMSG.text = "¹÷¼¦ ½ºÅ³À» È¹µæÇÏ¿´½À´Ï´Ù!";
                 CanvasGroupOn(treasureBox);
@@ -64,6 +78,8 @@ public class TreasureBox : MonoBehaviour
             if (treasure_2 == false)
             {
                 CanvasGroupOff(joy);
+                GameObject.Find("TreasureBox2").SetActive(false);
+                GameObject.Find("TreasureBox2After").transform.Find("TreasureBox2_After").gameObject.SetActive(true);
                 Time.timeScale = 0;
                 tresaureMSG.text = "°üÅë¼¦ ½ºÅ³À» È¹µæÇÏ¿´½À´Ï´Ù!";
                 CanvasGroupOn(treasureBox);

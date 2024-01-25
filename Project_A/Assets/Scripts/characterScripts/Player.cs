@@ -170,11 +170,11 @@ public class Player : MonoBehaviour
 
             if (collider.CompareTag("Treasure"))
             {
-                if (collider.gameObject.name == "Treasure Box_1")
+                if (collider.gameObject.name == "TreasureBox1")
                 {
                     collider.gameObject.GetComponent<TreasureBox>().TreasureFind();
                 }
-                if (collider.gameObject.name == "Treasure Box_2")
+                if (collider.gameObject.name == "TreasureBox2")
                 {
                     collider.gameObject.GetComponent<TreasureBox>().TreasureFind();
                 }
