@@ -348,6 +348,7 @@ public class Enemy : MonoBehaviour
             isChase = true;
             nav.enabled = true;
         }
+
         // 현재 체력이 0 이하인 경우
         else
         {

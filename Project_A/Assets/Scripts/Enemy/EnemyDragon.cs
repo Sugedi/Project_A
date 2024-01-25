@@ -405,6 +405,10 @@ public class EnemyDragon : MonoBehaviour
             {
                 healthBarUI.SetActive(true);
             }
+            else if (other.tag == "Bullet") // "Bullet"은 플레이어의 총알에 붙인 태그를 입력해주세요.
+            {
+                TakeDamage(other.GetComponent<Bullet>(), other.transform.position);
+            }
         }        
     }
 
