@@ -68,34 +68,58 @@ public class ObjectInteraction : MonoBehaviour
 
             dialoguePanel1.SetActive(false); // 질서의 신 첫 번째 대사창을 비활성화 상태로 설정
         }
+
         if (mainQuest == 1)
         {
             questIcon.SetActive(true); // 퀘스트 아이콘 버튼을 비활성화 상태로 설정
 
-            dialoguePanel1.SetActive(false);
-            dialoguePanel2.SetActive(false);
+            mainQuestPanel1.SetActive(true);
+            mainQuestPanel2.SetActive(false);
+            mainQuestPanel3.SetActive(false);
+        }
+        if (mainQuest == 2)
+        {
+            mainQuestPanel2.SetActive(true);
+            mainQuestPanel1.SetActive(false);
+            mainQuestPanel3.SetActive(false);
+
+        }
+        if (mainQuest == 3)
+        {
+            mainQuestPanel3.SetActive(true);
+            mainQuestPanel1.SetActive(false);
+            mainQuestPanel2.SetActive(false);
         }
 
         questBtn.onClick.AddListener(ShowMainQuestPanel); // questBtn에 클릭 이벤트 리스너 추가
 
     }
 
+
     // questIcon 버튼을 클릭했을 때 호출될 메서드
     public void ShowMainQuestPanel()
     {
+        mainQuest = GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1MainQuest;
         if (mainQuest == 1)
         {
             mainQuestPanel1.SetActive(true); // MainQuest Panel (1) 활성화
+            mainQuestPanel2.SetActive(false);
+            mainQuestPanel3.SetActive(false);
         }
         if (mainQuest == 2)
         {
             mainQuestPanel2.SetActive(true);
+            mainQuestPanel1.SetActive(false);
+            mainQuestPanel3.SetActive(false);
+
         }
-        if(mainQuest == 3) 
+        if (mainQuest == 3)
         {
             mainQuestPanel3.SetActive(true);
+            mainQuestPanel1.SetActive(false);
+            mainQuestPanel2.SetActive(false);
         }
-        
+
     }
 
 
