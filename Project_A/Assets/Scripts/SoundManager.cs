@@ -17,11 +17,13 @@ public class SoundManager : MonoBehaviour
 
     [Header("#SFX")]
     // 효과음과 관련된 클립, 볼륨, 오디오소스 변수 선언
-    public AudioClip[] sfxClip;
+    public AudioClip[] sfxClips;
     public float sfxVolume;
     public int channels; // 다량의 효과음을 낼 수 있도록 채널 개수 변수 선언
     AudioSource[] sfxPlayers;
     int channelIndex; // 지금 현재 재생하고 있는 채널의 인덱스가 몇 번째인지?
+
+    public enum Sfx { BoxOpen_1, Button2, Button1, Door1, Door2, PlayerFootStep, PlayerRoll_1, PlayerRoll_2, Reload_1, Reload_2, Reloda_3, Shoot_1, Shoot_2}
 
     private void Awake()
     {
@@ -54,7 +56,19 @@ public class SoundManager : MonoBehaviour
             sfxPlayers[index].playOnAwake = false;
             sfxPlayers[index].volume = sfxVolume;
         }
+    }
 
+    public void PlaySfx(Sfx sfx)
+    {
+        for (int index = 0; index < sfxPlayers.Length; index++)
+        {
+            int loopIndex = (index + channelIndex) % sfxPlayers.Length;
+
+            if (sfxPlayers[loopIndex].isPlaying)
+                continue;
+        }
+        sfxPlayers[0].clip = sfxClips[(int)sfx];
+        sfxPlayers[0].Play();
     }
 
     //private void Awake()
