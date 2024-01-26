@@ -57,7 +57,7 @@ public class Datas
     public bool stage1BossClear = false;
 
     // 튜토리얼 완료 여부
-    public bool stage1Tutorial = false;
+    public int stage1Tutorial = 0;
 
     // 세이브 위치
     public Vector3 savePos = new Vector3(0, 0, 0); // 스위치에서 이 변수를 불러와 바꾼다.
