@@ -239,30 +239,30 @@ public class Player : MonoBehaviour
 
             // 모바일 조작
 
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.01f);
-            foreach (Collider collider in hitColliders)
-            {
+            //Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.01f);
+            //foreach (Collider collider in hitColliders)
+            //{
 
-                // 승호 - skill NPC 상호작용
-                if (collider.CompareTag("NPC") || collider.CompareTag("Door") || collider.CompareTag("Switch") || collider.CompareTag("Treasure") || collider.CompareTag("Mirror") || collider.CompareTag("PyramidEnter") || collider.CompareTag("PyramidExit"))
-                {
-                    // 여기 부분에 공격 버튼 이미지 -> 상호작용 버튼 이미지로 바꾸는 거 넣으면 됨.
+            //    // 승호 - skill NPC 상호작용
+            //    if (collider.CompareTag("NPC") || collider.CompareTag("Door") || collider.CompareTag("Switch") || collider.CompareTag("Treasure") || collider.CompareTag("Mirror") || collider.CompareTag("PyramidEnter") || collider.CompareTag("PyramidExit"))
+            //    {
+            //        // 여기 부분에 공격 버튼 이미지 -> 상호작용 버튼 이미지로 바꾸는 거 넣으면 됨.
 
-                    if (fDown == true)
-                    {
-                        SpaceFunction();
-                    }
-                    fDown = false;
-                }
+            //        if (fDown == true)
+            //        {
+            //            SpaceFunction();
+            //        }
+            //        fDown = false;
+            //    }
 
-            }
+            //}
 
             // PC 조작
 
-            //if (Input.GetKeyDown(KeyCode.Space))
-            //{
-            //    SpaceFunction();
-            //}
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                SpaceFunction();
+            }
 
             Attack();
         }
@@ -275,20 +275,20 @@ public class Player : MonoBehaviour
     {
         // PC 조작 (유니티 테스트용으로 사용)
 
-        //hAxis = Input.GetAxisRaw("Horizontal"); // 가로 축 입력값 받기
-        //vAxis = Input.GetAxisRaw("Vertical"); // 세로 축 입력값 받기
-        //wDown = Input.GetButton("Walk"); // 걷기 입력 여부 받기
-        //jDown = Input.GetButtonDown("Jump"); // 점프 입력 여부 받기
-        //fDown = Input.GetButton("Fire1"); // 공격 입력 여부 받기
-        //rDown = Input.GetButtonDown("Reload"); // 재장전 입력 여부 받기
+        hAxis = Input.GetAxisRaw("Horizontal"); // 가로 축 입력값 받기
+        vAxis = Input.GetAxisRaw("Vertical"); // 세로 축 입력값 받기
+        wDown = Input.GetButton("Walk"); // 걷기 입력 여부 받기
+        jDown = Input.GetButtonDown("Jump"); // 점프 입력 여부 받기
+        fDown = Input.GetButton("Fire1"); // 공격 입력 여부 받기
+        rDown = Input.GetButtonDown("Reload"); // 재장전 입력 여부 받기
 
         // 모바일 조작
 
         // 사용법: 1. 바로 위 PC 조작 부분 주석 처리 & 모바일 조작부분 주석 제거
         //         2. 스테이지 씬(현재는 여기만 넣었음)에서 Joystick 오브젝트를 활성화하면 됨.
 
-        hAxis = joystick.Horizontal;
-        vAxis = joystick.Vertical;
+        //hAxis = joystick.Horizontal;
+        //vAxis = joystick.Vertical;
 
     }
 
@@ -383,20 +383,20 @@ public class Player : MonoBehaviour
     void Turn()
     {
         // #1. 키보드에 의한 회전
-        transform.LookAt(transform.position + moveVec); // 이동 방향으로 플레이어 회전
+        //transform.LookAt(transform.position + moveVec); // 이동 방향으로 플레이어 회전
 
         // #2. 마우스에 의한 회전
-        //if (fDown)
-        //{
-        //    Ray ray = followCamera.ScreenPointToRay(Input.mousePosition);
-        //    RaycastHit rayHit;
-        //    if (Physics.Raycast(ray, out rayHit, 100))
-        //    {
-        //        Vector3 nextVec = rayHit.point - transform.position;
-        //        nextVec.y = 0;
-        //        transform.LookAt(transform.position + nextVec); // 마우스 위치로 플레이어 회전
-        //    }
-        //}
+        if (fDown)
+        {
+            Ray ray = followCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit rayHit;
+            if (Physics.Raycast(ray, out rayHit, 100))
+            {
+                Vector3 nextVec = rayHit.point - transform.position;
+                nextVec.y = 0;
+                transform.LookAt(transform.position + nextVec); // 마우스 위치로 플레이어 회전
+            }
+        }
     }
 
     // 플레이어 공격 처리
