@@ -205,28 +205,28 @@ public class EnemyDragon : MonoBehaviour
         yield return new WaitForSeconds(attackDuration);
 
         if (curHealth > 0 && !isAttackHit)
-        {           
-
-            // 부채꼴 형태로 총알 15개 발사
-            for (int i = 0; i < 15; i++)
+        {
+            // 부채꼴 형태로 총알 10개 발사
+            for (int i = 0; i < 19; i++)
             {
                 // 총알 발사 각도를 계산합니다.
-                Quaternion bulletRotation = Quaternion.Euler(0, -20 + (i * 20), 0) * transform.rotation;
+                Quaternion bulletRotation = Quaternion.Euler(0, -90 + (i * 10), 0) * transform.rotation;
                 GameObject instantBullet = Instantiate(bullet, transform.position, bulletRotation);
 
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
-                rigidBullet.velocity = instantBullet.transform.forward * 15;
+                rigidBullet.velocity = instantBullet.transform.forward * 20;
             }
 
             isAttackHit = true; // 공격이 성공적으로 적중했다고 표시
             StartCoroutine(ResetAttackHit()); // 공격 적중 상태 초기화 코루틴 실행
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(2f);
         }
 
         // 공격 상태 종료
         isChase = true;
         isAttack = false;
         anim.SetBool("isAttack", false);
+
 
         // 추격 중지 및 공격 상태로 전환
         isChase = false;
@@ -238,29 +238,59 @@ public class EnemyDragon : MonoBehaviour
 
         if (curHealth > 0 && !isAttackHit)
         {
-            // 부채꼴 형태로 총알 25개 발사
-            for (int i = 0; i < 25; i++)
+            // 부채꼴 형태로 총알 10개 발사
+            for (int i = 0; i < 19; i++)
             {
                 // 총알 발사 각도를 계산합니다.
-                Quaternion bulletRotation = Quaternion.Euler(0, -20 + (i * 10), 0) * transform.rotation;
+                Quaternion bulletRotation = Quaternion.Euler(0, -270 + (i * 10), 0) * transform.rotation;
                 GameObject instantBullet = Instantiate(bullet, transform.position, bulletRotation);
 
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
-                rigidBullet.velocity = instantBullet.transform.forward * 15;
-
-                // 다음 총알 발사 전에 잠시 대기
-                // yield return new WaitForSeconds(0.3f); // 이 값을 조절하여 총알 발사 간격을 변경할 수 있습니다.
+                rigidBullet.velocity = instantBullet.transform.forward * 20;
             }
 
             isAttackHit = true; // 공격이 성공적으로 적중했다고 표시
             StartCoroutine(ResetAttackHit()); // 공격 적중 상태 초기화 코루틴 실행
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(2f);
         }
 
         // 공격 상태 종료
         isChase = true;
         isAttack = false;
         anim.SetBool("isAttack2", false);
+
+
+        // 추격 중지 및 공격 상태로 전환
+        isChase = false;
+        isAttack = true;
+        anim.SetBool("isAttack2", true);
+
+        // 일정 시간 동안 대기
+        yield return new WaitForSeconds(attackDuration);
+
+        if (curHealth > 0 && !isAttackHit)
+        {
+            // 부채꼴 형태로 총알 10개 발사
+            for (int i = 0; i < 19; i++)
+            {
+                // 총알 발사 각도를 계산합니다.
+                Quaternion bulletRotation = Quaternion.Euler(0, -360 + (i * 10), 0) * transform.rotation;
+                GameObject instantBullet = Instantiate(bullet, transform.position, bulletRotation);
+
+                Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
+                rigidBullet.velocity = instantBullet.transform.forward * 20;
+            }
+
+            isAttackHit = true; // 공격이 성공적으로 적중했다고 표시
+            StartCoroutine(ResetAttackHit()); // 공격 적중 상태 초기화 코루틴 실행
+            yield return new WaitForSeconds(2f);
+        }
+
+        // 공격 상태 종료
+        isChase = true;
+        isAttack = false;
+        anim.SetBool("isAttack2", false);
+
 
         // 추격 중지 및 공격 상태로 전환
         isChase = false;
@@ -272,32 +302,27 @@ public class EnemyDragon : MonoBehaviour
 
         if (curHealth > 0 && !isAttackHit)
         {
-            // 총알 60개를 발사하기 전에 카메라를 흔듭니다.
-            StartCoroutine(ShakeCamera(0.5f, 0.5f));
-
-            // 부채꼴 형태로 총알 50개 발사
-            for (int i = 0; i < 50; i++)
+            // 부채꼴 형태로 총알 10개 발사
+            for (int i = 0; i < 19; i++)
             {
                 // 총알 발사 각도를 계산합니다.
-                Quaternion bulletRotation = Quaternion.Euler(0, -30 + (i * 20), 0) * transform.rotation;
+                Quaternion bulletRotation = Quaternion.Euler(0, -180 + (i * 10), 0) * transform.rotation;
                 GameObject instantBullet = Instantiate(bullet, transform.position, bulletRotation);
 
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
-                rigidBullet.velocity = instantBullet.transform.forward * 15;
-
-                // 다음 총알 발사 전에 잠시 대기
-                yield return new WaitForSeconds(0.15f); // 이 값을 조절하여 총알 발사 간격을 변경할 수 있습니다.
+                rigidBullet.velocity = instantBullet.transform.forward * 20;
             }
 
             isAttackHit = true; // 공격이 성공적으로 적중했다고 표시
             StartCoroutine(ResetAttackHit()); // 공격 적중 상태 초기화 코루틴 실행
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(3f);
         }
 
         // 공격 상태 종료
         isChase = true;
         isAttack = false;
         anim.SetBool("isAttack3", false);
+
 
         // 추격 중지 및 공격 상태로 전환
         isChase = false;
@@ -309,26 +334,166 @@ public class EnemyDragon : MonoBehaviour
 
         if (curHealth > 0 && !isAttackHit)
         {
-            // 부채꼴 형태로 총알 100개 발사
-            for (int i = 0; i < 100; i++)
+            // 총알 60개를 발사하기 전에 카메라를 흔듭니다.
+            StartCoroutine(ShakeCamera(0.5f, 0.5f));
+
+            // 부채꼴 형태로 총알 60개 발사
+            for (int i = 0; i < 90; i++)
             {
                 // 총알 발사 각도를 계산합니다.
-                Quaternion bulletRotation = Quaternion.Euler(0, -20 + (i * 20), 0) * transform.rotation;
+                Quaternion bulletRotation = Quaternion.Euler(0, -30 + (i * 10), 0) * transform.rotation;
                 GameObject instantBullet = Instantiate(bullet, transform.position, bulletRotation);
 
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
-                rigidBullet.velocity = instantBullet.transform.forward * 15;
+                rigidBullet.velocity = instantBullet.transform.forward * 20;
+
+                // 다음 총알 발사 전에 잠시 대기
+                yield return new WaitForSeconds(0.15f); // 이 값을 조절하여 총알 발사 간격을 변경할 수 있습니다.
             }
 
             isAttackHit = true; // 공격이 성공적으로 적중했다고 표시
             StartCoroutine(ResetAttackHit()); // 공격 적중 상태 초기화 코루틴 실행
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1f);
         }
 
         // 공격 상태 종료
         isChase = true;
         isAttack = false;
         anim.SetBool("isAttack4", false);
+
+
+        // 추격 중지 및 공격 상태로 전환
+        isChase = false;
+        isAttack = true;
+        anim.SetBool("isAttack4", true);
+
+        // 일정 시간 동안 대기
+        yield return new WaitForSeconds(attackDuration);
+
+        if (curHealth > 0 && !isAttackHit)
+        {
+            // 총알 60개를 발사하기 전에 카메라를 흔듭니다.
+            StartCoroutine(ShakeCamera(0.5f, 0.5f));
+
+            // 부채꼴 형태로 총알 60개 발사
+            for (int i = 0; i < 90; i++)
+            {
+                // 총알 발사 각도를 계산합니다.
+                Quaternion bulletRotation = Quaternion.Euler(0, 30 - (i * 10), 0) * transform.rotation;
+                GameObject instantBullet = Instantiate(bullet, transform.position, bulletRotation);
+
+                Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
+                rigidBullet.velocity = instantBullet.transform.forward * 20;
+
+                // 다음 총알 발사 전에 잠시 대기
+                yield return new WaitForSeconds(0.15f); // 이 값을 조절하여 총알 발사 간격을 변경할 수 있습니다.
+            }
+
+            isAttackHit = true; // 공격이 성공적으로 적중했다고 표시
+            StartCoroutine(ResetAttackHit()); // 공격 적중 상태 초기화 코루틴 실행
+            yield return new WaitForSeconds(3f);
+        }
+
+        // 공격 상태 종료
+        isChase = true;
+        isAttack = false;
+        anim.SetBool("isAttack4", false);
+
+
+        // 추격 중지 및 공격 상태로 전환
+        isChase = false;
+        isAttack = true;
+        anim.SetBool("isAttack5", true);
+
+        // 일정 시간 동안 대기
+        yield return new WaitForSeconds(attackDuration);
+
+        if (curHealth > 0 && !isAttackHit)
+        {
+            // 부채꼴 형태로 총알 30개 발사
+            for (int i = 0; i < 30; i++)
+            {
+                // 총알 발사 각도를 계산합니다.
+                Quaternion bulletRotation = Quaternion.Euler(0, -20 + (i * 30), 0) * transform.rotation;
+                GameObject instantBullet = Instantiate(bullet, transform.position, bulletRotation);
+
+                Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
+                rigidBullet.velocity = instantBullet.transform.forward * 20;
+            }
+
+            isAttackHit = true; // 공격이 성공적으로 적중했다고 표시
+            StartCoroutine(ResetAttackHit()); // 공격 적중 상태 초기화 코루틴 실행
+            yield return new WaitForSeconds(1f);
+        }
+
+        // 공격 상태 종료
+        isChase = true;
+        isAttack = false;
+        anim.SetBool("isAttack5", false);
+
+
+        // 추격 중지 및 공격 상태로 전환
+        isChase = false;
+        isAttack = true;
+        anim.SetBool("isAttack5", true);
+
+        // 일정 시간 동안 대기
+        yield return new WaitForSeconds(attackDuration);
+
+        if (curHealth > 0 && !isAttackHit)
+        {
+            // 부채꼴 형태로 총알 30개 발사
+            for (int i = 0; i < 40; i++)
+            {
+                // 총알 발사 각도를 계산합니다.
+                Quaternion bulletRotation = Quaternion.Euler(0, -20 + (i * 20), 0) * transform.rotation;
+                GameObject instantBullet = Instantiate(bullet, transform.position, bulletRotation);
+
+                Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
+                rigidBullet.velocity = instantBullet.transform.forward * 20;
+            }
+
+            isAttackHit = true; // 공격이 성공적으로 적중했다고 표시
+            StartCoroutine(ResetAttackHit()); // 공격 적중 상태 초기화 코루틴 실행
+            yield return new WaitForSeconds(1f);
+        }
+
+        // 공격 상태 종료
+        isChase = true;
+        isAttack = false;
+        anim.SetBool("isAttack5", false);
+
+
+        // 추격 중지 및 공격 상태로 전환
+        isChase = false;
+        isAttack = true;
+        anim.SetBool("isAttack5", true);
+
+        // 일정 시간 동안 대기
+        yield return new WaitForSeconds(attackDuration);
+
+        if (curHealth > 0 && !isAttackHit)
+        {
+            // 부채꼴 형태로 총알 30개 발사
+            for (int i = 0; i < 40; i++)
+            {
+                // 총알 발사 각도를 계산합니다.
+                Quaternion bulletRotation = Quaternion.Euler(0, -20 + (i * 15), 0) * transform.rotation;
+                GameObject instantBullet = Instantiate(bullet, transform.position, bulletRotation);
+
+                Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
+                rigidBullet.velocity = instantBullet.transform.forward * 20;
+            }
+
+            isAttackHit = true; // 공격이 성공적으로 적중했다고 표시
+            StartCoroutine(ResetAttackHit()); // 공격 적중 상태 초기화 코루틴 실행
+            yield return new WaitForSeconds(3f);
+        }
+
+        // 공격 상태 종료
+        isChase = true;
+        isAttack = false;
+        anim.SetBool("isAttack5", false);
     }
 
     IEnumerator ResetAttackHit()
@@ -347,7 +512,6 @@ public class EnemyDragon : MonoBehaviour
     }    
 
     // 받는 피해 관리하는 함수
-
     public void TakeDamage(Bullet bullet, Vector3 hitPoint)
     {
         if (gameObject.layer == LayerMask.NameToLayer("Enemydead"))
@@ -384,11 +548,6 @@ public class EnemyDragon : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-
-    }
-
     void OnTriggerEnter(Collider other)
     {
         // 몬스터가 죽었는지 확인합니다.
@@ -413,19 +572,6 @@ public class EnemyDragon : MonoBehaviour
             }
         }        
     }
-
-    /*
-
-    private void OnTriggerExit(Collider other)
-    {
-       if (other.tag == "Player")
-        {
-            isChase = false;
-            anim.SetBool("isWalk", false);
-        }
-    }
-
-    */
 
     // 피격 시 발생하는 코루틴 함수
     IEnumerator OnDamage(Vector3 reactVec)
@@ -490,7 +636,7 @@ public class EnemyDragon : MonoBehaviour
             }
 
             // 2초 뒤 몹 사망
-            Destroy(gameObject, 10);
+            Destroy(gameObject, 15);
         }
     }
 }
