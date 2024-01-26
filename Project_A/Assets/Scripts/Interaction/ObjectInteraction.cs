@@ -14,32 +14,28 @@ using UnityEngine.UI;
 
 public class ObjectInteraction : MonoBehaviour
 {
-    public GameObject talk1Panel;
-    public GameObject talk2Panel;
-    public GameObject talkCanvas;
+    public GameObject talk1Panel; //
+    public GameObject talk2Panel; //
+    public GameObject talkCanvas; //
 
-    public GameObject stageUI;
-    public GameObject joystickBtn;
-    public GameObject AttackBtn;
-    public GameObject RollBtn;
-    public GameObject ReloadBtn;
+    public GameObject stageUI; //
 
-    public GameObject dialoguePanel1;
-    public GameObject dialoguePanel2;
-    public GameObject dialoguePanel3;
+    public GameObject dialoguePanel1; //
+    public GameObject dialoguePanel2; //
+    public GameObject dialoguePanel3; //
 
     // MainQuest Panels 참조
-    public GameObject mainQuestPanel1;
-    public GameObject mainQuestPanel2;
-    public GameObject mainQuestPanel3;
+    public GameObject mainQuestPanel1; //
+    public GameObject mainQuestPanel2; //
+    public GameObject mainQuestPanel3; //
 
     public GameObject talkNextBtn; // 1-1부터 1-4까지 넘겨주는 버튼
-    public GameObject nextButton1;
-    public GameObject nextButton2;
-    public GameObject nextButton3;
+    public GameObject nextButton1; //
+    public GameObject nextButton2; //
+    public GameObject nextButton3; //
 
     public GameObject questIcon; // 퀘스트 아이콘
-    public Button questBtn;
+    public Button questBtn; //
 
     public bool isPlayerInRange = false; // 플레이어가 상호작용 범위 내에 있는지 여부
 
@@ -48,6 +44,22 @@ public class ObjectInteraction : MonoBehaviour
     public GameObject systemMessagePanel; // 시스템 메시지를 포함하는 패널
     public TextMeshProUGUI systemMessageText; // 'TextMeshProUGUI' 컴포넌트
 
+    public CanvasGroup joy;
+
+    public void CanvasGroupOff(CanvasGroup cg)
+    {
+        cg.alpha = 0;
+        cg.interactable = false;
+        cg.blocksRaycasts = false;
+
+    }
+    public void CanvasGroupOn(CanvasGroup cg)
+    {
+        cg.alpha = 1;
+        cg.interactable = true;
+        cg.blocksRaycasts = true;
+
+    }
 
     private void Start() // 게임 시작 시 호출되는 Start 함수
     {
@@ -59,10 +71,7 @@ public class ObjectInteraction : MonoBehaviour
             questIcon.SetActive(false); // 퀘스트 아이콘 버튼을 비활성화 상태로 설정
 
             talk1Panel.SetActive(true); // 처음에 주인공 독백 대사 2개 나오는 거! 대사 나올 때는 컨트롤러 다 비활성화 (아래 5개)
-            joystickBtn.SetActive(false);
-            AttackBtn.SetActive(false);
-            RollBtn.SetActive(false);
-            ReloadBtn.SetActive(false);
+            CanvasGroupOff(joy);
 
             dialoguePanel1.SetActive(false); // 질서의 신 첫 번째 대사창을 비활성화 상태로 설정
         }
@@ -100,7 +109,7 @@ public class ObjectInteraction : MonoBehaviour
         mainQuest = GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1MainQuest;
         if (mainQuest == 1)
         {
-            mainQuestPanel1.SetActive(true); // MainQuest Panel (1) 활성화
+            mainQuestPanel1.SetActive(true); 
             mainQuestPanel2.SetActive(false);
             mainQuestPanel3.SetActive(false);
         }
@@ -122,66 +131,19 @@ public class ObjectInteraction : MonoBehaviour
 
     // @@@@@ ~#~#~#~#~#~#~#~# 맞는 것 다 확인 함 but 수정 가능성 있음 #~#~#~#~#~#~#~#~ @@@@@
 
-    void OnTriggerEnter(Collider other) // 오브젝트가 트리거에 진입할 때 호출되는 함수
+    public void MirrorInteraction() 
     {
-        if (other.CompareTag("Player")) // 트리거에 진입한 오브젝트의 태그가 Player인 경우
-        {
-            isPlayerInRange = true; // 플레이어가 상호작용 범위 내에 있음을 표시
-
-            if (mainQuest == 0)
-            {
-                talkCanvas.SetActive(false);
-                //AttackBtn.SetActive(true);
-                //dialoguePanel1.SetActive(false); // 질서의 신 첫 번째 대사창을 비활성화 상태로 설정 ########
-            }
-
-            if (mainQuest == 1)
-            {
-                dialoguePanel2.SetActive(false);
-                //questIcon.SetActive(false); // questIcon을 비활성화
-            }
-
-            if (mainQuest == 2)
-            {
-                dialoguePanel3.SetActive(false);
-                //questIcon.SetActive(false); // questIcon을 비활성화
-            }
-
-        }
-    }
-
-    // @@@@@ ~#~#~#~#~#~#~#~# 맞는 것 다 확인 함 #~#~#~#~#~#~#~#~ @@@@@
-    public void OnAttackBtnClick() // 대화 시작버튼이 이제 공격버튼으로 바꼈삼미다!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    {
-        Debug.Log("Attack Button Clicked"); // 로그를 추가하여 이 메서드가 호출되는지 확인합니다
         if (mainQuest == 0)
         {
             dialoguePanel1.SetActive(true);
-            joystickBtn.SetActive(false);
-            AttackBtn.SetActive(false);
-            RollBtn.SetActive(false);
-            ReloadBtn.SetActive(false);
-
         }
         if (mainQuest == 1)
         {
             dialoguePanel2.SetActive(true);
-            joystickBtn.SetActive(false);
-            AttackBtn.SetActive(false);
-            RollBtn.SetActive(false);
-            ReloadBtn.SetActive(false);
-
-
         }
         if (mainQuest == 2)
         {
             dialoguePanel3.SetActive(true);
-            joystickBtn.SetActive(false);
-            AttackBtn.SetActive(false);
-            RollBtn.SetActive(false);
-            ReloadBtn.SetActive(false);
-
-
         }
     }
 
@@ -193,11 +155,7 @@ public class ObjectInteraction : MonoBehaviour
         questIcon.SetActive(true); // 퀘스트 아이콘 버튼을 활성화
         mainQuestPanel1.SetActive(true); // 첫 번째 메인 퀘스트 패널을 활성화 상태로 설정
 
-        joystickBtn.SetActive(true);
-        AttackBtn.SetActive(true);
-        RollBtn.SetActive(true);
-        ReloadBtn.SetActive(true);
-
+        CanvasGroupOn(joy);
 
         // 여기에 실제로 전달하고 싶은 메시지를 입력하세요.
         string message = "대본집이 활성화 되었습니다.";
@@ -208,12 +166,12 @@ public class ObjectInteraction : MonoBehaviour
         DataManager.instance.DataSave();
         Debug.Log("mainQuest: " + mainQuest); // 로그 추가
 
-        // mainQuest가 1일 때, MainQuest Panel (1)을 활성화 상태로 유지
-        if (mainQuest == 1)
-        {
-            mainQuestPanel1.SetActive(true);
-            // 다른 UI 요소의 상태를 여기서 제어할 수 있습니다.
-        }
+        //// mainQuest가 1일 때, MainQuest Panel (1)을 활성화 상태로 유지
+        //if (mainQuest == 1)
+        //{
+        //    mainQuestPanel1.SetActive(true);
+        //    // 다른 UI 요소의 상태를 여기서 제어할 수 있습니다.
+        //}
 
     }
 
@@ -222,18 +180,15 @@ public class ObjectInteraction : MonoBehaviour
         dialoguePanel2.SetActive(false);
         questIcon.SetActive(true);
 
-        joystickBtn.SetActive(true);
-        AttackBtn.SetActive(true);
-        RollBtn.SetActive(true);
-        ReloadBtn.SetActive(true);
+        CanvasGroupOn(joy);
 
 
-        // mainQuest가 2일 때, MainQuest Panel (2)을 활성화 상태로 유지
-        if (mainQuest == 2)
-        {
-            mainQuestPanel2.SetActive(true);
-            // 다른 UI 요소의 상태를 여기서 제어할 수 있습니다.
-        }
+        //// mainQuest가 2일 때, MainQuest Panel (2)을 활성화 상태로 유지
+        //if (mainQuest == 2)
+        //{
+        //    mainQuestPanel2.SetActive(true);
+        //    // 다른 UI 요소의 상태를 여기서 제어할 수 있습니다.
+        //}
 
     }
 
@@ -250,52 +205,27 @@ public class ObjectInteraction : MonoBehaviour
         mainQuestPanel2.SetActive(false);
         mainQuestPanel3.SetActive(true);
 
-        joystickBtn.SetActive(true);
-        AttackBtn.SetActive(true);
-        RollBtn.SetActive(true);
-        ReloadBtn.SetActive(true);
+        CanvasGroupOn(joy);
 
 
         // 여기에 실제로 전달하고 싶은 메시지를 입력하세요.
         string message = "대본집을 완성하였습니다.";
         ActivateSystemMessagePanel(message);
 
-        // mainQuest가 3일 때, MainQuest Panel (3)을 활성화 상태로 유지
-        if (mainQuest == 3)
-        {
-            mainQuestPanel3.SetActive(true);
-            // 다른 UI 요소의 상태를 여기서 제어할 수 있습니다.
-        }
+        //// mainQuest가 3일 때, MainQuest Panel (3)을 활성화 상태로 유지
+        //if (mainQuest == 3)
+        //{
+        //    mainQuestPanel3.SetActive(true);
+        //    // 다른 UI 요소의 상태를 여기서 제어할 수 있습니다.
+        //}
 
     }
 
-
-    void OnTriggerExit(Collider other) // 오브젝트가 트리거를 빠져나갈 때 호출되는 함수
+    public void JoyON()
     {
-        if (other.CompareTag("Player")) // 트리거를 빠져나간 오브젝트의 태그가 Player인 경우
-        {
-            isPlayerInRange = false; // 플레이어가 상호작용 범위 내에 없음을 표시
-            AttackBtn.SetActive(true);
-        }
-
-        //if (mainQuest == 0)
-        //{
-        //    dialoguePanel1.SetActive(false); // 질서의 신 첫 번째 대사창을 비활성화 상태로 설정 ########
-        //}
-
-        //if (mainQuest == 1)
-        //{
-        //    dialoguePanel2.SetActive(false);
-        //}
-
-        //if (mainQuest == 2)
-        //{
-        //    dialoguePanel3.SetActive(false);
-        //}
-
+        CanvasGroupOn(joy);
     }
 
-    // 시스템 메시지 패널을 활성화하고, 지정된 시간 후에 비활성화하는 메서드
     private void ActivateSystemMessagePanel(string message)
     {
         systemMessagePanel.SetActive(true);
