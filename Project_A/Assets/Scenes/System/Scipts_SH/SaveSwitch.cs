@@ -43,19 +43,19 @@ public class SaveSwitch : MonoBehaviour
         {
             DataManager.instance.datas.savePos = checkPoint_1;
             DataManager.instance.datas.saveSceneName = checkScene_1;
-            DataManager.instance.DataSave();
+            //DataManager.instance.DataSave();
         }
         else if (saveNumber == 2)
         {
             DataManager.instance.datas.savePos = checkPoint_2;
             DataManager.instance.datas.saveSceneName = checkScene_1;
-            DataManager.instance.DataSave();
+            //DataManager.instance.DataSave();
         }
         else if (saveNumber == 9)
         {
             DataManager.instance.datas.savePos = checkPoint_9;
             DataManager.instance.datas.saveSceneName = checkScene_1;
-            DataManager.instance.DataSave();
+            //DataManager.instance.DataSave();
         }
         Debug.Log("저장되었습니다.");
         GameObject.Find("Player").GetComponent<Player>().SaveHeal();

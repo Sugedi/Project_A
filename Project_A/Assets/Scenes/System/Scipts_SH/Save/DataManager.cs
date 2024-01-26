@@ -88,7 +88,7 @@ public class DataManager : MonoBehaviour
         DataLoad();
     }
 
-    void Start()
+    public void Start()
     {
         instance = this;
     }
@@ -100,7 +100,7 @@ public class DataManager : MonoBehaviour
         // Datas 클래스에 있는 모든 변수값을 저장 - 더 효율적으로는 Datas의 일부를 저장하면 좋긴한데...
         // 사용자 클래스를 저장하기 위해 저장 세팅 변경
         var settings = new ES3Settings { memberReferenceMode = ES3.ReferenceMode.ByRefAndValue };
-        ES3.Save(KeyName,datas, settings);
+        ES3.Save(KeyName, datas, settings);
         
         // 저장 시, 캐릭터 오브젝트에 해당 정보를 업데이트
         GameObject.Find("Player").GetComponent<Player>().ChangeScene();

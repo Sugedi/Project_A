@@ -3,80 +3,48 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
+
+//갈리오가 죽고 나서 문이 열리고 들어가는 유저는 메인 (우선순위50번) -> 2/3번 블랜드리스트 카메라(우선순위47번) on
+//그런데 갑자기 맘바껴서 돌아오는 유저는 저 트리거에 닿았을때 2/3번 블랜드 리스트카메라 -> 메인카메라
+// 즉 한번 트리거에 닿이면 메인->2/3번 블랜드리스트 카메라 on
+//트리거 한번 닿인 유저는 2/3번 블랜드 리스트카메라 -> 메인카메라
+
+
+//반대로 피라미드 내부에서 나오는 유저는 피라미드 이와 같은 메커니즘로 된 트리거를 피라미드 문 바로 앞에 배치
+//문 바로 앞에 깔려있는 트리거에 닿인 유저는 3/4번 블랜드 카메라 on
+
+
+
 public class CameraSwitchPyramld : MonoBehaviour
 {
-    public CinemachineVirtualCamera virtualCamera;      // 우선 순위 10번인 버추얼 카메라
-    public CinemachineVirtualCamera virtualCameraPyrimid;   // 우선 순위 2번인 블렌딩 카메라
-    public float blendingDuration = 5f; // 블렌딩 카메라 활성화 기간 (초)
+    public CinemachineVirtualCamera mainVirtualCamera;         // 우선 순위가 가장 높은 메인 카메라
+    public CinemachineBlendListCamera blendCamera;             // 우선 순위가 높은 블렌딩 카메라 (2/3번)
+    private bool hasEnteredTrigger = false;                    // 트리거에 진입했는지 여부를 나타내는 플래그
 
-    //private bool hasTriggered = false;   // 트리거가 한 번 발생했는지 여부를 나타내는 플래그
-    private bool isBlending = false;     // 블렌딩 중인지 여부를 나타내는 플래그
 
-    void Start()
-    {
-        // 기본적으로는 우선 순위 10번인 버추얼 카메라를 활성화
-        if (virtualCamera != null)
-        {
-            virtualCamera.enabled = true;
-        }
 
-        // 블렌딩 카메라는 비활성화 상태로 시작
-        if (virtualCameraPyrimid != null)
-        {
-            virtualCameraPyrimid.enabled = false;
-        }
-    }
 
     void OnTriggerEnter(Collider other)
     {
-
-
-        // 특정 오브젝트에 플레이어 태그가 트리거되면 블렌딩 시작
+        // 플레이어가 트리거에 진입했을 때
         if (other.CompareTag("Player"))
         {
-            virtualCamera.enabled = false;
-            virtualCameraPyrimid.enabled = true;
-            //StartCoroutine(SwitchToBlendingCamera());
-            //hasTriggered = true; // 트리거가 발생했음을 표시
+            // 이미 트리거에 진입한 유저라면
+            if (hasEnteredTrigger)
+            {
+                // 블렌딩 카메라를 비활성화하고 메인 카메라를 활성화
+                blendCamera.enabled = false;
+                mainVirtualCamera.enabled = true;
+            }
+            else
+            {
+                // 트리거에 진입한 유저가 아니라면
+                // 블렌딩 카메라를 활성화하고 메인 카메라를 비활성화
+                blendCamera.enabled = true;
+                mainVirtualCamera.enabled = false;
+
+                hasEnteredTrigger = true; // 트리거에 진입한 상태로 플래그 설정
+            }
         }
     }
-    /*
-    IEnumerator SwitchToBlendingCamera()
-    {
-        // 블렌딩 중이 아닐 때만 실행
-        if (!isBlending)
-        {
-            isBlending = true;
-
-            // 우선 순위 10번인 버추얼 카메라 비활성화
-            if (virtualCamera != null)
-            {
-                virtualCamera.enabled = false;
-            }
-
-            // 우선 순위 2번인 블렌딩 카메라 활성화
-            if (clearShotCamera != null)
-            {
-                clearShotCamera.enabled = true;
-               // yield return new WaitForSeconds(blendingDuration);
-            }
-
-            // 우선 순위 2번인 블렌딩 카메라 비활성화
-            if (clearShotCamera != null)
-            {
-                clearShotCamera.enabled = false;
-            }
-
-            // 우선 순위 10번인 버추얼 카메라 활성화
-            if (virtualCamera != null)
-            {
-                virtualCamera.enabled = true;
-            }
-
-            isBlending = false;
-        }
-       // yield break; // 값을 반환하지 않음을 명시적으로 표현
-    }
-    */
 }
-
