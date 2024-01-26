@@ -21,6 +21,7 @@ public class EnemyBoss : MonoBehaviour
     public float battackinterval = 2f; // 원거리공격 간격
     private bool isAttackHit = false; // 일반 공격이 성공적으로 적중했는지 여부
     public float attackHitCooldown = 0.5f; // 다음 일반 공격이 적중할 수 있는 쿨다운 시간
+    public Camera followCamera;
 
     // 넉백 효과 관련 변수
     public float knockbackForce = 95f; // 넉백의 강도
@@ -122,7 +123,7 @@ public class EnemyBoss : MonoBehaviour
     //==============================================================
     IEnumerator ShakeCamera(float duration, float magnitude)
     {
-        Vector3 originalPosition = Camera.main.transform.position;
+        Vector3 originalPosition = followCamera.transform.position;
 
         float elapsedTime = 0.0f;
 
@@ -131,7 +132,7 @@ public class EnemyBoss : MonoBehaviour
             float x = Random.Range(-1f, 1f) * magnitude;
             float y = Random.Range(-1f, 1f) * magnitude;
 
-            Camera.main.transform.position = new Vector3(Camera.main.transform.position.x + x, Camera.main.transform.position.y + y, originalPosition.z);
+            followCamera.transform.position = new Vector3(followCamera.transform.position.x + x, followCamera.transform.position.y + y, originalPosition.z);
 
 
             elapsedTime += Time.deltaTime;
@@ -139,7 +140,7 @@ public class EnemyBoss : MonoBehaviour
             yield return null;
         }
 
-        Camera.main.transform.position = originalPosition;
+        followCamera.transform.position = originalPosition;
     }
 
     void Awake()

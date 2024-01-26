@@ -19,6 +19,7 @@ public class EnemyDragon : MonoBehaviour
     public float attackDuration = 1f; // 공격이 지속되는 시간
     private bool isAttackHit = false; // 일반 공격이 성공적으로 적중했는지 여부
     public float attackHitCooldown = 0.5f; // 다음 일반 공격이 적중할 수 있는 쿨다운 시간
+    public Camera followCamera;
 
     public float sightRange = 10f; // 타겟이 유저 인식
 
@@ -172,7 +173,7 @@ public class EnemyDragon : MonoBehaviour
     }
     IEnumerator ShakeCamera(float duration, float magnitude)
     {
-        Vector3 originalPosition = Camera.main.transform.position;
+        Vector3 originalPosition = followCamera.transform.position;
 
         float elapsedTime = 0.0f;
 
@@ -181,14 +182,15 @@ public class EnemyDragon : MonoBehaviour
             float x = Random.Range(-1f, 1f) * magnitude;
             float y = Random.Range(-1f, 1f) * magnitude;
 
-            Camera.main.transform.position = new Vector3(Camera.main.transform.position.x + x, Camera.main.transform.position.y + y, originalPosition.z);
+            followCamera.transform.position = new Vector3(followCamera.transform.position.x + x, followCamera.transform.position.y + y, originalPosition.z);
+
 
             elapsedTime += Time.deltaTime;
 
             yield return null;
         }
 
-        Camera.main.transform.position = originalPosition;
+        followCamera.transform.position = originalPosition;
     }
 
     // IEnumerator를 사용한 Attack 코루틴 함수
