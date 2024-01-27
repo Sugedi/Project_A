@@ -7,6 +7,7 @@ public enum SaveSwitchNumber
 {
     SaveSwitch_1, // 오아시스 세이브
     SaveSwitch_2,
+    SaveSwitch_Tutor, //튜토리얼 세이브
     SaveSwitch_9,
 }
 public class SaveSwitch : MonoBehaviour
@@ -15,7 +16,9 @@ public class SaveSwitch : MonoBehaviour
 
     public Vector3 checkPoint_1 = new Vector3(-32f, 0.5f, 36f);
     public Vector3 checkPoint_2 = new Vector3(0f, 0.5f, 36f); // 아직 미정
+    public Vector3 checkPoint_Tutor = new Vector3(0f, 0f, 37f);
     public Vector3 checkPoint_9 = new Vector3(0f, 0f, 0f);
+
     public string checkScene_1 = "Stage";
     public int saveNumber = 1;
 
@@ -29,7 +32,11 @@ public class SaveSwitch : MonoBehaviour
         {
             saveNumber = 2;
         }
-        // 테스트할 때 쓰세요. 0,0,0으로 초기화하는 버튼
+        else if (switchNumber == SaveSwitchNumber.SaveSwitch_Tutor)
+        {
+            saveNumber = 3;
+        }
+
         else if (switchNumber == SaveSwitchNumber.SaveSwitch_9)
         {
             saveNumber = 9;
@@ -43,19 +50,26 @@ public class SaveSwitch : MonoBehaviour
         {
             DataManager.instance.datas.savePos = checkPoint_1;
             DataManager.instance.datas.saveSceneName = checkScene_1;
-            //DataManager.instance.DataSave();
+
         }
         else if (saveNumber == 2)
         {
             DataManager.instance.datas.savePos = checkPoint_2;
             DataManager.instance.datas.saveSceneName = checkScene_1;
-            //DataManager.instance.DataSave();
+
         }
+        else if (saveNumber == 3)
+        {
+            DataManager.instance.datas.savePos = checkPoint_Tutor;
+            DataManager.instance.datas.saveSceneName = checkScene_1;
+
+        }
+
         else if (saveNumber == 9)
         {
             DataManager.instance.datas.savePos = checkPoint_9;
             DataManager.instance.datas.saveSceneName = checkScene_1;
-            //DataManager.instance.DataSave();
+
         }
         Debug.Log("저장되었습니다.");
         GameObject.Find("Player").GetComponent<Player>().SaveHeal();

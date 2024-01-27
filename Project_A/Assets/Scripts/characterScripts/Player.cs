@@ -157,14 +157,30 @@ public class Player : MonoBehaviour
 
             if (collider.CompareTag("Switch"))
             {
-                CanvasGroupOff(joy);
-                //GameObject.Find("Switch").GetComponent<SaveSwitch>().SwitchFunc();
-                GameObject.Find("SwitchDoor").GetComponent<SaveSwitch>().SwitchFunc();
-                DataManager.instance.DataSave();
-                Time.timeScale = 0;
-                SaveCanvas.alpha = 1;
-                SaveCanvas.interactable = true;
-                SaveCanvas.blocksRaycasts = true;
+                if(collider.gameObject.name == "SwitchDoor") 
+                {
+                    CanvasGroupOff(joy);
+                    //GameObject.Find("Switch").GetComponent<SaveSwitch>().SwitchFunc();
+                    GameObject.Find("SwitchDoor").GetComponent<SaveSwitch>().SwitchFunc();
+                    DataManager.instance.DataSave();
+                    Time.timeScale = 0;
+                    SaveCanvas.alpha = 1;
+                    SaveCanvas.interactable = true;
+                    SaveCanvas.blocksRaycasts = true;
+                }
+                if(collider.gameObject.name == "SwitchDoor_Tuto") 
+                {
+                    CanvasGroupOff(joy);
+                    //GameObject.Find("Switch").GetComponent<SaveSwitch>().SwitchFunc();
+                    GameObject.Find("SwitchDoor_Tuto").GetComponent<SaveSwitch>().SwitchFunc();
+                    DataManager.instance.DataSave();
+                    Time.timeScale = 0;
+                    SaveCanvas.alpha = 1;
+                    SaveCanvas.interactable = true;
+                    SaveCanvas.blocksRaycasts = true;
+                }
+
+
                 
             }
 
