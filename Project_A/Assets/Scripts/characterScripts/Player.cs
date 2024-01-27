@@ -587,26 +587,37 @@ public class Player : MonoBehaviour
         if (other.tag == "Item")
         {
             Item item = other.GetComponent<Item>();
+            HeartItem heartItem = other.GetComponent<HeartItem>();
             // 아이템 종류에 따라 처리
-            switch (item.type)
+            if (heartItem != null)
             {
-                case Item.Type.Ammo:
-                    // 총알 아이템인 경우, 총알 수량 증가
-                    ammo += item.value;
-
-                    // 총알 수가 최대치를 넘지 않도록 합니다.
-                    if (ammo > maxAmmo)
-                        ammo = maxAmmo;
-                    break;
-
-                case Item.Type.Gem:
-                    gem += item.value;
-                    GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul = gem;
-                    //DataManager.instance.DataSave();
-                    break;
+                // 체력을 회복하고 아이템을 파괴
+                health = Mathf.Min(health + heartItem.healAmount, maxHealth); // 체력은 최대 체력을 넘지 않도록 합니다.
+                Destroy(other.gameObject);
             }
-            // 파괴하는 거
-            Destroy(item.gameObject);
+
+            else if (item != null)
+            {
+                switch (item.type)
+                {
+                    case Item.Type.Ammo:
+                        // 총알 아이템인 경우, 총알 수량 증가
+                        ammo += item.value;
+
+                        // 총알 수가 최대치를 넘지 않도록 합니다.
+                        if (ammo > maxAmmo)
+                            ammo = maxAmmo;
+                        break;
+
+                    case Item.Type.Gem:
+                        gem += item.value;
+                        GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul = gem;
+                        //DataManager.instance.DataSave();
+                        break;
+                }
+                // 파괴하는 거
+                Destroy(item.gameObject);
+            }            
         }
         else if (other.tag == "Weapon")
         {
@@ -667,7 +678,17 @@ public class Player : MonoBehaviour
             {
                 // 적 총알에 맞았을 때 체력 감소 및 총알 파괴
                 EnemyLongAttack enemyLong = other.GetComponent<EnemyLongAttack>();
-                health -= enemyLong.damage;
+                BoomBullet boomBullet = other.GetComponent<BoomBullet>();
+
+                if (enemyLong != null)
+                {
+                    health -= enemyLong.damage;
+                }
+                else if (boomBullet != null)
+                {
+                    health -= boomBullet.damage;
+                }
+
                 if (health < 0)
                 {
                     health = 0;
@@ -680,6 +701,7 @@ public class Player : MonoBehaviour
                 StartCoroutine(OnDamage());
             }
         }
+
     }
     // 넉백과 함께 피해 처리를 위해 피해량(damage) 인자를 추가합니다.
     public void GetKnockedBack(Vector3 direction, float force, int damage)
