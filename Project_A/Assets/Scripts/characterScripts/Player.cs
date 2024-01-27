@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class Player : MonoBehaviour
 {
@@ -63,6 +64,10 @@ public class Player : MonoBehaviour
 
     public CanvasGroup joy;
 
+    // 퀘스트 아이템 획득 여부
+    public int itemValue = 0;
+    public bool hasThreadItem = false;
+    public ObjectInteraction objectInteraction;
 
     // 초기화 시키는 거
     void Awake()
@@ -1047,4 +1052,23 @@ public class Player : MonoBehaviour
             nearObject = null;
     }
 
+    // 아이템 값 증가 메서드
+    //public void IncreaseItemValue()
+    //{
+    //    itemValue++;
+    //    if (itemValue == 1)
+    //    {
+    //        objectInteraction.RefreshItemCounter(itemValue);
+
+    //        // ObjectInteraction의 mainQuest 값을 증가
+    //        if (objectInteraction != null)
+    //        {
+    //            objectInteraction.mainQuest++;
+    //            GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1MainQuest = objectInteraction.mainQuest;
+    //            DataManager.instance.DataSave();
+
+    //            Debug.Log("mainQuest 값: " + objectInteraction.mainQuest);
+    //        }
+    //    }
+    //}
 }

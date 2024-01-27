@@ -303,7 +303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseDamage: 30
   damage: 0
-  lifeTime: 0.1
+  lifeTime: 0.5
   acceleration: 4
   explosionPrefab: {fileID: 4250278563349281309, guid: 9f381d5fdbbc7a1438b02ea137120a02, type: 3}
   hitEffectPrefab: {fileID: 5712349568112478501, guid: 74c230b03cd850b46822a79b3ec048ef, type: 3}

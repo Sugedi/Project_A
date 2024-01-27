@@ -20,7 +20,6 @@ public class EnemyDragon : MonoBehaviour
     private bool isAttackHit = false; // 일반 공격이 성공적으로 적중했는지 여부
     public float attackHitCooldown = 0.5f; // 다음 일반 공격이 적중할 수 있는 쿨다운 시간
     public Camera followCamera;
-
     public float sightRange = 10f; // 타겟이 유저 인식
 
     bool isFirstDefeated = false; // 첫 번째로 보스를 처치했는지를 확인하는 변수
@@ -43,6 +42,7 @@ public class EnemyDragon : MonoBehaviour
     Material mat; // Material 컴포넌트
     NavMeshAgent nav; // NavMeshAgent 컴포넌트
     Animator anim; // Animator 컴포넌트
+    public Player player;
 
     void Awake()
     {
@@ -701,11 +701,7 @@ public class EnemyDragon : MonoBehaviour
             if (curHealth > 0)
             {
                 healthBarUI.SetActive(true);
-            }
-            else if (other.tag == "Bullet")
-            {
-                TakeDamage(other.GetComponent<Bullet>(), other.transform.position);
-            }
+            }           
         }        
     }
 
@@ -772,8 +768,11 @@ public class EnemyDragon : MonoBehaviour
             reactVec = reactVec.normalized;
             reactVec += Vector3.up;
 
-            GameObject _itemThread = Instantiate(ThreaditemPrefab); // Thread 아이템 생성
-            _itemThread.transform.position = ThreaddropPosition.position; // Thread 아이템 위치 설정
+            if (!player.hasThreadItem)
+            {
+                GameObject _itemThread = Instantiate(ThreaditemPrefab); // Thread 아이템 생성
+                _itemThread.transform.position = ThreaddropPosition.position; // Thread 아이템 위치 설정
+            }
 
             // _item이라는 게임 오브젝트 변수 선언 + itemPrefab을 생성해서 _item에 할당
             GameObject _item;

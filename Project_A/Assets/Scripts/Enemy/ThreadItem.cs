@@ -8,12 +8,16 @@ public class ThreadItem : MonoBehaviour
     {
         // 플레이어와 충돌한 경우
         if (other.gameObject.CompareTag("Player"))
-        {
-            Player player = other.GetComponent<Player>();
+        {            
+            Player player = other.GetComponentInParent<Player>();
             if (player != null)
             {
+                player.hasThreadItem = true;
+                //player.IncreaseItemValue();
+                Debug.Log("Player has collected the item.");
                 Destroy(gameObject);
-            }
+            }            
         }
+        
     }
 }
