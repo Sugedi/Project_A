@@ -248,6 +248,9 @@ public class Player : MonoBehaviour
         if (health <= 0 && !isDead)
         {
             Die();
+
+            SoundManager.instance.PlayAudio("Die", "SE");
+
             return; // 사망했으므로 여기서 Update 메서드를 종료합니다.
         }
         if (!isDead) // 사망하지 않았을 때만 입력과 액션을 처리합니다.
@@ -319,14 +322,17 @@ public class Player : MonoBehaviour
     public void TouchAttack()
     {
         fDown = true;
+
     }
     public void TouchReload()
     {
         rDown = true;
+
     }
     public void TouchRoll()
     {
         jDown = true;
+
     }
 
     private void LateUpdate()
@@ -612,6 +618,7 @@ public class Player : MonoBehaviour
         {
             Item item = other.GetComponent<Item>();
             HeartItem heartItem = other.GetComponent<HeartItem>();
+            ThreadItem threadItem = other.GetComponent<ThreadItem>();
             // 아이템 종류에 따라 처리
             if (heartItem != null)
             {
@@ -619,7 +626,10 @@ public class Player : MonoBehaviour
                 health = Mathf.Min(health + heartItem.healAmount, maxHealth); // 체력은 최대 체력을 넘지 않도록 합니다.
                 Destroy(other.gameObject);
             }
-
+            else if (threadItem != null)
+            {
+                Destroy(other.gameObject);
+            }
             else if (item != null)
             {
                 switch (item.type)

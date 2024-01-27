@@ -27,6 +27,8 @@ public class SwitchButton : MonoBehaviour
 
     public void OnClick()
     {
+        SoundManager.instance.PlayAudio("Button1", "SE");
+
         switch (switchUI)
         {
             case SwitchUI.Next1:
