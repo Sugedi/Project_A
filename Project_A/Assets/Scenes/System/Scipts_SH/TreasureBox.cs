@@ -123,12 +123,13 @@ public class TreasureBox : MonoBehaviour
                 GameObject.Find("TreasureBox3").SetActive(false);
                 GameObject.Find("TreasureBox3After").transform.Find("TreasureBox3_After").gameObject.SetActive(true);
                 Time.timeScale = 0;
-                tresaureMSG.text = "¿µÈ¥ Á¶°¢ 30°³¸¦ È¹µæÇÏ¿´½À´Ï´Ù!";
-                CanvasGroupOn(treasureBox);
+                //tresaureMSG.text = "¿µÈ¥ Á¶°¢ 30°³¸¦ È¹µæÇÏ¿´½À´Ï´Ù!";
+                //CanvasGroupOn(treasureBox);
                 GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul += 30;
                 treasure_3 = true;
                 DataManager.instance.datas.stage1ItemBox3 = true;
                 DataManager.instance.DataSave();
+                GameObject.Find("TutorialManager").GetComponent<TutorialManager>().UINext();
             }
 
         }

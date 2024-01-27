@@ -28,6 +28,7 @@ public class TutorialManager : MonoBehaviour
     public CanvasGroup UI_9;
     public CanvasGroup Quest;
     public CanvasGroup Move_0;
+    public CanvasGroup Treasure_0;
 
     public int PanelNum = 0;
 
@@ -45,10 +46,15 @@ public class TutorialManager : MonoBehaviour
         {
             GameObject.Find("MoveGoal").transform.Find("Portal").gameObject.SetActive(true);
         }
+        else if(tutorial == 2)
+        {
+            
+        }
 
         else if (tutorial == 99)
         {
             //실행 안 함.
+            GameObject.Find("TutorWall").transform.Find("TurtorWall_1").gameObject.SetActive(false);
         }
     }
 
@@ -62,6 +68,9 @@ public class TutorialManager : MonoBehaviour
         CanvasGroup NO_6 = GameObject.Find("MoveTutor").transform.Find("Move_0").transform.Find("Image").transform.Find("NO6").GetComponent<CanvasGroup>();
         CanvasGroup NO_7 = GameObject.Find("MoveTutor").transform.Find("Move_0").transform.Find("Image").transform.Find("NO7").GetComponent<CanvasGroup>();
         CanvasGroup NO_8 = GameObject.Find("MoveTutor").transform.Find("Move_0").transform.Find("Image").transform.Find("NO8").GetComponent<CanvasGroup>();
+        CanvasGroup NO_9 = GameObject.Find("TreasureTutor").transform.Find("Treasure_0").transform.Find("Image").transform.Find("NO9").GetComponent<CanvasGroup>();
+        CanvasGroup NO_10 = GameObject.Find("TreasureTutor").transform.Find("Treasure_0").transform.Find("Image").transform.Find("NO10").GetComponent<CanvasGroup>();
+        CanvasGroup NO_11 = GameObject.Find("TreasureTutor").transform.Find("Treasure_0").transform.Find("Image").transform.Find("NO11").GetComponent<CanvasGroup>();
 
         if (PanelNum == 0)
         {
@@ -179,8 +188,41 @@ public class TutorialManager : MonoBehaviour
             CanvasGroupOff(Move_0);
             CanvasGroupOn(joy);
             PanelNum++;
+            tutorial = 2;
+            GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1Tutorial = tutorial;
+            GameObject.Find("DataManager").GetComponent<DataManager>().datas.tutorPanelNum = PanelNum;
+            DataManager.instance.DataSave();
         }
-
+        // 보물 상자 먹었을 때, 즉발 - 이건 버튼 아님
+        else if (PanelNum == 16)
+        {
+            Time.timeScale = 1f;
+            CanvasGroupOff(joy);
+            CanvasGroupOn(Treasure_0);
+            PanelNum++;
+        }        
+        else if (PanelNum == 17)
+        {
+            CanvasGroupOff(NO_9);
+            CanvasGroupOn(NO_10);
+            PanelNum++;
+        }           
+        else if (PanelNum == 18)
+        {
+            CanvasGroupOff(NO_10);
+            CanvasGroupOn(NO_11);
+            PanelNum++;
+        }        
+        else if (PanelNum == 19)
+        {
+            CanvasGroupOff(Treasure_0);
+            CanvasGroupOn(joy);
+            PanelNum++;
+            tutorial = 3;
+            GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1Tutorial = tutorial;
+            GameObject.Find("DataManager").GetComponent<DataManager>().datas.tutorPanelNum = PanelNum;
+            DataManager.instance.DataSave();
+        }
     }
 
     // Update is called once per frame
