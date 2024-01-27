@@ -53,8 +53,7 @@ public class InMonsterLongAttack : MonoBehaviour
     {
         if (curHealth > 0)
         {
-            isChase = true;
-            anim.SetBool("isWalk", true);
+            isChase = true;            
 
             StartCoroutine(ChasePlayer());
         }
@@ -111,8 +110,7 @@ public class InMonsterLongAttack : MonoBehaviour
     void StopChase()
     {
         isChase = false;
-        anim.SetBool("isAttack", false);
-        anim.SetBool("isWalk", false);
+        anim.SetBool("isAttack", false);        
     }
 
     void Return()
@@ -131,19 +129,13 @@ public class InMonsterLongAttack : MonoBehaviour
             nav.Warp(homePosition);
         }
 
-        // isWalk 애니메이션 재생
-        if (!anim.GetBool("isWalk") && !anim.GetCurrentAnimatorStateInfo(0).IsName("isWalk"))
-        {
-            // "isWalk" 애니메이션이 재생 중이 아니라면 재생
-            anim.SetBool("isWalk", true);
-        }
+        
 
         nav.SetDestination(homePosition);
 
         if (Vector3.Distance(transform.position, homePosition) < 2f)
         {
-            isReturn = false;
-            anim.SetBool("isWalk", false);
+            isReturn = false;           
 
             // BoxCollider 활성화
             boxCollider.enabled = true;
@@ -250,8 +242,7 @@ public class InMonsterLongAttack : MonoBehaviour
 
         if (other.tag == "Player")
         {
-            isChase = true;
-            anim.SetBool("isWalk", true);
+            isChase = true;           
         }
         else if (other.tag == "Bullet")
         {
