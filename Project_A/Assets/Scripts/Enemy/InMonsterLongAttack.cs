@@ -30,6 +30,11 @@ public class InMonsterLongAttack : MonoBehaviour
     [SerializeField] Transform dropPosition; // 드랍 아이템을 생성 시킬 위치
     //==============================================================
 
+    //==============================================================
+    public GameObject itemPrefabHeart; // 드랍 아이템 프리펩 등록
+    [SerializeField] Transform dropPositionHeart; // 드랍 아이템을 생성 시킬 위치
+    //==============================================================
+
     Rigidbody rigid; // Rigidbody 컴포넌트
     BoxCollider boxCollider; // BoxCollider 컴포넌트
     Material mat; // Material 컴포넌트
@@ -53,7 +58,8 @@ public class InMonsterLongAttack : MonoBehaviour
     {
         if (curHealth > 0)
         {
-            isChase = true;            
+            isChase = true;
+            anim.SetBool("isWalk", true);
 
             StartCoroutine(ChasePlayer());
         }
@@ -110,7 +116,8 @@ public class InMonsterLongAttack : MonoBehaviour
     void StopChase()
     {
         isChase = false;
-        anim.SetBool("isAttack", false);        
+        anim.SetBool("isAttack", false);
+        anim.SetBool("isWalk", false);
     }
 
     void Return()
@@ -129,13 +136,19 @@ public class InMonsterLongAttack : MonoBehaviour
             nav.Warp(homePosition);
         }
 
-        
+        // isWalk 애니메이션 재생
+        if (!anim.GetBool("isWalk") && !anim.GetCurrentAnimatorStateInfo(0).IsName("isWalk"))
+        {
+            // "isWalk" 애니메이션이 재생 중이 아니라면 재생
+            anim.SetBool("isWalk", true);
+        }
 
         nav.SetDestination(homePosition);
 
         if (Vector3.Distance(transform.position, homePosition) < 2f)
         {
-            isReturn = false;           
+            isReturn = false;
+            anim.SetBool("isWalk", false);
 
             // BoxCollider 활성화
             boxCollider.enabled = true;
@@ -242,7 +255,8 @@ public class InMonsterLongAttack : MonoBehaviour
 
         if (other.tag == "Player")
         {
-            isChase = true;           
+            isChase = true;
+            anim.SetBool("isWalk", true);
         }
         else if (other.tag == "Bullet")
         {
@@ -300,6 +314,21 @@ public class InMonsterLongAttack : MonoBehaviour
 
             // 리지드바디에 피격 방향으로의 작은 힘을 가하고
             rigid.AddForce(reactVec * 5, ForceMode.Impulse);
+
+            // 랜덤 확률에 따라 아이템 생성
+            float dropChance = Random.Range(0f, 1f);
+            if (dropChance <= 0.2f) // 20%의 확률로 아이템 드랍
+            {
+                GameObject _health = Instantiate(itemPrefabHeart); // 아이템 생성
+                _health.transform.position = dropPositionHeart.position; // 아이템 위치 설정
+
+                HeartItem health = _health.GetComponent<HeartItem>();
+                if (health != null)
+                {
+                    // health.healAmount = Random.Range(10, 31); // 이건 회복량 랜덤
+                    health.healAmount = 10; // 체력 회복량 10
+                }
+            }
 
             // _item이라는 게임 오브젝트 변수 선언 + itemPrefab을 생성해서 _item에 할당
             GameObject _item;
