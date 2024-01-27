@@ -148,6 +148,8 @@ public class ObjectInteraction : MonoBehaviour
 
     public void OnNextButton1Clicked()
     {
+        SoundManager.instance.PlayAudio("Button2", "SE");
+
         Debug.Log("OnNextButton1Clicked() 메서드 호출됨"); // 로그 추가
 
         dialoguePanel1.SetActive(false);
@@ -176,6 +178,8 @@ public class ObjectInteraction : MonoBehaviour
 
     public void OnNextButton2Clicked()
     {
+        SoundManager.instance.PlayAudio("Button2", "SE");
+
         dialoguePanel2.SetActive(false);
         questIcon.SetActive(true);
 
@@ -193,6 +197,8 @@ public class ObjectInteraction : MonoBehaviour
 
     public void OnNextButton3Clicked()
     {
+        SoundManager.instance.PlayAudio("Button2", "SE");
+
         mainQuest++;
         GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1MainQuest = mainQuest;
         DataManager.instance.DataSave();

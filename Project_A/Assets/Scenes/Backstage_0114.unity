@@ -9135,6 +9135,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 2105549294}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 8f1165a88bf3fef45932c4f95f181e37, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 386079592}
         m_TargetAssemblyTypeName: SkillTreeBtn, Assembly-CSharp
         m_MethodName: OnBtnClick
@@ -9204,7 +9216,9 @@ MonoBehaviour:
     skillHave: []
     stage1ItemBox1: 0
     stage1ItemBox2: 0
+    stage1ItemBox3: 0
     stage1MainQuest: 0
+    tutorPanelNum: 0
     stage1BossClear: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
@@ -10322,7 +10336,9 @@ MonoBehaviour:
     skillHave: []
     stage1ItemBox1: 0
     stage1ItemBox2: 0
+    stage1ItemBox3: 0
     stage1MainQuest: 0
+    tutorPanelNum: 0
     stage1BossClear: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
@@ -10528,6 +10544,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 2105549294}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 8f1165a88bf3fef45932c4f95f181e37, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 453932551}
         m_TargetAssemblyTypeName: SkillTreeBtn, Assembly-CSharp
         m_MethodName: OnBtnClick
@@ -10597,7 +10625,9 @@ MonoBehaviour:
     skillHave: []
     stage1ItemBox1: 0
     stage1ItemBox2: 0
+    stage1ItemBox3: 0
     stage1MainQuest: 0
+    tutorPanelNum: 0
     stage1BossClear: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
@@ -14761,7 +14791,9 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 7278efd73596e8e48a5fa87ee81d580e, type: 2}
     stage1ItemBox1: 0
     stage1ItemBox2: 0
+    stage1ItemBox3: 0
     stage1MainQuest: 0
+    tutorPanelNum: 0
     stage1BossClear: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
@@ -17268,13 +17300,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2105549292}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-        m_MethodName: PlayButton2
-        m_Mode: 1
+      - m_Target: {fileID: 2105549294}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 8300000, guid: 8f1165a88bf3fef45932c4f95f181e37, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -18030,7 +18062,9 @@ MonoBehaviour:
     skillHave: []
     stage1ItemBox1: 0
     stage1ItemBox2: 0
+    stage1ItemBox3: 0
     stage1MainQuest: 0
+    tutorPanelNum: 0
     stage1BossClear: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
@@ -18325,7 +18359,9 @@ MonoBehaviour:
     skillHave: []
     stage1ItemBox1: 0
     stage1ItemBox2: 0
+    stage1ItemBox3: 0
     stage1MainQuest: 0
+    tutorPanelNum: 0
     stage1BossClear: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
@@ -21010,7 +21046,9 @@ MonoBehaviour:
     skillHave: []
     stage1ItemBox1: 0
     stage1ItemBox2: 0
+    stage1ItemBox3: 0
     stage1MainQuest: 0
+    tutorPanelNum: 0
     stage1BossClear: 0
     stage1Tutorial: 0
     savePos: {x: 10, y: 10, z: 10}
@@ -27314,7 +27352,9 @@ MonoBehaviour:
     skillHave: []
     stage1ItemBox1: 0
     stage1ItemBox2: 0
+    stage1ItemBox3: 0
     stage1MainQuest: 0
+    tutorPanelNum: 0
     stage1BossClear: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
@@ -29555,7 +29595,9 @@ MonoBehaviour:
     skillHave: []
     stage1ItemBox1: 0
     stage1ItemBox2: 0
+    stage1ItemBox3: 0
     stage1MainQuest: 0
+    tutorPanelNum: 0
     stage1BossClear: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
@@ -30926,7 +30968,9 @@ MonoBehaviour:
     skillHave: []
     stage1ItemBox1: 0
     stage1ItemBox2: 0
+    stage1ItemBox3: 0
     stage1MainQuest: 0
+    tutorPanelNum: 0
     stage1BossClear: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
@@ -31806,6 +31850,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 2105549294}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 8f1165a88bf3fef45932c4f95f181e37, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 2105549292}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
         m_MethodName: PlayButton2
@@ -38508,6 +38564,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 2105549294}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 8f1165a88bf3fef45932c4f95f181e37, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 1216690162}
         m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
         m_MethodName: ShowNextDialoguePanel
@@ -38725,7 +38793,9 @@ MonoBehaviour:
     skillHave: []
     stage1ItemBox1: 0
     stage1ItemBox2: 0
+    stage1ItemBox3: 0
     stage1MainQuest: 0
+    tutorPanelNum: 0
     stage1BossClear: 0
     stage1Tutorial: 0
     savePos: {x: 10, y: 10, z: 10}
@@ -40101,7 +40171,9 @@ MonoBehaviour:
     skillHave: []
     stage1ItemBox1: 0
     stage1ItemBox2: 0
+    stage1ItemBox3: 0
     stage1MainQuest: 0
+    tutorPanelNum: 0
     stage1BossClear: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
@@ -41663,7 +41735,9 @@ MonoBehaviour:
     skillHave: []
     stage1ItemBox1: 0
     stage1ItemBox2: 0
+    stage1ItemBox3: 0
     stage1MainQuest: 0
+    tutorPanelNum: 0
     stage1BossClear: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
@@ -43104,7 +43178,9 @@ MonoBehaviour:
     skillHave: []
     stage1ItemBox1: 0
     stage1ItemBox2: 0
+    stage1ItemBox3: 0
     stage1MainQuest: 0
+    tutorPanelNum: 0
     stage1BossClear: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
@@ -44072,6 +44148,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 2105549294}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 8f1165a88bf3fef45932c4f95f181e37, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1603547175}
         m_TargetAssemblyTypeName: SkillTreeBtn, Assembly-CSharp
         m_MethodName: OnBtnClick
@@ -44141,7 +44229,9 @@ MonoBehaviour:
     skillHave: []
     stage1ItemBox1: 0
     stage1ItemBox2: 0
+    stage1ItemBox3: 0
     stage1MainQuest: 0
+    tutorPanelNum: 0
     stage1BossClear: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
@@ -46639,7 +46729,9 @@ MonoBehaviour:
     skillHave: []
     stage1ItemBox1: 0
     stage1ItemBox2: 0
+    stage1ItemBox3: 0
     stage1MainQuest: 0
+    tutorPanelNum: 0
     stage1BossClear: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
@@ -49123,6 +49215,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 2105549294}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 8f1165a88bf3fef45932c4f95f181e37, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1806034604}
         m_TargetAssemblyTypeName: SkillTreeBtn, Assembly-CSharp
         m_MethodName: OnBtnClick
@@ -49192,7 +49296,9 @@ MonoBehaviour:
     skillHave: []
     stage1ItemBox1: 0
     stage1ItemBox2: 0
+    stage1ItemBox3: 0
     stage1MainQuest: 0
+    tutorPanelNum: 0
     stage1BossClear: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
@@ -49920,7 +50026,9 @@ MonoBehaviour:
     skillHave: []
     stage1ItemBox1: 0
     stage1ItemBox2: 0
+    stage1ItemBox3: 0
     stage1MainQuest: 0
+    tutorPanelNum: 0
     stage1BossClear: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
@@ -50965,13 +51073,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1875359631}
-        m_TargetAssemblyTypeName: SkillTreeBtn, Assembly-CSharp
-        m_MethodName: OnBtnClick
-        m_Mode: 1
+      - m_Target: {fileID: 2105549294}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 8300000, guid: 8f1165a88bf3fef45932c4f95f181e37, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -51034,7 +51142,9 @@ MonoBehaviour:
     skillHave: []
     stage1ItemBox1: 0
     stage1ItemBox2: 0
+    stage1ItemBox3: 0
     stage1MainQuest: 0
+    tutorPanelNum: 0
     stage1BossClear: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
@@ -52508,6 +52618,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 2105549294}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 8f1165a88bf3fef45932c4f95f181e37, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1955974414}
         m_TargetAssemblyTypeName: SkillTreeBtn, Assembly-CSharp
         m_MethodName: OnBtnClick
@@ -52577,7 +52699,9 @@ MonoBehaviour:
     skillHave: []
     stage1ItemBox1: 0
     stage1ItemBox2: 0
+    stage1ItemBox3: 0
     stage1MainQuest: 0
+    tutorPanelNum: 0
     stage1BossClear: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
@@ -52926,6 +53050,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 2105549294}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 8f1165a88bf3fef45932c4f95f181e37, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1399837151}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -53773,7 +53909,9 @@ MonoBehaviour:
     skillHave: []
     stage1ItemBox1: 0
     stage1ItemBox2: 0
+    stage1ItemBox3: 0
     stage1MainQuest: 0
+    tutorPanelNum: 0
     stage1BossClear: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
@@ -56848,7 +56986,7 @@ MonoBehaviour:
     isLoop: 0
     clip: {fileID: 8300000, guid: 555b16057da8cd244bde7bc6d55a6a92, type: 3}
   - name: Button2
-    volume: 1
+    volume: 0.02
     isLoop: 0
     clip: {fileID: 8300000, guid: 8f1165a88bf3fef45932c4f95f181e37, type: 3}
   defaultVolume: 1
@@ -57373,7 +57511,9 @@ MonoBehaviour:
     skillHave: []
     stage1ItemBox1: 0
     stage1ItemBox2: 0
+    stage1ItemBox3: 0
     stage1MainQuest: 0
+    tutorPanelNum: 0
     stage1BossClear: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
