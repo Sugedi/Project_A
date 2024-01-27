@@ -23,10 +23,18 @@ public class EnemyDragon : MonoBehaviour
 
     public float sightRange = 10f; // 타겟이 유저 인식
 
+    bool isFirstDefeated = false; // 첫 번째로 보스를 처치했는지를 확인하는 변수
+
     //==============================================================
     public GameObject itemPrefab; // 드랍 아이템 프리펩 등록
     [SerializeField] Transform dropPosition; // 드랍 아이템을 생성 시킬 위치
     //==============================================================
+
+    //==============================================================
+    public GameObject ThreaditemPrefab; // 드랍 아이템 프리펩 등록
+    [SerializeField] Transform ThreaddropPosition; // 드랍 아이템을 생성 시킬 위치
+    //==============================================================
+
     public Slider healthBarSlider;
     public GameObject healthBarUI;
     public float HealthBarRange = 15f; // 체력바가 활성화될 플레이어와의 거리
@@ -219,7 +227,7 @@ public class EnemyDragon : MonoBehaviour
 
             isAttackHit = true; // 공격이 성공적으로 적중했다고 표시
             StartCoroutine(ResetAttackHit()); // 공격 적중 상태 초기화 코루틴 실행
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
         }
 
         // 공격 상태 종료
@@ -251,7 +259,7 @@ public class EnemyDragon : MonoBehaviour
 
             isAttackHit = true; // 공격이 성공적으로 적중했다고 표시
             StartCoroutine(ResetAttackHit()); // 공격 적중 상태 초기화 코루틴 실행
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
         }
 
         // 공격 상태 종료
@@ -283,7 +291,7 @@ public class EnemyDragon : MonoBehaviour
 
             isAttackHit = true; // 공격이 성공적으로 적중했다고 표시
             StartCoroutine(ResetAttackHit()); // 공격 적중 상태 초기화 코루틴 실행
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
         }
 
         // 공격 상태 종료
@@ -694,11 +702,24 @@ public class EnemyDragon : MonoBehaviour
             {
                 healthBarUI.SetActive(true);
             }
-            else if (other.tag == "Bullet") // "Bullet"은 플레이어의 총알에 붙인 태그를 입력해주세요.
+            else if (other.tag == "Bullet")
             {
                 TakeDamage(other.GetComponent<Bullet>(), other.transform.position);
             }
         }        
+    }
+
+    // 보스 처치 시 아이템 드랍 함수
+    public void BossDefeated()
+    {
+        // 보스가 처음으로 처치되었을 때만 아이템 드랍
+        if (!isFirstDefeated)
+        {
+            // GameObject _itemThread = Instantiate(ThreaditemPrefab); // Thread 아이템 생성
+            // _itemThread.transform.position = ThreaddropPosition.position; // Thread 아이템 위치 설정
+
+            isFirstDefeated = true; // 보스가 처음으로 처치되었음을 표시
+        }
     }
 
     // 피격 시 발생하는 코루틴 함수
@@ -751,8 +772,8 @@ public class EnemyDragon : MonoBehaviour
             reactVec = reactVec.normalized;
             reactVec += Vector3.up;
 
-            // 리지드바디에 피격 방향으로의 작은 힘을 가하고
-            // rigid.AddForce(reactVec * 5, ForceMode.Impulse);
+            GameObject _itemThread = Instantiate(ThreaditemPrefab); // Thread 아이템 생성
+            _itemThread.transform.position = ThreaddropPosition.position; // Thread 아이템 위치 설정
 
             // _item이라는 게임 오브젝트 변수 선언 + itemPrefab을 생성해서 _item에 할당
             GameObject _item;
