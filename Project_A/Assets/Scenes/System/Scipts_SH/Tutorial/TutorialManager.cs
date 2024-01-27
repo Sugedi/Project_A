@@ -27,17 +27,23 @@ public class TutorialManager : MonoBehaviour
     public CanvasGroup UI_8;
     public CanvasGroup UI_9;
     public CanvasGroup Quest;
+    public CanvasGroup Move_0;
 
     public int PanelNum = 0;
 
     void Start()
     {
         tutorial = GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1Tutorial;
+        PanelNum = GameObject.Find("DataManager").GetComponent<DataManager>().datas.tutorPanelNum;
 
         if(tutorial == 0)
         {
             CanvasGroupOff(joy);
             CanvasGroupOn(UI_0); // 첫 UI 튜토리얼 켜주기 // UI_1은 켜져있는 상태
+        }
+        else if(tutorial == 1)
+        {
+            GameObject.Find("MoveGoal").transform.Find("Portal").gameObject.SetActive(true);
         }
 
         else if (tutorial == 99)
@@ -53,7 +59,10 @@ public class TutorialManager : MonoBehaviour
         CanvasGroup NO_3 = GameObject.Find("UITutor").transform.Find("UI_0").transform.Find("Image").transform.Find("NO3").GetComponent<CanvasGroup>();
         CanvasGroup NO_4 = GameObject.Find("UITutor").transform.Find("UI_2").transform.Find("Image").transform.Find("NO4").GetComponent<CanvasGroup>();
         CanvasGroup NO_5 = GameObject.Find("UITutor").transform.Find("UI_2").transform.Find("Image").transform.Find("NO5").GetComponent<CanvasGroup>();
-        // UI_0
+        CanvasGroup NO_6 = GameObject.Find("MoveTutor").transform.Find("Move_0").transform.Find("Image").transform.Find("NO6").GetComponent<CanvasGroup>();
+        CanvasGroup NO_7 = GameObject.Find("MoveTutor").transform.Find("Move_0").transform.Find("Image").transform.Find("NO7").GetComponent<CanvasGroup>();
+        CanvasGroup NO_8 = GameObject.Find("MoveTutor").transform.Find("Move_0").transform.Find("Image").transform.Find("NO8").GetComponent<CanvasGroup>();
+
         if (PanelNum == 0)
         {
             // no1,2,3.하고 UI_0 끈 후에 UI_1 켜기
@@ -78,15 +87,12 @@ public class TutorialManager : MonoBehaviour
             CanvasGroupOn(UI_1);
             PanelNum++;
         }
-
-        // UI_1
         else if(PanelNum == 3)
         {
             CanvasGroupOff(UI_1);
             CanvasGroupOn(UI_2);
             PanelNum++;
         }
-        // UI_2
         else if(PanelNum == 4)
         {
             CanvasGroupOff(UI_2);
@@ -97,7 +103,6 @@ public class TutorialManager : MonoBehaviour
 
             PanelNum++;
         }
-
         else if(PanelNum == 5)
         {
             CanvasGroupOff(UI_3);
@@ -141,6 +146,7 @@ public class TutorialManager : MonoBehaviour
         {
             CanvasGroupOff(UI_8);
             CanvasGroupOn(UI_9);
+            GameObject.Find("MoveGoal").transform.Find("Portal").gameObject.SetActive(true);
             PanelNum++; 
         }
         else if(PanelNum == 12)
@@ -152,9 +158,28 @@ public class TutorialManager : MonoBehaviour
             PanelNum++; 
             tutorial = 1;
             GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1Tutorial = tutorial;
+            GameObject.Find("DataManager").GetComponent<DataManager>().datas.tutorPanelNum = PanelNum;
             DataManager.instance.DataSave();
         }
-
+        else if (PanelNum == 13)
+        {
+            CanvasGroupOff(NO_6);
+            CanvasGroupOn(NO_7);
+            PanelNum++;
+        }
+        else if (PanelNum == 14)
+        {
+            CanvasGroupOff(NO_7);
+            CanvasGroupOn(NO_8);
+            PanelNum++;
+        }
+        else if (PanelNum == 15)
+        {
+            CanvasGroupOff(NO_8);
+            CanvasGroupOff(Move_0);
+            CanvasGroupOn(joy);
+            PanelNum++;
+        }
 
     }
 

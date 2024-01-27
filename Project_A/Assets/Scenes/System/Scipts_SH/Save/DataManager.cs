@@ -52,7 +52,7 @@ public class Datas
 
     // 퀘스트 진행 상황
     public int stage1MainQuest = 0; // 0은 미수주, 1은 미완, 2는 완료/보상미수령 3은 보상수령
-    // public int stage1Quest2Pro = 0; //현재 미사용
+    public int tutorPanelNum = 0;
 
     // 보스 최초 처치 여부 (보상 지급용)
     public bool stage1BossClear = false;
