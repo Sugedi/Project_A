@@ -379,7 +379,7 @@ public class Enemy : MonoBehaviour
 
             // 랜덤 확률에 따라 아이템 생성
             float dropChance = Random.Range(0f, 1f);
-            if (dropChance <= 0.3f) // 30%의 확률로 아이템 드랍
+            if (dropChance <= 0.2f) // 20%의 확률로 아이템 드랍
             {
                 GameObject _health = Instantiate(itemPrefabHeart); // 아이템 생성
                 _health.transform.position = dropPositionHeart.position; // 아이템 위치 설정
@@ -387,8 +387,8 @@ public class Enemy : MonoBehaviour
                 HeartItem health = _health.GetComponent<HeartItem>();
                 if (health != null)
                 {
-                    health.healAmount = Random.Range(10, 31); // 이건 회복량 랜덤
-                    // health.healAmount = 10; // 체력 회복량 10
+                    // health.healAmount = Random.Range(10, 31); // 이건 회복량 랜덤
+                    health.healAmount = 10; // 체력 회복량 10
                 }
             }
 
