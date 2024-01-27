@@ -197,14 +197,22 @@ public class Player : MonoBehaviour
             {
                 if (collider.gameObject.name == "TreasureBox1")
                 {
+                    SoundManager.instance.PlayAudio("BoxOpen1", "SE");
+
                     collider.gameObject.GetComponent<TreasureBox>().TreasureFind();
+
                 }
                 if (collider.gameObject.name == "TreasureBox2")
                 {
+                    SoundManager.instance.PlayAudio("BoxOpen1", "SE");
+
                     collider.gameObject.GetComponent<TreasureBox>().TreasureFind();
+
                 }
                 if (collider.gameObject.name == "TreasureBox3")
                 {
+                    SoundManager.instance.PlayAudio("BoxOpen1", "SE");
+
                     collider.gameObject.GetComponent<TreasureBox>().TreasureFind();
                 }
             }
@@ -253,8 +261,6 @@ public class Player : MonoBehaviour
         if (health <= 0 && !isDead)
         {
             Die();
-
-            SoundManager.instance.PlayAudio("Die", "SE");
 
             return; // 사망했으므로 여기서 Update 메서드를 종료합니다.
         }
@@ -455,6 +461,9 @@ public class Player : MonoBehaviour
             }
             equipWeapon.Use(); // 무기 사용
             anim.SetTrigger("doShot"); // 무기 종류에 따라 애니메이션 설정
+
+            SoundManager.instance.PlayAudio("Shoot2", "SE");
+
             fireDelay = 0; // 딜레이 초기화
         }
     }
@@ -479,7 +488,9 @@ public class Player : MonoBehaviour
         if (rDown && !isDodge && isFireReady)
         {
             anim.SetBool("isReload", true);
-            
+
+            SoundManager.instance.PlayAudio("Reload1", "SE");
+
             isReload = true; // 재장전 중 상태 설정
             speed = 2;
             float reloadTime = 2f * GetReloadTimeMultiplier(); // 재장전 시간을 계산합니다.
@@ -544,6 +555,10 @@ public class Player : MonoBehaviour
             dodgeVec = moveVec; // 회피 방향 설정
             speed *= 1.6f; // 이동 속도 증가
             anim.SetTrigger("doDodge"); // 회피 애니메이션 활성화
+
+            SoundManager.instance.PlayAudio("PlayerRoll1", "SE");
+
+
             isDodge = true; // 회피 중 상태 설정
             isDamage = true; // 무적 상태 활성화
 
@@ -779,6 +794,8 @@ public class Player : MonoBehaviour
 
         // 사망 애니메이션 재생
         anim.SetTrigger("Die");
+        SoundManager.instance.PlayAudio("Die", "SE");
+
 
         StartCoroutine(DieSequence());
 
