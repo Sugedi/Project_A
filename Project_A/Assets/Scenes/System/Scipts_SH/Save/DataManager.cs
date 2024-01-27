@@ -47,7 +47,8 @@ public class Datas
     // 여기부터는 스테이지 1만 적용
     // 귀속 아이템 획득 여부 - true값이 되면, 상자를 열린 이미지로 바꾸거나, 오브젝트 삭제
     public bool stage1ItemBox1 = false; // 심장(최대체력 증가)
-    public bool stage1ItemBox2 = false; // 전시장 아이템 - true가 되면 
+    public bool stage1ItemBox2 = false; 
+    public bool stage1ItemBox3 = false; 
 
     // 퀘스트 진행 상황
     public int stage1MainQuest = 0; // 0은 미수주, 1은 미완, 2는 완료/보상미수령 3은 보상수령

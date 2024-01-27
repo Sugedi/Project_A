@@ -178,6 +178,10 @@ public class Player : MonoBehaviour
                 {
                     collider.gameObject.GetComponent<TreasureBox>().TreasureFind();
                 }
+                if (collider.gameObject.name == "TreasureBox3")
+                {
+                    collider.gameObject.GetComponent<TreasureBox>().TreasureFind();
+                }
             }
 
             if (collider.CompareTag("PyramidEnter"))
