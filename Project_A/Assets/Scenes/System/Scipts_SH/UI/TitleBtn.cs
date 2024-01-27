@@ -37,7 +37,8 @@ public class TitleBtn : MonoBehaviour
 
     public void OnBtnClick()
     {
-        
+        SoundManager.instance.PlayAudio("Button1", "SE");
+
         switch (currentType)
         {
             // MainUI에서 New, Continue를 GameStart로 통합하고, 여기에도 반영 시킵니다. 

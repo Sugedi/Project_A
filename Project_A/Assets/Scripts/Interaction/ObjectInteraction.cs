@@ -129,7 +129,6 @@ public class ObjectInteraction : MonoBehaviour
 
     }
 
-    // @@@@@ ~#~#~#~#~#~#~#~# 맞는 것 다 확인 함 but 수정 가능성 있음 #~#~#~#~#~#~#~#~ @@@@@
 
     public void MirrorInteraction() 
     {
