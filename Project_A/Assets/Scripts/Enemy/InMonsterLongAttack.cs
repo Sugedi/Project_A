@@ -257,11 +257,7 @@ public class InMonsterLongAttack : MonoBehaviour
         {
             isChase = true;
             anim.SetBool("isWalk", true);
-        }
-        else if (other.tag == "Bullet")
-        {
-            TakeDamage(other.GetComponent<Bullet>(), other.transform.position);
-        }
+        }       
     }
 
     // 피격 시 발생하는 코루틴 함수

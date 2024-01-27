@@ -271,6 +271,13 @@ public class Bullet : MonoBehaviour
             return;
         }
 
+        InMonsterLongAttack enemyLong = enemyObject.GetComponent<InMonsterLongAttack>();
+        if (enemyLong != null)
+        {
+            enemyLong.TakeDamage(bullet, hitPoint);
+            return;
+        }
+
         EnemyBoss enemyBoss = enemyObject.GetComponent<EnemyBoss>();
         if (enemyBoss != null)
         {
