@@ -484,7 +484,7 @@ public class Player : MonoBehaviour
     void Attack()
     {
         // 현재 장착된 무기가 없으면 공격을 수행하지 않습니다.
-        if (equipWeapon == null || equipWeapon.curAmmo <= 0)
+        if (equipWeapon == null)
             return;
 
         // 공격 딜레이를 증가시킵니다.
