@@ -11,6 +11,8 @@ public class DragonDoor : MonoBehaviour
         {
             GameObject.Find("DragonDoor").transform.Find("DragonDoor_").gameObject.SetActive(true);
             Destroy(this);
+            SoundManager.instance.PlayAudio("DragonDoorOpen", "SE");
+
         }
 
 

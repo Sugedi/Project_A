@@ -181,6 +181,8 @@ public class Player : MonoBehaviour
                 else
                 {
                     GameObject.Find("door-house-simple").GetComponent<SceneMove>().Portal();
+                    SoundManager.instance.PlayAudio("Door2", "SE");
+
                 }
             }
 
@@ -188,6 +190,8 @@ public class Player : MonoBehaviour
             {
                 if (collider.gameObject.name == "SwitchDoor")
                 {
+                    SoundManager.instance.PlayAudio("Door2", "SE");
+
                     CanvasGroupOff(joy);
                     //GameObject.Find("Switch").GetComponent<SaveSwitch>().SwitchFunc();
                     GameObject.Find("SwitchDoor").GetComponent<SaveSwitch>().SwitchFunc();
@@ -218,6 +222,8 @@ public class Player : MonoBehaviour
                 }
                 else if (collider.gameObject.name == "SwitchDoor_Tuto")
                 {
+                    SoundManager.instance.PlayAudio("Door2", "SE");
+
                     if (GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1Tutorial >= 3)
                     {
                         CanvasGroupOff(joy);
@@ -239,31 +245,25 @@ public class Player : MonoBehaviour
             {
                 if (collider.gameObject.name == "TreasureBox1")
                 {
-                    SoundManager.instance.PlayAudio("BoxOpen1", "SE");
-
                     collider.gameObject.GetComponent<TreasureBox>().TreasureFind();
                 }
                 if (collider.gameObject.name == "TreasureBox2")
                 {
-                    SoundManager.instance.PlayAudio("BoxOpen1", "SE");
 
                     collider.gameObject.GetComponent<TreasureBox>().TreasureFind();
                 }
                 if (collider.gameObject.name == "TreasureBox3")
                 {
-                    SoundManager.instance.PlayAudio("BoxOpen1", "SE");
 
                     collider.gameObject.GetComponent<TreasureBox>().TreasureFind();
                 }
                 if (collider.gameObject.name == "TreasureBox4")
                 {
-                    SoundManager.instance.PlayAudio("BoxOpen1", "SE");
 
                     collider.gameObject.GetComponent<TreasureBox>().TreasureFind();
                 }
                 if (collider.gameObject.name == "TreasureBox5")
                 {
-                    SoundManager.instance.PlayAudio("BoxOpen1", "SE");
 
                     collider.gameObject.GetComponent<TreasureBox>().TreasureFind();
                 }

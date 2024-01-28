@@ -83,6 +83,8 @@ public class PuzzleDoor : MonoBehaviour
     {
         if(redMatched && yellowMatched && blueMatched)
         {
+            SoundManager.instance.PlayAudio("DragonDoorOpen", "SE");
+
             doorAnimation.Play(doorOpenAnimation.name);
         }
         else

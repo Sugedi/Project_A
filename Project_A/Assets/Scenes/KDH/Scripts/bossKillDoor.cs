@@ -12,6 +12,8 @@ public class bossKillDoor : MonoBehaviour
         {
             // Play the 'bosskilldooropen' animation
             bossPlayDoorAnimation(bossDoorOpenAnimation);
+            SoundManager.instance.PlayAudio("Door2", "SE");
+
         }
         else
         {

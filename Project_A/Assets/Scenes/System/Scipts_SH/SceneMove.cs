@@ -10,7 +10,8 @@ public class SceneMove : MonoBehaviour
 
     public void Portal()
     {
-        
+        SoundManager.instance.PlayAudio("Door2", "SE");
+
         //SceneManager.LoadScene("Stage"); // 저장된 씬으로 이동
 
         // 로딩창 테스트

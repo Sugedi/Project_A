@@ -109,6 +109,8 @@ public class TreasureBox : MonoBehaviour
     {
         if (treasure == Treasure.BuckShot1)
         {
+            SoundManager.instance.PlayAudio("BoxOpen1", "SE");
+
             if (treasure_1 == false)
             {
                 CanvasGroupOff(joy);
@@ -130,6 +132,8 @@ public class TreasureBox : MonoBehaviour
 
         if (treasure == Treasure.PierceShot)
         {
+            SoundManager.instance.PlayAudio("BoxOpen1", "SE");
+
             if (treasure_2 == false)
             {
                 CanvasGroupOff(joy);
@@ -150,6 +154,8 @@ public class TreasureBox : MonoBehaviour
 
         if (treasure == Treasure.Money)
         {
+            SoundManager.instance.PlayAudio("BoxOpen1", "SE");
+
             if (treasure_3 == false)
             {
                 CanvasGroupOff(joy);
@@ -169,6 +175,8 @@ public class TreasureBox : MonoBehaviour
 
         if (treasure == Treasure.SideShot)
         {
+            SoundManager.instance.PlayAudio("BoxOpen1", "SE");
+
             if (treasure_4 == false)
             {
                 CanvasGroupOff(joy);
@@ -188,6 +196,8 @@ public class TreasureBox : MonoBehaviour
         }
         if (treasure == Treasure.Lighting)
         {
+            SoundManager.instance.PlayAudio("BoxOpen1", "SE");
+
             if (treasure_5 == false)
             {
                 CanvasGroupOff(joy);
