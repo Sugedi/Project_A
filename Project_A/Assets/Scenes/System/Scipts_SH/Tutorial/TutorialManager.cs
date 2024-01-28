@@ -29,6 +29,9 @@ public class TutorialManager : MonoBehaviour
     public CanvasGroup Quest;
     public CanvasGroup Move_0;
     public CanvasGroup Treasure_0;
+    public CanvasGroup questMoveTutor;
+    public CanvasGroup questBoxTutor;
+    public CanvasGroup questSwitchTutor;
 
     public int PanelNum = 0;
 
@@ -41,6 +44,7 @@ public class TutorialManager : MonoBehaviour
         {
             CanvasGroupOff(joy);
             CanvasGroupOn(UI_0); // 첫 UI 튜토리얼 켜주기 // UI_1은 켜져있는 상태
+            CanvasGroupOn(questMoveTutor);
         }
         else if(tutorial == 1)
         {
@@ -184,6 +188,8 @@ public class TutorialManager : MonoBehaviour
         }
         else if (PanelNum == 15)
         {
+            CanvasGroupOff(questMoveTutor);
+            CanvasGroupOn(questBoxTutor);
             CanvasGroupOff(NO_8);
             CanvasGroupOff(Move_0);
             CanvasGroupOn(joy);
@@ -215,6 +221,8 @@ public class TutorialManager : MonoBehaviour
         }        
         else if (PanelNum == 19)
         {
+            CanvasGroupOff(questBoxTutor);
+            CanvasGroupOn(questSwitchTutor);
             CanvasGroupOff(Treasure_0);
             CanvasGroupOn(joy);
             PanelNum++;
@@ -224,13 +232,6 @@ public class TutorialManager : MonoBehaviour
             DataManager.instance.DataSave();
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
 
     public void CanvasGroupOff(CanvasGroup cg)
     {
