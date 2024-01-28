@@ -55,6 +55,14 @@ public class SoundManager : MonoBehaviour
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        // 'Loading' 씬, 'LoadingBackstage'씬, 'LoadingStage' 씬을 처리하는 경우를 제외해야 하므로,
+        // 'Loading' 씬, 'LoadingBackstage'씬, 'LoadingStage' 씬 이름을 체크하는 조건문을 추가합니다.
+        if (scene.name == "Loading" || scene.name == "LoadingBackstage" || scene.name == "LoadingStage")
+        {
+            // 'Loading' 씬, 'LoadingBackstage', 'LoadingStage' 씬에서는 아무 작업도 하지 않습니다.
+            return;
+        }
+
         switch (scene.name)
         {
             case "01_Title": // 여기다가는 씬의 이름 적기
@@ -67,6 +75,7 @@ public class SoundManager : MonoBehaviour
                 PlayBGM("Stage");  // 씬3에 해당하는 배경음악 이름
                 break;
             default:
+                // 로딩 씬들이 아니고, 다른 씬 이름이 잘못되었을 때만 오류를 로그합니다.
                 Debug.LogError("Unknown scene name: " + scene.name);
                 break;
         }
