@@ -40,12 +40,13 @@ public class leverDoorOpen : MonoBehaviour
         if (allLeversActivated && !hasOpened)
         {
             // 문이 열리는 동안 블렌드 리스트 카메라를 활성화하고 메인 카메라를 비활성화
-            blendListCamera.enabled = true;
             mainVirtualCamera.enabled = false;
+            blendListCamera.enabled = true;
 
-            // 코루틴 시작
-            StartCoroutine(PlayDoorAnimationWithDelay(doorOpenAnimation, 2f));
+            // 2초 후에 문 열림 애니메이션을 재생하기 위해 코루틴 호출
+            StartCoroutine(PlayDoorAnimationWithDelay(2f));
 
+            hasOpened = true;  // 문을 열린 상태로 표시
         }
     }
 
@@ -60,19 +61,21 @@ public class leverDoorOpen : MonoBehaviour
         return lever1Activated && lever2Activated && lever3Activated && lever4Activated;
     }
 
-    IEnumerator PlayDoorAnimationWithDelay(AnimationClip animationClip, float leverDoorDelay)
+    // 문 열림 애니메이션을 재생하는 코루틴
+    IEnumerator PlayDoorAnimationWithDelay(float delay)
     {
+        // 대기 시간 후에 문 열림 애니메이션을 재생
+        yield return new WaitForSeconds(delay);
 
-        // Set the specified animation clip to the Animation component
-        GetComponent<Animation>().clip = animationClip;
-
-        // Play the animation once
+        // 지정된 애니메이션 클립을 Animation 컴포넌트에 설정
+        GetComponent<Animation>().clip = doorOpenAnimation;
+        // 애니메이션을 한 번 재생
         GetComponent<Animation>().wrapMode = WrapMode.Once;
         GetComponent<Animation>().Play();
 
-        yield return new WaitForSeconds(leverDoorDelay); // 2초 대기
-
+        // 문이 열리는 동안 블랜드 리스트 카메라를 비활성화하고 메인 카메라를 활성화
+        yield return new WaitForSeconds(doorOpenAnimation.length); // 애니메이션 재생 시간만큼 대기
         mainVirtualCamera.enabled = true;
-        blendListCamera.enabled = false; // 블렌드 리스트 카메라 비활성화
+        blendListCamera.enabled = false;
     }
 }
