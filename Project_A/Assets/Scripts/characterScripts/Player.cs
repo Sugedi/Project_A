@@ -150,26 +150,40 @@ public class Player : MonoBehaviour
         {
             if (collider.CompareTag("NPC"))
             {
+                if (GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1MainQuest == 0)
+                {
 
-                // 비활성화된 게임 오브젝트 찾아오기 왤케 어려움?
-                //GameObject.Find("Skill").transform.Find("SkillCanvas").gameObject.SetActive(true);
-                CanvasGroupOff(joy);
-                GameObject.Find("Workbench baked").GetComponent<SkillNPC>().Interact();
+                }
+                else
+                {
 
-                // 이거 비활성화 말고, 메인 메뉴에서 썼던 캔버스 그룹으로 껐다 켜는 게 나을 듯 하다.
-                // 웬만하면 비활성화 안 시키는 게 좋을지도..?
-                // 아직 잘 모르겠네
-                // + UI 창 켜졌을 때, 키마는 움직일 수 있게 되어있음. 모바일은 걱정 없겠지만...
-                // UI 뜨면 유저 이동, 공격 등 못하도록 하는 게 좋을 듯
+                    // 비활성화된 게임 오브젝트 찾아오기 왤케 어려움?
+                    //GameObject.Find("Skill").transform.Find("SkillCanvas").gameObject.SetActive(true);
+                    CanvasGroupOff(joy);
+                    GameObject.Find("Workbench baked").GetComponent<SkillNPC>().Interact();
 
-                //GameObject mainUI = GameObject.Find("SaveCanvas");
+                    // 이거 비활성화 말고, 메인 메뉴에서 썼던 캔버스 그룹으로 껐다 켜는 게 나을 듯 하다.
+                    // 웬만하면 비활성화 안 시키는 게 좋을지도..?
+                    // 아직 잘 모르겠네
+                    // + UI 창 켜졌을 때, 키마는 움직일 수 있게 되어있음. 모바일은 걱정 없겠지만...
+                    // UI 뜨면 유저 이동, 공격 등 못하도록 하는 게 좋을 듯
 
+                    //GameObject mainUI = GameObject.Find("SaveCanvas");
+                }
 
             }
 
             if (collider.CompareTag("Door"))
             {
-                GameObject.Find("door-house-simple").GetComponent<SceneMove>().Portal();
+                if(GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1MainQuest == 0)
+                {
+
+                }
+                else
+                {
+                    GameObject.Find("door-house-simple").GetComponent<SceneMove>().Portal();
+                }
+                
             }
 
             if (collider.CompareTag("Switch"))
