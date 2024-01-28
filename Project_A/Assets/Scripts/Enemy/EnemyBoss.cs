@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using UnityEngine.Events;
+
 
 public class EnemyBoss : MonoBehaviour
 {
@@ -22,6 +24,9 @@ public class EnemyBoss : MonoBehaviour
     private bool isAttackHit = false; // 일반 공격이 성공적으로 적중했는지 여부
     public float attackHitCooldown = 0.5f; // 다음 일반 공격이 적중할 수 있는 쿨다운 시간
     public Camera followCamera;
+    public UnityEvent OnBossDeath;
+
+    public bossKillDoor bossKillDoor; // 죽으면 열릴 문
 
     // 넉백 효과 관련 변수
     public float knockbackForce = 95f; // 넉백의 강도
@@ -520,9 +525,11 @@ public class EnemyBoss : MonoBehaviour
                 _item = Instantiate(bitemPrefab); // 아이템 생성
                 _item.transform.position = bdropPosition.position; // 아이템 위치 설정
             }
-
+            
             // 2초 뒤 몹 사망
             Destroy(gameObject, 10);
+
+            bossKillDoor.BossKillDoorOpen();
         }
     }
 

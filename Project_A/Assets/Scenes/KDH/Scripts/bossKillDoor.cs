@@ -1,46 +1,24 @@
 using UnityEngine;
 
-public class BossKillDoor : MonoBehaviour
+public class bossKillDoor : MonoBehaviour
 {
-    public AnimationClip doorOpenAnimation;
+    public AnimationClip bossDoorOpenAnimation;
+    // ...
 
-    private bool hasOpened = false;  // To track whether the door has been opened
-
-    void Update()
+    public void BossKillDoorOpen()
     {
-        // Check if there are no colliders with the tag 'enemy' using the door's own BoxCollider
-        bool noMonsters = CheckNoMonsters();
-
-        // Play the door opening animation if the door hasn't been opened yet and there are no monsters
-        if (!hasOpened && noMonsters)
+        // Check if the doorAnimation is assigned
+        if (bossDoorOpenAnimation != null)
         {
-            PlayDoorAnimation(doorOpenAnimation);
-            hasOpened = true;  // Mark the door as opened
+            // Play the 'bosskilldooropen' animation
+            bossPlayDoorAnimation(bossDoorOpenAnimation);
+        }
+        else
+        {
+            Debug.LogError("Door Animation not assigned to BossKillDoor script.");
         }
     }
-
-    bool CheckNoMonsters()
-    {
-        // Assuming the door has a BoxCollider
-        BoxCollider doorCollider = GetComponent<BoxCollider>();
-
-        if (doorCollider != null)
-        {
-            Collider[] colliders = Physics.OverlapBox(doorCollider.bounds.center, doorCollider.bounds.extents, Quaternion.identity);
-
-            foreach (var collider in colliders)
-            {
-                if (collider.CompareTag("enemy"))
-                {
-                    return false;  // There is a collider tagged 'enemy'
-                }
-            }
-        }
-
-        return true;  // No colliders tagged 'enemy' found in the door's own BoxCollider
-    }
-
-    void PlayDoorAnimation(AnimationClip animationClip)
+    void bossPlayDoorAnimation(AnimationClip animationClip)
     {
         // Set the specified animation clip to the Animation component
         GetComponent<Animation>().clip = animationClip;
@@ -49,4 +27,5 @@ public class BossKillDoor : MonoBehaviour
         GetComponent<Animation>().wrapMode = WrapMode.Once;
         GetComponent<Animation>().Play();
     }
+
 }
