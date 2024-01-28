@@ -771,16 +771,26 @@ public class EnemyDragon : MonoBehaviour
             GameObject.Find("DragonDoor").transform.Find("DragonDoor_").gameObject.SetActive(false);
 
             // 플레이어가 아직 ThreadItem을 가지고 있지 않고, 보스를 처치한 적이 없다면 ThreadItem을 드랍합니다.
-            if (!player.hasThreadItem && !GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1BossClear)
+            if (/*!player.hasThreadItem && */!GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1BossClear)
             {
-                GameObject _itemThread = Instantiate(ThreaditemPrefab); // Thread 아이템 생성
-                _itemThread.transform.position = ThreaddropPosition.position; // Thread 아이템 위치 설정
+                //GameObject _itemThread = Instantiate(ThreaditemPrefab); // Thread 아이템 생성
+                //_itemThread.transform.position = ThreaddropPosition.position; // Thread 아이템 위치 설정
 
                 // ThreadItem을 얻었으므로 player.hasThreadItem를 true로 설정합니다.
-                player.hasThreadItem = true;
+                //player.hasThreadItem = true;
+
+                if (GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1MainQuest <= 2)
+                {
+                    GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1MainQuest = 2;
+                }
+                else if (GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1MainQuest == 3)
+                {
+                    GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1MainQuest = 3;
+                }
 
                 // 보스를 처치했으므로 DataManager의 stage1BossClear를 true로 설정합니다.
                 GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1BossClear = true;
+                DataManager.instance.DataSave();
             }
 
             // _item이라는 게임 오브젝트 변수 선언 + itemPrefab을 생성해서 _item에 할당

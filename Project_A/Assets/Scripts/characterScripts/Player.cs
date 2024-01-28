@@ -1113,6 +1113,17 @@ public class Player : MonoBehaviour
     }
     private void ActivateSystemMessagePanel(string message)
     {
+        if(GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1MainQuest <= 2)
+        {
+            GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1MainQuest = 2;
+            DataManager.instance.DataSave();
+        }
+        else if(GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1MainQuest == 3)
+        {
+            GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1MainQuest = 3;
+            DataManager.instance.DataSave();
+        }
+
         systemMessagePanel.SetActive(true);
         systemMessageText.text = message;
         StartCoroutine(ShowSystemMessage(3f)); // 코루틴을 사용하여 3초 후 패널 비활성화
