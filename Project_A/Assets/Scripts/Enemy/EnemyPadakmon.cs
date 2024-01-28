@@ -147,7 +147,7 @@ public class EnemyPadakmon : MonoBehaviour
 
         nav.SetDestination(homePosition);
 
-        if (Vector3.Distance(transform.position, homePosition) < 2f)
+        if (Vector3.Distance(transform.position, homePosition) < 10f)
         {
             isReturn = false;
             anim.SetBool("isWalk", false);
