@@ -264,6 +264,13 @@ public class Bullet : MonoBehaviour
             return;
         }
 
+        EnemyPadakmon enemyPadakmon = enemyObject.GetComponent<EnemyPadakmon>();
+        if (enemyPadakmon != null)
+        {
+            enemyPadakmon.TakeDamage(bullet, hitPoint);
+            return;
+        }
+
         EnemyWorm enemyWorm = enemyObject.GetComponent<EnemyWorm>();
         if (enemyWorm != null)
         {

@@ -264,7 +264,6 @@ public class EnemyPadakmon : MonoBehaviour
         anim.SetBool("isAttack", false);
     }
 
-    // FixedUpdate 함수
     void FixedUpdate()
     {
         // 목표를 향해 이동하는 함수 호출
@@ -300,13 +299,13 @@ public class EnemyPadakmon : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-
-    }
-
     void OnTriggerEnter(Collider other)
     {
+        // 몬스터가 죽었는지 확인합니다.
+        if (gameObject.layer == LayerMask.NameToLayer("Enemydead"))
+        {
+            return; // 몬스터가 죽었으면 아무것도 하지 않습니다.
+        }
 
         if (other.tag == "Player")
         {
@@ -314,19 +313,6 @@ public class EnemyPadakmon : MonoBehaviour
             anim.SetBool("isWalk", true);
         }
     }
-
-    /*
-
-    private void OnTriggerExit(Collider other)
-    {
-       if (other.tag == "Player")
-        {
-            isChase = false;
-            anim.SetBool("isWalk", false);
-        }
-    }
-
-    */
 
     // 피격 시 발생하는 코루틴 함수
     IEnumerator OnDamage(Vector3 reactVec)
@@ -396,17 +382,11 @@ public class EnemyPadakmon : MonoBehaviour
 
             // _item이라는 게임 오브젝트 변수 선언 + itemPrefab을 생성해서 _item에 할당
             GameObject _item;
-
             int dropCount = Random.Range(minDropCount, maxDropCount + 1); // minDropCount부터 maxDropCount까지의 랜덤한 수량
             for (int i = 0; i < dropCount; i++) // dropCount만큼 아이템을 생성합니다.
             {
                 _item = Instantiate(itemPrefab); // 아이템 생성
                 _item.transform.position = dropPosition.position; // 아이템 위치 설정
-            }
-
-            if (groupManager != null)
-            {
-                groupManager.OnMonsterDefeated();
             }
 
             // 2초 뒤 몹 사망
