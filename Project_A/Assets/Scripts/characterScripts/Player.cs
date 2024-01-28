@@ -492,13 +492,14 @@ public class Player : MonoBehaviour
         float closestDistanceSqr = Mathf.Infinity;
         Vector3 currentPosition = transform.position;
 
+        float bulletRangeSqr = Mathf.Pow(equipWeapon.bulletSpeed * 0.8f, 2);
         foreach (var enemyArray in new MonoBehaviour[][] { enemies, enemyWorms, enemyDragons, enemyBosses, inMonsterLongAttacks, inMonsterLongAttackPoisons })
         {
             foreach (MonoBehaviour potentialTarget in enemyArray)
             {
                 Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
                 float dSqrToTarget = directionToTarget.sqrMagnitude;
-                if (dSqrToTarget < closestDistanceSqr)
+                if (dSqrToTarget < closestDistanceSqr && dSqrToTarget <= bulletRangeSqr)
                 {
                     closestDistanceSqr = dSqrToTarget;
                     closestTarget = potentialTarget.transform;
@@ -508,7 +509,7 @@ public class Player : MonoBehaviour
 
         return closestTarget;
     }
-
+    
     // 플레이어 공격 처리
     void Attack()
     {
