@@ -60,7 +60,6 @@ public class EnemyWorm : MonoBehaviour
         if (curHealth > 0)
         {
             isChase = true;
-            anim.SetBool("isWalk", true);
 
             StartCoroutine(ChasePlayer());
         }
@@ -109,7 +108,6 @@ public class EnemyWorm : MonoBehaviour
     {
         isChase = false;
         anim.SetBool("isAttack", false);
-        anim.SetBool("isWalk", false);
 
         // 초기 위치로 돌아가기
         // StartCoroutine(ReturnToInitialPosition());
@@ -333,7 +331,6 @@ public class EnemyWorm : MonoBehaviour
         else if (other.tag == "Player")
         {
             isChase = true;
-            anim.SetBool("isWalk", true);
         }
     }
 
