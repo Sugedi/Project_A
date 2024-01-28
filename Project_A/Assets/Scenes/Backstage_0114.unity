@@ -12725,7 +12725,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &507184604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39091,7 +39091,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillCanvas: {fileID: 1295543393}
-  mainCanvas: {fileID: 0}
+  mainCanvas: {fileID: 2091097371}
 --- !u!1001 &1293098281
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62113,7 +62113,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2142350610
 RectTransform:
   m_ObjectHideFlags: 0
