@@ -128,6 +128,7 @@ public class Player : MonoBehaviour
         activeSkills = GameObject.Find("DataManager").GetComponent<DataManager>().datas.skillHave;
         maxHealth = GameObject.Find("DataManager").GetComponent<DataManager>().datas.maxHP;
         gem = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
+        health = GameObject.Find("DataManager").GetComponent<DataManager>().datas.maxHP;
         EquipWeapon(0);
     }
 
