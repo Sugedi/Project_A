@@ -7,6 +7,7 @@ public enum SaveSwitchNumber
 {
     SaveSwitch_1, // 오아시스 세이브
     SaveSwitch_2,
+    SaveSwitch_3,
     SaveSwitch_Tutor, //튜토리얼 세이브
     SaveSwitch_9,
 }
@@ -15,7 +16,8 @@ public class SaveSwitch : MonoBehaviour
     public SaveSwitchNumber switchNumber;
 
     public Vector3 checkPoint_1 = new Vector3(-32f, 0.5f, 36f);
-    public Vector3 checkPoint_2 = new Vector3(0f, 0.5f, 36f); // 아직 미정
+    public Vector3 checkPoint_2 = new Vector3(-395f, 0.5f, 101f);
+    public Vector3 checkPoint_3 = new Vector3(-388.5f, 0.5f, 176f);
     public Vector3 checkPoint_Tutor = new Vector3(0f, 0f, 37f);
     public Vector3 checkPoint_9 = new Vector3(0f, 0f, 0f);
 
@@ -32,9 +34,13 @@ public class SaveSwitch : MonoBehaviour
         {
             saveNumber = 2;
         }
-        else if (switchNumber == SaveSwitchNumber.SaveSwitch_Tutor)
+        else if (switchNumber == SaveSwitchNumber.SaveSwitch_3)
         {
             saveNumber = 3;
+        }
+        else if (switchNumber == SaveSwitchNumber.SaveSwitch_Tutor)
+        {
+            saveNumber = 8;
         }
 
         else if (switchNumber == SaveSwitchNumber.SaveSwitch_9)
@@ -59,6 +65,12 @@ public class SaveSwitch : MonoBehaviour
 
         }
         else if (saveNumber == 3)
+        {
+            DataManager.instance.datas.savePos = checkPoint_3;
+            DataManager.instance.datas.saveSceneName = checkScene_1;
+
+        }
+        else if (saveNumber == 8)
         {
             DataManager.instance.datas.savePos = checkPoint_Tutor;
             DataManager.instance.datas.saveSceneName = checkScene_1;
