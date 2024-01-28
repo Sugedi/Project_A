@@ -76557,15 +76557,15 @@ MonoBehaviour:
     isLoop: 0
     clip: {fileID: 8300000, guid: cf0c2579bc3561b438f48760f0a9ed28, type: 3}
   - name: BoxOpen1
-    volume: 0.02
+    volume: 0.1
     isLoop: 0
     clip: {fileID: 8300000, guid: 2f9cffb3699504c42917354b8ad62df7, type: 3}
   - name: Door1
-    volume: 0.02
+    volume: 0.1
     isLoop: 0
     clip: {fileID: 8300000, guid: ec426d44d3236284ead1ab75ac9d13f4, type: 3}
   - name: Door2
-    volume: 0.02
+    volume: 0.1
     isLoop: 0
     clip: {fileID: 8300000, guid: c451998fe765b3149915c0cd2aa5746b, type: 3}
   - name: Button1
@@ -76577,7 +76577,7 @@ MonoBehaviour:
     isLoop: 0
     clip: {fileID: 8300000, guid: 8f1165a88bf3fef45932c4f95f181e37, type: 3}
   - name: Die
-    volume: 0.02
+    volume: 0.05
     isLoop: 0
     clip: {fileID: 8300000, guid: 5f6bc883a471167408e3c64424a2ef49, type: 3}
   defaultVolume: 0.02

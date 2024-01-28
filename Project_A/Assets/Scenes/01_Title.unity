@@ -7674,7 +7674,7 @@ MonoBehaviour:
     isLoop: 0
     clip: {fileID: 8300000, guid: 8f1165a88bf3fef45932c4f95f181e37, type: 3}
   - name: Die
-    volume: 0.1
+    volume: 0.05
     isLoop: 0
     clip: {fileID: 8300000, guid: 5f6bc883a471167408e3c64424a2ef49, type: 3}
   defaultVolume: 0.02
