@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -64,7 +65,9 @@ public class Player : MonoBehaviour
 
     public CanvasGroup joy;
 
-    // 퀘스트 아이템 획득 여부    
+    // 퀘스트 아이템 획득 여부
+    public GameObject systemMessagePanel; // 시스템 메시지를 포함하는 패널
+    public TextMeshProUGUI systemMessageText; // 'TextMeshProUGUI' 컴포넌트
     public bool hasThreadItem = false;
     public ObjectInteraction objectInteraction;
 
@@ -685,6 +688,8 @@ public class Player : MonoBehaviour
             }
             else if (threadItem != null)
             {
+                string message = "실타래 아이템을 획득 하였습니다.";
+                ActivateSystemMessagePanel(message);
                 Destroy(other.gameObject);
             }
             else if (item != null)
@@ -1105,7 +1110,19 @@ public class Player : MonoBehaviour
         if (other.tag == "Weapon")
             nearObject = null;
     }
+    private void ActivateSystemMessagePanel(string message)
+    {
+        systemMessagePanel.SetActive(true);
+        systemMessageText.text = message;
+        StartCoroutine(ShowSystemMessage(3f)); // 코루틴을 사용하여 3초 후 패널 비활성화
+    }
 
+    // 시스템 메시지 패널을 표시하는 코루틴
+    IEnumerator ShowSystemMessage(float displayTime)
+    {
+        yield return new WaitForSeconds(displayTime); // 지정된 시간 동안 대기
+        systemMessagePanel.SetActive(false); // 패널 비활성화
+    }
     // 아이템 값 증가 메서드
     //public void IncreaseItemValue()
     //{

@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ThreadItem : MonoBehaviour
-{
+{  
     void OnTriggerEnter(Collider other)
     {
         // 플레이어와 충돌한 경우
@@ -13,6 +14,7 @@ public class ThreadItem : MonoBehaviour
             if (player != null)
             {
                 player.hasThreadItem = true;               
+
                 Debug.Log("Player has collected the item.");
                 Destroy(gameObject);
             }            
