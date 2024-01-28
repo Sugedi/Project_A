@@ -64,8 +64,7 @@ public class Player : MonoBehaviour
 
     public CanvasGroup joy;
 
-    // ƒ˘Ω∫∆Æ æ∆¿Ã≈€ »πµÊ ø©∫Œ
-    public int itemValue = 0;
+    // ƒ˘Ω∫∆Æ æ∆¿Ã≈€ »πµÊ ø©∫Œ    
     public bool hasThreadItem = false;
     public ObjectInteraction objectInteraction;
 
@@ -93,6 +92,7 @@ public class Player : MonoBehaviour
         maxHealth = GameObject.Find("DataManager").GetComponent<DataManager>().datas.maxHP;
         gem = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
         health = GameObject.Find("DataManager").GetComponent<DataManager>().datas.maxHP;
+        hasThreadItem = GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1BossClear;
         EquipWeapon(0);
 
 
