@@ -7625,15 +7625,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgmInfo:
   - name: 01_Title
-    volume: 0.2
+    volume: 0.5
     isLoop: 1
     clip: {fileID: 8300000, guid: 55dc8d72aee932a4ebdbb4acd05f76e3, type: 3}
   - name: Backstage_0114
-    volume: 0.15
+    volume: 0.4
     isLoop: 1
     clip: {fileID: 8300000, guid: 35a081b3542a1aa41bb554508b7f7dab, type: 3}
   - name: Stage
-    volume: 0.15
+    volume: 0.4
     isLoop: 1
     clip: {fileID: 8300000, guid: 990f9fb9d325b864e9710250fbdf814b, type: 3}
   seInfo:

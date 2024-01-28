@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17276956, g: 0.21589413, b: 0.29782727, a: 1}
+  m_IndirectSpecularColor: {r: 0.17276956, g: 0.21589413, b: 0.2978273, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6097,7 +6097,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 700193952}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 38.728, z: 0}
 --- !u!114 &254906986
 MonoBehaviour:
@@ -10871,10 +10871,10 @@ RectTransform:
   m_Father: {fileID: 912837635}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -700}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &441871796
 MonoBehaviour:
@@ -26886,17 +26886,17 @@ Transform:
   - {fileID: 114299656}
   - {fileID: 540574382}
   - {fileID: 1267148162}
-  - {fileID: 999738540}
   - {fileID: 254906985}
-  - {fileID: 2028190646}
+  - {fileID: 999738540}
   - {fileID: 1824808838}
+  - {fileID: 2028190646}
+  - {fileID: 1236859685}
   - {fileID: 353110385}
   - {fileID: 1909411958}
-  - {fileID: 1236859685}
   - {fileID: 11097931}
+  - {fileID: 1508331044}
   - {fileID: 1187032781}
   - {fileID: 1771078231}
-  - {fileID: 1508331044}
   - {fileID: 1384051955}
   - {fileID: 1527695446}
   - {fileID: 1702115028}
@@ -28968,10 +28968,10 @@ RectTransform:
   m_Father: {fileID: 912837635}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -100}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &782668345
 MonoBehaviour:
@@ -29302,10 +29302,10 @@ RectTransform:
   m_Father: {fileID: 912837635}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -900}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &793067916
 MonoBehaviour:
@@ -46175,10 +46175,10 @@ RectTransform:
   m_Father: {fileID: 912837635}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -500}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1018473199
 MonoBehaviour:
@@ -52388,7 +52388,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 700193952}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 126.14, z: 0}
 --- !u!114 &1236859686
 MonoBehaviour:
@@ -59143,7 +59143,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 700193952}
-  m_RootOrder: 14
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: -124.107, z: 0}
 --- !u!114 &1508331045
 MonoBehaviour:
@@ -68136,7 +68136,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 700193952}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: -30.565, z: 0}
 --- !u!114 &1824808839
 MonoBehaviour:
@@ -72903,10 +72903,10 @@ RectTransform:
   m_Father: {fileID: 912837635}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -300}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1982865432
 MonoBehaviour:
@@ -76528,15 +76528,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgmInfo:
   - name: 01_Title
-    volume: 0.2
+    volume: 0.5
     isLoop: 1
     clip: {fileID: 8300000, guid: 55dc8d72aee932a4ebdbb4acd05f76e3, type: 3}
   - name: Backstage_0114
-    volume: 0.1
+    volume: 0.4
     isLoop: 1
     clip: {fileID: 8300000, guid: 35a081b3542a1aa41bb554508b7f7dab, type: 3}
   - name: Stage
-    volume: 0.1
+    volume: 0.4
     isLoop: 1
     clip: {fileID: 8300000, guid: 990f9fb9d325b864e9710250fbdf814b, type: 3}
   seInfo:
