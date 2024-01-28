@@ -41,6 +41,8 @@ public class Enemy : MonoBehaviour
     NavMeshAgent nav; // NavMeshAgent 컴포넌트
     Animator anim; // Animator 컴포넌트
 
+    public MonsterGroupManager groupManager;
+
     void Awake()
     {
         homePosition = transform.position;
@@ -400,6 +402,11 @@ public class Enemy : MonoBehaviour
             {
                 _item = Instantiate(itemPrefab); // 아이템 생성
                 _item.transform.position = dropPosition.position; // 아이템 위치 설정
+            }
+
+            if (groupManager != null)
+            {
+                groupManager.OnMonsterDefeated();
             }
 
             // 2초 뒤 몹 사망
