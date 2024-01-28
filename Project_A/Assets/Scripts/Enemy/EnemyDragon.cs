@@ -768,6 +768,8 @@ public class EnemyDragon : MonoBehaviour
             reactVec = reactVec.normalized;
             reactVec += Vector3.up;
 
+            GameObject.Find("DragonDoor").transform.Find("DragonDoor_").gameObject.SetActive(false);
+
             // 플레이어가 아직 ThreadItem을 가지고 있지 않고, 보스를 처치한 적이 없다면 ThreadItem을 드랍합니다.
             if (!player.hasThreadItem && !GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1BossClear)
             {
