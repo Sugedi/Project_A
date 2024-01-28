@@ -131,6 +131,14 @@ public class Player : MonoBehaviour
         health = GameObject.Find("DataManager").GetComponent<DataManager>().datas.maxHP;
         EquipWeapon(0);
     }
+    public void BoxGet()
+    {
+        ES3.LoadInto(KeyName, datas);
+        activeSkills = GameObject.Find("DataManager").GetComponent<DataManager>().datas.skillHave;
+        maxHealth = GameObject.Find("DataManager").GetComponent<DataManager>().datas.maxHP;
+        gem = GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul;
+        EquipWeapon(0);
+    }
 
     void SpaceFunction()
     {
@@ -219,16 +227,26 @@ public class Player : MonoBehaviour
                     SoundManager.instance.PlayAudio("BoxOpen1", "SE");
 
                     collider.gameObject.GetComponent<TreasureBox>().TreasureFind();
-
                 }
                 if (collider.gameObject.name == "TreasureBox2")
                 {
                     SoundManager.instance.PlayAudio("BoxOpen1", "SE");
 
                     collider.gameObject.GetComponent<TreasureBox>().TreasureFind();
-
                 }
                 if (collider.gameObject.name == "TreasureBox3")
+                {
+                    SoundManager.instance.PlayAudio("BoxOpen1", "SE");
+
+                    collider.gameObject.GetComponent<TreasureBox>().TreasureFind();
+                }
+                if (collider.gameObject.name == "TreasureBox4")
+                {
+                    SoundManager.instance.PlayAudio("BoxOpen1", "SE");
+
+                    collider.gameObject.GetComponent<TreasureBox>().TreasureFind();
+                }
+                if (collider.gameObject.name == "TreasureBox5")
                 {
                     SoundManager.instance.PlayAudio("BoxOpen1", "SE");
 

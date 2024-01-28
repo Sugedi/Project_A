@@ -7,6 +7,8 @@ public enum Treasure
 {
     BuckShot1,
     PierceShot,
+    SideShot,
+    Lighting,
     Money
 }
 
@@ -17,6 +19,8 @@ public class TreasureBox : MonoBehaviour
     public bool treasure_1; 
     public bool treasure_2; 
     public bool treasure_3; 
+    public bool treasure_4; 
+    public bool treasure_5; 
 
     public CanvasGroup treasureBox;
     public TextMeshProUGUI tresaureMSG;
@@ -28,6 +32,8 @@ public class TreasureBox : MonoBehaviour
         treasure_1 = GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1ItemBox1;
         treasure_2 = GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1ItemBox2;
         treasure_3 = GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1ItemBox3;
+        treasure_4 = GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1ItemBox4;
+        treasure_5 = GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1ItemBox5;
 
         if (this.name == "TreasureBox1")
         {
@@ -70,6 +76,32 @@ public class TreasureBox : MonoBehaviour
                 GameObject.Find("TreasureBox3After").transform.Find("TreasureBox3_After").gameObject.SetActive(true);
             }
         }
+        if (this.name == "TreasureBox4")
+        {
+            if (treasure_4 == false)
+            {
+                GameObject.Find("TreasureBox4").SetActive(true);
+                GameObject.Find("TreasureBox4After").transform.Find("TreasureBox4_After").gameObject.SetActive(false);
+            }
+            else if (treasure_4 == true)
+            {
+                GameObject.Find("TreasureBox4").SetActive(false);
+                GameObject.Find("TreasureBox4After").transform.Find("TreasureBox4_After").gameObject.SetActive(true);
+            }
+        }
+        if (this.name == "TreasureBox5")
+        {
+            if (treasure_5 == false)
+            {
+                GameObject.Find("TreasureBox5").SetActive(true);
+                GameObject.Find("TreasureBox5After").transform.Find("TreasureBox5_After").gameObject.SetActive(false);
+            }
+            else if (treasure_5 == true)
+            {
+                GameObject.Find("TreasureBox5").SetActive(false);
+                GameObject.Find("TreasureBox5After").transform.Find("TreasureBox5_After").gameObject.SetActive(true);
+            }
+        }
 
     }
 
@@ -88,7 +120,7 @@ public class TreasureBox : MonoBehaviour
                 // System MSG 라는 캔버스를 활성화하는 것으로
                 DataManager.instance.datas.skillHave.Add(Resources.Load<Skill>("BuckShot2"));
                 DataManager.instance.DataSave();
-                GameObject.Find("Player").GetComponent<Player>().SkillGet();
+                GameObject.Find("Player").GetComponent<Player>().BoxGet();
                 treasure_1 = true; // false일 때는 열린 상자, true일 때는 닫힌 상자 
                 DataManager.instance.datas.stage1ItemBox1 = true;
                 DataManager.instance.DataSave();
@@ -108,13 +140,14 @@ public class TreasureBox : MonoBehaviour
                 CanvasGroupOn(treasureBox);
                 DataManager.instance.datas.skillHave.Add(Resources.Load<Skill>("PierceShot"));
                 DataManager.instance.DataSave();
-                GameObject.Find("Player").GetComponent<Player>().SkillGet();
+                GameObject.Find("Player").GetComponent<Player>().BoxGet();
                 treasure_2 = true;
                 DataManager.instance.datas.stage1ItemBox2 = true;
                 DataManager.instance.DataSave();
             }
 
         }
+
         if (treasure == Treasure.Money)
         {
             if (treasure_3 == false)
@@ -130,6 +163,45 @@ public class TreasureBox : MonoBehaviour
                 DataManager.instance.datas.stage1ItemBox3 = true;
                 DataManager.instance.DataSave();
                 GameObject.Find("TutorialManager").GetComponent<TutorialManager>().UINext();
+            }
+
+        }
+
+        if (treasure == Treasure.SideShot)
+        {
+            if (treasure_4 == false)
+            {
+                CanvasGroupOff(joy);
+                GameObject.Find("TreasureBox4").SetActive(false);
+                GameObject.Find("TreasureBox4After").transform.Find("TreasureBox4_After").gameObject.SetActive(true);
+                Time.timeScale = 0;
+                tresaureMSG.text = "유도탄 스킬을 획득하였습니다!";
+                CanvasGroupOn(treasureBox);
+                DataManager.instance.datas.skillHave.Add(Resources.Load<Skill>("SideShot"));
+                DataManager.instance.DataSave();
+                GameObject.Find("Player").GetComponent<Player>().BoxGet();
+                treasure_4 = true;
+                DataManager.instance.datas.stage1ItemBox4 = true;
+                DataManager.instance.DataSave();
+            }
+
+        }
+        if (treasure == Treasure.Lighting)
+        {
+            if (treasure_5 == false)
+            {
+                CanvasGroupOff(joy);
+                GameObject.Find("TreasureBox5").SetActive(false);
+                GameObject.Find("TreasureBox5After").transform.Find("TreasureBox5_After").gameObject.SetActive(true);
+                Time.timeScale = 0;
+                tresaureMSG.text = "라이트닝 스킬을 획득하였습니다!";
+                CanvasGroupOn(treasureBox);
+                DataManager.instance.datas.skillHave.Add(Resources.Load<Skill>("Lightning"));
+                DataManager.instance.DataSave();
+                GameObject.Find("Player").GetComponent<Player>().BoxGet();
+                treasure_5 = true;
+                DataManager.instance.datas.stage1ItemBox5 = true;
+                DataManager.instance.DataSave();
             }
 
         }

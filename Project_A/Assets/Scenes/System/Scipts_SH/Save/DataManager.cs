@@ -49,6 +49,8 @@ public class Datas
     public bool stage1ItemBox1 = false; // 심장(최대체력 증가)
     public bool stage1ItemBox2 = false; 
     public bool stage1ItemBox3 = false; 
+    public bool stage1ItemBox4 = false; 
+    public bool stage1ItemBox5 = false; 
 
     // 퀘스트 진행 상황
     public int stage1MainQuest = 0; // 0은 미수주, 1은 미완, 2는 완료/보상미수령 3은 보상수령
