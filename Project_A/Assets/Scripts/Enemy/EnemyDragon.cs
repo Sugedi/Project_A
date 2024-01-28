@@ -18,7 +18,7 @@ public class EnemyDragon : MonoBehaviour
     public float targetRadius = 0;
     public float attackDuration = 1f; // 공격이 지속되는 시간
     private bool isAttackHit = false; // 일반 공격이 성공적으로 적중했는지 여부
-    public float attackHitCooldown = 0.5f; // 다음 일반 공격이 적중할 수 있는 쿨다운 시간
+    public float attackHitCooldown = 0.2f; // 다음 일반 공격이 적중할 수 있는 쿨다운 시간
     public Camera followCamera;
     public float sightRange = 10f; // 타겟이 유저 인식
 
@@ -83,7 +83,7 @@ public class EnemyDragon : MonoBehaviour
 
             // NavMeshAgent의 상태가 올바른 경우에만 목적지 설정
             nav.SetDestination(target.position);
-            transform.LookAt(target);
+            // transform.LookAt(target);
 
             yield return null;
         }
@@ -214,8 +214,8 @@ public class EnemyDragon : MonoBehaviour
 
         if (curHealth > 0 && !isAttackHit)
         {
-            // 부채꼴 형태로 총알 10개 발사
-            for (int i = 0; i < 10; i++)
+            // 부채꼴 형태로 총알 19개 발사
+            for (int i = 0; i < 19; i++)
             {
                 // 총알 발사 각도를 계산합니다.
                 Quaternion bulletRotation = Quaternion.Euler(0, 90 - (i * 10), 0) * transform.rotation;
@@ -246,11 +246,11 @@ public class EnemyDragon : MonoBehaviour
 
         if (curHealth > 0 && !isAttackHit)
         {
-            // 부채꼴 형태로 총알 10개 발사
-            for (int i = 0; i < 10; i++)
+            // 부채꼴 형태로 총알 19개 발사
+            for (int i = 0; i < 19; i++)
             {
                 // 총알 발사 각도를 계산합니다.
-                Quaternion bulletRotation = Quaternion.Euler(0, -90 + (i * 10), 0) * transform.rotation;
+                Quaternion bulletRotation = Quaternion.Euler(0, -360 + (i * 10), 0) * transform.rotation;
                 GameObject instantBullet = Instantiate(bullet, transform.position, bulletRotation);
 
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
@@ -278,8 +278,8 @@ public class EnemyDragon : MonoBehaviour
 
         if (curHealth > 0 && !isAttackHit)
         {
-            // 부채꼴 형태로 총알 10개 발사
-            for (int i = 0; i < 10; i++)
+            // 부채꼴 형태로 총알 19개 발사
+            for (int i = 0; i < 19; i++)
             {
                 // 총알 발사 각도를 계산합니다.
                 Quaternion bulletRotation = Quaternion.Euler(0, -180 + (i * 10), 0) * transform.rotation;
@@ -310,8 +310,8 @@ public class EnemyDragon : MonoBehaviour
 
         if (curHealth > 0 && !isAttackHit)
         {
-            // 부채꼴 형태로 총알 10개 발사
-            for (int i = 0; i < 10; i++)
+            // 부채꼴 형태로 총알 19개 발사
+            for (int i = 0; i < 19; i++)
             {
                 // 총알 발사 각도를 계산합니다.
                 Quaternion bulletRotation = Quaternion.Euler(0, -270 + (i * 10), 0) * transform.rotation;
@@ -330,7 +330,7 @@ public class EnemyDragon : MonoBehaviour
         isChase = true;
         isAttack = false;
         anim.SetBool("isAttack", false);
-
+        
 
         // 추격 중지 및 공격 상태로 전환
         isChase = false;
@@ -342,8 +342,8 @@ public class EnemyDragon : MonoBehaviour
 
         if (curHealth > 0 && !isAttackHit)
         {
-            // 부채꼴 형태로 총알 10개 발사
-            for (int i = 0; i < 19; i++)
+            // 부채꼴 형태로 총알 28개 발사
+            for (int i = 0; i < 28; i++)
             {
                 // 총알 발사 각도를 계산합니다.
                 Quaternion bulletRotation = Quaternion.Euler(0, -90 + (i * 10), 0) * transform.rotation;
@@ -374,8 +374,8 @@ public class EnemyDragon : MonoBehaviour
 
         if (curHealth > 0 && !isAttackHit)
         {
-            // 부채꼴 형태로 총알 10개 발사
-            for (int i = 0; i < 19; i++)
+            // 부채꼴 형태로 총알 28개 발사
+            for (int i = 0; i < 28; i++)
             {
                 // 총알 발사 각도를 계산합니다.
                 Quaternion bulletRotation = Quaternion.Euler(0, -270 + (i * 10), 0) * transform.rotation;
@@ -406,8 +406,8 @@ public class EnemyDragon : MonoBehaviour
 
         if (curHealth > 0 && !isAttackHit)
         {
-            // 부채꼴 형태로 총알 10개 발사
-            for (int i = 0; i < 19; i++)
+            // 부채꼴 형태로 총알 28개 발사
+            for (int i = 0; i < 28; i++)
             {
                 // 총알 발사 각도를 계산합니다.
                 Quaternion bulletRotation = Quaternion.Euler(0, -360 + (i * 10), 0) * transform.rotation;
@@ -438,8 +438,8 @@ public class EnemyDragon : MonoBehaviour
 
         if (curHealth > 0 && !isAttackHit)
         {
-            // 부채꼴 형태로 총알 10개 발사
-            for (int i = 0; i < 19; i++)
+            // 부채꼴 형태로 총알 28개 발사
+            for (int i = 0; i < 28; i++)
             {
                 // 총알 발사 각도를 계산합니다.
                 Quaternion bulletRotation = Quaternion.Euler(0, -180 + (i * 10), 0) * transform.rotation;
@@ -470,10 +470,10 @@ public class EnemyDragon : MonoBehaviour
 
         if (curHealth > 0 && !isAttackHit)
         {
-            // 총알 60개를 발사하기 전에 카메라를 흔듭니다.
+            // 총알 90개를 발사하기 전에 카메라를 흔듭니다.
             StartCoroutine(ShakeCamera(0.5f, 0.5f));
 
-            // 부채꼴 형태로 총알 60개 발사
+            // 부채꼴 형태로 총알 90개 발사
             for (int i = 0; i < 90; i++)
             {
                 // 총알 발사 각도를 계산합니다.
@@ -508,10 +508,10 @@ public class EnemyDragon : MonoBehaviour
 
         if (curHealth > 0 && !isAttackHit)
         {
-            // 총알 60개를 발사하기 전에 카메라를 흔듭니다.
+            // 총알 90개를 발사하기 전에 카메라를 흔듭니다.
             StartCoroutine(ShakeCamera(0.5f, 0.5f));
 
-            // 부채꼴 형태로 총알 60개 발사
+            // 부채꼴 형태로 총알 90개 발사
             for (int i = 0; i < 90; i++)
             {
                 // 총알 발사 각도를 계산합니다.
@@ -578,7 +578,7 @@ public class EnemyDragon : MonoBehaviour
 
         if (curHealth > 0 && !isAttackHit)
         {
-            // 부채꼴 형태로 총알 30개 발사
+            // 부채꼴 형태로 총알 40개 발사
             for (int i = 0; i < 40; i++)
             {
                 // 총알 발사 각도를 계산합니다.
@@ -610,8 +610,8 @@ public class EnemyDragon : MonoBehaviour
 
         if (curHealth > 0 && !isAttackHit)
         {
-            // 부채꼴 형태로 총알 30개 발사
-            for (int i = 0; i < 40; i++)
+            // 부채꼴 형태로 총알 50개 발사
+            for (int i = 0; i < 50; i++)
             {
                 // 총알 발사 각도를 계산합니다.
                 Quaternion bulletRotation = Quaternion.Euler(0, -20 + (i * 15), 0) * transform.rotation;
