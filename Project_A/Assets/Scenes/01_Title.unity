@@ -1273,6 +1273,8 @@ MonoBehaviour:
     stage1ItemBox1: 0
     stage1ItemBox2: 0
     stage1ItemBox3: 0
+    stage1ItemBox4: 0
+    stage1ItemBox5: 0
     stage1MainQuest: 0
     tutorPanelNum: 0
     stage1BossClear: 0
@@ -1946,6 +1948,8 @@ MonoBehaviour:
     stage1ItemBox1: 0
     stage1ItemBox2: 0
     stage1ItemBox3: 0
+    stage1ItemBox4: 0
+    stage1ItemBox5: 0
     stage1MainQuest: 0
     tutorPanelNum: 0
     stage1BossClear: 0
@@ -3363,6 +3367,8 @@ MonoBehaviour:
     stage1ItemBox1: 0
     stage1ItemBox2: 0
     stage1ItemBox3: 0
+    stage1ItemBox4: 0
+    stage1ItemBox5: 0
     stage1MainQuest: 0
     tutorPanelNum: 0
     stage1BossClear: 0
@@ -4214,6 +4220,8 @@ MonoBehaviour:
     stage1ItemBox1: 0
     stage1ItemBox2: 0
     stage1ItemBox3: 0
+    stage1ItemBox4: 0
+    stage1ItemBox5: 0
     stage1MainQuest: 0
     tutorPanelNum: 0
     stage1BossClear: 0
@@ -4224,6 +4232,8 @@ MonoBehaviour:
   SaveCanvas: {fileID: 0}
   joystick: {fileID: 0}
   joy: {fileID: 0}
+  systemMessagePanel: {fileID: 0}
+  systemMessageText: {fileID: 0}
   hasThreadItem: 0
   objectInteraction: {fileID: 0}
   Wallscope: 1
@@ -4904,6 +4914,8 @@ MonoBehaviour:
     stage1ItemBox1: 0
     stage1ItemBox2: 0
     stage1ItemBox3: 0
+    stage1ItemBox4: 0
+    stage1ItemBox5: 0
     stage1MainQuest: 0
     tutorPanelNum: 0
     stage1BossClear: 0
@@ -5906,6 +5918,8 @@ MonoBehaviour:
     stage1ItemBox1: 0
     stage1ItemBox2: 0
     stage1ItemBox3: 0
+    stage1ItemBox4: 0
+    stage1ItemBox5: 0
     stage1MainQuest: 0
     tutorPanelNum: 0
     stage1BossClear: 0
@@ -6161,6 +6175,8 @@ MonoBehaviour:
     stage1ItemBox1: 0
     stage1ItemBox2: 0
     stage1ItemBox3: 0
+    stage1ItemBox4: 0
+    stage1ItemBox5: 0
     stage1MainQuest: 0
     tutorPanelNum: 0
     stage1BossClear: 0
@@ -6431,6 +6447,8 @@ MonoBehaviour:
     stage1ItemBox1: 0
     stage1ItemBox2: 0
     stage1ItemBox3: 0
+    stage1ItemBox4: 0
+    stage1ItemBox5: 0
     stage1MainQuest: 0
     tutorPanelNum: 0
     stage1BossClear: 0
@@ -6857,6 +6875,8 @@ MonoBehaviour:
     stage1ItemBox1: 0
     stage1ItemBox2: 0
     stage1ItemBox3: 0
+    stage1ItemBox4: 0
+    stage1ItemBox5: 0
     stage1MainQuest: 0
     tutorPanelNum: 0
     stage1BossClear: 0
@@ -7551,15 +7571,15 @@ MonoBehaviour:
     volume: 0.02
     isLoop: 0
     clip: {fileID: 8300000, guid: 832440fce505e024d98a2c99534e99bb, type: 3}
-  - name: PlayerRoll1
+  - name: None
     volume: 0.02
     isLoop: 0
     clip: {fileID: 8300000, guid: 35f271d1cf28da0439bbb472962a62f1, type: 3}
-  - name: Shoot2
+  - name: None
     volume: 0.02
     isLoop: 0
     clip: {fileID: 8300000, guid: 92a2f906b2b49fa40aaa1a41bcae38c8, type: 3}
-  - name: Reload1
+  - name: None
     volume: 0.02
     isLoop: 0
     clip: {fileID: 8300000, guid: cf0c2579bc3561b438f48760f0a9ed28, type: 3}
@@ -7873,6 +7893,8 @@ MonoBehaviour:
     stage1ItemBox1: 0
     stage1ItemBox2: 0
     stage1ItemBox3: 0
+    stage1ItemBox4: 0
+    stage1ItemBox5: 0
     stage1MainQuest: 0
     tutorPanelNum: 0
     stage1BossClear: 0
@@ -8234,6 +8256,8 @@ MonoBehaviour:
     stage1ItemBox1: 0
     stage1ItemBox2: 0
     stage1ItemBox3: 0
+    stage1ItemBox4: 0
+    stage1ItemBox5: 0
     stage1MainQuest: 0
     tutorPanelNum: 0
     stage1BossClear: 0
@@ -8306,6 +8330,8 @@ MonoBehaviour:
     stage1ItemBox1: 0
     stage1ItemBox2: 0
     stage1ItemBox3: 0
+    stage1ItemBox4: 0
+    stage1ItemBox5: 0
     stage1MainQuest: 0
     tutorPanelNum: 0
     stage1BossClear: 0
