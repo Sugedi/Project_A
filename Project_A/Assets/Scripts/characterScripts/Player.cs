@@ -220,7 +220,7 @@ public class Player : MonoBehaviour
                 }
                 else if(collider.gameObject.name == "SwitchDoor_Tuto") 
                 {
-                    if(GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1Tutorial == 3)
+                    if(GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1Tutorial >= 3)
                     {
                         CanvasGroupOff(joy);
                         //GameObject.Find("Switch").GetComponent<SaveSwitch>().SwitchFunc();
