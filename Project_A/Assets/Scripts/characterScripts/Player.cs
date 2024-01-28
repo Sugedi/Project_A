@@ -145,6 +145,12 @@ public class Player : MonoBehaviour
 
     void SpaceFunction()
     {
+        // ObjectInteraction 인스턴스를 찾습니다.
+        ObjectInteraction objectInteraction = GameObject.FindObjectOfType<ObjectInteraction>();
+
+        // mainQuest 값을 가져옵니다.
+        int mainQuest = objectInteraction.GetMainQuest();
+
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.01f);
         foreach (Collider collider in hitColliders)
         {
@@ -170,6 +176,7 @@ public class Player : MonoBehaviour
             if (collider.CompareTag("Door"))
             {
                 GameObject.Find("door-house-simple").GetComponent<SceneMove>().Portal();
+
             }
 
             if (collider.CompareTag("Switch"))
@@ -206,7 +213,7 @@ public class Player : MonoBehaviour
                 }
                 else if(collider.gameObject.name == "SwitchDoor_Tuto") 
                 {
-                    if(GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1Tutorial == 3)
+                    if(GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1Tutorial >= 3)
                     {
                         CanvasGroupOff(joy);
                         //GameObject.Find("Switch").GetComponent<SaveSwitch>().SwitchFunc();
@@ -271,6 +278,21 @@ public class Player : MonoBehaviour
             {
                 CanvasGroupOff(joy);
                 GameObject.Find("MirrorGod").GetComponent<ObjectInteraction>().MirrorInteraction();
+            }
+
+            if (collider.CompareTag("Mirror"))
+            {
+                CanvasGroupOff(joy);
+                GameObject.Find("MirrorGod").GetComponent<ObjectInteraction>().MirrorInteraction();
+            }
+
+            // 'Stage' 씬으로 이동하려는 조건을 여기에 추가합니다.
+            // 예를 들어, 'Mirror' 태그가 붙은 오브젝트에 대한 상호작용이 성공적으로 완료된 후
+            // mainQuest가 1 이상일 때 'Stage' 씬으로 이동할 수 있도록 합니다.
+            if (mainQuest >= 1)
+            {
+                // 'Stage' 씬으로 이동하는 코드
+                SceneManager.LoadScene("Stage");
             }
 
         }
