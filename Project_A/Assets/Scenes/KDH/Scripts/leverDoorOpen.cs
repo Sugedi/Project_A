@@ -1,32 +1,57 @@
 using UnityEngine;
-using static LeverController;
+using Cinemachine;
+using System.Collections;
 
 public class leverDoorOpen : MonoBehaviour
 {
-    public GameObject lever1;
-    public GameObject lever2;
-    public GameObject lever3;
-    public GameObject lever4;
+    public GameObject lever1;  // 레버 1 게임 오브젝트
+    public GameObject lever2;  // 레버 2 게임 오브젝트
+    public GameObject lever3;  // 레버 3 게임 오브젝트
+    public GameObject lever4;  // 레버 4 게임 오브젝트
 
-    public AnimationClip doorOpenAnimation;
+    public AnimationClip doorOpenAnimation;  // 문 열림 애니메이션 클립
 
-    private bool hasOpened = false;  // To track whether the door has been opened
+    private bool hasOpened = false;  // 문이 열렸는지 여부를 추적하는 변수
+
+    public CinemachineVirtualCamera mainVirtualCamera; // 메인카메라
+    public CinemachineBlendListCamera blendListCamera;  // 블랜드 리스트 카메라
+
+    void Start()
+    {
+        // 기본적으로는 메인카메라 활성화
+        if (mainVirtualCamera != null)
+        {
+            mainVirtualCamera.enabled = true;
+        }
+
+        // 블렌딩 카메라는 비활성화 상태로 시작
+        if (blendListCamera != null)
+        {
+            blendListCamera.enabled = false;
+        }
+    }
 
     void Update()
     {
-        // Check if all levers have isPuzzleAnswer set to true
+        // 모든 레버가 퍼즐 답을 맞추었는지 확인
         bool allLeversActivated = CheckAllLevers();
 
-        // Play the door opening animation if the puzzle answer is correct and the door hasn't been opened yet
+        // 퍼즐 답이 올바르고 문이 아직 열리지 않았으면 문 열림 애니메이션을 재생
         if (allLeversActivated && !hasOpened)
         {
-            PlayDoorAnimation(doorOpenAnimation);
-            hasOpened = true;  // Mark the door as opened
+            // 문이 열리는 동안 블렌드 리스트 카메라를 활성화하고 메인 카메라를 비활성화
+            blendListCamera.enabled = true;
+            mainVirtualCamera.enabled = false;
+
+            // 코루틴 시작
+            StartCoroutine(PlayDoorAnimationWithDelay(doorOpenAnimation, 2f));
+
         }
     }
 
     bool CheckAllLevers()
     {
+        // 각 레버의 퍼즐 답을 가져와서 모든 레버가 활성화되었는지 확인
         bool lever1Activated = lever1.GetComponent<LeverController>().isPuzzleAnswer;
         bool lever2Activated = lever2.GetComponent<LeverController>().isPuzzleAnswer;
         bool lever3Activated = lever3.GetComponent<LeverController>().isPuzzleAnswer;
@@ -35,13 +60,19 @@ public class leverDoorOpen : MonoBehaviour
         return lever1Activated && lever2Activated && lever3Activated && lever4Activated;
     }
 
-    void PlayDoorAnimation(AnimationClip animationClip)
+    IEnumerator PlayDoorAnimationWithDelay(AnimationClip animationClip, float leverDoorDelay)
     {
+
         // Set the specified animation clip to the Animation component
         GetComponent<Animation>().clip = animationClip;
 
         // Play the animation once
         GetComponent<Animation>().wrapMode = WrapMode.Once;
         GetComponent<Animation>().Play();
+
+        yield return new WaitForSeconds(leverDoorDelay); // 2초 대기
+
+        mainVirtualCamera.enabled = true;
+        blendListCamera.enabled = false; // 블렌드 리스트 카메라 비활성화
     }
 }
