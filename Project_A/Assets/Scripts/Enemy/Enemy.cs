@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     public Transform target; // 플레이어의 Transform
     public BoxCollider meleeArea; // 근접 공격 범위 Collider
     public GameObject bullet; // 원거리 공격에 사용되는 총알
+    public GameObject EnemyBullet; // EnemyBullet 오브젝트
     public bool isChase; // 추격 상태 여부
     public bool isAttack; // 공격 상태 여부
     public bool isReturn;
@@ -54,6 +55,8 @@ public class Enemy : MonoBehaviour
         target = FindObjectOfType<Player>().GetComponent<Transform>();
 
         nav = GetComponent<NavMeshAgent>();
+
+        EnemyBullet = transform.Find("EnemyBullet").gameObject;
     }
 
     void ChaseStart()
@@ -410,6 +413,8 @@ public class Enemy : MonoBehaviour
             }
 
             // 2초 뒤 몹 사망
+            meleeArea.enabled = false; // 몬스터가 죽었을 때 박스 콜라이더 비활성화
+            EnemyBullet.SetActive(false); // 몬스터가 죽었을 때 EnemyBullet 비활성화
             Destroy(gameObject, 1);
         }
     }
