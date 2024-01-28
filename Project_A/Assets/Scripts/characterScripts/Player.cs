@@ -150,45 +150,31 @@ public class Player : MonoBehaviour
         {
             if (collider.CompareTag("NPC"))
             {
-                if (GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1MainQuest == 0)
-                {
 
-                }
-                else
-                {
+                // 비활성화된 게임 오브젝트 찾아오기 왤케 어려움?
+                //GameObject.Find("Skill").transform.Find("SkillCanvas").gameObject.SetActive(true);
+                CanvasGroupOff(joy);
+                GameObject.Find("Workbench baked").GetComponent<SkillNPC>().Interact();
 
-                    // 비활성화된 게임 오브젝트 찾아오기 왤케 어려움?
-                    //GameObject.Find("Skill").transform.Find("SkillCanvas").gameObject.SetActive(true);
-                    CanvasGroupOff(joy);
-                    GameObject.Find("Workbench baked").GetComponent<SkillNPC>().Interact();
+                // 이거 비활성화 말고, 메인 메뉴에서 썼던 캔버스 그룹으로 껐다 켜는 게 나을 듯 하다.
+                // 웬만하면 비활성화 안 시키는 게 좋을지도..?
+                // 아직 잘 모르겠네
+                // + UI 창 켜졌을 때, 키마는 움직일 수 있게 되어있음. 모바일은 걱정 없겠지만...
+                // UI 뜨면 유저 이동, 공격 등 못하도록 하는 게 좋을 듯
 
-                    // 이거 비활성화 말고, 메인 메뉴에서 썼던 캔버스 그룹으로 껐다 켜는 게 나을 듯 하다.
-                    // 웬만하면 비활성화 안 시키는 게 좋을지도..?
-                    // 아직 잘 모르겠네
-                    // + UI 창 켜졌을 때, 키마는 움직일 수 있게 되어있음. 모바일은 걱정 없겠지만...
-                    // UI 뜨면 유저 이동, 공격 등 못하도록 하는 게 좋을 듯
+                //GameObject mainUI = GameObject.Find("SaveCanvas");
 
-                    //GameObject mainUI = GameObject.Find("SaveCanvas");
-                }
 
             }
 
             if (collider.CompareTag("Door"))
             {
-                if(GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1MainQuest == 0)
-                {
-
-                }
-                else
-                {
-                    GameObject.Find("door-house-simple").GetComponent<SceneMove>().Portal();
-                }
-                
+                GameObject.Find("door-house-simple").GetComponent<SceneMove>().Portal();
             }
 
             if (collider.CompareTag("Switch"))
             {
-                if(collider.gameObject.name == "SwitchDoor") 
+                if (collider.gameObject.name == "SwitchDoor")
                 {
                     CanvasGroupOff(joy);
                     //GameObject.Find("Switch").GetComponent<SaveSwitch>().SwitchFunc();
@@ -198,7 +184,7 @@ public class Player : MonoBehaviour
                     CanvasGroupOn(SaveCanvas);
 
                 }
-                if(collider.gameObject.name == "SwitchDoor2") 
+                if (collider.gameObject.name == "SwitchDoor2")
                 {
                     CanvasGroupOff(joy);
                     //GameObject.Find("Switch").GetComponent<SaveSwitch>().SwitchFunc();
@@ -208,7 +194,7 @@ public class Player : MonoBehaviour
                     CanvasGroupOn(SaveCanvas);
 
                 }
-                if(collider.gameObject.name == "SwitchDoor3") 
+                if (collider.gameObject.name == "SwitchDoor3")
                 {
                     CanvasGroupOff(joy);
                     //GameObject.Find("Switch").GetComponent<SaveSwitch>().SwitchFunc();
@@ -218,9 +204,9 @@ public class Player : MonoBehaviour
                     CanvasGroupOn(SaveCanvas);
 
                 }
-                else if(collider.gameObject.name == "SwitchDoor_Tuto") 
+                else if (collider.gameObject.name == "SwitchDoor_Tuto")
                 {
-                    if(GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1Tutorial >= 3)
+                    if (GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1Tutorial == 3)
                     {
                         CanvasGroupOff(joy);
                         //GameObject.Find("Switch").GetComponent<SaveSwitch>().SwitchFunc();
@@ -230,11 +216,11 @@ public class Player : MonoBehaviour
                         CanvasGroupOn(SaveCanvas);
 
                     }
-                    
+
                 }
 
 
-                
+
             }
 
             if (collider.CompareTag("Treasure"))
@@ -325,7 +311,7 @@ public class Player : MonoBehaviour
             // 플레이어 액션
             Move();
             Turn();
-            
+
             Reload();
             Dodge();
 
@@ -362,7 +348,7 @@ public class Player : MonoBehaviour
     }
 
 
-    
+
     void GetInput()
     {
         // PC 조작 (유니티 테스트용으로 사용)
@@ -478,20 +464,49 @@ public class Player : MonoBehaviour
     void Turn()
     {
         // #1. 키보드에 의한 회전
-        //transform.LookAt(transform.position + moveVec); // 이동 방향으로 플레이어 회전
+        transform.LookAt(transform.position + moveVec); // 이동 방향으로 플레이어 회전
 
         // #2. 마우스에 의한 회전
-        if (fDown)
+        //if (fDown)
+        //{
+        //    Ray ray = followCamera.ScreenPointToRay(Input.mousePosition);
+        //    RaycastHit rayHit;
+        //    if (Physics.Raycast(ray, out rayHit, 100))
+        //    {
+        //        Vector3 nextVec = rayHit.point - transform.position;
+        //        nextVec.y = 0;
+        //        transform.LookAt(transform.position + nextVec); // 마우스 위치로 플레이어 회전
+        //    }
+        //}
+    }
+    public Transform FindClosestTarget()
+    {
+        Enemy[] enemies = FindObjectsOfType<Enemy>();
+        EnemyWorm[] enemyWorms = FindObjectsOfType<EnemyWorm>();
+        EnemyDragon[] enemyDragons = FindObjectsOfType<EnemyDragon>();
+        EnemyBoss[] enemyBosses = FindObjectsOfType<EnemyBoss>();
+        InMonsterLongAttack[] inMonsterLongAttacks = FindObjectsOfType<InMonsterLongAttack>();
+        InMonsterLongAttackPoison[] inMonsterLongAttackPoisons = FindObjectsOfType<InMonsterLongAttackPoison>();
+
+        Transform closestTarget = null;
+        float closestDistanceSqr = Mathf.Infinity;
+        Vector3 currentPosition = transform.position;
+
+        foreach (var enemyArray in new MonoBehaviour[][] { enemies, enemyWorms, enemyDragons, enemyBosses, inMonsterLongAttacks, inMonsterLongAttackPoisons })
         {
-            Ray ray = followCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit rayHit;
-            if (Physics.Raycast(ray, out rayHit, 100))
+            foreach (MonoBehaviour potentialTarget in enemyArray)
             {
-                Vector3 nextVec = rayHit.point - transform.position;
-                nextVec.y = 0;
-                transform.LookAt(transform.position + nextVec); // 마우스 위치로 플레이어 회전
+                Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
+                float dSqrToTarget = directionToTarget.sqrMagnitude;
+                if (dSqrToTarget < closestDistanceSqr)
+                {
+                    closestDistanceSqr = dSqrToTarget;
+                    closestTarget = potentialTarget.transform;
+                }
             }
         }
+
+        return closestTarget;
     }
 
     // 플레이어 공격 처리
@@ -513,6 +528,15 @@ public class Player : MonoBehaviour
             {
                 CancelReload();
             }
+
+            // 가장 가까운 적을 찾습니다.
+            Transform target = FindClosestTarget();
+            if (target != null)
+            {
+                // 가장 가까운 적을 바라봅니다.
+                Vector3 targetPosition = target.position;
+                transform.LookAt(targetPosition);
+            }
             equipWeapon.Use(); // 무기 사용
             anim.SetTrigger("doShot"); // 무기 종류에 따라 애니메이션 설정
 
@@ -527,7 +551,7 @@ public class Player : MonoBehaviour
         if (isReload)
         {
             anim.SetBool("isReload", false); // 재장전 애니메이션 비활성화
-            
+
             isReload = false; // 재장전 상태 해제
                               // 재장전이 취소되면 캐릭터의 속도를 원래대로 복구합니다.
             speed = 5;
@@ -628,10 +652,10 @@ public class Player : MonoBehaviour
     }
     // 회피 완료 처리
     void DodgeOut()
-    {        
+    {
         speed /= 1.6f; // 이동 속도 원래대로 감소
         isDodge = false; // 회피 완료 후 상태 설정
-                         
+
         // 무적 상태가 아직 해제되지 않았다면 해제
         if (isDamage)
             isDamage = false;
@@ -728,7 +752,7 @@ public class Player : MonoBehaviour
                 }
                 // 파괴하는 거
                 Destroy(item.gameObject);
-            }            
+            }
         }
         else if (other.tag == "Weapon")
         {
@@ -871,7 +895,7 @@ public class Player : MonoBehaviour
 
         // 씬의 모든 움직임을 멈춥니다. (필요한 경우)
         Time.timeScale = 0;
-        
+
     }
     // 데미지 표시 코루틴
     public IEnumerator OnDamage()
@@ -993,7 +1017,7 @@ public class Player : MonoBehaviour
                 if (skill.isPierceShot)
                 {
                     pierceShotActive = true;
-                }                
+                }
 
                 // 붐샷 스킬 적용 로직
                 if (skill.isBoomShot)
@@ -1127,12 +1151,12 @@ public class Player : MonoBehaviour
     }
     private void ActivateSystemMessagePanel(string message)
     {
-        if(GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1MainQuest <= 2)
+        if (GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1MainQuest <= 2)
         {
             GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1MainQuest = 2;
             DataManager.instance.DataSave();
         }
-        else if(GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1MainQuest == 3)
+        else if (GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1MainQuest == 3)
         {
             GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1MainQuest = 3;
             DataManager.instance.DataSave();
