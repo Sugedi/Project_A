@@ -42,18 +42,6 @@ public class ObjectInteraction : MonoBehaviour
 
     public int mainQuest;
 
-    // mainQuest 변수에 대한 public 접근자 메서드
-    public int GetMainQuest()
-    {
-        return mainQuest;
-    }
-
-    // mainQuest 변수 값을 설정하는 public 메서드
-    public void SetMainQuest(int value)
-    {
-        mainQuest = value;
-    }
-
     public GameObject systemMessagePanel; // 시스템 메시지를 포함하는 패널
     public TextMeshProUGUI systemMessageText; // 'TextMeshProUGUI' 컴포넌트
 
@@ -180,6 +168,13 @@ public class ObjectInteraction : MonoBehaviour
         DataManager.instance.DataSave();
         Debug.Log("mainQuest: " + mainQuest); // 로그 추가
 
+        //// mainQuest가 1일 때, MainQuest Panel (1)을 활성화 상태로 유지
+        //if (mainQuest == 1)
+        //{
+        //    mainQuestPanel1.SetActive(true);
+        //    // 다른 UI 요소의 상태를 여기서 제어할 수 있습니다.
+        //}
+
     }
 
     public void OnNextButton2Clicked()
@@ -190,6 +185,15 @@ public class ObjectInteraction : MonoBehaviour
         questIcon.SetActive(true);
 
         CanvasGroupOn(joy);
+
+
+        //// mainQuest가 2일 때, MainQuest Panel (2)을 활성화 상태로 유지
+        //if (mainQuest == 2)
+        //{
+        //    mainQuestPanel2.SetActive(true);
+        //    // 다른 UI 요소의 상태를 여기서 제어할 수 있습니다.
+        //}
+
     }
 
     public void OnNextButton3Clicked()
@@ -213,6 +217,14 @@ public class ObjectInteraction : MonoBehaviour
         // 여기에 실제로 전달하고 싶은 메시지를 입력하세요.
         string message = "대본집을 완성하였습니다.";
         ActivateSystemMessagePanel(message);
+
+        //// mainQuest가 3일 때, MainQuest Panel (3)을 활성화 상태로 유지
+        //if (mainQuest == 3)
+        //{
+        //    mainQuestPanel3.SetActive(true);
+        //    // 다른 UI 요소의 상태를 여기서 제어할 수 있습니다.
+        //}
+
     }
 
     public void JoyON()
@@ -242,24 +254,5 @@ public class ObjectInteraction : MonoBehaviour
         }
 
     }
-
-    // 'Stage' 씬으로 전환하려고 할 때 호출되는 메서드
-    public void TryEnterStageScene()
-    {
-        // mainQuest가 1 이상일 때만 'Stage' 씬으로 넘어갈 수 있도록 합니다.
-        if (mainQuest >= 1)
-        {
-            // 'Stage' 씬으로 넘어가는 코드
-            SceneManager.LoadScene("Stage");
-        }
-        else
-        {
-            // 사용자에게 'Stage' 씬으로 넘어갈 수 없음을 알리는 메시지를 표시
-            ActivateSystemMessagePanel("지금은 입장할 수 없습니다. 먼저 거울과 대화하세요.");
-        }
     }
-
-    // 버튼 클릭 등을 통해 위 메서드를 호출할 수 있도록 UI에 연결합니다.
-
-}
 
