@@ -508,8 +508,8 @@ public class EnemyBoss : MonoBehaviour
             // nav.enabled = false;
             brigid.velocity = Vector3.zero;
             brigid.angularVelocity = Vector3.zero;
-            banim.SetTrigger("doDie");
-
+            //banim.SetTrigger("doDie");
+            banim.Play("Die");
             // 피격된 방향 벡터를 정규화하고 위로 조금 이동시켜줌
             reactVec = reactVec.normalized;
             reactVec += Vector3.up;
