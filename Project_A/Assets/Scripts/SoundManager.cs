@@ -55,6 +55,15 @@ public class SoundManager : MonoBehaviour
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        // AudioSource 컴포넌트의 null 체크
+        for (int i = 0; i < sePlayer.Count; i++)
+        {
+            if (sePlayer[i] == null)
+            {
+                Debug.LogError("AudioSource component on SoundManager is null after scene load.");
+            }
+        }
+
         // 'Loading' 씬, 'LoadingBackstage'씬, 'LoadingStage' 씬을 처리하는 경우를 제외해야 하므로,
         // 'Loading' 씬, 'LoadingBackstage'씬, 'LoadingStage' 씬 이름을 체크하는 조건문을 추가합니다.
         if (scene.name == "Loading" || scene.name == "LoadingBackstage" || scene.name == "LoadingStage")
@@ -69,10 +78,10 @@ public class SoundManager : MonoBehaviour
                 PlayBGM("01_Title");  // 씬1에 해당하는 배경음악 이름
                 break;
             case "Backstage_0114": // 여기다가는 씬의 이름 적기
-                PlayBGM("Backstage_0114");  // 씬2에 해당하는 배경음악 이름
+                PlayBGM("Backstage_0114");  // 씬2에 해당하는 배경음악 이름                
                 break;
             case "Stage": // 여기다가는 씬의 이름 적기
-                PlayBGM("Stage");  // 씬3에 해당하는 배경음악 이름
+                PlayBGM("Stage");  // 씬3에 해당하는 배경음악 이름                
                 break;
             default:
                 // 로딩 씬들이 아니고, 다른 씬 이름이 잘못되었을 때만 오류를 로그합니다.
@@ -114,22 +123,28 @@ public class SoundManager : MonoBehaviour
 
     private void PlaySE(string p_name) // 효과음 재생을 파라미터로 이름을 받는다
     {
-        // seInfo의 배열만큼 반복 실행
+        bool isPlayed = false; // 효과음 재생 여부를 체크하는 플래그
         for (int i = 0; i < seInfo.Length; i++)
         {
-            // 파라미터로 넘어온 이름과 bgmINfo의 이름과 비교
             if (p_name == seInfo[i].name)
             {
-                // 효과음 플레이어의 갯수만큼 반복 실행
                 for (int j = 0; j < sePlayer.Count; j++)
                 {
-                    // seInfo에 담겨 있는 오디오 클립을 재생하고 반복문을 빠져 나간다
-                    sePlayer[j].clip = seInfo[i].clip;
-                    sePlayer[j].volume = seInfo[j].volume;
-                    sePlayer[j].PlayOneShot(sePlayer[j].clip);
+                    if (!sePlayer[j].isPlaying)
+                    {
+                        sePlayer[j].clip = seInfo[i].clip;
+                        sePlayer[j].volume = seInfo[i].volume;
+                        sePlayer[j].PlayOneShot(sePlayer[j].clip);
+                        isPlayed = true;
+                        break; // 효과음 재생 후 반복문 종료
+                    }
                 }
+                if (isPlayed) break; // 효과음이 재생되었다면 더 이상의 확인은 필요 없음
             }
-
+        }
+        if (!isPlayed)
+        {
+            Debug.LogError("SE " + p_name + " could not be played. All channels are busy or SE not found.");
         }
     }
 
