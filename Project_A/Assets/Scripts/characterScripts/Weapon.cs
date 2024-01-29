@@ -297,7 +297,7 @@ public class Weapon : MonoBehaviour
                     bulletScript.damage = bulletScript.baseDamage * damageMultiplier;
                     if (isPierceShotActive)
                     {
-                        bulletScript.lifeTime = 0.5f; // 피어스샷 총알의 생명 주기를 0.5초로 설정
+                        bulletScript.lifeTime = 0.7f; // 피어스샷 총알의 생명 주기를 0.5초로 설정
                     }
                     else
                     {

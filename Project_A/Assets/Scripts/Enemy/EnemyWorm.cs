@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemyWorm : MonoBehaviour
 {
@@ -17,7 +18,10 @@ public class EnemyWorm : MonoBehaviour
     public int minDropCount; // 드랍 아이템의 최소 개수
     public int maxDropCount; // 드랍 아이템의 최대 개수
     public float targetRange = 0;
-
+    public Slider healthBarSlider;
+    public GameObject healthBarUI;
+    public Transform headPosition;
+    public Vector3 healthBarOffset = new Vector3(0, 1, 0);
     public float sightRange = 10f; // 타겟이 유저 인식
 
     bool isReturningToInitialPosition; // 몬스터가 초기 위치로 돌아가고 있는지 여부를 나타내는 변수
@@ -86,6 +90,16 @@ public class EnemyWorm : MonoBehaviour
 
     void Update()
     {
+        if (healthBarUI != null)
+        {
+            // 체력바를 적의 머리 위로 이동시키기
+            healthBarUI.transform.position = headPosition.position + healthBarOffset;
+
+            // 체력바가 카메라를 바라보도록 하기
+            healthBarUI.transform.LookAt(Camera.main.transform);
+            healthBarUI.transform.Rotate(0, 180, 0); // 체력바가 카메라를 정면으로 바라보도록 조정
+        }
+
         float distanceToPlayer = Vector3.Distance(transform.position, target.position);
 
         if (distanceToPlayer <= sightRange)
@@ -292,6 +306,15 @@ public class EnemyWorm : MonoBehaviour
         // 폭발 효과가 있는지 확인하고, 있으면 해당 데미지를 적용합니다.
         float damageToApply = bullet.isExplosion ? bullet.boomShotDamage : totalDamage;
         curHealth -= damageToApply; // Apply damage
+
+        // 체력바 업데이트
+        healthBarSlider.value = curHealth;
+
+        // 체력이 0 이하이면 체력바 UI를 비활성화합니다.
+        if (curHealth <= 0)
+        {
+            healthBarUI.SetActive(false);  // 체력바 비활성화
+        }
 
         Debug.Log(gameObject.name + "가 데미지를 받았습니다. 데미지: " + damageToApply + ", 남은 체력: " + curHealth);
 
