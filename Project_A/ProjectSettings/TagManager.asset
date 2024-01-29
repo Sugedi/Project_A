@@ -22,6 +22,7 @@ TagManager:
   - PyramidExit
   - Mirror
   - Portal
+  - Boom
   layers:
   - Default
   - TransparentFX
@@ -42,7 +43,7 @@ TagManager:
   - EnemyLong
   - Boss
   - SoundChange
-  - 
+  - Boom
   - 
   - 
   - 

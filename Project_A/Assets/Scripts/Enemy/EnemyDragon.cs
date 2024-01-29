@@ -11,6 +11,8 @@ public class EnemyDragon : MonoBehaviour
     public float curHealth; // 현재 체력
     public Transform target; // 플레이어의 Transform
     public GameObject bullet; // 원거리 공격에 사용되는 총알
+    public GameObject bulletForRandomAreaAttack; // RandomAreaAttack에 사용할 총알 프리팹
+    public GameObject bulletForAttack; // Attack에 사용할 총알 프리팹
     public bool isChase; // 추격 상태 여부
     public bool isAttack; // 공격 상태 여부   
     public int minDropCount; // 드랍 아이템의 최소 개수
@@ -161,20 +163,6 @@ public class EnemyDragon : MonoBehaviour
         }
     }
 
-    void Targerting()
-    {
-        // 플레이어를 감지하면 공격 시작
-        RaycastHit[] rayHits =
-                Physics.SphereCastAll(transform.position,
-                targetRadius, transform.forward, targetRange,
-                LayerMask.GetMask("Player"));
-        if (rayHits.Length > 0 && !isAttack)
-        {
-            StartCoroutine(Attack());
-            StartCoroutine(RandomAreaAttack());
-        }
-    }
-
     IEnumerator ShakeCamera(float duration, float magnitude)
     {
         Vector3 originalPosition = followCamera.transform.position;
@@ -197,6 +185,20 @@ public class EnemyDragon : MonoBehaviour
         followCamera.transform.position = originalPosition;
     }
 
+    void Targerting()
+    {
+        // 플레이어를 감지하면 공격 시작
+        RaycastHit[] rayHits =
+                Physics.SphereCastAll(transform.position,
+                targetRadius, transform.forward, targetRange,
+                LayerMask.GetMask("Player"));
+        if (rayHits.Length > 0 && !isAttack)
+        {
+            StartCoroutine(Attack());
+            StartCoroutine(RandomAreaAttack());
+        }
+    }
+
     IEnumerator RandomAreaAttack()
     {
         isChase = false;
@@ -212,7 +214,7 @@ public class EnemyDragon : MonoBehaviour
                 // 랜덤한 위치를 계산합니다.
                 Vector3 randomPosition = transform.position + new Vector3(Random.Range(-attackRange, attackRange), projectileHeight, Random.Range(-attackRange, attackRange));
 
-                GameObject instantBullet = Instantiate(bullet, randomPosition, Quaternion.identity);
+                GameObject instantBullet = Instantiate(bulletForRandomAreaAttack, randomPosition, Quaternion.identity);
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
                 rigidBullet.velocity = Vector3.down * 20;
             }
@@ -251,7 +253,7 @@ public class EnemyDragon : MonoBehaviour
             {
                 // 총알 발사 각도를 계산합니다.
                 Quaternion bulletRotation = Quaternion.Euler(0, 90 - (i * 10), 0) * transform.rotation;
-                GameObject instantBullet = Instantiate(bullet, transform.position, bulletRotation);
+                GameObject instantBullet = Instantiate(bulletForAttack, transform.position, bulletRotation);
 
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
                 rigidBullet.velocity = instantBullet.transform.forward * 20;

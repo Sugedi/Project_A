@@ -46,6 +46,7 @@ public class BoomBullet : MonoBehaviour
 
             Destroy(gameObject); // 총알 즉시 제거
         }
+
         // 플레이어나 벽과 충돌했을 경우
         if (!isMelee && other.gameObject.tag == "Player")
         {
