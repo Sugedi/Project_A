@@ -8777,15 +8777,15 @@ MonoBehaviour:
     isLoop: 0
     clip: {fileID: 8300000, guid: c451998fe765b3149915c0cd2aa5746b, type: 3}
   - name: Button1
-    volume: 1
+    volume: 0.5
     isLoop: 0
     clip: {fileID: 8300000, guid: 555b16057da8cd244bde7bc6d55a6a92, type: 3}
   - name: Button2
-    volume: 1
+    volume: 0.5
     isLoop: 0
     clip: {fileID: 8300000, guid: 8f1165a88bf3fef45932c4f95f181e37, type: 3}
   - name: Die
-    volume: 0.1
+    volume: 0.2
     isLoop: 0
     clip: {fileID: 8300000, guid: 5f6bc883a471167408e3c64424a2ef49, type: 3}
   - name: DragonDoorOpen
