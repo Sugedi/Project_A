@@ -133,6 +133,7 @@ public class ObjectInteraction : MonoBehaviour
 
     public void MirrorInteraction() 
     {
+        mainQuest = GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1MainQuest;
         if (mainQuest == 0)
         {
             dialoguePanel1.SetActive(true);

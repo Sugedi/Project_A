@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+using UnityEngine.UI;
 public enum Treasure
 {
     BuckShot1,
@@ -26,6 +26,9 @@ public class TreasureBox : MonoBehaviour
     public TextMeshProUGUI tresaureMSG;
 
     public CanvasGroup joy;
+
+    public Image image;
+    public Sprite imageAttack;
 
     private void Start()
     {
@@ -113,6 +116,7 @@ public class TreasureBox : MonoBehaviour
 
             if (treasure_1 == false)
             {
+                image.sprite = imageAttack;
                 CanvasGroupOff(joy);
                 GameObject.Find("TreasureBox1").SetActive(false);
                 GameObject.Find("TreasureBox1After").transform.Find("TreasureBox1_After").gameObject.SetActive(true);
@@ -136,6 +140,7 @@ public class TreasureBox : MonoBehaviour
 
             if (treasure_2 == false)
             {
+                image.sprite = imageAttack;
                 CanvasGroupOff(joy);
                 GameObject.Find("TreasureBox2").SetActive(false);
                 GameObject.Find("TreasureBox2After").transform.Find("TreasureBox2_After").gameObject.SetActive(true);
@@ -158,6 +163,7 @@ public class TreasureBox : MonoBehaviour
 
             if (treasure_3 == false)
             {
+                image.sprite = imageAttack;
                 CanvasGroupOff(joy);
                 GameObject.Find("TreasureBox3").SetActive(false);
                 GameObject.Find("TreasureBox3After").transform.Find("TreasureBox3_After").gameObject.SetActive(true);
@@ -179,6 +185,7 @@ public class TreasureBox : MonoBehaviour
 
             if (treasure_4 == false)
             {
+                image.sprite = imageAttack;
                 CanvasGroupOff(joy);
                 GameObject.Find("TreasureBox4").SetActive(false);
                 GameObject.Find("TreasureBox4After").transform.Find("TreasureBox4_After").gameObject.SetActive(true);
@@ -200,6 +207,7 @@ public class TreasureBox : MonoBehaviour
 
             if (treasure_5 == false)
             {
+                image.sprite = imageAttack;
                 CanvasGroupOff(joy);
                 GameObject.Find("TreasureBox5").SetActive(false);
                 GameObject.Find("TreasureBox5After").transform.Find("TreasureBox5_After").gameObject.SetActive(true);
