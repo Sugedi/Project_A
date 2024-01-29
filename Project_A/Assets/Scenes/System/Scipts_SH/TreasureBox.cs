@@ -190,7 +190,7 @@ public class TreasureBox : MonoBehaviour
                 GameObject.Find("TreasureBox4").SetActive(false);
                 GameObject.Find("TreasureBox4After").transform.Find("TreasureBox4_After").gameObject.SetActive(true);
                 Time.timeScale = 0;
-                tresaureMSG.text = "유도탄 스킬을 획득하였습니다!\n작은 유도탄들을 추가로 발사됩니다.";
+                tresaureMSG.text = "유도탄 스킬을 획득하였습니다!\n작은 유도탄들을 추가로 발사합니다.";
                 CanvasGroupOn(treasureBox);
                 DataManager.instance.datas.skillHave.Add(Resources.Load<Skill>("SideShot"));
                 DataManager.instance.DataSave();
