@@ -33,8 +33,9 @@ public class EnemyBoss : MonoBehaviour
     public float knockbackDuration = 0.5f; // 넉백 지속 시간
 
     public Vector3 homePosition; // 몬스터의 초기 위치
-    public float chaseRange = 20f;
+    public float chaseRange;
     public bool bisReturn;
+    public float homeRange = 10f; // 홈 위치에서 몬스터가 이동할 수 있는 최대 거리
 
     //==============================================================
     public GameObject bitemPrefab; // 드랍 아이템 프리펩 등록
@@ -68,7 +69,6 @@ public class EnemyBoss : MonoBehaviour
 
     void Start()
     {
-        homePosition = transform.position;
         chargeAreaEffectInstance = Instantiate(chargeAreaEffectPrefab, transform.position, Quaternion.identity);
         chargeAreaEffectInstance.Stop();
         StartCoroutine(ChargeCooldown());
@@ -116,6 +116,11 @@ public class EnemyBoss : MonoBehaviour
         isCharging = false;        
         bisChase = true;
         StartCoroutine(ChargeCooldown());
+
+        if (bisReturn)
+        {
+            yield break;
+        }
     }
 
     IEnumerator ChargeCooldown()
@@ -150,7 +155,7 @@ public class EnemyBoss : MonoBehaviour
 
     void Awake()
     {
-        
+        homePosition = transform.position;
         brigid = GetComponent<Rigidbody>();
         bboxCollider = GetComponent<BoxCollider>();
         bmat = GetComponentInChildren<SkinnedMeshRenderer>().material;
@@ -164,9 +169,6 @@ public class EnemyBoss : MonoBehaviour
         healthBarUI.SetActive(false);
     }
 
- 
-
-    
     void bChaseStart()
     {
         if (bcurHealth > 0)  // Only start chasing if health is greater than 0
@@ -198,7 +200,6 @@ public class EnemyBoss : MonoBehaviour
 
     void Update()
     {
-
         float distanceToPlayer = Vector3.Distance(transform.position, btarget.position);
 
         if (bcurHealth > 0 && distanceToPlayer <= bHealthBarRange)
@@ -232,55 +233,86 @@ public class EnemyBoss : MonoBehaviour
             {
                 bTargerting();
             }
+
+            if (bisReturn)
+            {
+                Return();
+            }
+            else
+            {
+                bisReturn = chaseRange < Vector3.Distance(transform.position, homePosition);
+                if (distanceToPlayer <= bsightRange)
+                {
+                    // if (!bisChase)
+                    // {
+                        bChaseStart();
+                    // }
+                }
+                else
+                {
+                    if (bisChase)
+                    {
+                        StopChase();
+                    }
+                }
+            }
+
+            // 플레이어가 일정 범위 내에 있을 때 추격 시작
+            if (distanceToPlayer <= bsightRange && !bisChase && !bisReturn && !isCharging)
+            {
+                bChaseStart();
+            }
+            // 플레이어가 추격 범위를 벗어났을 때 추격 중지 및 제자리로 복귀
+            else if (distanceToPlayer > chaseRange && bisChase && !isCharging)
+            {
+                StopChase();
+                Return();
+            }
         }
-
-        // 플레이어가 일정 범위 내에 있을 때 추격 시작
-        if (distanceToPlayer <= bsightRange && !bisChase && !bisReturn && !isCharging)
+        void StopChase()
         {
-            bChaseStart();
-        }
-        // 플레이어가 추격 범위를 벗어났을 때 추격 중지 및 제자리로 복귀
-        else if (distanceToPlayer > chaseRange && bisChase && !isCharging)
-        {
-            StopChase();
-            Return();
-        }
-    }
-    void StopChase()
-    {
-        bisChase = false;
-        banim.SetBool("isAttack", false);
-        //banim.SetBool("isWalk", false);
-        bnav.isStopped = true;
-    }
-
-    void Return()
-    {
-        bboxCollider.enabled = false;
-        // 제자리로 돌아가는 상태로 설정
-        bisReturn = true;
-
-        // 원래 위치로 이동
-        //banim.SetBool("isWalk", true);
-        bnav.isStopped = false;
-        bnav.SetDestination(homePosition);
-
-        // 원래 위치에 도착했는지 확인
-        if (Vector3.Distance(transform.position, homePosition) <= 2f)
-        {
+            bisChase = false;
+            banim.SetBool("isAttack03", false);
             //banim.SetBool("isWalk", false);
             bnav.isStopped = true;
-            bisReturn = false; // 제자리로 돌아간 상태를 해제
-            bboxCollider.enabled = true;
+        }
+
+        void Return()
+        {
+            // BoxCollider 비활성화
+            bboxCollider.enabled = false;
+
+            bisChase = false;
+            banim.SetBool("isAttack03", false);
+            if (!bnav.enabled)
+                bnav.enabled = true;
+
+            if (!bnav.isOnNavMesh)
+            {
+                // NavMesh에 없는 경우 초기 위치를 목적지로 설정
+                bnav.Warp(homePosition);
+            }
+
+                // isWalk 애니메이션 재생
+                // if (!banim.GetBool("isWalk") && !banim.GetCurrentAnimatorStateInfo(0).IsName("isWalk"))
+                // {
+                    // "isWalk" 애니메이션이 재생 중이 아니라면 재생
+                    // banim.SetBool("isWalk", true);
+                // }
+
+            bnav.SetDestination(homePosition);
+
+            if (Vector3.Distance(transform.position, homePosition) < 2f)
+            {
+                bisReturn = false;
+                // banim.SetBool("isWalk", false);
+
+                // BoxCollider 활성화
+                bboxCollider.enabled = true;
+            }
         }
     }
 
-    void OnDrawGizmosSelected()
-    {
-        // 추격 범위를 빨간색 원으로 표시
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, chaseRange);
-    }
     void bFreezeVelocity()
     {
         if (bisChase)
@@ -292,8 +324,6 @@ public class EnemyBoss : MonoBehaviour
 
     void bTargerting()
     {
-
-
         // 플레이어를 감지하면 공격 시작
         RaycastHit[] rayHits =
             Physics.SphereCastAll(transform.position,
@@ -303,11 +333,22 @@ public class EnemyBoss : MonoBehaviour
         {
             StartCoroutine(bAttack());
         }
+        // 복귀 상태일 때는 공격을 수행하지 않음
+        if (bisReturn)
+        {
+            return;
+        }
     }
 
     // IEnumerator를 사용한 Attack 코루틴 함수
     IEnumerator bAttack()
     {
+        // 복귀 상태일 때는 공격을 수행하지 않음
+        if (bisReturn)
+        {
+            yield break;
+        }
+
         // 추격 중지 및 공격 상태로 전환
         bisChase = false;
         bisAttack = true;
@@ -338,9 +379,9 @@ public class EnemyBoss : MonoBehaviour
     }
     // FixedUpdate 함수
     void FixedUpdate()
-    {        
-        // 목표를 향해 이동하는 함수 호출
-        if (!isCharging)
+    {
+        // 복귀 상태가 아닐 때만 목표를 향해 이동하도록 수정
+        if (!isCharging && !bisReturn)
         {
             bTargerting();
         }
