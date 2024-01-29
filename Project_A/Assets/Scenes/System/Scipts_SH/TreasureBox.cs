@@ -121,7 +121,7 @@ public class TreasureBox : MonoBehaviour
                 GameObject.Find("TreasureBox1").SetActive(false);
                 GameObject.Find("TreasureBox1After").transform.Find("TreasureBox1_After").gameObject.SetActive(true);
                 Time.timeScale = 0;
-                tresaureMSG.text = "벅샷 스킬을 획득하였습니다!";
+                tresaureMSG.text = "벅샷 스킬을 획득하였습니다!\n기본 공격이 세 갈래로 발사됩니다.";
                 CanvasGroupOn(treasureBox);
                 // System MSG 라는 캔버스를 활성화하는 것으로
                 DataManager.instance.datas.skillHave.Add(Resources.Load<Skill>("BuckShot2"));
@@ -145,7 +145,7 @@ public class TreasureBox : MonoBehaviour
                 GameObject.Find("TreasureBox2").SetActive(false);
                 GameObject.Find("TreasureBox2After").transform.Find("TreasureBox2_After").gameObject.SetActive(true);
                 Time.timeScale = 0;
-                tresaureMSG.text = "관통샷 스킬을 획득하였습니다!";
+                tresaureMSG.text = "관통샷 스킬을 획득하였습니다!\n기본 공격이 몬스터를 관통해서 지속됩니다.";
                 CanvasGroupOn(treasureBox);
                 DataManager.instance.datas.skillHave.Add(Resources.Load<Skill>("PierceShot"));
                 DataManager.instance.DataSave();
@@ -190,7 +190,7 @@ public class TreasureBox : MonoBehaviour
                 GameObject.Find("TreasureBox4").SetActive(false);
                 GameObject.Find("TreasureBox4After").transform.Find("TreasureBox4_After").gameObject.SetActive(true);
                 Time.timeScale = 0;
-                tresaureMSG.text = "유도탄 스킬을 획득하였습니다!";
+                tresaureMSG.text = "유도탄 스킬을 획득하였습니다!\n작은 유도탄들을 추가로 발사됩니다.";
                 CanvasGroupOn(treasureBox);
                 DataManager.instance.datas.skillHave.Add(Resources.Load<Skill>("SideShot"));
                 DataManager.instance.DataSave();
@@ -212,7 +212,7 @@ public class TreasureBox : MonoBehaviour
                 GameObject.Find("TreasureBox5").SetActive(false);
                 GameObject.Find("TreasureBox5After").transform.Find("TreasureBox5_After").gameObject.SetActive(true);
                 Time.timeScale = 0;
-                tresaureMSG.text = "라이트닝 스킬을 획득하였습니다!";
+                tresaureMSG.text = "라이트닝 스킬을 획득하였습니다!\n총알이 몬스터에 닿으면 번개가 내려쳐 추가 피해를 입힙니다.";
                 CanvasGroupOn(treasureBox);
                 DataManager.instance.datas.skillHave.Add(Resources.Load<Skill>("Lightning"));
                 DataManager.instance.DataSave();
