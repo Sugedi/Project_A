@@ -5,7 +5,7 @@ using UnityEngine;
 public class MeteorBoom : MonoBehaviour
 {
     public float duration; // 불 효과 지속 시간
-    public float damage; // 플레이어에게 입히는 피해량
+    public int damage; // 플레이어에게 입히는 피해량
     private float damageInterval; // 피해를 입히는 간격
     private float lastDamageTime; // 마지막으로 피해를 입힌 시간
 
