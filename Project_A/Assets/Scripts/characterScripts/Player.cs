@@ -822,17 +822,14 @@ public class Player : MonoBehaviour
             if (isDead) return;
 
             if (!isDamage)
-            {
-                // 적 총알에 맞았을 때 체력 감소 및 총알 파괴
+            {                
                 MeteorBoom meteorBoom = other.GetComponent<MeteorBoom>();
                 health -= meteorBoom.damage;
                 if (health < 0)
                 {
                     health = 0;
                     Die();
-                }
-                if (other.GetComponent<Rigidbody>() != null)
-                    Destroy(other.gameObject);
+                }                
 
                 // 데미지 표시 코루틴 실행
                 StartCoroutine(OnDamage());

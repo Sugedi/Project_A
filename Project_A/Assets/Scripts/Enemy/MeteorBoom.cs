@@ -19,8 +19,7 @@ public class MeteorBoom : MonoBehaviour
         // 플레이어와 처음 닿았을 때
         if (other.CompareTag("Player"))
         {
-            // 피해를 입히고, 마지막으로 피해를 입힌 시간을 현재 시간으로 설정
-            DealDamage(other.gameObject);
+            // 마지막으로 피해를 입힌 시간을 현재 시간으로 설정            
             lastDamageTime = Time.time;
         }
     }
@@ -32,16 +31,10 @@ public class MeteorBoom : MonoBehaviour
         {
             // 마지막으로 피해를 입힌 이후 1초가 지났다면 다시 피해를 입히고, 마지막으로 피해를 입힌 시간을 현재 시간으로 설정
             if (Time.time >= lastDamageTime + damageInterval)
-            {
-                DealDamage(other.gameObject);
+            {                
                 lastDamageTime = Time.time;
             }
         }
     }
-
-    void DealDamage(GameObject player)
-    {
-        // 플레이어에게 피해를 입히는 코드를 여기에 작성
-        // 예: player.GetComponent<PlayerHealth>().TakeDamage(damage);
-    }
+    
 }
