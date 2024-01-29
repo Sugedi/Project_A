@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,7 +17,8 @@ public class AudioInformation
 //오디오를 관리 하는 클래스(싱글톤) - 배경음악, 효과음, 음성을 따로 관리
 public class SoundManager : MonoBehaviour
 {
-    //싱글톤 선언 준비
+    //  SoundManager의 인스턴스를 저장할 정적 변수를 선언
+    // 정적 변수는 클래스의 모든 인스턴스에 걸쳐 공유되며, 프로그램의 실행 도중 단 한 번만 생성됨
     public static SoundManager instance;
     [SerializeField]
     private AudioInformation[] bgmInfo = null; // 배경음악 정보
@@ -34,15 +36,24 @@ public class SoundManager : MonoBehaviour
     {
         SceneManager.sceneLoaded += OnSceneLoaded;  // 이벤트 리스너 추가
 
-        // instance 가 null인 상태라면
+        Debug.Log("Awake called in SoundManager.");
+
+        // instance 가 null인 상태인지 확인하여, 현재 SoundManager 인스턴스가 처음 생성되는 경우인지를 판단
         if (instance == null)
         {
+            // 만약 instance가 null이라면, 현재 SoundManager 객체(this)를 instance로 할당하고,
+            // DontDestroyOnLoad(gameObject);를 호출하여 씬 전환 시에도 이 객체가 파괴되지 않도록 한다.
+            // 이렇게 하면, 씬이 전환되더라도 SoundManager 인스턴스가 유지되어, 설정과 데이터가 보존된다.
             instance = this; // 인스턴스는 자기자신
-            DontDestroyOnLoad(gameObject); // 다른씬에서도 사용 할 수 있도록 지정
+            DontDestroyOnLoad(this.gameObject); // 다른씬에서도 사용 할 수 있도록 지정
+            Debug.Log("SoundManager 인스턴스가 설정되어 DontDestroyOnLoad로 표시됨.");
         }
         else
         {
-            Destroy(gameObject); // 인스턴스가 이미 생성 중이라면 파괴하고 새로 만들기
+            // 만약 instance가 이미 존재한다면(null이 아니라면), 이미 SoundManager 인스턴스가 존재한다는 의미이므로,
+            // 현재 생성된 새 객체는 필요하지 않음. 따라서 Destroy(gameObject); 를 호출하여 새로 생성된 객체를 파괴
+            Debug.Log("SoundManager 인스턴스가 이미 존재하여 중복 제거 중.");
+            Destroy(this.gameObject);
         }
 
         bgmPlayer = this.gameObject.AddComponent<AudioSource>();
@@ -55,12 +66,14 @@ public class SoundManager : MonoBehaviour
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        Debug.Log("OnSceneLoaded called: " + scene.name);
+
         // AudioSource 컴포넌트의 null 체크
         for (int i = 0; i < sePlayer.Count; i++)
         {
             if (sePlayer[i] == null)
             {
-                Debug.LogError("AudioSource component on SoundManager is null after scene load.");
+                Debug.LogError("SoundManager의 AudioSource 컴포넌트는 장면 로드 후 null입니다.");
             }
         }
 
@@ -194,5 +207,6 @@ public class SoundManager : MonoBehaviour
         StopBGM();
         StopAllSE();
     }
+
 
 }
