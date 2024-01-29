@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class bossKillDoor : MonoBehaviour
@@ -28,6 +29,26 @@ public class bossKillDoor : MonoBehaviour
         // Play the animation once
         GetComponent<Animation>().wrapMode = WrapMode.Once;
         GetComponent<Animation>().Play();
+        // Add self-disable method call
+        StartCoroutine(DisableAfterAnimation(animationClip.length));
     }
 
+    IEnumerator DisableAfterAnimation(float duration)
+    {
+        // Wait for the animation to finish
+        yield return new WaitForSeconds(duration);
+
+        // Disable the script or GameObject
+        DisableScript();
+    }
+
+    void DisableScript()
+    {
+        // You can either disable the script or the GameObject itself
+        // For disabling the script:
+        // enabled = false;
+
+        // For disabling the GameObject:
+        gameObject.SetActive(false);
+    }
 }
