@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -42,6 +43,11 @@ public class Enemy : MonoBehaviour
     NavMeshAgent nav; // NavMeshAgent 컴포넌트
     Animator anim; // Animator 컴포넌트
 
+    // 체력바
+    public Slider healthBarSlider;
+    public GameObject healthBarUI;
+    public Transform headPosition;
+    public Vector3 healthBarOffset = new Vector3(0, 2, 0);
     public MonsterGroupManager groupManager;
 
     void Awake()
@@ -91,6 +97,15 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        if (healthBarUI != null)
+        {
+            // 체력바를 적의 머리 위로 이동시키기
+            healthBarUI.transform.position = headPosition.position + healthBarOffset;
+
+            // 체력바가 카메라를 바라보도록 하기
+            healthBarUI.transform.rotation = Quaternion.Euler(healthBarUI.transform.rotation.eulerAngles.x, Camera.main.transform.rotation.eulerAngles.y, healthBarUI.transform.rotation.eulerAngles.z);
+        }
+
         float distanceToPlayer = Vector3.Distance(transform.position, target.position);
 
         if (isReturn)
@@ -292,6 +307,15 @@ public class Enemy : MonoBehaviour
         float damageToApply = bullet.isExplosion ? bullet.boomShotDamage : totalDamage;
         curHealth -= damageToApply; // Apply damage
 
+        // 체력바 업데이트
+        healthBarSlider.value = curHealth;
+
+        // 체력이 0 이하이면 체력바 UI를 비활성화합니다.
+        if (curHealth <= 0)
+        {
+            healthBarUI.SetActive(false);  // 체력바 비활성화
+        }
+
         Debug.Log(gameObject.name + "가 데미지를 받았습니다. 데미지: " + damageToApply + ", 남은 체력: " + curHealth);
 
         Vector3 reactVec = transform.position - hitPoint;
@@ -301,11 +325,6 @@ public class Enemy : MonoBehaviour
         {
             bullet.ReturnToPool(); // 총알 반환
         }
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        
     }
 
     void OnTriggerEnter(Collider other)

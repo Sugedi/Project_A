@@ -115,9 +115,9 @@ public class Bullet : MonoBehaviour
                 ReturnToPool();
             }
         }
-        else if (isPenetrating)
+        else if (!isHoming)
         {
-            // 피어스샷일 때 총알에 가속도를 적용합니다.
+            // 사이드샷을 제외한 총알에 가속도를 적용합니다.
             bulletRigidbody.AddForce(transform.forward * acceleration, ForceMode.Acceleration);
         }
 
@@ -295,6 +295,7 @@ public class Bullet : MonoBehaviour
         if (enemyBoss != null)
         {
             enemyBoss.bTakeDamage(bullet, hitPoint);
+            return;
         }
 
         EnemyDragon enemyDragon = enemyObject.GetComponent<EnemyDragon>();

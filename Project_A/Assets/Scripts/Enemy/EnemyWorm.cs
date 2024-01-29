@@ -18,11 +18,13 @@ public class EnemyWorm : MonoBehaviour
     public int minDropCount; // 드랍 아이템의 최소 개수
     public int maxDropCount; // 드랍 아이템의 최대 개수
     public float targetRange = 0;
+    public float sightRange = 10f; // 타겟이 유저 인식
+    
+    // 체력바
     public Slider healthBarSlider;
     public GameObject healthBarUI;
     public Transform headPosition;
-    public Vector3 healthBarOffset = new Vector3(0, 1, 0);
-    public float sightRange = 10f; // 타겟이 유저 인식
+    public Vector3 healthBarOffset;
 
     bool isReturningToInitialPosition; // 몬스터가 초기 위치로 돌아가고 있는지 여부를 나타내는 변수
 
@@ -96,8 +98,7 @@ public class EnemyWorm : MonoBehaviour
             healthBarUI.transform.position = headPosition.position + healthBarOffset;
 
             // 체력바가 카메라를 바라보도록 하기
-            healthBarUI.transform.LookAt(Camera.main.transform);
-            healthBarUI.transform.Rotate(0, 180, 0); // 체력바가 카메라를 정면으로 바라보도록 조정
+            healthBarUI.transform.rotation = Quaternion.Euler(healthBarUI.transform.rotation.eulerAngles.x, Camera.main.transform.rotation.eulerAngles.y, healthBarUI.transform.rotation.eulerAngles.z);
         }
 
         float distanceToPlayer = Vector3.Distance(transform.position, target.position);
@@ -327,34 +328,12 @@ public class EnemyWorm : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Bullet")
-        {
-            Bullet bullet = collision.gameObject.GetComponent<Bullet>();
-            if (bullet != null)
-            {
-                // TakeDamage 메서드를 호출하여 데미지 처리를 합니다.
-                TakeDamage(bullet, collision.contacts[0].point);
-            }
-        }
-    }
-
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Bullet"))
-        {
-            Bullet bullet = other.GetComponent<Bullet>();
-            if (bullet != null)
-            {
-                // TakeDamage 메서드를 호출하여 데미지 처리를 합니다.
-                TakeDamage(bullet, other.transform.position);
-            }
-        }
-        else if (other.tag == "Player")
-        {
+       if (other.tag == "Player")
+       {
             isChase = true;
-        }
+       }
     }
 
     /*

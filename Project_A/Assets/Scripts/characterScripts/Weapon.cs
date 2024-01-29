@@ -51,7 +51,7 @@ public class Weapon : MonoBehaviour
     public float lightningDamage;   
     public ParticleSystem lightningEffectPrefab; // 번개 스킬 이펙트 프리팹   
 
-    public float bulletSpeed = 8; // 총알 속도 기본값 설정
+    public float bulletSpeed = 8f; // 총알 속도 기본값 설정
     public Transform bulletPos; // 총알 발사 위치
     public Transform bulletPosLeft; // 총알 발사 위치
     public Transform bulletPosRight; // 총알 발사 위치
@@ -297,11 +297,11 @@ public class Weapon : MonoBehaviour
                     bulletScript.damage = bulletScript.baseDamage * damageMultiplier;
                     if (isPierceShotActive)
                     {
-                        bulletScript.lifeTime = 0.7f; // 피어스샷 총알의 생명 주기를 0.5초로 설정
+                        bulletScript.lifeTime = 0.8f; // 피어스샷 총알의 생명 주기를 0.5초로 설정
                     }
                     else
                     {
-                        bulletScript.lifeTime = 1f; // 일반 총알의 생명 주기를 1초로 설정
+                        bulletScript.lifeTime = 0.8f; // 일반 총알의 생명 주기를 1초로 설정
                     } // 총알의 생명 시간 설정
 
                     Rigidbody bulletRigid = instantBullet.GetComponent<Rigidbody>();

@@ -495,6 +495,7 @@ public class Player : MonoBehaviour
     {
         Enemy[] enemies = FindObjectsOfType<Enemy>();
         EnemyWorm[] enemyWorms = FindObjectsOfType<EnemyWorm>();
+        EnemyPadakmon[] enemyPadakmon = FindObjectsOfType<EnemyPadakmon>();
         EnemyDragon[] enemyDragons = FindObjectsOfType<EnemyDragon>();
         EnemyBoss[] enemyBosses = FindObjectsOfType<EnemyBoss>();
         InMonsterLongAttack[] inMonsterLongAttacks = FindObjectsOfType<InMonsterLongAttack>();
@@ -504,8 +505,8 @@ public class Player : MonoBehaviour
         float closestDistanceSqr = Mathf.Infinity;
         Vector3 currentPosition = transform.position;
 
-        float bulletRangeSqr = Mathf.Pow(equipWeapon.bulletSpeed * 0.8f, 2);
-        foreach (var enemyArray in new MonoBehaviour[][] { enemies, enemyWorms, enemyDragons, enemyBosses, inMonsterLongAttacks, inMonsterLongAttackPoisons })
+        float bulletRangeSqr = Mathf.Pow(equipWeapon.bulletSpeed * 1.3f, 2);
+        foreach (var enemyArray in new MonoBehaviour[][] { enemies, enemyWorms, enemyPadakmon, enemyDragons, enemyBosses, inMonsterLongAttacks, inMonsterLongAttackPoisons })
         {
             foreach (MonoBehaviour potentialTarget in enemyArray)
             {
