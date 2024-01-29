@@ -682,6 +682,14 @@ public class EnemyDragon : MonoBehaviour
         {
             bullet.ReturnToPool(); // 총알 반환
         }
+        StartCoroutine(KnockbackResistance());
+    }
+
+    IEnumerator KnockbackResistance()
+    {
+        rigid.isKinematic = true; // 물리적 영향 제한
+        yield return new WaitForSeconds(0.2f); // 경직 지속 시간
+        rigid.isKinematic = false; // 물리적 영향 다시 허용
     }
 
     void OnTriggerEnter(Collider other)
