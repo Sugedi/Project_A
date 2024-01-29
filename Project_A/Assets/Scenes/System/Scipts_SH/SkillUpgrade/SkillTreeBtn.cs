@@ -181,19 +181,19 @@ public class SkillTreeBtn : MonoBehaviour
         }
         int charHealth = GameObject.Find("DataManager").GetComponent<DataManager>().datas.maxHP;
 
-        if (charHealth == 130)
+        if (charHealth == 200)
         {
             LevelNotice(healthLevel, LV1);
         }
-        else if (charHealth == 160)
+        else if (charHealth == 300)
         {
             LevelNotice(healthLevel, LV2);
         }
-        else if (charHealth == 200)
+        else if (charHealth == 400)
         {
             LevelNotice(healthLevel, LV3);
         }
-        else if (charHealth == 240)
+        else if (charHealth == 550)
         {
             LevelNotice(healthLevel, LV4);
         }
@@ -467,22 +467,22 @@ public class SkillTreeBtn : MonoBehaviour
                     CanvasGroupOff(speedInfoCanvas);
                     CanvasGroupOff(powerInfoCanvas);
 
-                    if (nowHealth == 130)
+                    if (nowHealth == 200)
                     {
                         healthInfo.text = "50";
                         LevelNotice(healthLevel, LV1);
                     }
-                    else if (nowHealth == 160)
+                    else if (nowHealth == 300)
                     {
                         healthInfo.text = "70";
                         LevelNotice(healthLevel, LV2);
                     }
-                    else if (nowHealth == 200)
+                    else if (nowHealth == 400)
                     {
                         healthInfo.text = "90";
                         LevelNotice(healthLevel, LV3);
                     }
-                    else if (nowHealth == 240)
+                    else if (nowHealth == 550)
                     {
                         healthInfo.text = "";
                         LevelNotice(healthLevel, LV4);
@@ -974,7 +974,7 @@ public class SkillTreeBtn : MonoBehaviour
                     }
                     else
                     {
-                        DataManager.instance.datas.maxHP = 130;
+                        DataManager.instance.datas.maxHP = 200;
                         DataManager.instance.DataSave();
                         GameObject.Find("Player").GetComponent<Player>().SkillGet();
                         GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 30;
@@ -985,7 +985,7 @@ public class SkillTreeBtn : MonoBehaviour
                         LevelNotice(healthLevel, LV1);
                     }
                 }
-                else if (curHealth == 130)
+                else if (curHealth == 200)
                 {
                     if(soul < 50)
                     {
@@ -993,7 +993,7 @@ public class SkillTreeBtn : MonoBehaviour
                     }
                     else
                     {
-                        DataManager.instance.datas.maxHP = 160;
+                        DataManager.instance.datas.maxHP = 300;
                         DataManager.instance.DataSave();
                         GameObject.Find("Player").GetComponent<Player>().SkillGet();
                         GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 50;
@@ -1004,7 +1004,7 @@ public class SkillTreeBtn : MonoBehaviour
                         LevelNotice(healthLevel, LV2);
                     }
                 }
-                else if (curHealth == 160)
+                else if (curHealth == 300)
                 {
                     if(soul < 70)
                     {
@@ -1012,7 +1012,7 @@ public class SkillTreeBtn : MonoBehaviour
                     }
                     else
                     {
-                        DataManager.instance.datas.maxHP = 200;
+                        DataManager.instance.datas.maxHP = 400;
                         DataManager.instance.DataSave();
                         GameObject.Find("Player").GetComponent<Player>().SkillGet();
                         GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 70;
@@ -1023,7 +1023,7 @@ public class SkillTreeBtn : MonoBehaviour
                         LevelNotice(healthLevel, LV3);
                     }
                 }
-                else if (curHealth == 200)
+                else if (curHealth == 400)
                 {
                     if(soul < 90)
                     {
@@ -1031,7 +1031,7 @@ public class SkillTreeBtn : MonoBehaviour
                     }
                     else
                     {
-                        DataManager.instance.datas.maxHP = 240;
+                        DataManager.instance.datas.maxHP = 550;
                         DataManager.instance.DataSave();
                         GameObject.Find("Player").GetComponent<Player>().SkillGet();
                         GameObject.Find("DataManager").GetComponent<DataManager>().datas.soul -= 90;

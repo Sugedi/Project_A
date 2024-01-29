@@ -68,6 +68,7 @@ public class BackTutorialManager : MonoBehaviour
         {
             CanvasGroupOff(Skill_0);
             CanvasGroupOn(Skill_1);
+            GameObject.Find("Tutor").transform.Find("Portal").gameObject.SetActive(true);
             PanelNum++;
         }
         else if (PanelNum == 2)
@@ -78,6 +79,7 @@ public class BackTutorialManager : MonoBehaviour
         }
         else if (PanelNum == 3)
         {
+            GameObject.Find("Tutor").transform.Find("Portal").gameObject.SetActive(false);
             CanvasGroupOff(Skill_1);
             CanvasGroupOn(joy);
             CanvasGroupOn(stageUI);
