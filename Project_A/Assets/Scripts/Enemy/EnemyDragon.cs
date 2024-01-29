@@ -48,6 +48,10 @@ public class EnemyDragon : MonoBehaviour
     public TextMeshProUGUI mainQuest;
     public TextMeshProUGUI mainQuest_Info;
 
+    public float attackRange = 10f; // 공격 범위
+    public float projectileHeight = 50f; // 투사체가 떨어지는 시작 높이
+    public int numberOfProjectiles = 5; // 한 번에 떨어뜨리는 투사체의 개수
+
     void Awake()
     {
         rigid = GetComponent<Rigidbody>();
@@ -159,20 +163,6 @@ public class EnemyDragon : MonoBehaviour
 
     void Targerting()
     {
-        /*
-
-        float distanceToPlayer = Vector3.Distance(transform.position, target.position);
-
-        // 플레이어가 근접 공격 범위 안에 있으면 Attack 코루틴 호출
-        if (distanceToPlayer <= targetRadius)
-        {
-            if (!isAttack)
-            {
-                StartCoroutine(Attack());
-            }
-        }
-        */
-
         // 플레이어를 감지하면 공격 시작
         RaycastHit[] rayHits =
                 Physics.SphereCastAll(transform.position,
@@ -181,8 +171,10 @@ public class EnemyDragon : MonoBehaviour
         if (rayHits.Length > 0 && !isAttack)
         {
             StartCoroutine(Attack());
+            StartCoroutine(RandomAreaAttack());
         }
     }
+
     IEnumerator ShakeCamera(float duration, float magnitude)
     {
         Vector3 originalPosition = followCamera.transform.position;
@@ -203,6 +195,42 @@ public class EnemyDragon : MonoBehaviour
         }
 
         followCamera.transform.position = originalPosition;
+    }
+
+    IEnumerator RandomAreaAttack()
+    {
+        isChase = false;
+        isAttack = true;
+        anim.SetBool("isAttack", true);
+
+        yield return new WaitForSeconds(attackDuration);
+
+        if (curHealth > 0 && !isAttackHit)
+        {
+            for (int i = 0; i < numberOfProjectiles; i++)
+            {
+                // 랜덤한 위치를 계산합니다.
+                Vector3 randomPosition = transform.position + new Vector3(Random.Range(-attackRange, attackRange), projectileHeight, Random.Range(-attackRange, attackRange));
+
+                GameObject instantBullet = Instantiate(bullet, randomPosition, Quaternion.identity);
+                Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
+                rigidBullet.velocity = Vector3.down * 20;
+            }
+
+            isAttackHit = true;
+            StartCoroutine(ResetAttackHit());
+            yield return new WaitForSeconds(1f);
+        }
+
+        isChase = true;
+        isAttack = false;
+        anim.SetBool("isAttack", false);
+
+        // 자신을 다시 호출하여 계속 실행되도록 합니다.
+        if (curHealth > 0)
+        {
+            StartCoroutine(RandomAreaAttack());
+        }
     }
 
     // IEnumerator를 사용한 Attack 코루틴 함수
@@ -563,7 +591,7 @@ public class EnemyDragon : MonoBehaviour
 
             isAttackHit = true; // 공격이 성공적으로 적중했다고 표시
             StartCoroutine(ResetAttackHit()); // 공격 적중 상태 초기화 코루틴 실행
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.7f);
         }
 
         // 공격 상태 종료
@@ -595,7 +623,7 @@ public class EnemyDragon : MonoBehaviour
 
             isAttackHit = true; // 공격이 성공적으로 적중했다고 표시
             StartCoroutine(ResetAttackHit()); // 공격 적중 상태 초기화 코루틴 실행
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.7f);
         }
 
         // 공격 상태 종료
