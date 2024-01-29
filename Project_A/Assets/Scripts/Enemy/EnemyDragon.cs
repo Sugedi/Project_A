@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using TMPro;
 
 public class EnemyDragon : MonoBehaviour
 {
@@ -43,6 +44,9 @@ public class EnemyDragon : MonoBehaviour
     NavMeshAgent nav; // NavMeshAgent 컴포넌트
     Animator anim; // Animator 컴포넌트
     public Player player;
+
+    public TextMeshProUGUI mainQuest;
+    public TextMeshProUGUI mainQuest_Info;
 
     void Awake()
     {
@@ -781,8 +785,8 @@ public class EnemyDragon : MonoBehaviour
             // 플레이어가 아직 ThreadItem을 가지고 있지 않고, 보스를 처치한 적이 없다면 ThreadItem을 드랍합니다.
             if (/*!player.hasThreadItem && */!GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1BossClear)
             {
-                //GameObject _itemThread = Instantiate(ThreaditemPrefab); // Thread 아이템 생성
-                //_itemThread.transform.position = ThreaddropPosition.position; // Thread 아이템 위치 설정
+                GameObject _itemThread = Instantiate(ThreaditemPrefab); // Thread 아이템 생성
+                _itemThread.transform.position = ThreaddropPosition.position; // Thread 아이템 위치 설정
 
                 // ThreadItem을 얻었으므로 player.hasThreadItem를 true로 설정합니다.
                 //player.hasThreadItem = true;
@@ -798,6 +802,8 @@ public class EnemyDragon : MonoBehaviour
 
                 // 보스를 처치했으므로 DataManager의 stage1BossClear를 true로 설정합니다.
                 GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1BossClear = true;
+                mainQuest.text = "- 다시 인간으로 -";
+                mainQuest_Info.text = "거울로 돌아가 질서의 신과 대화";
                 DataManager.instance.DataSave();
             }
 
