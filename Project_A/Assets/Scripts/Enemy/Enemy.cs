@@ -200,7 +200,7 @@ public class Enemy : MonoBehaviour
                 targetRange = 12f;
                 break;
             case Type.C:
-                targetRadius = 0.5f;
+                targetRadius = 1f;
                 targetRange = 8f;
                 break;
         }
