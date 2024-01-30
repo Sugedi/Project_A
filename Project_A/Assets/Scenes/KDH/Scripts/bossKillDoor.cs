@@ -1,5 +1,7 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using static DataManager;
 
 public class bossKillDoor : MonoBehaviour
 {
@@ -44,11 +46,13 @@ public class bossKillDoor : MonoBehaviour
 
     void DisableScript()
     {
-        // You can either disable the script or the GameObject itself
-        // For disabling the script:
-        // enabled = false;
-
-        // For disabling the GameObject:
-        gameObject.SetActive(false);
+        if (DataManager.instance.datas.galioFirstClear == false)
+            
+            
+            DataManager.instance.datas.galioFirstClear = true;
+            Debug.Log("Galio has been defeated!");
+            gameObject.SetActive(false);
+            DataManager.instance.DataSave();
+        
     }
 }
