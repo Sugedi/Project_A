@@ -24,6 +24,7 @@ TagManager:
   - Portal
   - Boom
   - Lever
+  - Story
   layers:
   - Default
   - TransparentFX

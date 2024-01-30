@@ -315,6 +315,17 @@ public class Player : MonoBehaviour
                     GameObject.Find("Lever4").GetComponent<LeverController>().Lever();
                 }
             }
+            if (collider.CompareTag("Story"))
+            {
+                if (collider.gameObject.name == "StoryItem1")
+                {
+                    GameObject.Find("StoryItem1").GetComponent<StoryHintManager>().ShowHint();
+                }
+                if (collider.gameObject.name == "StoryItem2")
+                {
+                    GameObject.Find("StoryItem2").GetComponent<StoryHintManager>().ShowHint();
+                }
+            }
 
         }
 
