@@ -270,7 +270,7 @@ public class EnemyPadakmon : MonoBehaviour
                 rigidBullet.velocity = transform.forward * 10;
 
                 // 2√  ¥Î±‚
-                yield return new WaitForSeconds(1.5f);
+                yield return new WaitForSeconds(2.2f);
                 break;
         }
 

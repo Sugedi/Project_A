@@ -24,6 +24,7 @@ public class MeteorBoom : MonoBehaviour
         }
     }
 
+
     void OnTriggerStay(Collider other)
     {
         // 플레이어와 계속 닿아 있을 때
@@ -36,5 +37,4 @@ public class MeteorBoom : MonoBehaviour
             }
         }
     }
-    
 }
