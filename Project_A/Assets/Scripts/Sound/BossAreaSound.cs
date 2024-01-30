@@ -5,6 +5,7 @@ using UnityEngine;
 public class BossAreaSound : MonoBehaviour
 {
     public string bossBGMName; // Elite boss BGM의 이름
+    public string exitBGMName = "Stage"; // 기본적으로 Stage BGM을 설정
 
     void OnTriggerEnter(Collider other) 
     {
@@ -27,7 +28,7 @@ public class BossAreaSound : MonoBehaviour
             SoundManager.instance.StopAudio("BGM");
 
             // 원래의 배경음악을 다시 재생합니다 (원래 BGM 이름을 알아야 함).
-            SoundManager.instance.PlayAudio("Pyramid", "BGM");
+            SoundManager.instance.PlayAudio(exitBGMName, "BGM");
         }
     }
 }
