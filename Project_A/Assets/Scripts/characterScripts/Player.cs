@@ -533,7 +533,15 @@ public class Player : MonoBehaviour
 
         return closestTarget;
     }
-    
+    void OnDrawGizmos()
+    {
+        if (equipWeapon != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, equipWeapon.bulletSpeed * 1.3f);
+        }
+    }
+
     // 플레이어 공격 처리
     void Attack()
     {
