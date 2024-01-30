@@ -431,10 +431,7 @@ public class Player : MonoBehaviour
         moveVec = (cameraForward * vAxis) + (cameraRight * hAxis);
 
         if (isDodge)
-            moveVec = dodgeVec;
-
-        else if (!isFireReady)
-            moveVec = Vector3.zero;
+            moveVec = dodgeVec;       
 
         if (!isBorder)
         {
@@ -555,8 +552,13 @@ public class Player : MonoBehaviour
         // 현재 딜레이가 공격 속도를 넘었는지 확인합니다. 넘었다면 공격할 준비가 된 것입니다.
         isFireReady = (1f / (equipWeapon.baseAttackSpeed * equipWeapon.attackSpeedMultiplier)) < fireDelay; // 공격 딜레이 체크
 
-        if (fDown && isFireReady && !isDodge)
+        if (fDown && isFireReady)
         {
+            if (isFireReady)
+            {
+                CancelAttack();
+            }
+
             if (isReload) // 재장전 중이면 재장전을 취소합니다.
             {
                 CancelReload();
@@ -577,6 +579,12 @@ public class Player : MonoBehaviour
 
             fireDelay = 0; // 딜레이 초기화
         }
+    }
+    void CancelAttack()
+    {
+        // 공격 애니메이션을 취소하고 공격 가능 상태로 복귀
+        isFireReady = false;
+        anim.ResetTrigger("doShot");
     }
 
     void CancelReload()
@@ -640,7 +648,9 @@ public class Player : MonoBehaviour
     // 회피 구현
     void Dodge()
     {
-        if (jDown && moveVec != Vector3.zero && !isDodge)
+        CancelAttack();
+
+        if (jDown && !isDodge)
         {
             // 회피 경로에 벽이나 "RedTag" 태그가 있는지 레이캐스트로 확인
             if (Physics.Raycast(transform.position, moveVec, out RaycastHit hit, 1f))
@@ -651,12 +661,16 @@ public class Player : MonoBehaviour
                     return;
                 }
             }
+            // 공격 중 회피 버튼이 눌리면 회피 애니메이션으로 전환합니다.
+            if (jDown && isFireReady)
+            {
+                Dodge();
+            }
+
             // 공격 또는 재장전 상태를 취소합니다.
             if (isFireReady)
             {
-                isFireReady = false; // 공격 딜레이 초기화
-                anim.ResetTrigger("doShot"); // 공격 애니메이션 트리거 리셋
-
+                CancelAttack();
             }
 
             if (isReload)
@@ -678,6 +692,7 @@ public class Player : MonoBehaviour
             Invoke("EndInvulnerability", 0.3f); // 0.3초 후 무적 상태 해제
         }
     }
+    
     // 무적 상태 해제
     void EndInvulnerability()
     {
