@@ -221,7 +221,7 @@ public class EnemyDragon : MonoBehaviour
 
             isAttackHit = true;
             StartCoroutine(ResetAttackHit());
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(3f);
         }
 
         isChase = true;
