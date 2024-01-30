@@ -24,13 +24,10 @@ public class LeverController : MonoBehaviour
         SetLeverState(false);
     }
 
-    void OnTriggerEnter(Collider other)
+    public void Lever()
     {
         // Replace "Player" with your actual player tag
-        if (other.CompareTag("Bullet") && canToggle)
-        {
-            StartCoroutine(ToggleLever(!leverOn));
-        }
+        StartCoroutine(ToggleLever(!leverOn));
     }
 
     IEnumerator ToggleLever(bool newState)

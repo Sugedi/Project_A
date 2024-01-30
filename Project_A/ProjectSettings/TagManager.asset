@@ -23,6 +23,7 @@ TagManager:
   - Mirror
   - Portal
   - Boom
+  - Lever
   layers:
   - Default
   - TransparentFX

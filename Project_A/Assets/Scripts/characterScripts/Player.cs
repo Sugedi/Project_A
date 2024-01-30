@@ -296,6 +296,26 @@ public class Player : MonoBehaviour
                 GameObject.Find("MirrorGod").GetComponent<ObjectInteraction>().MirrorInteraction();
             }
 
+            if (collider.CompareTag("Lever"))
+            {
+                if (collider.gameObject.name == "Lever1")
+                {
+                    GameObject.Find("Lever1").GetComponent<LeverController>().Lever();
+                }
+                if (collider.gameObject.name == "Lever2")
+                {
+                    GameObject.Find("Lever2").GetComponent<LeverController>().Lever();
+                }
+                if (collider.gameObject.name == "Lever3")
+                {
+                    GameObject.Find("Lever3").GetComponent<LeverController>().Lever();
+                }
+                if (collider.gameObject.name == "Lever4")
+                {
+                    GameObject.Find("Lever4").GetComponent<LeverController>().Lever();
+                }
+            }
+
         }
 
     }
