@@ -4594,7 +4594,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.7, y: 0.7, z: 0.7}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3599222536354003281
 MonoBehaviour:
@@ -4608,7 +4608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 562a1e672d494b64dac9eabb3dc20f65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
+  damage: 80
   isMelee: 0
   explosionPrefab: {fileID: 5389041509837916822, guid: c646918fa1b93ae4cbd638cb55a825d3, type: 3}
 --- !u!1 &2856996563408610785

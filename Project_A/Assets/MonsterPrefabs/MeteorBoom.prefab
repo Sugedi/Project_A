@@ -4609,7 +4609,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 5
-  damage: 10
+  damage: 50
 --- !u!1 &5109847466423998584
 GameObject:
   m_ObjectHideFlags: 0

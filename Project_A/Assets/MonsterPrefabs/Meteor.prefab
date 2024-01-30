@@ -9171,7 +9171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2f488ed1504b834bb869e2338edef66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
+  damage: 100
   isMelee: 0
   attackIndicatorPrefab: {fileID: 4768297926727340195, guid: 9adfd4db9ef0dce4cb69f4beb179344e, type: 3}
   fireEffectPrefab: {fileID: 5109684938675037902, guid: 6c9e53b7eb2ca844080306def1673952, type: 3}

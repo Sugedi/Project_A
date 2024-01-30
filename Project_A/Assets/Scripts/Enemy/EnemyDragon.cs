@@ -254,7 +254,7 @@ public class EnemyDragon : MonoBehaviour
                 GameObject instantBullet = Instantiate(bulletForRandomAreaAttack, randomPosition, Quaternion.identity);
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
                 rigidBullet.velocity = Vector3.down * 15;
-                float interval = Random.Range(0, 15f);
+                float interval = Random.Range(0, 7f);
                 yield return new WaitForSeconds(interval);
             }
             isAttackHit = true;
@@ -275,7 +275,7 @@ public class EnemyDragon : MonoBehaviour
     // IEnumerator를 사용한 Attack 코루틴 함수
     IEnumerator Attack()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
 
         // 추격 중지 및 공격 상태로 전환
         isChase = false;
