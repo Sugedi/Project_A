@@ -218,7 +218,7 @@ public class EnemyDragon : MonoBehaviour
                 GameObject instantBullet = Instantiate(bulletForRandomAreaAttack, randomPosition, Quaternion.identity);
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
                 rigidBullet.velocity = Vector3.down * 15;
-                float interval = Random.Range(0, 1f);
+                float interval = Random.Range(0, 2f);
                 yield return new WaitForSeconds(interval);
             }
             isAttackHit = true;
