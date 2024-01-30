@@ -64,6 +64,7 @@ public class Player : MonoBehaviour
     public FloatingJoystick joystick; //0122
 
     public CanvasGroup joy;
+    public CanvasGroup continueBtn;
 
     // 퀘스트 아이템 획득 여부
     public GameObject systemMessagePanel; // 시스템 메시지를 포함하는 패널
@@ -224,8 +225,9 @@ public class Player : MonoBehaviour
                 {
                     SoundManager.instance.PlayAudio("Door2", "SE");
 
-                    if (GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1Tutorial >= 3)
+                    if (GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1Tutorial == 3)
                     {
+                        CanvasGroupOff(continueBtn);
                         CanvasGroupOff(joy);
                         //GameObject.Find("Switch").GetComponent<SaveSwitch>().SwitchFunc();
                         GameObject.Find("SwitchDoor_Tuto").GetComponent<SaveSwitch>().SwitchFunc();
@@ -233,6 +235,15 @@ public class Player : MonoBehaviour
                         Time.timeScale = 0;
                         CanvasGroupOn(SaveCanvas);
 
+                    }
+                    else if (GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1Tutorial >= 4)
+                    {
+                        CanvasGroupOff(joy);
+                        //GameObject.Find("Switch").GetComponent<SaveSwitch>().SwitchFunc();
+                        GameObject.Find("SwitchDoor_Tuto").GetComponent<SaveSwitch>().SwitchFunc();
+                        DataManager.instance.DataSave();
+                        Time.timeScale = 0;
+                        CanvasGroupOn(SaveCanvas);
                     }
 
                 }
