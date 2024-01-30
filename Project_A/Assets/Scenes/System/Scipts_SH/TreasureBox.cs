@@ -114,12 +114,12 @@ public class TreasureBox : MonoBehaviour
         {
             SoundManager.instance.PlayAudio("BoxOpen1", "SE");
 
-            if (treasure_1 == false)
+            if (treasure_4 == false)
             {
                 image.sprite = imageAttack;
                 CanvasGroupOff(joy);
-                GameObject.Find("TreasureBox1").SetActive(false);
-                GameObject.Find("TreasureBox1After").transform.Find("TreasureBox1_After").gameObject.SetActive(true);
+                GameObject.Find("TreasureBox4").SetActive(false);
+                GameObject.Find("TreasureBox4After").transform.Find("TreasureBox4_After").gameObject.SetActive(true);
                 Time.timeScale = 0;
                 tresaureMSG.text = "벅샷 스킬을 획득하였습니다!\n기본 공격이 세 갈래로 발사됩니다.";
                 CanvasGroupOn(treasureBox);
@@ -127,8 +127,8 @@ public class TreasureBox : MonoBehaviour
                 DataManager.instance.datas.skillHave.Add(Resources.Load<Skill>("BuckShot2"));
                 DataManager.instance.DataSave();
                 GameObject.Find("Player").GetComponent<Player>().BoxGet();
-                treasure_1 = true; // false일 때는 열린 상자, true일 때는 닫힌 상자 
-                DataManager.instance.datas.stage1ItemBox1 = true;
+                treasure_4 = true; // false일 때는 열린 상자, true일 때는 닫힌 상자 
+                DataManager.instance.datas.stage1ItemBox4 = true;
                 DataManager.instance.DataSave();
             }
 
@@ -138,20 +138,20 @@ public class TreasureBox : MonoBehaviour
         {
             SoundManager.instance.PlayAudio("BoxOpen1", "SE");
 
-            if (treasure_2 == false)
+            if (treasure_1 == false)
             {
                 image.sprite = imageAttack;
                 CanvasGroupOff(joy);
-                GameObject.Find("TreasureBox2").SetActive(false);
-                GameObject.Find("TreasureBox2After").transform.Find("TreasureBox2_After").gameObject.SetActive(true);
+                GameObject.Find("TreasureBox1").SetActive(false);
+                GameObject.Find("TreasureBox1After").transform.Find("TreasureBox1_After").gameObject.SetActive(true);
                 Time.timeScale = 0;
                 tresaureMSG.text = "관통샷 스킬을 획득하였습니다!\n기본 공격이 몬스터를 관통해서 지속됩니다.";
                 CanvasGroupOn(treasureBox);
                 DataManager.instance.datas.skillHave.Add(Resources.Load<Skill>("PierceShot"));
                 DataManager.instance.DataSave();
                 GameObject.Find("Player").GetComponent<Player>().BoxGet();
-                treasure_2 = true;
-                DataManager.instance.datas.stage1ItemBox2 = true;
+                treasure_1 = true;
+                DataManager.instance.datas.stage1ItemBox1 = true;
                 DataManager.instance.DataSave();
             }
 
@@ -183,20 +183,20 @@ public class TreasureBox : MonoBehaviour
         {
             SoundManager.instance.PlayAudio("BoxOpen1", "SE");
 
-            if (treasure_4 == false)
+            if (treasure_5 == false)
             {
                 image.sprite = imageAttack;
                 CanvasGroupOff(joy);
-                GameObject.Find("TreasureBox4").SetActive(false);
-                GameObject.Find("TreasureBox4After").transform.Find("TreasureBox4_After").gameObject.SetActive(true);
+                GameObject.Find("TreasureBox5").SetActive(false);
+                GameObject.Find("TreasureBox5After").transform.Find("TreasureBox5_After").gameObject.SetActive(true);
                 Time.timeScale = 0;
                 tresaureMSG.text = "유도탄 스킬을 획득하였습니다!\n작은 유도탄들을 추가로 발사합니다.";
                 CanvasGroupOn(treasureBox);
                 DataManager.instance.datas.skillHave.Add(Resources.Load<Skill>("SideShot"));
                 DataManager.instance.DataSave();
                 GameObject.Find("Player").GetComponent<Player>().BoxGet();
-                treasure_4 = true;
-                DataManager.instance.datas.stage1ItemBox4 = true;
+                treasure_5 = true;
+                DataManager.instance.datas.stage1ItemBox5 = true;
                 DataManager.instance.DataSave();
             }
 
@@ -205,20 +205,20 @@ public class TreasureBox : MonoBehaviour
         {
             SoundManager.instance.PlayAudio("BoxOpen1", "SE");
 
-            if (treasure_5 == false)
+            if (treasure_2 == false)
             {
                 image.sprite = imageAttack;
                 CanvasGroupOff(joy);
-                GameObject.Find("TreasureBox5").SetActive(false);
-                GameObject.Find("TreasureBox5After").transform.Find("TreasureBox5_After").gameObject.SetActive(true);
+                GameObject.Find("TreasureBox2").SetActive(false);
+                GameObject.Find("TreasureBox2After").transform.Find("TreasureBox2_After").gameObject.SetActive(true);
                 Time.timeScale = 0;
                 tresaureMSG.text = "라이트닝 스킬을 획득하였습니다!\n총알이 몬스터에 닿으면 번개가 내려쳐 추가 피해를 입힙니다.";
                 CanvasGroupOn(treasureBox);
                 DataManager.instance.datas.skillHave.Add(Resources.Load<Skill>("Lightning"));
                 DataManager.instance.DataSave();
                 GameObject.Find("Player").GetComponent<Player>().BoxGet();
-                treasure_5 = true;
-                DataManager.instance.datas.stage1ItemBox5 = true;
+                treasure_2 = true;
+                DataManager.instance.datas.stage1ItemBox2 = true;
                 DataManager.instance.DataSave();
             }
 
