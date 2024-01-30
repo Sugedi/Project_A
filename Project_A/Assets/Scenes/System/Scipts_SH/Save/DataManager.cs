@@ -58,6 +58,10 @@ public class Datas
 
     // 보스 최초 처치 여부 (보상 지급용)
     public bool stage1BossClear = false;
+    public bool galioFirstClear = false;
+    // 동혁이 형
+    // GameObject.Find("DataManager").Getcomponent<DataManager>().datas.galioFirstClear = (처치했을 때 형이 스크립트에서 쓰는 변수 or 혹은 그냥 true);  하고
+    // DataManager.instance.DataSave; 까지 적으면 저장됨미다.
 
     // 튜토리얼 완료 여부
     public int stage1Tutorial = 0;
