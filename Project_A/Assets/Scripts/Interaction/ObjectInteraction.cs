@@ -74,7 +74,7 @@ public class ObjectInteraction : MonoBehaviour
             talk1Panel.SetActive(true); // 처음에 주인공 독백 대사 2개 나오는 거! 대사 나올 때는 컨트롤러 다 비활성화 (아래 5개)
             CanvasGroupOff(joy);
 
-            dialoguePanel1.SetActive(false); // 질서의 신 첫 번째 대사창을 비활성화 상태로 설정
+            //dialoguePanel1.SetActive(false); // 질서의 신 첫 번째 대사창을 비활성화 상태로 설정
         }
 
         if (mainQuest == 1)
@@ -136,6 +136,7 @@ public class ObjectInteraction : MonoBehaviour
         mainQuest = GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1MainQuest;
         if (mainQuest == 0)
         {
+            //GameObject.Find("MirrorTalk Canvas").transform.Find("Dialogue Panel (1)").gameObject.SetActive(true);
             dialoguePanel1.SetActive(true);
         }
         if (mainQuest == 1)

@@ -50,6 +50,30 @@ public class DialogueManager : MonoBehaviour
         }
         else if (currentPanelIndex == 2)
         {
+            dialoguePanels[currentPanelIndex].SetActive(false);
+            currentPanelIndex++; // 다음 패널을 활성화
+            dialoguePanels[currentPanelIndex].SetActive(true);
+        }
+        else if (currentPanelIndex == 3)
+        {
+            dialoguePanels[currentPanelIndex].SetActive(false);
+            currentPanelIndex++; // 다음 패널을 활성화
+            dialoguePanels[currentPanelIndex].SetActive(true);
+        }
+        else if (currentPanelIndex == 4)
+        {
+            dialoguePanels[currentPanelIndex].SetActive(false);
+            currentPanelIndex++; // 다음 패널을 활성화
+            dialoguePanels[currentPanelIndex].SetActive(true);
+        }
+        else if (currentPanelIndex == 5)
+        {
+            dialoguePanels[currentPanelIndex].SetActive(false);
+            currentPanelIndex++; // 다음 패널을 활성화
+            dialoguePanels[currentPanelIndex].SetActive(true);
+        }
+        else if (currentPanelIndex == 6)
+        {
             nextButton_A.gameObject.SetActive(false); // nextButton1을 비활성화합니다.
             dialoguePanels[currentPanelIndex].SetActive(false); // 마지막 대화 패널을 비활성화합니다.
             currentPanelIndex++; // 다음 패널을 활성화
