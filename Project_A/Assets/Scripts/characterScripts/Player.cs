@@ -901,6 +901,7 @@ public class Player : MonoBehaviour
                 // 적 총알에 맞았을 때 체력 감소 및 총알 파괴
                 EnemyLongAttack enemyLong = other.GetComponent<EnemyLongAttack>();
                 BoomBullet boomBullet = other.GetComponent<BoomBullet>();
+                BoomBulletMeteor boomBulletMeteor = other.GetComponent<BoomBulletMeteor>();
 
                 if (enemyLong != null)
                 {
@@ -909,6 +910,10 @@ public class Player : MonoBehaviour
                 else if (boomBullet != null)
                 {
                     health -= boomBullet.damage;
+                }
+                else if (boomBulletMeteor != null)
+                {
+                    health -= boomBulletMeteor.damage;
                 }
 
                 if (health < 0)
