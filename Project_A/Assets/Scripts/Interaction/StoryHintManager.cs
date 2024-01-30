@@ -1,49 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class StoryHintManager : MonoBehaviour
 {
-    // 조이스틱 & UI ON/OFF용
-    public CanvasGroup joy;
-    public CanvasGroup stageUI;
+    public GameObject storyHint1; // StoryHint1을 Inspector에서 연결해주세요.
+    public GameObject[] hints; // H_1, H_2, H_3를 Inspector에서 연결해주세요.
+    private int currentHintIndex = 0;
+    private bool isPlayerInTrigger = false; // 플레이어가 트리거 영역에 있는지를 나타내는 변수
 
-
-    // HINT UI창 변수 선언. 근데 이거를 따로따로 해놓는게 아니라 그룹으로 잡음
-    public CanvasGroup HINT_0;
-    public CanvasGroup HINT_1;
-    public CanvasGroup HINT_2;
-    public CanvasGroup HINT_3;
-    public CanvasGroup HINT_4;
-    public CanvasGroup HINT_5;
-
-    public void UINext()
+    private void OnTriggerEnter(Collider other)
     {
-        CanvasGroup NO_1 = GameObject.Find("UITutor").transform.Find("UI_0").transform.Find("Image").transform.Find("NO1").GetComponent<CanvasGroup>();
-        CanvasGroup NO_2 = GameObject.Find("UITutor").transform.Find("UI_0").transform.Find("Image").transform.Find("NO2").GetComponent<CanvasGroup>();
-        CanvasGroup NO_3 = GameObject.Find("UITutor").transform.Find("UI_0").transform.Find("Image").transform.Find("NO3").GetComponent<CanvasGroup>();
-        CanvasGroup NO_4 = GameObject.Find("UITutor").transform.Find("UI_2").transform.Find("Image").transform.Find("NO4").GetComponent<CanvasGroup>();
-        CanvasGroup NO_5 = GameObject.Find("UITutor").transform.Find("UI_2").transform.Find("Image").transform.Find("NO5").GetComponent<CanvasGroup>();
-        CanvasGroup NO_6 = GameObject.Find("MoveTutor").transform.Find("Move_0").transform.Find("Image").transform.Find("NO6").GetComponent<CanvasGroup>();
-        CanvasGroup NO_7 = GameObject.Find("MoveTutor").transform.Find("Move_0").transform.Find("Image").transform.Find("NO7").GetComponent<CanvasGroup>();
-        CanvasGroup NO_8 = GameObject.Find("MoveTutor").transform.Find("Move_0").transform.Find("Image").transform.Find("NO8").GetComponent<CanvasGroup>();
-        CanvasGroup NO_9 = GameObject.Find("TreasureTutor").transform.Find("Treasure_0").transform.Find("Image").transform.Find("NO9").GetComponent<CanvasGroup>();
-        CanvasGroup NO_10 = GameObject.Find("TreasureTutor").transform.Find("Treasure_0").transform.Find("Image").transform.Find("NO10").GetComponent<CanvasGroup>();
-        CanvasGroup NO_11 = GameObject.Find("TreasureTutor").transform.Find("Treasure_0").transform.Find("Image").transform.Find("NO11").GetComponent<CanvasGroup>();
+        if (other.gameObject.name == "StoryItem1") // StoryItem1에 닿을 때
+        {
+            isPlayerInTrigger = true; // 플레이어가 트리거 영역에 들어갔음을 표시
+        }
     }
 
-    public void CanvasGroupOff(CanvasGroup cg)
+    private void OnTriggerExit(Collider other)
     {
-        cg.alpha = 0;
-        cg.interactable = false;
-        cg.blocksRaycasts = false;
-
+        if (other.gameObject.name == "StoryItem1") // StoryItem1에서 벗어날 때
+        {
+            isPlayerInTrigger = false; // 플레이어가 트리거 영역에서 벗어났음을 표시
+        }
     }
-    public void CanvasGroupOn(CanvasGroup cg)
-    {
-        cg.alpha = 1;
-        cg.interactable = true;
-        cg.blocksRaycasts = true;
 
+    public void ShowHint()
+    {
+        if (isPlayerInTrigger) // 플레이어가 트리거 영역에 있을 때만
+        {
+            storyHint1.SetActive(true); // StoryHint1 활성화
+            hints[currentHintIndex].SetActive(true); // 첫 번째 힌트 활성화
+        }
+    }
+
+    public void NextHint()
+    {
+        hints[currentHintIndex].SetActive(false); // 현재 힌트 비활성화
+        currentHintIndex++; // 인덱스 증가
+
+        if (currentHintIndex < hints.Length) // 아직 힌트가 남아있으면
+        {
+            hints[currentHintIndex].SetActive(true); // 다음 힌트 활성화
+        }
+        else // 모든 힌트를 보여줬으면
+        {
+            storyHint1.SetActive(false); // StoryHint1 비활성화
+            currentHintIndex = 0; // 다음 실행을 위해 인덱스 초기화
+        }
     }
 }
