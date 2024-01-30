@@ -195,7 +195,7 @@ public class EnemyDragon : MonoBehaviour
         if (rayHits.Length > 0 && !isAttack)
         {
             StartCoroutine(Attack());
-            // StartCoroutine(RandomAreaAttack());
+            StartCoroutine(RandomAreaAttack());
             StartCoroutine(RandomAreaAttack2());
         }
     }
@@ -218,7 +218,7 @@ public class EnemyDragon : MonoBehaviour
                 GameObject instantBullet = Instantiate(bulletForRandomAreaAttack, randomPosition, Quaternion.identity);
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
                 rigidBullet.velocity = Vector3.down * 15;
-                float interval = Random.Range(0, 0.8f);
+                float interval = Random.Range(0, 1f);
                 yield return new WaitForSeconds(interval);
             }
             isAttackHit = true;
@@ -249,12 +249,12 @@ public class EnemyDragon : MonoBehaviour
             for (int i = 0; i < 100; i++)
             {
                 // 랜덤한 위치를 계산합니다.
-                Vector3 randomPosition = target.position + Vector3.up* projectileHeight;
+                Vector3 randomPosition = target.position + Vector3.up * projectileHeight;
 
                 GameObject instantBullet = Instantiate(bulletForRandomAreaAttack, randomPosition, Quaternion.identity);
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
                 rigidBullet.velocity = Vector3.down * 15;
-                float interval = Random.Range(0, 2f);
+                float interval = Random.Range(0, 15f);
                 yield return new WaitForSeconds(interval);
             }
             isAttackHit = true;
@@ -287,15 +287,15 @@ public class EnemyDragon : MonoBehaviour
 
         if (curHealth > 0 && !isAttackHit)
         {
-            // 부채꼴 형태로 총알 19개 발사
-            for (int i = 0; i < 19; i++)
+            // 부채꼴 형태로 총알 10개 발사
+            for (int i = 0; i < 10; i++)
             {
                 // 총알 발사 각도를 계산합니다.
                 Quaternion bulletRotation = Quaternion.Euler(0, 90 - (i * 20), 0) * transform.rotation;
                 GameObject instantBullet = Instantiate(bulletForAttack, transform.position, bulletRotation);
 
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
-                rigidBullet.velocity = instantBullet.transform.forward * 15;
+                rigidBullet.velocity = instantBullet.transform.forward * 12;
             }
 
             isAttackHit = true; // 공격이 성공적으로 적중했다고 표시
@@ -319,15 +319,15 @@ public class EnemyDragon : MonoBehaviour
 
         if (curHealth > 0 && !isAttackHit)
         {
-            // 부채꼴 형태로 총알 19개 발사
-            for (int i = 0; i < 19; i++)
+            // 부채꼴 형태로 총알 10개 발사
+            for (int i = 0; i < 10; i++)
             {
                 // 총알 발사 각도를 계산합니다.
                 Quaternion bulletRotation = Quaternion.Euler(0, -360 + (i * 20), 0) * transform.rotation;
                 GameObject instantBullet = Instantiate(bullet, transform.position, bulletRotation);
 
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
-                rigidBullet.velocity = instantBullet.transform.forward * 15;
+                rigidBullet.velocity = instantBullet.transform.forward * 12;
             }
 
             isAttackHit = true; // 공격이 성공적으로 적중했다고 표시
@@ -351,15 +351,15 @@ public class EnemyDragon : MonoBehaviour
 
         if (curHealth > 0 && !isAttackHit)
         {
-            // 부채꼴 형태로 총알 19개 발사
-            for (int i = 0; i < 19; i++)
+            // 부채꼴 형태로 총알 10개 발사
+            for (int i = 0; i < 10; i++)
             {
                 // 총알 발사 각도를 계산합니다.
                 Quaternion bulletRotation = Quaternion.Euler(0, -180 + (i * 20), 0) * transform.rotation;
                 GameObject instantBullet = Instantiate(bullet, transform.position, bulletRotation);
 
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
-                rigidBullet.velocity = instantBullet.transform.forward * 15;
+                rigidBullet.velocity = instantBullet.transform.forward * 12;
             }
 
             isAttackHit = true; // 공격이 성공적으로 적중했다고 표시
@@ -383,15 +383,15 @@ public class EnemyDragon : MonoBehaviour
 
         if (curHealth > 0 && !isAttackHit)
         {
-            // 부채꼴 형태로 총알 19개 발사
-            for (int i = 0; i < 19; i++)
+            // 부채꼴 형태로 총알 10개 발사
+            for (int i = 0; i < 10; i++)
             {
                 // 총알 발사 각도를 계산합니다.
                 Quaternion bulletRotation = Quaternion.Euler(0, -270 + (i * 20), 0) * transform.rotation;
                 GameObject instantBullet = Instantiate(bullet, transform.position, bulletRotation);
 
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
-                rigidBullet.velocity = instantBullet.transform.forward * 15;
+                rigidBullet.velocity = instantBullet.transform.forward * 12;
             }
 
             isAttackHit = true; // 공격이 성공적으로 적중했다고 표시
@@ -403,7 +403,7 @@ public class EnemyDragon : MonoBehaviour
         isChase = true;
         isAttack = false;
         anim.SetBool("isAttack", false);
-        
+
 
         // 추격 중지 및 공격 상태로 전환
         isChase = false;
@@ -415,15 +415,15 @@ public class EnemyDragon : MonoBehaviour
 
         if (curHealth > 0 && !isAttackHit)
         {
-            // 부채꼴 형태로 총알 28개 발사
-            for (int i = 0; i < 28; i++)
+            // 부채꼴 형태로 총알 13개 발사
+            for (int i = 0; i < 13; i++)
             {
                 // 총알 발사 각도를 계산합니다.
                 Quaternion bulletRotation = Quaternion.Euler(0, -90 + (i * 20), 0) * transform.rotation;
                 GameObject instantBullet = Instantiate(bullet, transform.position, bulletRotation);
 
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
-                rigidBullet.velocity = instantBullet.transform.forward * 15;
+                rigidBullet.velocity = instantBullet.transform.forward * 12;
             }
 
             isAttackHit = true; // 공격이 성공적으로 적중했다고 표시
@@ -447,15 +447,15 @@ public class EnemyDragon : MonoBehaviour
 
         if (curHealth > 0 && !isAttackHit)
         {
-            // 부채꼴 형태로 총알 28개 발사
-            for (int i = 0; i < 28; i++)
+            // 부채꼴 형태로 총알 13개 발사
+            for (int i = 0; i < 13; i++)
             {
                 // 총알 발사 각도를 계산합니다.
                 Quaternion bulletRotation = Quaternion.Euler(0, -270 + (i * 20), 0) * transform.rotation;
                 GameObject instantBullet = Instantiate(bullet, transform.position, bulletRotation);
 
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
-                rigidBullet.velocity = instantBullet.transform.forward * 15;
+                rigidBullet.velocity = instantBullet.transform.forward * 12;
             }
 
             isAttackHit = true; // 공격이 성공적으로 적중했다고 표시
@@ -479,15 +479,15 @@ public class EnemyDragon : MonoBehaviour
 
         if (curHealth > 0 && !isAttackHit)
         {
-            // 부채꼴 형태로 총알 28개 발사
-            for (int i = 0; i < 28; i++)
+            // 부채꼴 형태로 총알 13개 발사
+            for (int i = 0; i < 13; i++)
             {
                 // 총알 발사 각도를 계산합니다.
                 Quaternion bulletRotation = Quaternion.Euler(0, -360 + (i * 20), 0) * transform.rotation;
                 GameObject instantBullet = Instantiate(bullet, transform.position, bulletRotation);
 
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
-                rigidBullet.velocity = instantBullet.transform.forward * 15;
+                rigidBullet.velocity = instantBullet.transform.forward * 12;
             }
 
             isAttackHit = true; // 공격이 성공적으로 적중했다고 표시
@@ -511,15 +511,15 @@ public class EnemyDragon : MonoBehaviour
 
         if (curHealth > 0 && !isAttackHit)
         {
-            // 부채꼴 형태로 총알 28개 발사
-            for (int i = 0; i < 28; i++)
+            // 부채꼴 형태로 총알 13개 발사
+            for (int i = 0; i < 13; i++)
             {
                 // 총알 발사 각도를 계산합니다.
                 Quaternion bulletRotation = Quaternion.Euler(0, -180 + (i * 20), 0) * transform.rotation;
                 GameObject instantBullet = Instantiate(bullet, transform.position, bulletRotation);
 
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
-                rigidBullet.velocity = instantBullet.transform.forward * 15;
+                rigidBullet.velocity = instantBullet.transform.forward * 12;
             }
 
             isAttackHit = true; // 공격이 성공적으로 적중했다고 표시
@@ -554,7 +554,7 @@ public class EnemyDragon : MonoBehaviour
                 GameObject instantBullet = Instantiate(bullet, transform.position, bulletRotation);
 
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
-                rigidBullet.velocity = instantBullet.transform.forward * 15;
+                rigidBullet.velocity = instantBullet.transform.forward * 12;
 
                 // 다음 총알 발사 전에 잠시 대기
                 yield return new WaitForSeconds(0.15f); // 이 값을 조절하여 총알 발사 간격을 변경할 수 있습니다.
@@ -592,7 +592,7 @@ public class EnemyDragon : MonoBehaviour
                 GameObject instantBullet = Instantiate(bullet, transform.position, bulletRotation);
 
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
-                rigidBullet.velocity = instantBullet.transform.forward * 15;
+                rigidBullet.velocity = instantBullet.transform.forward * 12;
 
                 // 다음 총알 발사 전에 잠시 대기
                 yield return new WaitForSeconds(0.15f); // 이 값을 조절하여 총알 발사 간격을 변경할 수 있습니다.
@@ -627,7 +627,7 @@ public class EnemyDragon : MonoBehaviour
                 GameObject instantBullet = Instantiate(bullet, transform.position, bulletRotation);
 
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
-                rigidBullet.velocity = instantBullet.transform.forward * 15;
+                rigidBullet.velocity = instantBullet.transform.forward * 12;
             }
 
             isAttackHit = true; // 공격이 성공적으로 적중했다고 표시
@@ -659,7 +659,7 @@ public class EnemyDragon : MonoBehaviour
                 GameObject instantBullet = Instantiate(bullet, transform.position, bulletRotation);
 
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
-                rigidBullet.velocity = instantBullet.transform.forward * 15;
+                rigidBullet.velocity = instantBullet.transform.forward * 12;
             }
 
             isAttackHit = true; // 공격이 성공적으로 적중했다고 표시
@@ -691,7 +691,7 @@ public class EnemyDragon : MonoBehaviour
                 GameObject instantBullet = Instantiate(bullet, transform.position, bulletRotation);
 
                 Rigidbody rigidBullet = instantBullet.GetComponent<Rigidbody>();
-                rigidBullet.velocity = instantBullet.transform.forward * 15;
+                rigidBullet.velocity = instantBullet.transform.forward * 12;
             }
 
             isAttackHit = true; // 공격이 성공적으로 적중했다고 표시
@@ -718,7 +718,7 @@ public class EnemyDragon : MonoBehaviour
         Targerting();
         // 움직임을 억제하는 함수 호출
         FreezeVelocity();
-    }    
+    }
 
     // 받는 피해 관리하는 함수
     public void TakeDamage(Bullet bullet, Vector3 hitPoint)
@@ -733,12 +733,12 @@ public class EnemyDragon : MonoBehaviour
 
         // 폭발 효과가 있는지 확인하고, 있으면 해당 데미지를 적용합니다.
         float damageToApply = bullet.isExplosion ? bullet.boomShotDamage : totalDamage;
-        
+
         curHealth -= damageToApply; // Apply damage
-        
+
         // 체력바 업데이트
         healthBarSlider.value = curHealth;
-        
+
         // 체력이 0 이하이면 체력바 UI를 비활성화합니다.
         if (curHealth <= 0)
         {
@@ -782,8 +782,8 @@ public class EnemyDragon : MonoBehaviour
             if (curHealth > 0)
             {
                 healthBarUI.SetActive(true);
-            }           
-        }        
+            }
+        }
     }
 
     // 보스 처치 시 아이템 드랍 함수
