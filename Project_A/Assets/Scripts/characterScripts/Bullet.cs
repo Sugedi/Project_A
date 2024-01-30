@@ -18,6 +18,9 @@ public class Bullet : MonoBehaviour
 
     private ObjectPool<GameObject> pool;
 
+    // 피어스샷 총알 재 충돌 방지
+    private HashSet<GameObject> hitEnemies = new HashSet<GameObject>();
+
     public bool isPenetrating; // 관통샷 여부
 
     // BoomShot 스킬 속성
@@ -63,7 +66,7 @@ public class Bullet : MonoBehaviour
         isPenetrating = false;
         isLightningActive = false;
         isBoomShotActive = false;
-
+        hitEnemies.Clear();
         // 파티클 시스템이 있다면 비활성화했다가 다시 활성화
 
         if (explosionPrefab != null)
@@ -185,10 +188,20 @@ public class Bullet : MonoBehaviour
     // 트리거 충돌 시 호출되는 메서드
     void OnTriggerEnter(Collider other)
     {
-        if (isPenetrating && other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy"))
         {
-            // 관통샷일 때만 적과의 충돌을 처리합니다.
-            HandleCollisionWithEnemy(other.gameObject, other.ClosestPointOnBounds(transform.position));
+            if (isPenetrating)
+            {
+                if (!hitEnemies.Contains(other.gameObject))
+                {
+                    hitEnemies.Add(other.gameObject);
+                    HandleCollisionWithEnemy(other.gameObject, other.ClosestPointOnBounds(transform.position));
+                }
+            }
+            else
+            {
+                HandleCollisionWithEnemy(other.gameObject, other.ClosestPointOnBounds(transform.position));
+            }
         }
         else if (other.CompareTag("Wall") || other.CompareTag("Floor"))
         {
