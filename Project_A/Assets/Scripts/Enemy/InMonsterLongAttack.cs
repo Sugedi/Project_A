@@ -161,7 +161,7 @@ public class InMonsterLongAttack : MonoBehaviour
 
         nav.SetDestination(homePosition);
 
-        if (Vector3.Distance(transform.position, homePosition) < 10f)
+        if (Vector3.Distance(transform.position, homePosition) < 12f)
         {
             isReturn = false;
             anim.SetBool("isWalk", false);
