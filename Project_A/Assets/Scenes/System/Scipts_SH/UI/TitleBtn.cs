@@ -72,17 +72,8 @@ public class TitleBtn : MonoBehaviour
                 break;
 
             case ButtonType.Sound:
-                // 온 오프 기능 말고, 사운드 별로 슬라이드를 만들 것
-                if (isSound)
-                {
-                    isSound = !isSound;
-                    Debug.Log("사운드 OFF");
-                }
-                else
-                {
-                    isSound = true;
-                    Debug.Log("사운드 ON");
-                }
+                Application.Quit();
+                Debug.Log("d");
                 break;
 
             case ButtonType.Back:
