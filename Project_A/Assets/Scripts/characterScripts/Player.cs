@@ -656,7 +656,7 @@ public class Player : MonoBehaviour
             isDamage = true; // 무적 상태 활성화
 
             Invoke("DodgeOut", 0.5f); // 0.5초 후 회피 완료 처리
-            Invoke("EndInvulnerability", 0.2f); // 0.2초 후 무적 상태 해제
+            Invoke("EndInvulnerability", 0.3f); // 0.3초 후 무적 상태 해제
         }
     }
     // 무적 상태 해제
