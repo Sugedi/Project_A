@@ -96,6 +96,9 @@ public class SoundManager : MonoBehaviour
             case "Stage": // 여기다가는 씬의 이름 적기
                 PlayBGM("Stage");  // 씬3에 해당하는 배경음악 이름                
                 break;
+            case "StartVideo": // 여기다가는 씬의 이름 적기
+                PlayBGM("01_Title");  // 씬3에 해당하는 배경음악 이름                
+                break;
             default:
                 // 로딩 씬들이 아니고, 다른 씬 이름이 잘못되었을 때만 오류를 로그합니다.
                 Debug.LogError("Unknown scene name: " + scene.name);
