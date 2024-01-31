@@ -26,6 +26,9 @@ public class EnemyWorm : MonoBehaviour
     public Transform headPosition;
     public Vector3 healthBarOffset;
 
+    // 몬스터 그룹
+    public MonsterGroupManager groupManager;
+
     bool isReturningToInitialPosition; // 몬스터가 초기 위치로 돌아가고 있는지 여부를 나타내는 변수
 
     //==============================================================
@@ -419,6 +422,11 @@ public class EnemyWorm : MonoBehaviour
             {
                 _item = Instantiate(itemPrefab); // 아이템 생성
                 _item.transform.position = dropPosition.position; // 아이템 위치 설정
+            }
+
+            if (groupManager != null)
+            {
+                groupManager.OnMonsterDefeated();
             }
 
             // 2초 뒤 몹 사망

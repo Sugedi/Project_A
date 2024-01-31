@@ -28,6 +28,9 @@ public class EnemyPadakmon : MonoBehaviour
     public GameObject healthBarUI;
     public Transform headPosition;
     public Vector3 healthBarOffset;
+    
+    // 몬스터 그룹
+    public MonsterGroupManager groupManager;
 
     public Vector3 homePosition; // 몬스터의 초기 위치
     public float homeRange = 10f; // 홈 위치에서 몬스터가 이동할 수 있는 최대 거리
@@ -48,7 +51,6 @@ public class EnemyPadakmon : MonoBehaviour
     NavMeshAgent nav; // NavMeshAgent 컴포넌트
     Animator anim; // Animator 컴포넌트
 
-    public MonsterGroupManager groupManager;
 
     void Awake()
     {
@@ -412,6 +414,11 @@ public class EnemyPadakmon : MonoBehaviour
             {
                 _item = Instantiate(itemPrefab); // 아이템 생성
                 _item.transform.position = dropPosition.position; // 아이템 위치 설정
+            }
+
+            if (groupManager != null)
+            {
+                groupManager.OnMonsterDefeated();
             }
 
             // 2초 뒤 몹 사망

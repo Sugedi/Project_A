@@ -48,6 +48,8 @@ public class Enemy : MonoBehaviour
     public GameObject healthBarUI;
     public Transform headPosition;
     public Vector3 healthBarOffset = new Vector3(0, 2, 0);
+
+    // 몬스터 그룹
     public MonsterGroupManager groupManager;
 
     void Awake()
