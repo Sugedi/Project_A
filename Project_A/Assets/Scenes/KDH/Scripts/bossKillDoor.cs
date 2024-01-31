@@ -20,8 +20,6 @@ public class bossKillDoor : MonoBehaviour
         {
             // Play the 'bosskilldooropen' animation
             bossPlayDoorAnimation(bossDoorOpenAnimation);
-            SoundManager.instance.PlayAudio("Door2", "SE");
-
         }
         else
         {
@@ -30,6 +28,9 @@ public class bossKillDoor : MonoBehaviour
     }
     void bossPlayDoorAnimation(AnimationClip animationClip)
     {
+        // 문 열림 사운드를 재생
+        SoundManager.instance.PlayAudio("Gate1", "SE");
+
         // Set the specified animation clip to the Animation component
         GetComponent<Animation>().clip = animationClip;
 
