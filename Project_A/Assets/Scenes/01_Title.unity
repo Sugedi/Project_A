@@ -1190,9 +1190,12 @@ MonoBehaviour:
     stage1MainQuest: 0
     tutorPanelNum: 0
     stage1BossClear: 0
+    galioFirstClear: 0
+    IntroVideo: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
     saveSceneName: Backstage_0114
+  IntroVideoPlay: 0
 --- !u!114 &525632745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1878,6 +1881,8 @@ MonoBehaviour:
     stage1MainQuest: 0
     tutorPanelNum: 0
     stage1BossClear: 0
+    galioFirstClear: 0
+    IntroVideo: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
     saveSceneName: Backstage_0114
@@ -3376,9 +3381,12 @@ MonoBehaviour:
     stage1MainQuest: 0
     tutorPanelNum: 0
     stage1BossClear: 0
+    galioFirstClear: 0
+    IntroVideo: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
     saveSceneName: Backstage_0114
+  IntroVideoPlay: 0
 --- !u!114 &1002578839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4273,6 +4281,8 @@ MonoBehaviour:
     stage1MainQuest: 0
     tutorPanelNum: 0
     stage1BossClear: 0
+    galioFirstClear: 0
+    IntroVideo: 0
     stage1Tutorial: 0
     savePos: {x: 10, y: 10, z: 10}
     saveSceneName: Backstage_0114
@@ -4280,6 +4290,7 @@ MonoBehaviour:
   SaveCanvas: {fileID: 0}
   joystick: {fileID: 0}
   joy: {fileID: 0}
+  continueBtn: {fileID: 0}
   systemMessagePanel: {fileID: 0}
   systemMessageText: {fileID: 0}
   hasThreadItem: 0
@@ -4906,9 +4917,12 @@ MonoBehaviour:
     stage1MainQuest: 0
     tutorPanelNum: 0
     stage1BossClear: 0
+    galioFirstClear: 0
+    IntroVideo: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
     saveSceneName: Backstage_0114
+  IntroVideoPlay: 0
 --- !u!114 &1314622090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5924,9 +5938,12 @@ MonoBehaviour:
     stage1MainQuest: 0
     tutorPanelNum: 0
     stage1BossClear: 0
+    galioFirstClear: 0
+    IntroVideo: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
     saveSceneName: Backstage_0114
+  IntroVideoPlay: 0
 --- !u!114 &1606779259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6183,9 +6200,12 @@ MonoBehaviour:
     stage1MainQuest: 0
     tutorPanelNum: 0
     stage1BossClear: 0
+    galioFirstClear: 0
+    IntroVideo: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
     saveSceneName: Backstage_0114
+  IntroVideoPlay: 0
 --- !u!114 &1717278385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6468,9 +6488,12 @@ MonoBehaviour:
     stage1MainQuest: 0
     tutorPanelNum: 0
     stage1BossClear: 0
+    galioFirstClear: 0
+    IntroVideo: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
     saveSceneName: Backstage_0114
+  IntroVideoPlay: 0
 --- !u!114 &1877443632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6898,9 +6921,12 @@ MonoBehaviour:
     stage1MainQuest: 0
     tutorPanelNum: 0
     stage1BossClear: 0
+    galioFirstClear: 0
+    IntroVideo: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
     saveSceneName: Backstage_0114
+  IntroVideoPlay: 0
 --- !u!114 &1897303140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7599,11 +7625,11 @@ MonoBehaviour:
     isLoop: 0
     clip: {fileID: 8300000, guid: 832440fce505e024d98a2c99534e99bb, type: 3}
   - name: PlayerRoll1
-    volume: 0.1
+    volume: 0.5
     isLoop: 0
     clip: {fileID: 8300000, guid: 35f271d1cf28da0439bbb472962a62f1, type: 3}
   - name: Shoot2
-    volume: 0
+    volume: 0.5
     isLoop: 0
     clip: {fileID: 8300000, guid: 92a2f906b2b49fa40aaa1a41bcae38c8, type: 3}
   - name: Reload1
@@ -7615,7 +7641,7 @@ MonoBehaviour:
     isLoop: 0
     clip: {fileID: 8300000, guid: 2f9cffb3699504c42917354b8ad62df7, type: 3}
   - name: Door1
-    volume: 0.1
+    volume: 1
     isLoop: 0
     clip: {fileID: 8300000, guid: ec426d44d3236284ead1ab75ac9d13f4, type: 3}
   - name: Door2
@@ -7930,9 +7956,12 @@ MonoBehaviour:
     stage1MainQuest: 0
     tutorPanelNum: 0
     stage1BossClear: 0
+    galioFirstClear: 0
+    IntroVideo: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
     saveSceneName: Backstage_0114
+  IntroVideoPlay: 0
 --- !u!114 &2106332403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8283,9 +8312,12 @@ MonoBehaviour:
     stage1MainQuest: 0
     tutorPanelNum: 0
     stage1BossClear: 0
+    galioFirstClear: 0
+    IntroVideo: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
     saveSceneName: Backstage_0114
+  IntroVideoPlay: 0
 --- !u!114 &2136382272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8371,9 +8403,12 @@ MonoBehaviour:
     stage1MainQuest: 0
     tutorPanelNum: 0
     stage1BossClear: 0
+    galioFirstClear: 0
+    IntroVideo: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
     saveSceneName: Backstage_0114
+  IntroVideoPlay: 0
 --- !u!114 &2140358892
 MonoBehaviour:
   m_ObjectHideFlags: 0
