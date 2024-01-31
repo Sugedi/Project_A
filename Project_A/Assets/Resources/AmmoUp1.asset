@@ -16,7 +16,7 @@ MonoBehaviour:
   damageMultiplier: 1
   attackSpeedMultiplier: 1
   reloadTimeMultiplier: 1
-  ammoIncrease: 30
+  ammoIncrease: 20
   isShotGun1: 0
   shotGun1Count: 2
   shotGun1SpreadAngle: 45
@@ -29,3 +29,10 @@ MonoBehaviour:
   isShotGun4: 0
   shotGun4Count: 5
   shotGun4SpreadAngle: 45
+  isPierceShot: 0
+  isBoomShot: 0
+  boomShotRadius: 0
+  boomShotDamage: 0
+  isSideShot: 0
+  isLightning: 0
+  lightningDamage: 0

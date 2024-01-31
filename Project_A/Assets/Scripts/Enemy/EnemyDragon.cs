@@ -858,7 +858,7 @@ public class EnemyDragon : MonoBehaviour
                 _itemThread.transform.position = ThreaddropPosition.position; // Thread 아이템 위치 설정
 
                 // ThreadItem을 얻었으므로 player.hasThreadItem를 true로 설정합니다.
-                //player.hasThreadItem = true;
+                // player.hasThreadItem = true;
 
                 if (GameObject.Find("DataManager").GetComponent<DataManager>().datas.stage1MainQuest <= 2)
                 {
