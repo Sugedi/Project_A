@@ -976,6 +976,9 @@ public class Player : MonoBehaviour
         // 사망 상태를 true로 설정합니다.
         isDead = true;
 
+        // Animator에 isDead 파라미터 설정
+        anim.SetBool("isDead", isDead);
+
         // 사망 애니메이션 재생
         anim.SetTrigger("Die");
         SoundManager.instance.PlayAudio("Die", "SE");
@@ -1003,7 +1006,7 @@ public class Player : MonoBehaviour
     // 데미지 표시 코루틴
     public IEnumerator OnDamage()
     {
-        if (anim != null)
+        if (!isDead)
         {
             anim.SetTrigger("doTakeDamage");
         }
