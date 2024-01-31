@@ -672,7 +672,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 45
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 56.848, z: 0}
 --- !u!114 &11097932
 MonoBehaviour:
@@ -1832,7 +1832,7 @@ RectTransform:
   - {fileID: 1423232799}
   - {fileID: 1346927217}
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 75
+  m_RootOrder: 61
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2969,7 +2969,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 40
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 77.716, y: -368.919, z: -241.578}
 --- !u!114 &126311043
 MonoBehaviour:
@@ -3240,7 +3240,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2
+  orthographic size: 1
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -3263,8 +3263,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 130661573}
-  m_LocalRotation: {x: 0.05343394, y: -0.84475124, z: 0.08589423, w: 0.52551144}
-  m_LocalPosition: {x: 80.00702, y: 19.4, z: 39.499992}
+  m_LocalRotation: {x: -0.02211409, y: 0.96801436, z: -0.09214722, w: -0.2323104}
+  m_LocalPosition: {x: 47.477013, y: 19.4, z: 85.020004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5448,11 +5448,11 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 0}
+  m_LookAt: {fileID: 1407338183}
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 2
+    OrthographicSize: 1
     NearClipPlane: -63.28
     FarClipPlane: 1000
     Dutch: 0
@@ -5475,14 +5475,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 221254043}
-  m_LocalRotation: {x: -0.022952886, y: -0.9689221, z: 0.09851989, w: -0.22573665}
-  m_LocalPosition: {x: -39.5, y: 19.4, z: 80}
+  m_LocalRotation: {x: 0.04706102, y: 0.85681355, z: -0.07948699, w: 0.5072846}
+  m_LocalPosition: {x: -85.02, y: 19.4, z: 47.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1514454690}
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 80
+  m_RootOrder: 74
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &221465435
 GameObject:
@@ -6144,7 +6144,7 @@ Transform:
   - {fileID: 782485101}
   - {fileID: 390122287}
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 54
+  m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1001 &258530486
 PrefabInstance:
@@ -7812,7 +7812,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 57
+  m_RootOrder: 37
   m_LocalEulerAnglesHint: {x: 0, y: -65.486, z: 0}
 --- !u!64 &339062273
 MeshCollider:
@@ -14138,6 +14138,7 @@ MonoBehaviour:
     tutorPanelNum: 0
     stage1BossClear: 0
     galioFirstClear: 0
+    IntroVideo: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
     saveSceneName: Backstage_0114
@@ -15164,6 +15165,7 @@ MonoBehaviour:
     tutorPanelNum: 0
     stage1BossClear: 0
     galioFirstClear: 0
+    IntroVideo: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
     saveSceneName: Backstage_0114
@@ -15668,6 +15670,7 @@ MonoBehaviour:
     tutorPanelNum: 0
     stage1BossClear: 0
     galioFirstClear: 0
+    IntroVideo: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
     saveSceneName: Backstage_0114
@@ -16742,7 +16745,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 56
+  m_RootOrder: 36
   m_LocalEulerAnglesHint: {x: 0, y: 1.444, z: 0}
 --- !u!64 &502434141
 MeshCollider:
@@ -21819,7 +21822,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 72
+  m_RootOrder: 57
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &512879122
 GameObject:
@@ -22311,7 +22314,7 @@ Transform:
   m_Children:
   - {fileID: 925117058}
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 61
+  m_RootOrder: 43
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &528019131
 GameObject:
@@ -24469,7 +24472,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 79
+  m_RootOrder: 72
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &609477728
 GameObject:
@@ -24555,7 +24558,7 @@ RectTransform:
   - {fileID: 199047898}
   - {fileID: 1800030249}
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 66
+  m_RootOrder: 51
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -25436,7 +25439,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 58
+  m_RootOrder: 38
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &650677297
 MeshCollider:
@@ -30577,6 +30580,7 @@ MonoBehaviour:
     tutorPanelNum: 0
     stage1BossClear: 0
     galioFirstClear: 0
+    IntroVideo: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
     saveSceneName: Backstage_0114
@@ -30963,7 +30967,7 @@ Transform:
   - {fileID: 1981484170}
   - {fileID: 1943379031}
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 59
+  m_RootOrder: 39
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &674475441
 GameObject:
@@ -31566,7 +31570,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 39
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &704354414
 GameObject:
@@ -38523,6 +38527,7 @@ MonoBehaviour:
     tutorPanelNum: 0
     stage1BossClear: 0
     galioFirstClear: 0
+    IntroVideo: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
     saveSceneName: Backstage_0114
@@ -38872,6 +38877,7 @@ MonoBehaviour:
     tutorPanelNum: 0
     stage1BossClear: 0
     galioFirstClear: 0
+    IntroVideo: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
     saveSceneName: Backstage_0114
@@ -39140,7 +39146,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 63
+  m_RootOrder: 48
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -40490,7 +40496,7 @@ Transform:
   m_Children:
   - {fileID: 349104164}
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 67
+  m_RootOrder: 52
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &862462494
 GameObject:
@@ -46569,6 +46575,7 @@ MonoBehaviour:
     tutorPanelNum: 0
     stage1BossClear: 0
     galioFirstClear: 0
+    IntroVideo: 0
     stage1Tutorial: 0
     savePos: {x: 10, y: 10, z: 10}
     saveSceneName: Backstage_0114
@@ -58668,6 +58675,7 @@ MonoBehaviour:
     tutorPanelNum: 0
     stage1BossClear: 0
     galioFirstClear: 0
+    IntroVideo: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
     saveSceneName: Backstage_0114
@@ -60957,6 +60965,7 @@ MonoBehaviour:
     tutorPanelNum: 0
     stage1BossClear: 0
     galioFirstClear: 0
+    IntroVideo: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
     saveSceneName: Backstage_0114
@@ -61926,7 +61935,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 23
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: -10.832, z: 0}
 --- !u!1001 &1086061401
 PrefabInstance:
@@ -62492,6 +62501,7 @@ MonoBehaviour:
     tutorPanelNum: 0
     stage1BossClear: 0
     galioFirstClear: 0
+    IntroVideo: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
     saveSceneName: Backstage_0114
@@ -63448,7 +63458,7 @@ Transform:
   - {fileID: 1841914907}
   - {fileID: 869184508}
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 17
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: -10.832, z: 0}
 --- !u!1 &1135523497
 GameObject:
@@ -64067,7 +64077,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 68
+  m_RootOrder: 53
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1145374486
 MonoBehaviour:
@@ -64833,45 +64843,25 @@ Transform:
   - {fileID: 1290707314}
   - {fileID: 1977535710}
   - {fileID: 922429581}
+  - {fileID: 1134700227}
+  - {fileID: 2104994902}
+  - {fileID: 1083814441}
+  - {fileID: 700193952}
+  - {fileID: 126311042}
+  - {fileID: 1267148162}
   - {fileID: 1849976910}
   - {fileID: 732766274}
   - {fileID: 262694399}
-  - {fileID: 1134700227}
-  - {fileID: 2104994902}
+  - {fileID: 1236859685}
+  - {fileID: 11097931}
+  - {fileID: 1508331044}
+  - {fileID: 1384051955}
+  - {fileID: 1702115028}
+  - {fileID: 2091097370}
   - {fileID: 1334349984}
   - {fileID: 1137187433}
   - {fileID: 937423825}
   - {fileID: 1787628292}
-  - {fileID: 1083814441}
-  - {fileID: 2072987898}
-  - {fileID: 211414482}
-  - {fileID: 887119105}
-  - {fileID: 647703248}
-  - {fileID: 495580685}
-  - {fileID: 1761267407}
-  - {fileID: 294414940}
-  - {fileID: 1986362837}
-  - {fileID: 340601833}
-  - {fileID: 1242393477}
-  - {fileID: 1119139669}
-  - {fileID: 410994348}
-  - {fileID: 1377933291}
-  - {fileID: 1608187236}
-  - {fileID: 1854391711}
-  - {fileID: 700193952}
-  - {fileID: 126311042}
-  - {fileID: 1267148162}
-  - {fileID: 1236859685}
-  - {fileID: 353110385}
-  - {fileID: 1909411958}
-  - {fileID: 11097931}
-  - {fileID: 1508331044}
-  - {fileID: 1187032781}
-  - {fileID: 1384051955}
-  - {fileID: 1527695446}
-  - {fileID: 1702115028}
-  - {fileID: 1974862049}
-  - {fileID: 2091097370}
   - {fileID: 1275640011}
   - {fileID: 253611114}
   - {fileID: 2142885695}
@@ -64879,9 +64869,14 @@ Transform:
   - {fileID: 339062272}
   - {fileID: 650677296}
   - {fileID: 669271521}
+  - {fileID: 2072987898}
+  - {fileID: 211414482}
   - {fileID: 1424885547}
   - {fileID: 523281266}
   - {fileID: 1230156111}
+  - {fileID: 887119105}
+  - {fileID: 647703248}
+  - {fileID: 495580685}
   - {fileID: 816467473}
   - {fileID: 1337116738}
   - {fileID: 2099049366}
@@ -64892,14 +64887,29 @@ Transform:
   - {fileID: 1214518709}
   - {fileID: 1399837152}
   - {fileID: 507184608}
+  - {fileID: 1761267407}
   - {fileID: 1693805361}
   - {fileID: 1500921449}
   - {fileID: 78198302}
   - {fileID: 1996601008}
+  - {fileID: 294414940}
+  - {fileID: 1986362837}
   - {fileID: 1216690163}
+  - {fileID: 340601833}
   - {fileID: 2105549293}
+  - {fileID: 1242393477}
+  - {fileID: 1119139669}
+  - {fileID: 410994348}
+  - {fileID: 1377933291}
   - {fileID: 604747283}
+  - {fileID: 1608187236}
   - {fileID: 221254045}
+  - {fileID: 1854391711}
+  - {fileID: 353110385}
+  - {fileID: 1909411958}
+  - {fileID: 1187032781}
+  - {fileID: 1527695446}
+  - {fileID: 1974862049}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -66513,7 +66523,7 @@ RectTransform:
   - {fileID: 1854482414}
   - {fileID: 210475929}
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 70
+  m_RootOrder: 55
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -66636,7 +66646,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 77
+  m_RootOrder: 65
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1218495222
 GameObject:
@@ -66893,7 +66903,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 62
+  m_RootOrder: 44
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -67304,7 +67314,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 42
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 126.14, z: 0}
 --- !u!114 &1236859686
 MonoBehaviour:
@@ -68157,7 +68167,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 41
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &1267148163
 MonoBehaviour:
@@ -68347,7 +68357,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 53
+  m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1284516057
 GameObject:
@@ -69403,7 +69413,7 @@ RectTransform:
   - {fileID: 1175719419}
   - {fileID: 528019132}
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 64
+  m_RootOrder: 49
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -70388,7 +70398,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 48
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: -193.4, z: 0}
 --- !u!114 &1384051956
 MonoBehaviour:
@@ -70640,7 +70650,7 @@ RectTransform:
   m_Children:
   - {fileID: 923951932}
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 71
+  m_RootOrder: 56
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -70984,6 +70994,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7278efd73596e8e48a5fa87ee81d580e, type: 2}
   isDamage: 0
   isDead: 0
+  anim: {fileID: 0}
   meshs: []
   equipWeapon: {fileID: 0}
   datas:
@@ -70999,6 +71010,7 @@ MonoBehaviour:
     tutorPanelNum: 0
     stage1BossClear: 0
     galioFirstClear: 0
+    IntroVideo: 0
     stage1Tutorial: 0
     savePos: {x: 10, y: 10, z: 10}
     saveSceneName: Backstage_0114
@@ -71828,7 +71840,7 @@ RectTransform:
   - {fileID: 738221513}
   - {fileID: 1743121963}
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 60
+  m_RootOrder: 42
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -73418,7 +73430,7 @@ RectTransform:
   - {fileID: 228664247}
   - {fileID: 449517952}
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 74
+  m_RootOrder: 60
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -73517,7 +73529,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 46
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: -124.107, z: 0}
 --- !u!114 &1508331045
 MonoBehaviour:
@@ -73762,6 +73774,7 @@ MonoBehaviour:
     tutorPanelNum: 0
     stage1BossClear: 0
     galioFirstClear: 0
+    IntroVideo: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
     saveSceneName: Backstage_0114
@@ -75331,6 +75344,7 @@ MonoBehaviour:
     tutorPanelNum: 0
     stage1BossClear: 0
     galioFirstClear: 0
+    IntroVideo: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
     saveSceneName: Backstage_0114
@@ -76297,6 +76311,7 @@ MonoBehaviour:
     tutorPanelNum: 0
     stage1BossClear: 0
     galioFirstClear: 0
+    IntroVideo: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
     saveSceneName: Backstage_0114
@@ -78669,7 +78684,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 73
+  m_RootOrder: 59
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1695673044
 GameObject:
@@ -78781,7 +78796,7 @@ Transform:
   - {fileID: 503915990}
   - {fileID: 652685263}
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 50
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1704296868
 GameObject:
@@ -79457,6 +79472,7 @@ MonoBehaviour:
     tutorPanelNum: 0
     stage1BossClear: 0
     galioFirstClear: 0
+    IntroVideo: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
     saveSceneName: Backstage_0114
@@ -82319,6 +82335,7 @@ MonoBehaviour:
     tutorPanelNum: 0
     stage1BossClear: 0
     galioFirstClear: 0
+    IntroVideo: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
     saveSceneName: Backstage_0114
@@ -82801,6 +82818,7 @@ MonoBehaviour:
     tutorPanelNum: 0
     stage1BossClear: 0
     galioFirstClear: 0
+    IntroVideo: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
     saveSceneName: Backstage_0114
@@ -83991,6 +84009,7 @@ MonoBehaviour:
     tutorPanelNum: 0
     stage1BossClear: 0
     galioFirstClear: 0
+    IntroVideo: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
     saveSceneName: Backstage_0114
@@ -90663,6 +90682,7 @@ MonoBehaviour:
     tutorPanelNum: 0
     stage1BossClear: 0
     galioFirstClear: 0
+    IntroVideo: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
     saveSceneName: Backstage_0114
@@ -91921,6 +91941,7 @@ MonoBehaviour:
     tutorPanelNum: 0
     stage1BossClear: 0
     galioFirstClear: 0
+    IntroVideo: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
     saveSceneName: Backstage_0114
@@ -92698,7 +92719,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 76
+  m_RootOrder: 62
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2003601398
 GameObject:
@@ -92729,7 +92750,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 69
+  m_RootOrder: 54
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2017987072
 GameObject:
@@ -94047,7 +94068,7 @@ RectTransform:
   - {fileID: 200976144}
   - {fileID: 1305758530}
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 52
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -94098,7 +94119,7 @@ RectTransform:
   - {fileID: 266544235}
   - {fileID: 790047862}
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 65
+  m_RootOrder: 50
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -94375,7 +94396,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 18
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: -10.832, z: 0}
 --- !u!1 &2105549291
 GameObject:
@@ -94487,7 +94508,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 78
+  m_RootOrder: 67
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &2105549294
 AudioSource:
@@ -95150,6 +95171,7 @@ MonoBehaviour:
     tutorPanelNum: 0
     stage1BossClear: 0
     galioFirstClear: 0
+    IntroVideo: 0
     stage1Tutorial: 0
     savePos: {x: 0, y: 0, z: 0}
     saveSceneName: Backstage_0114
@@ -95222,7 +95244,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1174954825}
-  m_RootOrder: 55
+  m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 2.031, z: 0}
 --- !u!64 &2142885696
 MeshCollider:
