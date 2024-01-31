@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
 
     // 구성 요소
     Rigidbody rigid; // Rigidbody 컴포넌트
-    Animator anim; // Animator 컴포넌트
+    public Animator anim; // Animator 컴포넌트
     public SkinnedMeshRenderer[] meshs; // SkinnedMeshRenderer 배열
 
     // 장비 값
@@ -1003,6 +1003,10 @@ public class Player : MonoBehaviour
     // 데미지 표시 코루틴
     public IEnumerator OnDamage()
     {
+        if (anim != null)
+        {
+            anim.SetTrigger("doTakeDamage");
+        }
         // 피격 상태를 활성화하고 메쉬들의 색상을 파란색으로 변경
         isDamage = true; // 피격 상태 활성화
 

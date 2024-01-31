@@ -1,11 +1,11 @@
 using UnityEngine;
 
 public class spiketrap2 : MonoBehaviour
-{
+{  
     int damageAmount = 30;
     float damageCooldown = 0.5f; // Adjust the cooldown duration as needed
 
-    private float lastDamageTime;
+    private float lastDamageTime;    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -21,7 +21,7 @@ public class spiketrap2 : MonoBehaviour
     {
         // Add your damage logic here
         // For now, just log a message indicating the damage
-        Debug.Log("Player took " + damageAmount + " damage.");
+        Debug.Log("Player took " + damageAmount + " damage.");        
 
         // Get the player's Player script
         Player playerScript = player.GetComponent<Player>();
@@ -31,6 +31,8 @@ public class spiketrap2 : MonoBehaviour
             // Apply damage to the player using the player's script
             playerScript.health -= damageAmount;
 
+            
+
             if (playerScript.health < 0)
             {
                 playerScript.health = 0;
@@ -39,8 +41,6 @@ public class spiketrap2 : MonoBehaviour
 
             // Start the damage coroutine
             playerScript.StartCoroutine(playerScript.OnDamage());
-        }
-
-
+        }       
     }
 }
