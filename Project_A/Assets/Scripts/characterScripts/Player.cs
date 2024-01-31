@@ -644,7 +644,7 @@ public class Player : MonoBehaviour
 
             isReload = true; // 재장전 중 상태 설정
             speed = 2;
-            float reloadTime = 1f * GetReloadTimeMultiplier(); // 재장전 시간을 계산합니다.
+            float reloadTime = 1.5f * GetReloadTimeMultiplier(); // 재장전 시간을 계산합니다.
             Invoke("ReloadOut", reloadTime); // 2초 후 재장전 완료 처리
         }
     }

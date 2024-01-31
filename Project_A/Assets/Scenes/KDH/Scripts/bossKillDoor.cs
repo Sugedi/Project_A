@@ -6,7 +6,13 @@ public class bossKillDoor : MonoBehaviour
 {
     public AnimationClip bossDoorOpenAnimation;
     // ...
-
+    private void Start()
+    {
+        if (DataManager.instance.datas.galioFirstClear == true)
+        {
+            gameObject.SetActive(false);
+        }
+    }
     public void BossKillDoorOpen()
     {
         // Check if the doorAnimation is assigned
@@ -45,9 +51,7 @@ public class bossKillDoor : MonoBehaviour
 
     void DisableScript()
     {
-        if (DataManager.instance.datas.galioFirstClear == false)
-            
-            
+
             DataManager.instance.datas.galioFirstClear = true;
             Debug.Log("Galio has been defeated!");
             gameObject.SetActive(false);

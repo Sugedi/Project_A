@@ -25,7 +25,7 @@ public class MonsterGroupManager : MonoBehaviour
             // 모든 몬스터가 처치되면 다음 그룹을 활성화
             if (nextMonsterGroup != null)
             {
-                Invoke("ActivateNextGroup", 2f);
+                Invoke("ActivateNextGroup", 1f);
             }
         }
     }
