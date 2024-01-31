@@ -166,7 +166,7 @@ public class ObjectInteraction : MonoBehaviour
         CanvasGroupOn(joy);
 
         // 여기에 실제로 전달하고 싶은 메시지를 입력하세요.
-        string message = "대본집이 활성화 되었습니다.";
+        string message = "퀘스트 창이 활성화 되었습니다.";
         ActivateSystemMessagePanel(message);
 
         mainQuest++;
@@ -221,7 +221,7 @@ public class ObjectInteraction : MonoBehaviour
 
 
         // 여기에 실제로 전달하고 싶은 메시지를 입력하세요.
-        string message = "대본집을 완성하였습니다.";
+        string message = "퀘스트를 완료하였습니다.";
         ActivateSystemMessagePanel(message);
 
         SceneManager.LoadScene("EndingVideo");
