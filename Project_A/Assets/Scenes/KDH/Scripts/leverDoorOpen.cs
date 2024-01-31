@@ -67,6 +67,9 @@ public class leverDoorOpen : MonoBehaviour
         // 대기 시간 후에 문 열림 애니메이션을 재생
         yield return new WaitForSeconds(delay);
 
+        // 문 열림 사운드를 재생
+        SoundManager.instance.PlayAudio("Gate1", "SE");
+
         // 지정된 애니메이션 클립을 Animation 컴포넌트에 설정
         GetComponent<Animation>().clip = doorOpenAnimation;
         // 애니메이션을 한 번 재생

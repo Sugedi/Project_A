@@ -91,13 +91,18 @@ public class SoundManager : MonoBehaviour
                 PlayBGM("01_Title");  // 씬1에 해당하는 배경음악 이름
                 break;
             case "Backstage_0114": // 여기다가는 씬의 이름 적기
-                PlayBGM("Backstage_0114");  // 씬2에 해당하는 배경음악 이름                
+                PlayBGM("Backstage_0114");  // 씬2에 해당하는 배경음악 이름
                 break;
             case "Stage": // 여기다가는 씬의 이름 적기
-                PlayBGM("Stage");  // 씬3에 해당하는 배경음악 이름                
+                PlayBGM("Stage");  // 씬3에 해당하는 배경음악 이름 
                 break;
             case "StartVideo": // 여기다가는 씬의 이름 적기
-                PlayBGM("01_Title");  // 씬3에 해당하는 배경음악 이름                
+                // 'StartVideo' 씬에서는 BGM을 재생하지 않습니다.
+                StopBGM(); // 모든 오디오 재생을 정지할 수 있습니다.       
+                break;
+            case "EndingVideo": // 여기다가는 씬의 이름 적기
+                // 'EndingVideo' 씬에서는 BGM을 재생하지 않습니다.
+                StopBGM(); // 모든 오디오 재생을 정지할 수 있습니다.
                 break;
             default:
                 // 로딩 씬들이 아니고, 다른 씬 이름이 잘못되었을 때만 오류를 로그합니다.
@@ -105,6 +110,8 @@ public class SoundManager : MonoBehaviour
                 break;
         }
     }
+
+    //EndingVideo
 
     private void PlayBGM(string p_name)
     {

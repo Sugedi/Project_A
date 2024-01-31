@@ -36,6 +36,8 @@ public class LeverController : MonoBehaviour
         {
             canToggle = false;
 
+            SoundManager.instance.PlayAudio("Lever2", "SE");
+
             int leverState = newState ? 1 : 2;
 
             // Set the lever state for the animation
