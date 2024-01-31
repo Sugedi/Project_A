@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17276905, g: 0.2158935, b: 0.2978262, a: 1}
+  m_IndirectSpecularColor: {r: 0.17276956, g: 0.21589413, b: 0.29782727, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8288,21 +8288,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   talk1Panel: {fileID: 153277289}
-  talk2Panel: {fileID: 0}
+  talk2Panel: {fileID: 1585094316}
   talkCanvas: {fileID: 1500921448}
-  stageUI: {fileID: 0}
+  stageUI: {fileID: 2091097366}
   dialoguePanel1: {fileID: 1651712480}
   dialoguePanel2: {fileID: 1423232798}
   dialoguePanel3: {fileID: 1346927216}
-  mainQuestPanel1: {fileID: 0}
-  mainQuestPanel2: {fileID: 0}
-  mainQuestPanel3: {fileID: 0}
+  mainQuestPanel1: {fileID: 2039599617}
+  mainQuestPanel2: {fileID: 2113226424}
+  mainQuestPanel3: {fileID: 210542797}
   talkNextBtn: {fileID: 936095751}
   nextButton1: {fileID: 1735245891}
   nextButton2: {fileID: 1423100207}
   nextButton3: {fileID: 1773486670}
-  questIcon: {fileID: 0}
-  questBtn: {fileID: 0}
+  questIcon: {fileID: 122838788}
+  questBtn: {fileID: 122838789}
   isPlayerInRange: 1
   mainQuest: 0
   systemMessagePanel: {fileID: 1854482413}
@@ -17226,10 +17226,10 @@ RectTransform:
   m_Father: {fileID: 912837635}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -700}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &441871796
 MonoBehaviour:
@@ -41504,10 +41504,10 @@ RectTransform:
   m_Father: {fileID: 912837635}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -100}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &782668345
 MonoBehaviour:
@@ -41854,10 +41854,10 @@ RectTransform:
   m_Father: {fileID: 912837635}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -900}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &793067916
 MonoBehaviour:
@@ -64057,10 +64057,10 @@ RectTransform:
   m_Father: {fileID: 912837635}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -500}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1018473199
 MonoBehaviour:
@@ -97052,7 +97052,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 457314342}
   m_HandleRect: {fileID: 457314341}
   m_Direction: 2
-  m_Value: 0.9999998
+  m_Value: 1
   m_Size: 0.6571429
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -97418,10 +97418,10 @@ RectTransform:
   m_Father: {fileID: 912837635}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -300}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1982865432
 MonoBehaviour:
