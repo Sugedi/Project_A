@@ -13,7 +13,6 @@ public class TitleBtn : MonoBehaviour
     public CanvasGroup DataResetGroup;
     public CanvasGroup NO1;
     public CanvasGroup NO2;
-    bool isSound;
 
     // instance로 불러오면서 필요 없어짐. 혹시 기능 동작 안 할 것을 대비하여 살려놓을게
     // public Datas datas;
@@ -22,6 +21,8 @@ public class TitleBtn : MonoBehaviour
     public Datas datas;
     private Player player;
 
+    public bool IntroVideoPlay;
+
     private void Start()
     {
 
@@ -29,7 +30,7 @@ public class TitleBtn : MonoBehaviour
         {
             player = FindObjectOfType<Player>();
         }
-
+        IntroVideoPlay = GameObject.Find("DataManager").GetComponent<DataManager>().datas.IntroVideo;
     }
 
     // UI 버튼 온클릭에 적용할 것
@@ -56,11 +57,22 @@ public class TitleBtn : MonoBehaviour
 
                 //2번 방법
                 //Vector3 lastPos = datas.savePos;
-                string lastScene = GameObject.Find("DataManager").GetComponent<DataManager>().datas.saveSceneName;
-                SceneManager.LoadScene("Loading"); // 저장된 씬으로 이동
+
                 
                 // 맵 위치 저장 즉, 세이브 스위치에서 해당 코드 주기
                 // string a = SceneManager.GetActiveScene().name;
+                if (IntroVideoPlay == false)
+                {
+                    GameObject.Find("DataManager").GetComponent<DataManager>().datas.IntroVideo = true;
+                    DataManager.instance.DataSave();
+                    SceneManager.LoadScene("StartVideo");
+                }
+                else if(IntroVideoPlay == true)
+                {
+                    string lastScene = GameObject.Find("DataManager").GetComponent<DataManager>().datas.saveSceneName;
+                    SceneManager.LoadScene("Loading"); // 저장된 씬으로 이동
+                }
+
 
                 break;
 
