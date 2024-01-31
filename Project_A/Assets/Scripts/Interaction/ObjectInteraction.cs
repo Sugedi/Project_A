@@ -147,6 +147,10 @@ public class ObjectInteraction : MonoBehaviour
         {
             dialoguePanel3.SetActive(true);
         }
+        if (mainQuest >= 3)
+        {
+            CanvasGroupOn(joy);
+        }
     }
 
     public void OnNextButton1Clicked()
@@ -219,6 +223,8 @@ public class ObjectInteraction : MonoBehaviour
         // 여기에 실제로 전달하고 싶은 메시지를 입력하세요.
         string message = "대본집을 완성하였습니다.";
         ActivateSystemMessagePanel(message);
+
+        SceneManager.LoadScene("EndingVideo");
 
         //// mainQuest가 3일 때, MainQuest Panel (3)을 활성화 상태로 유지
         //if (mainQuest == 3)
