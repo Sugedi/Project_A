@@ -33,6 +33,9 @@ MonoBehaviour:
     - Assembly-CSharp
     - Assembly-CSharp-firstpass
     - Cinemachine
+    - Google.Play.AssetDelivery
+    - Google.Play.Common
+    - Google.Play.Core
     - Polyperfect.Common
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0
