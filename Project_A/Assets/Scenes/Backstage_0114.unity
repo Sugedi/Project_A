@@ -19239,8 +19239,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 503915989}
   m_LocalRotation: {x: 0.69882506, y: 0.10790439, z: -0.10790451, w: 0.6988254}
-  m_LocalPosition: {x: -1.67, y: -0, z: -5.53}
-  m_LocalScale: {x: 2.687567, y: 3.4376, z: 1}
+  m_LocalPosition: {x: -1.67, y: 0.53, z: -5.53}
+  m_LocalScale: {x: 1.3, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1702115028}
@@ -19326,7 +19326,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 503915989}
   serializedVersion: 8
-  lengthInSec: 4
+  lengthInSec: 6
   simulationSpeed: 0.5
   stopAction: 0
   cullingMode: 0
@@ -19334,7 +19334,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 0
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
@@ -19455,7 +19455,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 5
-      minScalar: 2
+      minScalar: 2.67
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -19570,8 +19570,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.32
-      minScalar: 0.3
+      scalar: 0.08
+      minScalar: 0.12
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -19947,7 +19947,7 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 40.538464
+    angle: 59.3
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -20152,7 +20152,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 30
+      scalar: 59.9
       minScalar: 10
       maxCurve:
         serializedVersion: 2
