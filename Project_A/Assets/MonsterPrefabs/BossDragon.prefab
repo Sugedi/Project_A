@@ -4608,7 +4608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 562a1e672d494b64dac9eabb3dc20f65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 80
+  damage: 60
   isMelee: 0
   explosionPrefab: {fileID: 5389041509837916822, guid: c646918fa1b93ae4cbd638cb55a825d3, type: 3}
 --- !u!1 &2856996563408610785
