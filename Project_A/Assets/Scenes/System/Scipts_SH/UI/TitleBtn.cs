@@ -114,9 +114,10 @@ public class TitleBtn : MonoBehaviour
                 }
                 else if (NO1.alpha == 0) // 삭제되었고, 이제 창 끄기
                 {
-                    CanvasGroupOff(DataResetGroup);
-                    CanvasGroupOff(NO2);
-                    CanvasGroupOn(NO1);
+                    //CanvasGroupOff(DataResetGroup);
+                    //CanvasGroupOff(NO2);
+                    //CanvasGroupOn(NO1);
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 }
 
 
