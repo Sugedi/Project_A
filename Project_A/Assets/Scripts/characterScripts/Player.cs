@@ -376,7 +376,7 @@ public class Player : MonoBehaviour
             {
 
                 // 승호 - skill NPC 상호작용
-                if (collider.CompareTag("NPC") || collider.CompareTag("Door") || collider.CompareTag("Switch") || collider.CompareTag("Treasure") || collider.CompareTag("Mirror") || collider.CompareTag("PyramidEnter") || collider.CompareTag("PyramidExit"))
+                if (collider.CompareTag("NPC") || collider.CompareTag("Door") || collider.CompareTag("Switch") || collider.CompareTag("Treasure") || collider.CompareTag("Mirror") || collider.CompareTag("PyramidEnter") || collider.CompareTag("PyramidExit")|| collider.CompareTag("Lever")|| collider.CompareTag("Story"))
                 {
                     // 여기 부분에 공격 버튼 이미지 -> 상호작용 버튼 이미지로 바꾸는 거 넣으면 됨.
 
