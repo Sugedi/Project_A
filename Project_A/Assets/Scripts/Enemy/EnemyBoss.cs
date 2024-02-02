@@ -535,6 +535,7 @@ public class EnemyBoss : MonoBehaviour
             // 체력바를 0으로 설정
             healthBarSlider.value = 0;
 
+            chargeAreaEffectInstance.Stop();
             // 색상을 회색으로 변경하고 레이어를 "Dead"로 설정
             // mat.color = Color.gray;
             StopAllCoroutines();
