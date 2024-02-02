@@ -323,7 +323,7 @@ public class Player : MonoBehaviour
                 }
                 if (collider.gameObject.name == "StoryItem2")
                 {
-                    GameObject.Find("StoryItem2").GetComponent<StoryHintManager>().ShowHint();
+                    GameObject.Find("StoryItem2").GetComponent<StoryHintManager2>().ShowHint();
                 }
             }
 

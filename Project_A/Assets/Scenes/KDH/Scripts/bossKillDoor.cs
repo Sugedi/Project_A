@@ -39,7 +39,11 @@ public class bossKillDoor : MonoBehaviour
         if (bossDoorOpenAnimation != null)
         {
             // '보스를 죽이고 문을 열기' 애니메이션을 실행합니다.
-            bossPlayDoorAnimation(bossDoorOpenAnimation);
+            if(DataManager.instance.datas.galioFirstClear == false)
+            {
+                bossPlayDoorAnimation(bossDoorOpenAnimation);
+            }
+
         }
         else
         {
